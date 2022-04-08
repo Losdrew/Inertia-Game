@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGame", "MyGame\MyGame.csproj", "{A2553593-6B3D-4969-A9AB-B360691688BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyGame", "MyGame\MyGame.csproj", "{A2553593-6B3D-4969-A9AB-B360691688BF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "movement", "..\..\..\OneDrive\Рабочий стол\movement\movement\movement.csproj", "{B7960B89-24D4-48B9-AD25-86F65BB8D89E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{A2553593-6B3D-4969-A9AB-B360691688BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2553593-6B3D-4969-A9AB-B360691688BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2553593-6B3D-4969-A9AB-B360691688BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7960B89-24D4-48B9-AD25-86F65BB8D89E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7960B89-24D4-48B9-AD25-86F65BB8D89E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7960B89-24D4-48B9-AD25-86F65BB8D89E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7960B89-24D4-48B9-AD25-86F65BB8D89E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
