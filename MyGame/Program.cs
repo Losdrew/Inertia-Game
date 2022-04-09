@@ -2,33 +2,80 @@
 {
     class Program
     {
-        public const int MapWidth = 20;
-        public const int MapHeight = 10;
-        public const ConsoleColor BorderColor = ConsoleColor.Red;
+        public const int MapWidth = 15;
+        public const int MapHeight = 6;
 
         static void Main()
         {
-            Console.SetWindowSize(MapWidth, MapHeight);
-            Console.SetBufferSize(MapWidth, MapHeight);
             Console.CursorVisible = false;
             
-            DrawBorder();
+            Cell[,] map = new Cell[MapWidth, MapHeight];
+            DrawMap(map);
+
             Console.ReadKey();
         }
 
-        static void DrawBorder()
+        static void DrawMap(Cell[,] map)
         {
-            for (int i = 0; i < MapWidth; i++)
+            for (int x = 0; x < MapWidth; x++)
             {
-                new Cell(i, 0, "Wall", BorderColor).Draw();
-                new Cell(i, MapHeight - 1, "Wall", BorderColor).Draw();
+                if (x == 0)
+                    for (int y = 0; y < MapHeight; y++)
+                    {
+                         map[x, y] = new Cell(x, y, "Wall");
+                         map[MapWidth - 1, y] = new Cell(MapWidth - 1, y, "Wall");
+                    }
+
+                    map[x, 0] = new Cell(x, 0, "Wall");
+                    map[x, MapHeight - 1] = new Cell(x, MapHeight - 1, "Wall");
             }
 
-            for (int i = 0; i < MapHeight; i++)
+            Random random = new Random();
+            int playerCount = 0, prizeCount = 0;
+
+            for (int x = 2; x < MapWidth - 1; x++)
             {
-                new Cell(0, i, "Wall", BorderColor).Draw();
-                new Cell(MapWidth - 1, i, "Wall", BorderColor).Draw();
+                for (int y = 1; y < MapHeight - 1; y++)
+                {
+                    if (x % 2 == 0)
+                        switch (random.Next(0, 100))
+                        {
+                            case < 8:
+                                map[x, y] = new Cell(x, y, "Wall");
+                                break;
+
+                            case < 15:
+                                map[x, y] = new Cell(x, y, "Prize");
+                                prizeCount++;
+                                break;
+
+                            case < 25:
+                                map[x, y] = new Cell(x, y, "Trap");
+                                break;
+
+                            case < 40:
+                                map[x, y] = new Cell(x, y, "Stop");
+                                break;
+
+                            default:
+                                if (playerCount == 0)
+                                    map[x, y] = new Cell(x, y, "Player");
+                                playerCount++;
+                                break;
+                        }
+                }
             }
+
+            if (prizeCount == 0)
+            {
+                var randX = random.Next(3, MapWidth - 2);
+                var randY = random.Next(1, MapHeight - 1);
+                map[randX, randY] = new Cell(randX, randY, "Prize");
+            }
+                   
+            for (int i = 0; i < MapWidth; i++)
+                for (int j = 0; j < MapHeight; j++)
+                    map[i, j].Draw();
         }
     }
 }

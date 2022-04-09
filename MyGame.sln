@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyGame", "MyGame\MyGame.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "movement", "..\..\..\OneDrive\Рабочий стол\movement\movement\movement.csproj", "{B7960B89-24D4-48B9-AD25-86F65BB8D89E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OOP_Lab1_Volovyi_Artem_PZPI-21-1", "..\OOP_Lab1_Volovyi_Artem_PZPI-21-1\OOP_Lab1_Volovyi_Artem_PZPI-21-1\OOP_Lab1_Volovyi_Artem_PZPI-21-1.csproj", "{7D6490D3-F69F-4408-B0F3-950AFA93395A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B7960B89-24D4-48B9-AD25-86F65BB8D89E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7960B89-24D4-48B9-AD25-86F65BB8D89E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7960B89-24D4-48B9-AD25-86F65BB8D89E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D6490D3-F69F-4408-B0F3-950AFA93395A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D6490D3-F69F-4408-B0F3-950AFA93395A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D6490D3-F69F-4408-B0F3-950AFA93395A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D6490D3-F69F-4408-B0F3-950AFA93395A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
