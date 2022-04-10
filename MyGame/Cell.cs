@@ -20,18 +20,15 @@
 
     public struct Cell
     {
-        public int X { get; }
+        public Coordinates Coordinates { get; }
 
-        public int Y { get; }
+        public CellTypes CellType { get; set; }
 
-        public CellTypes CellType { get; }
-
-        public ConsoleColor Color { get; }
+        public ConsoleColor Color { get; set; }
 
         public Cell(int x, int y, string type)
         {
-            X = x;
-            Y = y;
+            Coordinates = new Coordinates(x, y);
             CellType = (CellTypes)Enum.Parse(typeof(CellTypes), type);
 
             switch (CellType)
@@ -60,22 +57,22 @@
                     Color = 0;
                     break;
             }     
-
-            Console.ForegroundColor = Color;
-            Console.SetCursorPosition(X, Y);
-            Console.Write((char)CellType);
         }
+        
+        public Cell(Coordinates coordinates, string type) : this(coordinates.X, coordinates.Y, type) { }
 
         public void Draw()
         {
             Console.ForegroundColor = Color;
-            Console.SetCursorPosition(X, Y);
+            Console.SetCursorPosition(Coordinates.X, Coordinates.Y);
             Console.Write((char)CellType);
         }
 
         public void Clear()
         {
-            Console.SetCursorPosition(X, Y);
+            Console.SetCursorPosition(Coordinates.X, Coordinates.Y);
+            CellType = 0;
+            Color = 0;
             Console.Write(" ");
         }
     }

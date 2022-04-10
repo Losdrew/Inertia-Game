@@ -9,7 +9,8 @@
         LeftUp,
         RightUp,
         LeftDown,
-        RightDown
+        RightDown,
+        Idle
     }
 
     public class Player
@@ -21,21 +22,42 @@
             PlayerChar = new Cell(x, y, "Player");
         }
 
-        public void Move(Direction direction)
+        public Player(Coordinates coordinates) : this(coordinates.X, coordinates.Y) { }
+
+        public void Move(Cell[,] map, Direction direction)
         {
             Clear();
 
             PlayerChar = direction switch
             {
-                Direction.Up => new Cell(PlayerChar.X, PlayerChar.Y + 1, "Player"),
-                Direction.Down => new Cell(PlayerChar.X, PlayerChar.Y - 1, "Player"),
-                Direction.Left => new Cell(PlayerChar.X - 1, PlayerChar.Y, "Player"),
-                Direction.Right => new Cell(PlayerChar.X + 1, PlayerChar.Y, "Player"),
-                Direction.LeftUp => new Cell(PlayerChar.X - 1, PlayerChar.Y + 1, "Player"),
-                Direction.RightUp => new Cell(PlayerChar.X + 1, PlayerChar.Y + 1, "Player"),
-                Direction.LeftDown => new Cell(PlayerChar.X - 1, PlayerChar.Y - 1, "Player"),
-                Direction.RightDown => new Cell(PlayerChar.X + 1, PlayerChar.Y - 1, "Player")
+                Direction.Up when (map[PlayerChar.Coordinates.X, PlayerChar.Coordinates.Y - 1].CellType != CellTypes.Wall) => 
+                    new Cell(PlayerChar.Coordinates.X, PlayerChar.Coordinates.Y - 1, "Player"),
+
+                Direction.Down when (map[PlayerChar.Coordinates.X, PlayerChar.Coordinates.Y + 1].CellType != CellTypes.Wall) => 
+                    new Cell(PlayerChar.Coordinates.X, PlayerChar.Coordinates.Y + 1, "Player"),
+
+                Direction.Left when (map[PlayerChar.Coordinates.X - 1, PlayerChar.Coordinates.Y].CellType != CellTypes.Wall) => 
+                    new Cell(PlayerChar.Coordinates.X - 1, PlayerChar.Coordinates.Y, "Player"),
+
+                Direction.Right when (map[PlayerChar.Coordinates.X + 1, PlayerChar.Coordinates.Y].CellType != CellTypes.Wall) => 
+                    new Cell(PlayerChar.Coordinates.X + 1, PlayerChar.Coordinates.Y, "Player"),
+
+                Direction.LeftUp when (map[PlayerChar.Coordinates.X - 1, PlayerChar.Coordinates.Y - 1].CellType != CellTypes.Wall) =>
+                    new Cell(PlayerChar.Coordinates.X - 1, PlayerChar.Coordinates.Y - 1, "Player"),
+
+                Direction.RightUp when (map[PlayerChar.Coordinates.X + 1, PlayerChar.Coordinates.Y - 1].CellType != CellTypes.Wall) => 
+                    new Cell(PlayerChar.Coordinates.X + 1, PlayerChar.Coordinates.Y - 1, "Player"),
+
+                Direction.LeftDown when (map[PlayerChar.Coordinates.X - 1, PlayerChar.Coordinates.Y + 1].CellType != CellTypes.Wall) => 
+                    new Cell(PlayerChar.Coordinates.X - 1, PlayerChar.Coordinates.Y + 1, "Player"),
+
+                Direction.RightDown when (map[PlayerChar.Coordinates.X + 1, PlayerChar.Coordinates.Y + 1].CellType != CellTypes.Wall) => 
+                    new Cell(PlayerChar.Coordinates.X + 1, PlayerChar.Coordinates.Y + 1, "Player"),
+
+                _ => PlayerChar
             };
+
+            Draw();
         }
 
         public void Draw()
