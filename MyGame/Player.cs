@@ -1,63 +1,59 @@
 ﻿namespace MyGame
 {
-    public enum Direction
-    {
-        Up,
-        Down,
-        Left,
-        Right,
-        LeftUp,
-        RightUp,
-        LeftDown,
-        RightDown,
-        Idle
-    }
-
     public class Player
     {
+        public static CellTypes[] ToStopAt = { CellTypes.Trap, CellTypes.Stop };
+        public static Dictionary<ConsoleKey, Coordinates> directionCoords = 
+            new Dictionary<ConsoleKey, Coordinates>()
+            {
+                { ConsoleKey.W, new Coordinates(0, -1) },
+                { ConsoleKey.X, new Coordinates(0, 1) },
+                { ConsoleKey.A, new Coordinates(-1, 0) },
+                { ConsoleKey.D, new Coordinates(1, 0) },
+                { ConsoleKey.Q, new Coordinates(-1, -1) },
+                { ConsoleKey.E, new Coordinates(1, -1) },
+                { ConsoleKey.Z, new Coordinates(-1, 1) },
+                { ConsoleKey.C, new Coordinates(1, 1) },
+            };
+        
         public Cell PlayerChar { get; set; }
 
         public Player(int x, int y)
         {
-            PlayerChar = new Cell(x, y, "Player");
+            PlayerChar = new Cell(x, y, CellTypes.Player);
         }
 
-        public Player(Coordinates coordinates) : this(coordinates.X, coordinates.Y) { }
-
-        public void Move(Cell[,] map, Direction direction)
+        public int Move(Cell[,] map, ConsoleKey key)
         {
+            int state = 0;
+
             Clear();
 
-            PlayerChar = direction switch
+            var movedPlayer = new Cell(map[PlayerChar.X + directionCoords[key].X, PlayerChar.Y + directionCoords[key].Y]);
+
+            switch (movedPlayer.CellType)
             {
-                Direction.Up when (map[PlayerChar.Coordinates.X, PlayerChar.Coordinates.Y - 1].CellType != CellTypes.Wall) => 
-                    new Cell(PlayerChar.Coordinates.X, PlayerChar.Coordinates.Y - 1, "Player"),
+                case CellTypes.Wall:
+                    state = 1;
+                    break;
 
-                Direction.Down when (map[PlayerChar.Coordinates.X, PlayerChar.Coordinates.Y + 1].CellType != CellTypes.Wall) => 
-                    new Cell(PlayerChar.Coordinates.X, PlayerChar.Coordinates.Y + 1, "Player"),
+                case CellTypes.Stop:
+                    map[PlayerChar.X, PlayerChar.Y] = new Cell(PlayerChar.X, PlayerChar.Y, CellTypes.None);
+                    PlayerChar = new Cell(movedPlayer.X, movedPlayer.Y, CellTypes.Player);
+                    break;
 
-                Direction.Left when (map[PlayerChar.Coordinates.X - 1, PlayerChar.Coordinates.Y].CellType != CellTypes.Wall) => 
-                    new Cell(PlayerChar.Coordinates.X - 1, PlayerChar.Coordinates.Y, "Player"),
+                case CellTypes.Trap:
+                    state = 2;
+                    break;
 
-                Direction.Right when (map[PlayerChar.Coordinates.X + 1, PlayerChar.Coordinates.Y].CellType != CellTypes.Wall) => 
-                    new Cell(PlayerChar.Coordinates.X + 1, PlayerChar.Coordinates.Y, "Player"),
-
-                Direction.LeftUp when (map[PlayerChar.Coordinates.X - 1, PlayerChar.Coordinates.Y - 1].CellType != CellTypes.Wall) =>
-                    new Cell(PlayerChar.Coordinates.X - 1, PlayerChar.Coordinates.Y - 1, "Player"),
-
-                Direction.RightUp when (map[PlayerChar.Coordinates.X + 1, PlayerChar.Coordinates.Y - 1].CellType != CellTypes.Wall) => 
-                    new Cell(PlayerChar.Coordinates.X + 1, PlayerChar.Coordinates.Y - 1, "Player"),
-
-                Direction.LeftDown when (map[PlayerChar.Coordinates.X - 1, PlayerChar.Coordinates.Y + 1].CellType != CellTypes.Wall) => 
-                    new Cell(PlayerChar.Coordinates.X - 1, PlayerChar.Coordinates.Y + 1, "Player"),
-
-                Direction.RightDown when (map[PlayerChar.Coordinates.X + 1, PlayerChar.Coordinates.Y + 1].CellType != CellTypes.Wall) => 
-                    new Cell(PlayerChar.Coordinates.X + 1, PlayerChar.Coordinates.Y + 1, "Player"),
-
-                _ => PlayerChar
-            };
+                default:
+                    PlayerChar = new Cell(movedPlayer.X, movedPlayer.Y, CellTypes.Player);
+                    break;
+            }
 
             Draw();
+
+            return state;
         }
 
         public void Draw()

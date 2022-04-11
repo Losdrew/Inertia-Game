@@ -2,6 +2,7 @@
 {
     public enum CellTypes
     {
+        None = ' ',
         Player = 'I',
         Prize = '@',
         Stop = '.',
@@ -20,59 +21,44 @@
 
     public struct Cell
     {
-        public Coordinates Coordinates { get; }
+        public int X { get; set; }
+
+        public int Y { get; set; }
 
         public CellTypes CellType { get; set; }
 
         public ConsoleColor Color { get; set; }
 
-        public Cell(int x, int y, string type)
+        public Cell(int x, int y, CellTypes cellType)
         {
-            Coordinates = new Coordinates(x, y);
-            CellType = (CellTypes)Enum.Parse(typeof(CellTypes), type);
+            X = x;
+            Y = y;
+            CellType = cellType;
 
-            switch (CellType)
+            Color = CellType switch
             {
-                case CellTypes.Player:
-                    Color = (ConsoleColor)CellColors.Player;
-                    break;
-
-                case CellTypes.Prize:
-                    Color = (ConsoleColor)CellColors.Prize;
-                    break;
-
-                case CellTypes.Stop:
-                    Color = (ConsoleColor)CellColors.Stop;
-                    break;
-
-                case CellTypes.Wall:
-                    Color = (ConsoleColor)CellColors.Wall;
-                    break;
-
-                case CellTypes.Trap:
-                    Color = (ConsoleColor)CellColors.Trap;
-                    break;
-
-                default:
-                    Color = 0;
-                    break;
-            }     
+                CellTypes.Player => (ConsoleColor)CellColors.Player,
+                CellTypes.Prize => (ConsoleColor)CellColors.Prize,
+                CellTypes.Stop => (ConsoleColor)CellColors.Stop,
+                CellTypes.Wall => (ConsoleColor)CellColors.Wall,
+                CellTypes.Trap => (ConsoleColor)CellColors.Trap,
+                _ => 0
+            };
         }
-        
-        public Cell(Coordinates coordinates, string type) : this(coordinates.X, coordinates.Y, type) { }
+
+        public Cell(Cell cell) : this(cell.X, cell.Y, cell.CellType) { }
 
         public void Draw()
         {
             Console.ForegroundColor = Color;
-            Console.SetCursorPosition(Coordinates.X, Coordinates.Y);
+            Console.SetCursorPosition(X, Y);
             Console.Write((char)CellType);
         }
 
         public void Clear()
         {
-            Console.SetCursorPosition(Coordinates.X, Coordinates.Y);
+            Console.SetCursorPosition(X, Y);
             CellType = 0;
-            Color = 0;
             Console.Write(" ");
         }
     }
