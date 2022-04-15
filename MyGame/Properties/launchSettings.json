@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MyGame": {
+      "commandName": "Project",
+      "commandLineArgs": ""
+    }
+  }
+}

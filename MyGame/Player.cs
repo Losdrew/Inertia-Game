@@ -1,5 +1,12 @@
 ﻿namespace MyGame
 {
+    public enum PlayerState
+    {
+        Moving,
+        Stopped,
+        GameOver
+    }
+
     public class Player
     {
         public static CellTypes[] ToStopAt = { CellTypes.Trap, CellTypes.Stop };
@@ -15,36 +22,39 @@
                 { ConsoleKey.Z, new Coordinates(-1, 1) },
                 { ConsoleKey.C, new Coordinates(1, 1) },
             };
-        
-        public Cell PlayerChar { get; set; }
+
+        public Cell PlayerChar { get; set;}
 
         public Player(int x, int y)
         {
             PlayerChar = new Cell(x, y, CellTypes.Player);
         }
 
-        public int Move(Cell[,] map, ConsoleKey key)
+        public PlayerState Move(Cell[,] map, ConsoleKey key, ref int prizeCount)
         {
-            int state = 0;
+            PlayerState state = PlayerState.Moving;
 
-            Clear();
+            map[PlayerChar.X, PlayerChar.Y].Clear();
 
-            var movedPlayer = new Cell(map[PlayerChar.X + directionCoords[key].X, PlayerChar.Y + directionCoords[key].Y]);
+            var movedPlayer = map[PlayerChar.X + directionCoords[key].X, PlayerChar.Y + directionCoords[key].Y];
 
             switch (movedPlayer.CellType)
             {
                 case CellTypes.Wall:
-                    state = 1;
-                    break;
-
-                case CellTypes.Stop:
-                    map[PlayerChar.X, PlayerChar.Y] = new Cell(PlayerChar.X, PlayerChar.Y, CellTypes.None);
-                    PlayerChar = new Cell(movedPlayer.X, movedPlayer.Y, CellTypes.Player);
+                    state = PlayerState.Stopped;
                     break;
 
                 case CellTypes.Trap:
-                    state = 2;
+                    state = PlayerState.GameOver;
                     break;
+
+                case CellTypes.Stop:
+                    PlayerChar = new Cell(movedPlayer.X, movedPlayer.Y, CellTypes.Player);
+                    goto case CellTypes.Wall;
+
+                case CellTypes.Prize:
+                    prizeCount--;
+                    goto case CellTypes.Stop;
 
                 default:
                     PlayerChar = new Cell(movedPlayer.X, movedPlayer.Y, CellTypes.Player);

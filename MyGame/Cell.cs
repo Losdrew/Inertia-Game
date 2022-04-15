@@ -46,20 +46,23 @@
             };
         }
 
-        public Cell(Cell cell) : this(cell.X, cell.Y, cell.CellType) { }
-
         public void Draw()
         {
+            Console.SetCursorPosition(
+                Program.LeftOffset + X, 
+                (Console.WindowHeight - Program.MapHeight) / 2 + Y);
+
             Console.ForegroundColor = Color;
-            Console.SetCursorPosition(X, Y);
             Console.Write((char)CellType);
+
+            Console.ResetColor();
         }
 
         public void Clear()
         {
-            Console.SetCursorPosition(X, Y);
-            CellType = 0;
-            Console.Write(" ");
+            CellType = CellTypes.None;
+            Color = 0;
+            Draw();
         }
     }
 }
