@@ -49,7 +49,7 @@
         public void Draw()
         {
             Console.SetCursorPosition(
-                Program.LeftOffset + X, 
+                Program.MapLeftMargin + X, 
                 (Console.WindowHeight - Program.MapHeight) / 2 + Y);
 
             Console.ForegroundColor = Color;

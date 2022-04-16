@@ -29,9 +29,10 @@ namespace MyGame
             Console.SetWindowSize(133, 42);
             Console.SetBufferSize(133, 42);
             Console.SetCursorPosition(0, 0);
-            Console.ForegroundColor = ConsoleColor.White;
 
-            Console.WriteLine(@"                                                                    
+            Console.ForegroundColor = ConsoleColor.Red;
+
+            Console.Write(@"                                                                    
                                                                                                                           
                  d0XXXNX0o                                                                                                
                kWXxc   oKMK                                                                                               
@@ -40,13 +41,17 @@ namespace MyGame
              kMX    lxxKWWx   ldxxx0WWo  0M0   oWWo   KMO  0MW0xxOXWMK       oWNl    xMX   OMx cXNo  lWMXclc0WWd  NWk     
              oWNo      kMX   XWO   KM0  cNWo   0M0   oWWl  KMKl              dMNc    KMO   oWX0NXc   oWWk        xMX      
               dNW0xdxOXWNd  cNWOllOWMx  kMK   cNWd   0M0   cXNkllkK0d         0WKocxXNk     KMW0      kNKdcd00c  XMk      
-                cddxdol       oxdxdlo   co     ol    lo      cdxdo              odxdl        ol         ldxdl    lo       
+                cddxdol       oxdxdlo   co     ol    lo      cdxdo              odxdl        ol         ldxdl    lo   
 
+            ");
 
+            Console.ForegroundColor = ConsoleColor.White;
+
+            Console.Write(@"
                                                             Choose an option:
 
-                                                      1. Restart the current level
-                                                          2. Create a new level
+                                                        1. Restart current level
+                                                           2. Create new level
                                                                 3. Quit         
                                                             
                                  
