@@ -7,7 +7,7 @@ namespace MyGame
         public static GameState GetInput()
         {
             Console.CursorVisible = true;
-            Console.SetCursorPosition(78, 11);
+            Console.SetCursorPosition(78, 12);
 
             var key = Console.ReadKey(true).Key;
 

@@ -13,9 +13,9 @@ namespace MyGame
         Quit
     }
 
-    partial class Program
+    class Program
     {
-        public const int FrameMs = 150;
+        public const int FrameMs = 120;
 
         public static ConsoleKey[] Controls = {
             ConsoleKey.W, ConsoleKey.X, 
@@ -28,83 +28,96 @@ namespace MyGame
         {
             MainMenu.Show();
 
-            if (MainMenu.GetInput() == GameState.Start)
+            GameState currentGameState = MainMenu.GetInput();
+
+            if (currentGameState == GameState.Start)
             {
-                Score score = new Score();
+                Score score = new();
 
-                while (true)
+                while (currentGameState != GameState.Quit)
                 {
-                    (Cell[,] map, Player player, int prizeCount) = CreateMap(new Cell[MapWidth, MapHeight]);
+                    Map map = new();
+                    map.CreateMap();
 
-                    while (true)
+                    while (currentGameState != GameState.Continue)
                     {
-                        if (Play(map, player, prizeCount, score) == GameState.Win)
-                        {
-                            WinScreen.Show();
-                            score.CurrentScore++;
+                        currentGameState = Play(map, score);
 
-                            if (WinScreen.GetInput() == GameState.Continue)
+                        if (currentGameState == GameState.Win)
+                        {
+                            if (Win() == GameState.Continue)
                             {
                                 score.Save();
                                 break;
                             }
+                            
+                            else score.CurrentScore = 0;
                         }
 
                         else
                         {
-                            GameOverScreen.Show();
-
-                            if (GameOverScreen.GetInput() == GameState.CreateNew)
+                            if (GameOver() == GameState.CreateNew)
                             {
                                 score.Reset();
                                 break;
-                            } 
-                        }
+                            }
+
+                            else score.CurrentScore = 0;
+                        }    
                     }
                 }
             }
 
-            else System.Environment.Exit(1);
+            else Environment.Exit(1);
         }
 
-        static GameState Play(Cell[,] initialMap, Player initialPlayer, int initialPrizeCount, Score score)
+        static GameState Win()
+        {
+            WinScreen.Show();
+
+            return WinScreen.GetInput();
+        }
+
+        static GameState GameOver()
+        {
+            GameOverScreen.Show();
+
+            return GameOverScreen.GetInput();
+        }
+
+        static GameState Play(Map map, Score score)
         {
             Console.Clear();
             Console.CursorVisible = false;
-            Console.SetWindowSize(MapLeftMargin * 2 + MapWidth, MapHeight * 2);
-            Console.SetBufferSize(MapLeftMargin * 2 + MapWidth, MapHeight * 2); 
+            Console.SetWindowSize(Map.MapLeftMargin * 2 + Map.MapWidth, Map.MapHeight * 2);
+            Console.SetBufferSize(Map.MapLeftMargin * 2 + Map.MapWidth, Map.MapHeight * 2);
 
-            Cell[,] currentMap = CopyMap(initialMap);
-            Player player = new Player(initialPlayer.PlayerChar.X, initialPlayer.PlayerChar.Y);
+            Map currentMap = new(map);
 
-            int currentPrizeCount = initialPrizeCount;
-
-            DrawMapAndControls(currentMap);
+            currentMap.Draw();
             score.Draw();
 
+            currentMap.UpdateScore += score.Update;
+
             ConsoleKey key;
-            PlayerState state;
 
             while (true)
             {
-                if (initialPrizeCount - currentPrizeCount > score.CurrentScore)
-                    score.Update();
-
                 key = Console.ReadKey(true).Key;
 
                 while (Controls.Contains(key))
                 {
-                    state = player.Move(currentMap, key, ref currentPrizeCount);
+                    var state = currentMap.Player.Move(currentMap, key);
 
                     if (state == PlayerState.Moving)
                         Thread.Sleep(FrameMs);
 
-                    else if (currentPrizeCount == 0)
+                    else if (state == PlayerState.Win)
                         return GameState.Win;
 
                     else if (state == PlayerState.GameOver)
                         return GameState.GameOver;
-                    
+
                     else break;
                 } 
             }

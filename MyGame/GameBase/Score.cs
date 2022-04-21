@@ -1,46 +1,54 @@
 ﻿namespace MyGame
 {
-    class Score
+    class Score : VisualObject
     {
-        private int PreviousScore { get; set; }
         public int CurrentScore { get; set; }
 
-        public void Draw()
+        public int TotalScore { get; set; }
+
+        public Score() 
+        {
+            TotalScore = 0;
+        }
+
+        public override void Draw()
         {
             Console.SetCursorPosition(
-            Console.WindowWidth - Program.MapWidth,
-            Console.WindowHeight - Program.MapHeight - 1);
+                Console.WindowWidth - Map.MapWidth,
+                Console.WindowHeight - Map.MapHeight - 1
+            );
 
             Console.Write($"Score: ");
 
-            if (PreviousScore > 0)
+            if (TotalScore > 0)
                 Console.ForegroundColor = ConsoleColor.Green;
 
-            Console.Write(PreviousScore);
+            Console.Write(TotalScore);
         }
 
         public void Update()
         {
-            CurrentScore++;
-
             Console.SetCursorPosition(
-            Console.WindowWidth - Program.MapWidth + "Score: ".Length,
-            Console.WindowHeight - Program.MapHeight - 1);
+                Console.WindowWidth - Map.MapWidth + "Score: ".Length,
+                Console.WindowHeight - Map.MapHeight - 1
+            );
 
             Console.ForegroundColor = ConsoleColor.Green;
 
-            Console.Write(PreviousScore + CurrentScore);
+            Console.Write(TotalScore + ++CurrentScore);
+
+            Console.ResetColor();
         }
 
         public void Save()
         {
-            PreviousScore += CurrentScore;
+            TotalScore += CurrentScore;
             CurrentScore = 0;
         }
 
         public void Reset()
         {
-            PreviousScore = 0;
+            TotalScore = 0;
             CurrentScore = 0;
         }
     }
