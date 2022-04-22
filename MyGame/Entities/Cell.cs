@@ -18,7 +18,6 @@
             X = x;
             Y = y;
             CellType = ' ';
-            Color = 0;
             MoveType = MoveTypes.GoThrough;
         }
 

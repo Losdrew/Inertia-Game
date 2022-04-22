@@ -12,6 +12,12 @@
 
         public int PrizeCount { get; set; }
 
+        public Cell this[int x, int y]
+        {
+            get { return Matrix[x, y]; }
+            set { Matrix[x, y] = value; }
+        }
+
         public delegate void ScoreHandler();
 
         public event ScoreHandler? UpdateScore;
@@ -20,13 +26,6 @@
         {
             Matrix = new Cell[MapWidth, MapHeight];
             Player = new(0, 0);
-            PrizeCount = 0;
-        }
-
-        public Cell this[int x, int y]
-        {
-            get { return Matrix[x, y]; }
-            set { Matrix[x, y] = value; }
         }
 
         public Map(Map map)
@@ -43,52 +42,49 @@
 
         public void CreateMap()
         {
-            for (int x = 0; x < MapWidth; x++)
-            {
-                if (x == 0)
-                    for (int y = 0; y < MapHeight; y++)
-                    {
-                        Matrix[x, y] = new Wall(x, y);
-                        Matrix[MapWidth - 1, y] = new Wall(MapWidth - 1, y);
-                    }
-
-                Matrix[x, 0] = new Wall(x, 0);
-                Matrix[x, MapHeight - 1] = new Wall(x, MapHeight - 1);
-            }
-
             var random = new Random();
 
-            for (int y = 1; y < MapHeight - 1; y++)
-                for (int x = 1; x < MapWidth - 1; x++)
+            for (int y = 0; y < MapHeight; y++)
+            {
+                for (int x = 0; x < MapWidth; x++)
                 {
-                    Matrix[x, y] = random.Next(0, 100) switch
+                    if ((0 < y && y < MapHeight - 1) && (0 < x && x < MapWidth - 1))
                     {
-                        < 10 => new Wall(x, y),
-                        < 15 => ((Func<Prize>)(() => { 
-                            PrizeCount++; 
-                            return new Prize(x, y); 
-                        }))(),
-                        < 28 => new Trap(x, y),
-                        < 45 => new Stop(x, y),
-                        _ => new Cell(x, y)
-                    };
+                        Matrix[x, y] = random.Next(0, 100) switch
+                        {
+                            < 10 => new Wall(x, y),
+                            < 15 => ((Func<Prize>)(() => {
+                                PrizeCount++;
+                                return new Prize(x, y);
+                            }))(),
+                            < 28 => new Trap(x, y),
+                            < 45 => new Stop(x, y),
+                            _ => new Cell(x, y)
+                        };
 
-                    Matrix[++x, y] = new Cell(x, y);
+                        Matrix[++x, y] = new Cell(x, y);
+                    }
+
+                    else Matrix[x, y] = new Wall(x, y);
                 }
+            }
 
-            var randX = random.Next(1, MapWidth - 1);
-            var randY = random.Next(1, MapHeight - 1);
-            Matrix[randX, randY] = new Player(randX, randY);
-            Player = new Player(randX, randY);
+            var (randX, randY) = RandomCoordinates(random);
 
             if (PrizeCount == 0)
             {
-                randX = random.Next(2, MapWidth - 1);
-                randY = random.Next(1, MapHeight - 1);
                 Matrix[randX, randY] = new Prize(randX, randY);
                 PrizeCount++;
             }
+
+            while (Matrix[randX, randY] is Prize)
+                (randX, randY) = RandomCoordinates(random);
+
+            Player = new Player(randX, randY);
         }
+
+        private (int x, int y) RandomCoordinates(Random random) => 
+            (random.Next(2, MapWidth - 1), random.Next(1, MapHeight - 1));
 
         public void ClearCell(int x, int y)
         {
@@ -118,6 +114,8 @@
             for (int i = 0; i < MapWidth; i++)
                 for (int j = 0; j < MapHeight; j++)
                     Matrix[i, j].Draw();
+
+            Player.Draw();
         }
     }
 }

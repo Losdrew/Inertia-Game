@@ -6,6 +6,8 @@ namespace MyGame
     {
         public static GameState GetInput()
         {
+            Draw();
+
             Console.CursorVisible = true;
             Console.SetCursorPosition(66, 14);
 
@@ -20,7 +22,7 @@ namespace MyGame
             else return GameState.Quit;
         }
 
-        public static void Show()
+        public static void Draw()
         {
             Console.Clear();
             Console.SetWindowSize(113, 46);
@@ -30,7 +32,7 @@ namespace MyGame
                  oddl                                                              oddl               
                 dWMMO                                                     cxO     lNWWx               
                 0MMWl                                                    KWMO                         
-               lWMM0    cxxo  lxO0Ox        lxO00Oxl        lxxl  dO0 dxKMMMXkl   dxxc      dkO00Oko  
+               lWMM0    cxxo  lxO0Ox        lxO00Oxl        lxxloodO0 dxKMMMXkl   dxxc      dkO00Oko  
                OMMMd    XMMWX0kdONMMNl    xNMW0xkKWMNl     cNMMXKNXXO OXWMMWK0o  xMMWl   cKWWXkdxKMMNl
                NMMX    dMMMXo    kMMWo   KMMKc    kMMX     kMMMNx      dWMMk     KMM0            cNMMk
               xMMMk    KMMXc     KMMX   kMMM0lllclOMMWl    XMMXc       OMMNc    oWMMd      loddxkXMMWo

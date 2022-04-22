@@ -2,88 +2,46 @@
 
 namespace MyGame
 {
-    public enum GameState
-    {
-        Start,
-        Win,
-        GameOver,
-        Retry,
-        CreateNew,
-        Continue,
-        Quit
-    }
-
     class Program
     {
         public const int FrameMs = 120;
 
-        public static ConsoleKey[] Controls = {
-            ConsoleKey.W, ConsoleKey.X, 
-            ConsoleKey.A, ConsoleKey.D, 
-            ConsoleKey.Q, ConsoleKey.E, 
-            ConsoleKey.Z, ConsoleKey.C
-        };
-
         static void Main()
-        {
-            MainMenu.Show();
+        {    
+            Score score = new();
+            Map? map = null;
 
-            GameState currentGameState = MainMenu.GetInput();
+            var currentGameState = GameState.InMenu;
 
-            if (currentGameState == GameState.Start)
+            while (currentGameState != GameState.Quit)
             {
-                Score score = new();
-
-                while (currentGameState != GameState.Quit)
+                currentGameState = currentGameState switch
                 {
-                    Map map = new();
-                    map.CreateMap();
-
-                    while (currentGameState != GameState.Continue)
-                    {
-                        currentGameState = Play(map, score);
-
-                        if (currentGameState == GameState.Win)
-                        {
-                            if (Win() == GameState.Continue)
-                            {
-                                score.Save();
-                                break;
-                            }
-                            
-                            else score.CurrentScore = 0;
-                        }
-
-                        else
-                        {
-                            if (GameOver() == GameState.CreateNew)
-                            {
-                                score.Reset();
-                                break;
-                            }
-
-                            else score.CurrentScore = 0;
-                        }    
-                    }
-                }
+                    GameState.InMenu => Menu(),
+                    GameState.Start => Start(out map),
+                    GameState.Play => Play(map, score),
+                    GameState.Win => Win(),
+                    GameState.GameOver => GameOver(),
+                    GameState.Continue => Continue(score),
+                    GameState.CreateNew => CreateNew(score),
+                };
             }
 
-            else Environment.Exit(1);
+            Environment.Exit(0);
         }
 
-        static GameState Win()
-        {
-            WinScreen.Show();
+        static GameState Menu() => MainMenu.GetInput();
+        static GameState Win() => WinScreen.GetInput();
+        static GameState GameOver() => GameOverScreen.GetInput();
 
-            return WinScreen.GetInput();
-        }
+        static GameState Start(out Map map)
+        { map = new(); map.CreateMap(); return GameState.Play; }
 
-        static GameState GameOver()
-        {
-            GameOverScreen.Show();
+        static GameState Continue(Score score) 
+            { score.Save(); return GameState.Start; }
 
-            return GameOverScreen.GetInput();
-        }
+        static GameState CreateNew(Score score) 
+            { score.ResetAll(); return GameState.Start; }
 
         static GameState Play(Map map, Score score)
         {
@@ -99,15 +57,17 @@ namespace MyGame
 
             currentMap.UpdateScore += score.Update;
 
+            score.ResetCurrent();
+
             ConsoleKey key;
 
             while (true)
             {
                 key = Console.ReadKey(true).Key;
 
-                while (Controls.Contains(key))
+                while (Enum.IsDefined(key))
                 {
-                    var state = currentMap.Player.Move(currentMap, key);
+                    var state = currentMap.Player.Move(currentMap, (Direction)key);
 
                     if (state == PlayerState.Moving)
                         Thread.Sleep(FrameMs);

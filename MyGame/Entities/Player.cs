@@ -1,27 +1,7 @@
 ﻿namespace MyGame
 {
-    public enum PlayerState
-    {
-        Moving,
-        Stopped,
-        Win,
-        GameOver
-    }
-
     class Player : Cell
     {
-        private Dictionary<ConsoleKey, Coordinates> directionCoords = new()
-        {
-            { ConsoleKey.W, new Coordinates(0, -1) },
-            { ConsoleKey.X, new Coordinates(0, 1) },
-            { ConsoleKey.A, new Coordinates(-1, 0) },
-            { ConsoleKey.D, new Coordinates(1, 0) },
-            { ConsoleKey.Q, new Coordinates(-1, -1) },
-            { ConsoleKey.E, new Coordinates(1, -1) },
-            { ConsoleKey.Z, new Coordinates(-1, 1) },
-            { ConsoleKey.C, new Coordinates(1, 1) }
-        };
-
         public Player(int x, int y) : base(x, y)
         {
             CellType = 'I';
@@ -31,7 +11,7 @@
 
         public Player(Player player) : this(player.X, player.Y) { }
 
-        public void Clear()
+        private void Clear()
         {
             Console.SetCursorPosition(
                Map.MapLeftMargin + X,
@@ -40,9 +20,9 @@
             Console.Write(' ');
         }
 
-        public PlayerState Move(Map map, ConsoleKey key)
+        public PlayerState Move(Map map, Direction direction)
         {
-            var movedPlayer = map[X + directionCoords[key].X, Y + directionCoords[key].Y];
+            var movedPlayer = GetCellInDirection(map, direction);
             
             if (movedPlayer.MoveType == MoveTypes.StopBefore)
                 return PlayerState.Stopped;
@@ -68,6 +48,22 @@
                 return PlayerState.GameOver;
 
             return PlayerState.Moving;
+        }
+
+        private Cell GetCellInDirection(Map map, Direction direction)
+        {
+            return direction switch
+            {
+                Direction.Up => map[X, Y - 1],
+                Direction.Down => map[X, Y + 1],
+                Direction.Left => map[X - 1, Y],
+                Direction.Right => map[X + 1, Y],
+                Direction.LeftUp => map[X - 1, Y - 1],
+                Direction.RightUp => map[X + 1, Y - 1],
+                Direction.LeftDown => map[X - 1, Y + 1],
+                Direction.RightDown => map[X + 1, Y + 1],
+                _ => map[X, Y]
+            };
         }
     }
 }

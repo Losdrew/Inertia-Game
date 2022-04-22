@@ -2,14 +2,9 @@
 {
     class Score : VisualObject
     {
-        public int CurrentScore { get; set; }
+        private int CurrentScore { get; set; }
 
-        public int TotalScore { get; set; }
-
-        public Score() 
-        {
-            TotalScore = 0;
-        }
+        private int TotalScore { get; set; }
 
         public override void Draw()
         {
@@ -46,9 +41,14 @@
             CurrentScore = 0;
         }
 
-        public void Reset()
+        public void ResetAll()
         {
             TotalScore = 0;
+            CurrentScore = 0;
+        }
+
+        public void ResetCurrent()
+        {
             CurrentScore = 0;
         }
     }

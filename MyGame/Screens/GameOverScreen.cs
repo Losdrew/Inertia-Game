@@ -6,6 +6,8 @@ namespace MyGame
     {
         public static GameState GetInput()
         {
+            Draw();
+
             Console.CursorVisible = true;
             Console.SetCursorPosition(78, 12);
 
@@ -15,7 +17,7 @@ namespace MyGame
                 key = Console.ReadKey(true).Key;
 
             if (key == ConsoleKey.D1)
-                return GameState.Retry;
+                return GameState.Play;
 
             else if (key == ConsoleKey.D2)
                 return GameState.CreateNew;
@@ -23,7 +25,7 @@ namespace MyGame
             else return GameState.Quit;
         }
 
-        public static void Show()
+        public static void Draw()
         {
             Console.Clear();
             Console.SetWindowSize(133, 42);
