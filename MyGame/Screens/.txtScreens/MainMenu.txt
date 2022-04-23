@@ -1,35 +1,4 @@
-﻿#pragma warning disable CA1416
-
-namespace MyGame
-{
-    class MainMenu
-    {
-        public static GameState GetInput()
-        {
-            Draw();
-
-            Console.CursorVisible = true;
-            Console.SetCursorPosition(66, 14);
-
-            var key = Console.ReadKey(true).Key;
-
-            while (key != ConsoleKey.D1 && key != ConsoleKey.D2)
-                key = Console.ReadKey(true).Key;
-
-            if (key == ConsoleKey.D1)
-                return GameState.Start;
-
-            else return GameState.Quit;
-        }
-
-        public static void Draw()
-        {
-            Console.Clear();
-            Console.SetWindowSize(113, 46);
-            Console.SetBufferSize(113, 46);
-
-            Console.WriteLine(@"                                                                    
-                 oddl                                                              oddl               
+    		 oddl                                                              oddl               
                 dWMMO                                                     cxO     lNWWx               
                 0MMWl                                                    KWMO                         
                lWMM0    cxxo  lxO0Ox        lxO00Oxl        lxxloodO0 dxKMMMXkl   dxxc      dkO00Oko  
@@ -69,8 +38,4 @@ namespace MyGame
                                    dXNNNOoloooooooooodxO0KXNNNNNNNNNNNNNNNNNNNk                       
                                    dNNNNKdoooloodxk0KXNNNNNNNNNNNNNNNNNNNNNNNNk                       
                                     dNNNNKkdxkO0XNNNNNNNNNNNNNNNNNNNNNNNNNNNNK                       
-                                     dKXNNXKXNNNNNNNNNNNNNNNNNNNNNNNNNNNNNXXk                        
-            ");
-        }
-    }
-}
+                                     dKXNNXKXNNNNNNNNNNNNNNNNNNNNNNNNNNNNNXXk                         

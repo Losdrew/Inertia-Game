@@ -1,24 +1,14 @@
 ﻿namespace MyGame
 {
-    public enum MoveTypes
-    {
-        GoThrough,
-        StopAt,
-        StopBefore
-    }
-
     class Cell : VisualObject
     {
         public char CellType { get; set; }
-
-        public MoveTypes MoveType { get; set; }
 
         public Cell(int x, int y)
         {
             X = x;
             Y = y;
             CellType = ' ';
-            MoveType = MoveTypes.GoThrough;
         }
 
         public override void Draw()

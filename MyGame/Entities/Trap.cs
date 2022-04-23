@@ -6,7 +6,6 @@
         {
             CellType = '%';
             Color = ConsoleColor.Red;
-            MoveType = MoveTypes.StopAt;
         }
     }
 }

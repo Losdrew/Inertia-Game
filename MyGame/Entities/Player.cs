@@ -6,7 +6,6 @@
         {
             CellType = 'I';
             Color = ConsoleColor.DarkCyan;
-            MoveType = MoveTypes.GoThrough;
         }
 
         public Player(Player player) : this(player.X, player.Y) { }
@@ -23,14 +22,16 @@
         public PlayerState Move(Map map, Direction direction)
         {
             var movedPlayer = GetCellInDirection(map, direction);
-            
-            if (movedPlayer.MoveType == MoveTypes.StopBefore)
+
+            if (movedPlayer is Wall)
                 return PlayerState.Stopped;
+
+            if (movedPlayer is Trap)
+                return PlayerState.GameOver;
 
             Clear();
 
-            X = movedPlayer.X;
-            Y = movedPlayer.Y;
+            (X, Y) = (movedPlayer.X, movedPlayer.Y);
 
             Draw();
 
@@ -43,9 +44,6 @@
 
                 return PlayerState.Stopped;
             }
-
-            if (map[X, Y] is Trap)
-                return PlayerState.GameOver;
 
             return PlayerState.Moving;
         }

@@ -30,12 +30,12 @@ namespace MyGame
             Environment.Exit(0);
         }
 
-        static GameState Menu() => MainMenu.GetInput();
-        static GameState Win() => WinScreen.GetInput();
-        static GameState GameOver() => GameOverScreen.GetInput();
+        static GameState Menu() => new MainMenuScreen().GetInput();
+        static GameState Win() => new WinScreen().GetInput();
+        static GameState GameOver() => new GameOverScreen().GetInput();
 
         static GameState Start(out Map map)
-        { map = new(); map.CreateMap(); return GameState.Play; }
+            { (map = new()).CreateMap(); return GameState.Play; }
 
         static GameState Continue(Score score) 
             { score.Save(); return GameState.Start; }
@@ -65,7 +65,7 @@ namespace MyGame
             {
                 key = Console.ReadKey(true).Key;
 
-                while (Enum.IsDefined(key))
+                while (Enum.IsDefined(typeof(Direction), (Direction)key))
                 {
                     var state = currentMap.Player.Move(currentMap, (Direction)key);
 

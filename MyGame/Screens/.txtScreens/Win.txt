@@ -1,0 +1,40 @@
+	     dXXk       OXXk                                                          NMW                   dXXo
+              0MWx    oNMNd                                                                                 KMX 
+               KMWd  OWW0     lxOOOkd       xkl    lkx           dkl    lkk     dko  lkx    okd cxOOOd     lWMk 
+                XMN0XMNx    xNWKdloOWWk    kMWd    NMK           0M0   dWMMx   0MXc  XMX   lWMWKxloKWMO    kMX  
+                cXMMW0     OMWk     kMWd   XMK    xMMd           xMX  oWWWMx  0MXc  dMMk   kMWO    xMMk    0Wo  
+                 OMMO      NMK      kMWd  xMMx    KMX            oWWooNXdkMkcOMX    0MNc   XMK     0MNc    XO   
+                 KMNc      XMX     oNMK   KMN    kWMk             XWNNNl oMNNWK    lWMO   xMMx    lWMO          
+                oWM0       oNMXxld0WNk    XMWOld0WMNc             0MMNo  cWMMK     OMWo   KMN     OMWo   lKK    
+                cxx          lxkOkxo       xOkxccdxl              cxxc    dxd      oxd    dxl     oxd    cxx    
+
+
+                                                      Choose an option:
+
+                                                        1. Continue
+                                                  2. Restart current level
+                                                         3. Quit         
+                                                            
+                                 
+                                                         xxddxxk                                              
+                                                       ;dxxddxxkxo;         ,,,,                              
+                                                       lkdodkdoxkkd      ,,,,,,                               
+                                                       :xxdxkdxxkko,  ,,,,                                    
+                                                         lkkkkxlcc:,,,                                        
+                                                     ,cdkdc::;,,;;:c;                                         
+                                                   :kKXKKK0kdddxkO0KOl                                        
+                                                  lKXK00KKKXXXXKKKKKKK0xo,                                    
+                                                  OXXk,cKXKKKKKKXXKkkKXXXx;                                   
+                                                 ;0XXd :KXKXKKK0Okx:;cloo;                                    
+                                                 ,kxdc :0KOkxdolcccccc:           oxk0x                       
+                                                  kxd    ,:ccccc; ,;:cc:,;cllodddkKNNNk                       
+                                                           ,:ccc;  :lccclxxdolloooxKNNk                       
+                                                            :cccokO0xlccccllooooold0NNk                       
+                                                         colccccoddool:;:c::loodkOKXNNk                       
+                                                     dx0KKkl:ccclooooolc::cokOKXNNNNNNk                       
+                                                 dx0K0Oxdoc;;cc:cllllodxk0KXNNNNNNNNNNk                       
+                                             dx0X0kxdolooolc::;;cldkO0XNNNNNNNNNNNNNNNk                       
+                                           dXNNNOoloooooooooodxO0KXNNNNNNNNNNNNNNNNNNNk                       
+                                           dNNNNKdoooloodxk0KXNNNNNNNNNNNNNNNNNNNNNNNNk                       
+                                            dNNNNKkdxkO0XNNNNNNNNNNNNNNNNNNNNNNNNNNNNK                       
+                                             dKXNNXKXNNNNNNNNNNNNNNNNNNNNNNNNNNNNNXXk                  
