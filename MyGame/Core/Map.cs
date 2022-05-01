@@ -12,16 +12,6 @@
 
         public int PrizeCount { get; set; }
 
-        public Cell this[int x, int y]
-        {
-            get { return Matrix[x, y]; }
-            set { Matrix[x, y] = value; }
-        }
-
-        public delegate void ScoreHandler();
-
-        public event ScoreHandler? UpdateScore;
-
         public Map()
         {
             Matrix = new Cell[MapWidth, MapHeight];
@@ -35,56 +25,153 @@
             for (int x = 0; x < MapWidth; x++)
                 for (int y = 0; y < MapHeight; y++)
                     Matrix[x, y] = map[x, y];
-
-            Player = new Player(map.Player);
+                
+            Player = new Player(map.Player.X, map.Player.Y);
             PrizeCount = map.PrizeCount;
+        }
+
+        public delegate void ScoreHandler();
+
+        public event ScoreHandler? UpdateScore;
+
+        public Cell this[int x, int y]
+        {
+            get { return Matrix[x, y]; }
+            set { Matrix[x, y] = value; }
         }
 
         public void CreateMap()
         {
             var random = new Random();
 
-            for (int y = 0; y < MapHeight; y++)
+            var pathLength = random.Next(1, (MapWidth - 2) * (MapHeight - 2) / 4);
+
+            var start = (random.Next(1, MapWidth - 1), random.Next(1, MapHeight - 1));
+
+            var (x, y) = start;
+
+            Matrix[x, y] = new Cell(x, y);
+            Player = new(x, y);
+            pathLength--;
+
+            var directions = Enum.GetValues<Direction>();
+
+            var currentDirection = GetRandomDirection(random, directions);
+
+            while (pathLength > 0)
             {
-                for (int x = 0; x < MapWidth; x++)
+                var moveTo = GetDestination(x, y, currentDirection);
+
+                if (Matrix[moveTo.x, moveTo.y] is Prize || moveTo == (x, y))
                 {
-                    if ((0 < y && y < MapHeight - 1) && (0 < x && x < MapWidth - 1))
-                    {
-                        Matrix[x, y] = random.Next(0, 100) switch
-                        {
-                            < 10 => new Wall(x, y),
-                            < 15 => ((Func<Prize>)(() => {
-                                PrizeCount++;
-                                return new Prize(x, y);
-                            }))(),
-                            < 28 => new Trap(x, y),
-                            < 45 => new Stop(x, y),
-                            _ => new Cell(x, y)
-                        };
-
-                        Matrix[++x, y] = new Cell(x, y);
-                    }
-
-                    else Matrix[x, y] = new Wall(x, y);
+                    currentDirection = GetRandomDirection(random, directions);
+                    continue;
                 }
-            }
+                    
+                (x, y) = moveTo;
 
-            var (randX, randY) = RandomCoordinates(random);
+                pathLength--;
+
+                switch (random.Next(100))
+                {
+                    case < 15: CreateCell(x, y, "WallAhead", currentDirection); break;
+                    case < 25: CreateCell(x, y, "Prize"); break;
+                    case < 45: CreateCell(x, y, "Stop"); break;
+                    default: CreateCell(x, y, "Cell"); continue;
+                };
+
+                currentDirection = GetRandomDirection(random, directions);
+            }
 
             if (PrizeCount == 0)
             {
-                Matrix[randX, randY] = new Prize(randX, randY);
+                Matrix[x, y] = new Prize(x, y);
                 PrizeCount++;
             }
 
-            while (Matrix[randX, randY] is Prize)
-                (randX, randY) = RandomCoordinates(random);
+            for (y = 0; y < MapHeight; y++)
+            {
+                for (x = 0; x < MapWidth; x++)
+                {
+                    if (Matrix[x, y] == null)
+                    {
+                        if (!IsInRangeOfMap(x, y))
+                        {
+                            Matrix[x, y] = new Wall(x, y);
+                            continue;
+                        }
+                            
+                        switch (random.Next(100))
+                        {
+                            case < 15: CreateCell(x, y, "WallAt"); break;
+                            case < 28: CreateCell(x, y, "Trap"); break;
+                            case < 45: CreateCell(x, y, "Stop"); break;
+                            default: CreateCell(x, y, "Cell"); break;
+                        };
 
-            Player = new Player(randX, randY);
+                        if (x + 1 < MapWidth - 1 && Matrix[x + 1, y] == null)
+                            Matrix[++x, y] = new Cell(x, y);
+                    }
+                }
+            }
         }
 
-        private (int x, int y) RandomCoordinates(Random random) => 
-            (random.Next(2, MapWidth - 1), random.Next(1, MapHeight - 1));
+        public Direction GetRandomDirection(Random random, Direction[] directions) =>
+            directions[random.Next(directions.Length)];
+
+        public bool IsInRangeOfMap(int x, int y) =>
+            (0 < x && x < MapWidth - 1) && (0 < y && y < MapHeight - 1);
+
+        public (int x, int y) GetDestination(int x, int y, Direction direction)
+        {
+            (int x, int y) result = direction switch
+            {
+                Direction.Up => (x, y - 1),
+                Direction.Down => (x, y + 1),
+                Direction.Left => (x - 1, y),
+                Direction.Right => (x + 1, y),
+                Direction.LeftUp => (x - 1, y - 1),
+                Direction.RightUp => (x + 1, y - 1),
+                Direction.LeftDown => (x - 1, y + 1),
+                Direction.RightDown => (x + 1, y + 1),
+            };
+
+            return IsInRangeOfMap(result.x, result.y) ? result : (x, y);
+        }
+
+        public void CreateCell(int x, int y, string cellType, Direction direction = 0)
+        {
+            switch (cellType)
+            {
+                case "Prize":
+                    Matrix[x, y] = new Prize(x, y);
+                    PrizeCount++;
+                    break;
+
+                case "Stop":
+                    Matrix[x, y] = new Stop(x, y);
+                    break;
+
+                case "Trap":
+                    Matrix[x, y] = new Trap(x, y);
+                    break;
+
+                case "WallAhead":
+                    Matrix[x, y] = new Cell(x, y);
+                    var (newX, newY) = GetDestination(x, y, direction);
+                    if (Matrix[newX, newY] == null && (newX, newY) != (x, y))
+                        Matrix[newX, newY] = new Wall(newX, newY);
+                    break;
+
+                case "WallAt":
+                    Matrix[x, y] = new Wall(x, y);
+                    break;
+
+                default:
+                    Matrix[x, y] = new Cell(x, y);
+                    break;
+            };
+        }
 
         public void ClearCell(int x, int y)
         {
@@ -93,28 +180,35 @@
                 PrizeCount--;
                 UpdateScore?.Invoke();
             }
-                
+
             Matrix[x, y] = new Cell(x, y);
         }
 
         public override void Draw()
         {
             Console.SetCursorPosition(0, (Console.WindowHeight - Map.MapHeight) / 2);
-            Console.WriteLine(
-            "           Controls   \n" +
-            "      Q       W       E\n" +
-            "   Left Up    ↑   Right Up\n\n" +
 
-            "      A               D\n" +
-            "      ←               →\n\n" +
+            // Draw controls
+            var path = "C:/Users/Losdr/source/repos/MyGame/MyGame/Miscellaneous/Controls.txt";
 
-            "      Z       X       C\n" +
-            "   Left Down  ↓   Right Down");
+            List<Direction> directions = new()
+            {
+                Direction.LeftUp, Direction.Up, Direction.RightUp, Direction.Left,
+                Direction.Right, Direction.LeftDown, Direction.Down, Direction.RightDown,
+            };
+            
+            using var sr = new StreamReader(path);
+            var str = sr.ReadToEnd();
 
-            for (int i = 0; i < MapWidth; i++)
-                for (int j = 0; j < MapHeight; j++)
-                    Matrix[i, j].Draw();
+            for (int i = 0; str.Contains(i.ToString()); i++)
+                str = str.Replace(i.ToString(), ((ConsoleKey)directions[i]).ToString());
 
+            // Draw map
+            for (int y = 0; y < MapHeight; y++)
+                for (int x = 0; x < MapWidth; x++)
+                    Matrix[x, y].Draw();
+
+            // Draw player
             Player.Draw();
         }
     }

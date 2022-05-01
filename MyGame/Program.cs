@@ -4,12 +4,10 @@ namespace MyGame
 {
     class Program
     {
-        public const int FrameMs = 120;
-
         static void Main()
         {    
             Score score = new();
-            Map? map = null;
+            Map map = new();
 
             var currentGameState = GameState.InMenu;
 
@@ -59,28 +57,10 @@ namespace MyGame
 
             score.ResetCurrent();
 
-            ConsoleKey key;
+            if (new MovementHandler().Move(currentMap))
+                return GameState.Win;
 
-            while (true)
-            {
-                key = Console.ReadKey(true).Key;
-
-                while (Enum.IsDefined(typeof(Direction), (Direction)key))
-                {
-                    var state = currentMap.Player.Move(currentMap, (Direction)key);
-
-                    if (state == PlayerState.Moving)
-                        Thread.Sleep(FrameMs);
-
-                    else if (state == PlayerState.Win)
-                        return GameState.Win;
-
-                    else if (state == PlayerState.GameOver)
-                        return GameState.GameOver;
-
-                    else break;
-                } 
-            }
+            else return GameState.GameOver;
         }
     }
 }

@@ -23,5 +23,14 @@
 
             Console.ResetColor();
         }
+
+        public void Clear()
+        {
+            Console.SetCursorPosition(
+               Map.MapLeftMargin + X,
+               (Console.WindowHeight - Map.MapHeight) / 2 + Y);
+
+            Console.Write(' ');
+        }
     }
 }

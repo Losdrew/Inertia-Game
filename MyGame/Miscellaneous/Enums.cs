@@ -23,12 +23,4 @@
         LeftDown = ConsoleKey.Z,
         RightDown = ConsoleKey.C
     }
-
-    public enum PlayerState
-    {
-        Moving,
-        Stopped,
-        Win,
-        GameOver
-    }
 }
