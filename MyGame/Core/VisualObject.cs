@@ -1,13 +1,22 @@
-﻿namespace MyGame
+﻿namespace MyGame.Core;
+
+public abstract class VisualObject
 {
-    abstract class VisualObject
+    public int X { get; set; }
+
+    public int Y { get; set; }
+
+    protected ConsoleColor Color { get; init; }
+
+    public abstract void Draw();
+
+    protected void ApplyColor()
     {
-        public int X { get; set; }
+        Console.ForegroundColor = Color;
+    }
 
-        public int Y { get; set; }
-
-        public ConsoleColor Color { get; set; }
-
-        public abstract void Draw();
+    protected void ResetColor()
+    {
+        Console.ResetColor();
     }
 }

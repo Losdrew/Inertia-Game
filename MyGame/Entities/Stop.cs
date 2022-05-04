@@ -1,11 +1,10 @@
-﻿namespace MyGame
+﻿namespace MyGame.Entities;
+
+public class Stop : Cell
 {
-    class Stop : Cell
+    public Stop(int x, int y) : base(x, y)
     {
-        public Stop(int x, int y) : base(x, y)
-        {
-            CellType = '.';
-            Color = ConsoleColor.Yellow;
-        }
+        CellType = '.';
+        Color = ConsoleColor.Yellow;
     }
 }

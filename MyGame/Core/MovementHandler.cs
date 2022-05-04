@@ -1,55 +1,48 @@
-﻿namespace MyGame
+﻿using MyGame.Entities;
+using MyGame.Miscellaneous;
+
+namespace MyGame.Core;
+
+public class MovementHandler
 {
-    class MovementHandler
+    // Time between frames
+    private const int FrameMs = 120;
+
+    public bool Move(Map map)
     {
-        private const int FrameMs = 120;
-
-        public bool Move(Map map)
+        while (true)
         {
-            ConsoleKey key;
+            var key = Console.ReadKey(true).Key;
 
-            while (true)
+            // While key is defined in game's controls
+            while (Enum.IsDefined((Direction)key))
             {
-                key = Console.ReadKey(true).Key;
+                var (x, y) = map.GetDestination(map.Player.X, map.Player.Y, (Direction)key);
 
-                while (Enum.IsDefined(typeof(Direction), (Direction)key))
+                if (map[x, y] is Wall)
+                    break; // Stop moving
+
+                if (map[x, y] is Trap)
+                    return false; // Game over
+
+                map.Player.Clear();
+
+                (map.Player.X, map.Player.Y) = (x, y);
+
+                map.Player.Draw();
+
+                if (map[x, y] is Prize or Stop)
                 {
-                    (int x, int y) = (Direction)key switch
-                    {
-                        Direction.Up => (map.Player.X, map.Player.Y - 1),
-                        Direction.Down => (map.Player.X, map.Player.Y + 1),
-                        Direction.Left => (map.Player.X - 1, map.Player.Y),
-                        Direction.Right => (map.Player.X + 1, map.Player.Y),
-                        Direction.LeftUp => (map.Player.X - 1, map.Player.Y - 1),
-                        Direction.RightUp => (map.Player.X + 1, map.Player.Y - 1),
-                        Direction.LeftDown => (map.Player.X - 1, map.Player.Y + 1),
-                        Direction.RightDown => (map.Player.X + 1, map.Player.Y + 1)
-                    };
+                    map.ClearCell(x, y);
 
-                    if (map[x, y] is Wall)
-                        break;
+                    if (map.PrizeCount == 0)
+                        return true; // Win
 
-                    if (map[x, y] is Trap)
-                        return false;
-
-                    map.Player.Clear();
-
-                    (map.Player.X, map.Player.Y) = (x, y);
-
-                    map.Player.Draw();
-
-                    if (map[x, y] is Prize or Stop)
-                    {
-                        map.ClearCell(x, y);
-
-                        if (map.PrizeCount == 0)
-                            return true;
-
-                        break;
-                    }
-
-                    Thread.Sleep(FrameMs);
+                    break; // Stop moving
                 }
+
+                // Artificial lag for smooth movement
+                Thread.Sleep(FrameMs);
             }
         }
     }

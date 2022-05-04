@@ -1,11 +1,10 @@
-﻿namespace MyGame
+﻿namespace MyGame.Entities;
+
+public class Trap : Cell
 {
-    class Trap : Cell
+    public Trap(int x, int y) : base(x, y)
     {
-        public Trap(int x, int y) : base(x, y)
-        {
-            CellType = '%';
-            Color = ConsoleColor.Red;
-        }
+        CellType = '%';
+        Color = ConsoleColor.Red;
     }
 }

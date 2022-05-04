@@ -1,53 +1,52 @@
 ﻿#pragma warning disable CA1416
 
-namespace MyGame
+using MyGame.Core;
+using MyGame.Miscellaneous;
+
+namespace MyGame.Screens;
+
+public abstract class Screen : VisualObject
 {
-    abstract class Screen : VisualObject
+    protected string? Path { get; init; }
+
+    protected (int x, int y) WindowSize { get; init; }
+
+    protected (int x, int y) CursorPosition { get; init; }
+
+    protected Dictionary<ConsoleKey, GameState>? Choice { get; init; }
+
+    public override void Draw()
     {
-        public string Path { get; set; }
+        Console.Clear();
+        Console.SetWindowSize(WindowSize.x, WindowSize.y);
+        Console.SetBufferSize(WindowSize.x, WindowSize.y);
 
-        public (int x, int y) WindowSize { get; set; }
+        ApplyColor();
 
-        public (int x, int y) CursorPosition { get; set; }
+        Console.WriteLine();
 
-        public Dictionary<ConsoleKey, GameState> Choice { get; set; }
-
-        public override void Draw()
+        foreach (var line in File.ReadLines(Path))
         {
-            Console.Clear();
-            Console.SetWindowSize(WindowSize.x, WindowSize.y);
-            Console.SetBufferSize(WindowSize.x, WindowSize.y);
+            if (line.Contains("Choose"))
+                ResetColor();
 
-            Console.ForegroundColor = Color;
-
-            Console.WriteLine();
-
-            foreach (var line in File.ReadLines(Path, System.Text.Encoding.UTF8))
-            {
-                if (line.Contains("Choose"))
-                    Console.ForegroundColor = ConsoleColor.White;
-
-                Console.WriteLine(line);
-            }
-
+            Console.WriteLine(line);
         }
+    }
 
-        public GameState GetInput()
+    public GameState GetInput()
+    {
+        Draw();
+
+        Console.CursorVisible = true;
+        Console.SetCursorPosition(CursorPosition.x, CursorPosition.y);
+
+        while (true)
         {
-            Draw();
+            var key = Console.ReadKey(true).Key;
 
-            Console.CursorVisible = true;
-            Console.SetCursorPosition(CursorPosition.x, CursorPosition.y);
-
-            ConsoleKey key;
-
-            while (true)
-            {
-                key = Console.ReadKey(true).Key;
-
-                if (Choice.ContainsKey(key))
-                    return Choice[key];
-            }
+            if (Choice.ContainsKey(key))
+                return Choice[key];
         }
     }
 }
