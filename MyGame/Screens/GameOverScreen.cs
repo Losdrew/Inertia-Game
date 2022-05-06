@@ -2,13 +2,12 @@
 
 namespace MyGame.Screens;
 
-public class GameOverScreen : Screen
+public class GameOverScreen : ScreenBase
 {
     public GameOverScreen()
     {
         Path = "C:/Users/Losdr/source/repos/MyGame/MyGame/Screens/.txtScreens/GameOver.txt";
-        WindowSize = (133, 42);
-        CursorPosition = (78, 11);
+        WindowSize = (119, 41);
         Color = ConsoleColor.Red;
 
         Choice = new Dictionary<ConsoleKey, GameState>

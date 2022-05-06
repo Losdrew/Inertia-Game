@@ -2,13 +2,12 @@
 
 namespace MyGame.Screens;
 
-public class MainMenuScreen : Screen
+public class MainMenuScreen : ScreenBase
 {
     public MainMenuScreen()
     {
         Path = "C:/Users/Losdr/source/repos/MyGame/MyGame/Screens/.txtScreens/MainMenu.txt";
-        WindowSize = (113, 43);
-        CursorPosition = (66, 14);
+        WindowSize = (107, 44);
         Color = ConsoleColor.White;
 
         Choice = new Dictionary<ConsoleKey, GameState>

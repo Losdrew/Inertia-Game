@@ -84,7 +84,7 @@ public class Map : VisualObject
 
     public override void Draw()
     {
-        Console.SetCursorPosition(0, MapHeight - 9 / 2);
+        Console.SetCursorPosition(0, MapHeight - 9 / 2 - 1);
 
         // Read text file with controls template
         var path = "C:/Users/Losdr/source/repos/MyGame/MyGame/Miscellaneous/Controls.txt";

@@ -5,19 +5,18 @@ using MyGame.Miscellaneous;
 
 namespace MyGame.Screens;
 
-public abstract class Screen : VisualObject
+public abstract class ScreenBase : VisualObject
 {
     protected string? Path { get; init; }
 
     protected (int x, int y) WindowSize { get; init; }
-
-    protected (int x, int y) CursorPosition { get; init; }
 
     protected Dictionary<ConsoleKey, GameState>? Choice { get; init; }
 
     public override void Draw()
     {
         Console.Clear();
+        Console.CursorVisible = false;
         Console.SetWindowSize(WindowSize.x, WindowSize.y);
         Console.SetBufferSize(WindowSize.x, WindowSize.y);
 
@@ -27,7 +26,7 @@ public abstract class Screen : VisualObject
 
         foreach (var line in File.ReadLines(Path))
         {
-            if (line.Contains("Choose"))
+            if (string.IsNullOrEmpty(line))
                 ResetColor();
 
             Console.WriteLine(line);
@@ -37,9 +36,6 @@ public abstract class Screen : VisualObject
     public GameState GetInput()
     {
         Draw();
-
-        Console.CursorVisible = true;
-        Console.SetCursorPosition(CursorPosition.x, CursorPosition.y);
 
         while (true)
         {

@@ -2,13 +2,12 @@
 
 namespace MyGame.Screens;
 
-public class WinScreen : Screen
+public class WinScreen : ScreenBase
 {
     public WinScreen()
     {
         Path = "C:/Users/Losdr/source/repos/MyGame/MyGame/Screens/.txtScreens/Win.txt";
-        WindowSize = (125, 42);
-        CursorPosition = (72, 12);
+        WindowSize = (119, 42);
         Color = ConsoleColor.Green;
 
         Choice = new Dictionary<ConsoleKey, GameState>
