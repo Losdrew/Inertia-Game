@@ -1,4 +1,5 @@
-﻿using MyGame.Miscellaneous;
+﻿using System.Drawing;
+using MyGame.Miscellaneous;
 
 namespace MyGame.Screens;
 
@@ -6,9 +7,9 @@ public class GameOverScreen : ScreenBase
 {
     public GameOverScreen()
     {
-        Path = "C:/Users/Losdr/source/repos/MyGame/MyGame/Screens/.txtScreens/GameOver.txt";
-        WindowSize = (119, 41);
-        Color = ConsoleColor.Red;
+        WindowSize = (119, 40);
+        Text = Resources.GameOverScreen;
+        Color = Color.FromArgb(255, 65, 82);
 
         Choice = new Dictionary<ConsoleKey, GameState>
         {

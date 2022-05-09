@@ -1,10 +1,12 @@
 ﻿using MyGame.Core;
+using Pastel;
+using System.Drawing;
 
 namespace MyGame.Miscellaneous;
 
 public class Score : VisualObject
 {
-    private const string ScoreText = "Score: ";
+    private readonly string _scoreText;
 
     private int CurrentScore { get; set; }
 
@@ -12,50 +14,41 @@ public class Score : VisualObject
 
     public Score()
     {
-        Color = ConsoleColor.Green;
+        _scoreText = "Score: ";
+        Color = Color.FromArgb(12, 216, 0);
     }
 
     public delegate void ScoreHandler();
 
     public override void Draw()
     {
-        Console.SetCursorPosition(
-            Console.WindowWidth - Map.MapWidth,
-            Map.MapHeight - 1);
-
-        Console.Write(ScoreText);
-
-        if (TotalScore > 0)
-            ApplyColor();
-
-        Console.Write(TotalScore);
-
-        ResetColor();
+        SetPosition();
+        Console.Write(_scoreText + TotalScore.ToString().Pastel(Color));
     }
 
     public void Update()
     {
+        SetPosition(_scoreText.Length);
+        Console.Write((TotalScore + ++CurrentScore).ToString().Pastel(Color));
+    }
+
+    private void SetPosition(int leftMargin = 0, int topMargin = 0)
+    {
         Console.SetCursorPosition(
-            Console.WindowWidth - Map.MapWidth + ScoreText.Length,
-            Map.MapHeight - 1);
-
-        ApplyColor();
-
-        Console.Write(TotalScore + ++CurrentScore);
-
-        ResetColor();
+            Console.WindowWidth - Map.MapWidth + leftMargin,
+            Map.MapHeight - 1 + topMargin);
     }
 
     public void Save()
     {
         TotalScore += CurrentScore;
-        CurrentScore = 0;
+        ResetCurrent();
     }
 
     public void ResetAll()
     {
         TotalScore = 0;
-        CurrentScore = 0;
+        ResetCurrent();
     }
 
     public void ResetCurrent()

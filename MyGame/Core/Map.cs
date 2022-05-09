@@ -9,9 +9,11 @@ public class Map : VisualObject
     public static int MapHeight = 9;
     public static int MapLeftMargin = 31;
 
-    private int _prizeCount;
-
     public Player Player { get; private set; }
+
+    private Cell[,] Matrix { get; }
+
+    private int _prizeCount;
 
     public int PrizeCount
     {
@@ -24,8 +26,6 @@ public class Map : VisualObject
             _prizeCount = value;
         }
     }
-
-    private Cell[,] Matrix { get; }
 
     public Map()
     {
@@ -86,18 +86,16 @@ public class Map : VisualObject
     {
         Console.SetCursorPosition(0, MapHeight - 9 / 2 - 1);
 
-        // Read text file with controls template
-        var path = "C:/Users/Losdr/source/repos/MyGame/MyGame/Miscellaneous/Controls.txt";
-        using var stringReader = new StreamReader(path);
-        var controls = stringReader.ReadToEnd();
-
         List<Direction> directions = new()
         {
             Direction.LeftUp, Direction.Up, Direction.RightUp, Direction.Left,
             Direction.Right, Direction.LeftDown, Direction.Down, Direction.RightDown
         };
 
-        // Replace numbers in controls string with corresponding keys from Direction enum
+        // Get controls template
+        var controls = Resources.ControlsTip;
+
+        // Replace numbers in controls string with corresponding keys
         for (var i = 0; controls.Contains(i.ToString()); i++)
             controls = controls.Replace(i.ToString(), ((ConsoleKey)directions[i]).ToString());
 

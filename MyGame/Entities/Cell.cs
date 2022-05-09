@@ -1,37 +1,35 @@
 ﻿using MyGame.Core;
+using Pastel;
 
 namespace MyGame.Entities;
 
 public class Cell : VisualObject
 {
-    protected char CellType { get; init; }
+    protected string CellType { get; init; }
 
     public Cell(int x, int y)
     {
         X = x;
         Y = y;
-        CellType = ' ';
+        CellType = " ";
     }
 
     public override void Draw()
     {
-        Console.SetCursorPosition(
-            Map.MapLeftMargin + X,
-            (Console.WindowHeight - Map.MapHeight) / 2 + Y);
-
-        ApplyColor();
-
-        Console.Write(CellType);
-
-        ResetColor();
+        SetPosition();
+        Console.Write(CellType.Pastel(Color));
     }
 
     public void Clear()
     {
-        Console.SetCursorPosition(
-            Map.MapLeftMargin + X,
-            (Console.WindowHeight - Map.MapHeight) / 2 + Y);
-
+        SetPosition();
         Console.Write(' ');
+    }
+
+    private void SetPosition()
+    {
+        Console.SetCursorPosition(
+            Map.MapLeftMargin + X, 
+            (Console.WindowHeight - Map.MapHeight) / 2 + Y);
     }
 }

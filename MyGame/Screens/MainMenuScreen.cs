@@ -1,4 +1,5 @@
-﻿using MyGame.Miscellaneous;
+﻿using System.Drawing;
+using MyGame.Miscellaneous;
 
 namespace MyGame.Screens;
 
@@ -6,9 +7,9 @@ public class MainMenuScreen : ScreenBase
 {
     public MainMenuScreen()
     {
-        Path = "C:/Users/Losdr/source/repos/MyGame/MyGame/Screens/.txtScreens/MainMenu.txt";
-        WindowSize = (107, 44);
-        Color = ConsoleColor.White;
+        WindowSize = (107, 43);
+        Text = Resources.MainMenuScreen;
+        Color = Color.Snow;
 
         Choice = new Dictionary<ConsoleKey, GameState>
         {

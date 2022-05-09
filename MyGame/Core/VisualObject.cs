@@ -6,17 +6,7 @@ public abstract class VisualObject
 
     public int Y { get; set; }
 
-    protected ConsoleColor Color { get; init; }
+    protected System.Drawing.Color Color { get; init; }
 
     public abstract void Draw();
-
-    protected void ApplyColor()
-    {
-        Console.ForegroundColor = Color;
-    }
-
-    protected void ResetColor()
-    {
-        Console.ResetColor();
-    }
 }

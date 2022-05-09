@@ -12,6 +12,9 @@ public class Program
     {
         Score score = new();
         Map map = new();
+        AudioEngine audioEngine = new();
+
+        audioEngine.PlaySound(Resources.Music);
 
         var currentGameState = GameState.InMenu;
 
@@ -21,7 +24,7 @@ public class Program
             {
                 GameState.InMenu => Menu(),
                 GameState.Start => Start(out map),
-                GameState.Play => Play(map, score),
+                GameState.Play => Play(map, score, audioEngine),
                 GameState.Win => Win(),
                 GameState.GameOver => GameOver(),
                 GameState.Continue => Continue(score),
@@ -65,7 +68,7 @@ public class Program
         return GameState.Start;
     }
 
-    private static GameState Play(Map map, Score score)
+    private static GameState Play(Map map, Score score, AudioEngine audioEngine)
     {
         Console.Clear();
         Console.CursorVisible = false;
@@ -73,12 +76,13 @@ public class Program
         Console.SetBufferSize(Map.MapLeftMargin * 2 + Map.MapWidth, Map.MapHeight * 2);
 
         Map currentMap = new(map); // Create a copy of map
-        MovementHandler movementHandler = new();
+        MovementEngine movementHandler = new();
 
         currentMap.Draw();
         score.Draw();
 
         currentMap.UpdateScore += score.Update;
+        movementHandler.PlaySound += audioEngine.PlaySound;
 
         score.ResetCurrent();
 

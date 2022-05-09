@@ -2,16 +2,17 @@
 
 using MyGame.Core;
 using MyGame.Miscellaneous;
+using Pastel;
 
 namespace MyGame.Screens;
 
 public abstract class ScreenBase : VisualObject
 {
-    protected string? Path { get; init; }
-
     protected (int x, int y) WindowSize { get; init; }
 
-    protected Dictionary<ConsoleKey, GameState>? Choice { get; init; }
+    protected string Text { get; init; }
+
+    protected Dictionary<ConsoleKey, GameState> Choice { get; init; }
 
     public override void Draw()
     {
@@ -20,17 +21,9 @@ public abstract class ScreenBase : VisualObject
         Console.SetWindowSize(WindowSize.x, WindowSize.y);
         Console.SetBufferSize(WindowSize.x, WindowSize.y);
 
-        ApplyColor();
+        var changeColorAt = Text.IndexOf('╔');
 
-        Console.WriteLine();
-
-        foreach (var line in File.ReadLines(Path))
-        {
-            if (string.IsNullOrEmpty(line))
-                ResetColor();
-
-            Console.WriteLine(line);
-        }
+        Console.Write(Text[..changeColorAt].Pastel(Color) + Text[changeColorAt..]);
     }
 
     public GameState GetInput()

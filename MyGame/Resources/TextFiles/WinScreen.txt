@@ -13,7 +13,7 @@
                                            ║                          ║
                                            ║       1. Continue        ║ 
                                            ║ 2. Restart current level ║
-                                           ║          3. Quit         ║
+                                           ║         3. Quit          ║
                                            ╚══════════════════════════╝
                                  
                                                    ╓╖╖╖╖ 

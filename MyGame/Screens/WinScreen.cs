@@ -1,4 +1,5 @@
-﻿using MyGame.Miscellaneous;
+﻿using System.Drawing;
+using MyGame.Miscellaneous;
 
 namespace MyGame.Screens;
 
@@ -6,9 +7,9 @@ public class WinScreen : ScreenBase
 {
     public WinScreen()
     {
-        Path = "C:/Users/Losdr/source/repos/MyGame/MyGame/Screens/.txtScreens/Win.txt";
-        WindowSize = (119, 42);
-        Color = ConsoleColor.Green;
+        WindowSize = (119, 41);
+        Text = Resources.WinScreen;
+        Color = Color = Color.FromArgb(12, 216, 0);
 
         Choice = new Dictionary<ConsoleKey, GameState>
         {
