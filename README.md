@@ -21,3 +21,14 @@
 - % is Trap
 
 - \# is Wall 
+
+Credits:
+
+https://www.freesoundslibrary.com/8bit-background-intro-music/ Background Music © SPANAC
+
+https://www.FesliyanStudios.com Background Music
+
+https://www.freesoundslibrary.com/8bit-retro-success-victory Sound Effect © SPANAC
+
+https://sfxr.me/ Sound Effects
+
