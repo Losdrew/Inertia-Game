@@ -22,13 +22,14 @@
 
 - \# is Wall 
 
-Credits:
+:page_with_curl: Credits:
 
-https://www.freesoundslibrary.com/8bit-background-intro-music/ Background Music © SPANAC
+- https://audiosoundclips.com/chiptune-8-bit-volume-2-creative-commons-music-cc-3-0/ Background Music
 
-https://www.FesliyanStudios.com Background Music
+- https://www.freesoundslibrary.com/8bit-background-intro-music/ Background Music © SPANAC
 
-https://www.freesoundslibrary.com/8bit-retro-success-victory Sound Effect © SPANAC
+- https://audiosoundclips.com/chiptune-8-bit-music/ Background Music
 
-https://sfxr.me/ Sound Effects
+- https://www.FesliyanStudios.com Background Music
 
+- https://www.freesoundslibrary.com/8bit-retro-success-victory Sound Effect © SPANAC
