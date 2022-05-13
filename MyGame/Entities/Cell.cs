@@ -29,7 +29,7 @@ public class Cell : VisualObject
     private void SetPosition()
     {
         Console.SetCursorPosition(
-            Map.MapLeftMargin + X, 
+            (Console.WindowWidth - Map.MapWidth) / 2 + X, 
             (Console.WindowHeight - Map.MapHeight) / 2 + Y);
     }
 }

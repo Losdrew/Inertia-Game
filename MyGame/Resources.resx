@@ -122,7 +122,7 @@
     <value>Resources\TextFiles\ControlsTip.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GameOver" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Sounds\GameOver.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>Resources\GameOver.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="GameOverScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\TextFiles\GameOverScreen.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
@@ -130,20 +130,44 @@
   <data name="MainMenuScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\TextFiles\MainMenuScreen.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="Music" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Sounds\Music.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Music1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Music1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Pickup" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Sounds\Pickup.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Music2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Music2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Music3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Music3.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Music4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Music4.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Music5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Music5.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Music6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Sounds\Music6.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Music7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Sounds\Music7.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Music8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Sounds\Music8.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Music9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Sounds\Music9.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Prize" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Prize.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Stop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Sounds\Stop.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>Resources\Stop.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Wall" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Sounds\Wall.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>Resources\Wall.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Win" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Sounds\Win.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>Resources\Win.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="WinScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\TextFiles\WinScreen.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>

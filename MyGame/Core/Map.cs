@@ -5,9 +5,8 @@ namespace MyGame.Core;
 
 public class Map : VisualObject
 {
-    public static int MapWidth = 20;
-    public static int MapHeight = 9;
-    public static int MapLeftMargin = 31;
+    public const int MapWidth = 20;
+    public const int MapHeight = 9;
 
     public Player Player { get; private set; }
 
@@ -30,7 +29,6 @@ public class Map : VisualObject
     public Map()
     {
         Matrix = new Cell[MapWidth, MapHeight];
-        Player = new Player(0, 0);
     }
 
     public Map(Map map)
@@ -55,7 +53,6 @@ public class Map : VisualObject
         var random = new Random();
 
         CreateCompletablePath(random);
-
         FillMap(random);
     }
 
@@ -72,14 +69,6 @@ public class Map : VisualObject
             Direction.LeftDown => (x - 1, y + 1),
             Direction.RightDown => (x + 1, y + 1)
         };
-    }
-
-    public void ClearCell(int x, int y)
-    {
-        if (Matrix[x, y] is Prize)
-            PrizeCount--;
-
-        CreateCell(x, y, "Cell");
     }
 
     public override void Draw()
@@ -111,9 +100,17 @@ public class Map : VisualObject
         Player.Draw();
     }
 
+    public void ClearCell(int x, int y)
+    {
+        if (Matrix[x, y] is Prize)
+            PrizeCount--;
+
+        CreateCell(x, y, "Empty");
+    }
+
     private void CreateCompletablePath(Random random)
     {
-        var pathLength = random.Next(10, (MapWidth - 2) * (MapHeight - 2) / 2);
+        var pathLength = random.Next((MapWidth - 2) * (MapHeight - 2) / 4, (MapWidth - 2) * (MapHeight - 2) / 2);
         var start = (random.Next(1, MapWidth - 1), random.Next(1, MapHeight - 1));
 
         // (x, y) is current position
@@ -146,7 +143,7 @@ public class Map : VisualObject
                     case < 10: CreateCell(x, y, "WallAhead", currentDirection); break;
                     case < 20: CreateCell(x, y, "Prize"); break;
                     case < 30: CreateCell(x, y, "Stop"); break;
-                    default: CreateCell(x, y, "Cell"); continue;
+                    default: CreateCell(x, y, "Empty"); continue;
                 }
             }
 
@@ -168,7 +165,7 @@ public class Map : VisualObject
 
     private bool IsInRangeOfMap(int x, int y)
     {
-        return 0 < x && x < MapWidth - 1 && 0 < y && y < MapHeight - 1;
+        return x is > 0 and < MapWidth - 1 && y is > 0 and < MapHeight - 1;
     }
 
     private bool IsEmpty(int x, int y)
@@ -232,21 +229,20 @@ public class Map : VisualObject
                 continue;
             }
 
-            // If not part of previously defined path
-            if (IsUndefined(x, y))
-            {
-                switch (random.Next(100))
-                {
-                    case < 10: CreateCell(x, y, "WallAt"); break;
-                    case < 30: CreateCell(x, y, "Trap"); break;
-                    case < 35: CreateCell(x, y, "Stop"); break;
-                    default: CreateCell(x, y, "Cell"); break;
-                }
+            // Skip if cell is part of previously defined path
+            if (!IsUndefined(x, y)) continue;
 
-                // To make gaps between cells (if previous cell is not empty)
-                if (IsInRangeOfMap(x + 1, y) && IsUndefined(x + 1, y) && !IsEmpty(x, y))
-                    CreateCell(++x, y, "Cell");
+            switch (random.Next(100))
+            {
+                case < 10: CreateCell(x, y, "WallAt"); break;
+                case < 30: CreateCell(x, y, "Trap"); break;
+                case < 35: CreateCell(x, y, "Stop"); break;
+                default: CreateCell(x, y, "Empty"); break;
             }
+
+            // To make gaps between cells (if previous cell is not empty)
+            if (IsInRangeOfMap(x + 1, y) && IsUndefined(x + 1, y) && !IsEmpty(x, y))
+                CreateCell(++x, y, "Cell");
         }
     }
 }

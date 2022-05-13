@@ -61,15 +61,15 @@ namespace MyGame {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 	   Controls
+        ///   Looks up a localized string similar to            Controls
         ///      0       1       2
         ///   Left Up    ↑   Right Up
         ///
         ///      3               4
-        ///      ←               → 
+        ///      ←               →
         ///
-        ///      5       6       7
-        ///   Left Down  ↓   Right Down.
+        ///      5       6       7 
+        ///  Left Down   ↓   Right Down.
         /// </summary>
         public static string ControlsTip {
             get {
@@ -118,18 +118,90 @@ namespace MyGame {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
-        public static System.IO.UnmanagedMemoryStream Music {
+        public static System.IO.UnmanagedMemoryStream Music1 {
             get {
-                return ResourceManager.GetStream("Music", resourceCulture);
+                return ResourceManager.GetStream("Music1", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
-        public static System.IO.UnmanagedMemoryStream Pickup {
+        public static System.IO.UnmanagedMemoryStream Music2 {
             get {
-                return ResourceManager.GetStream("Pickup", resourceCulture);
+                return ResourceManager.GetStream("Music2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream Music3 {
+            get {
+                return ResourceManager.GetStream("Music3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream Music4 {
+            get {
+                return ResourceManager.GetStream("Music4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream Music5 {
+            get {
+                return ResourceManager.GetStream("Music5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream Music6 {
+            get {
+                return ResourceManager.GetStream("Music6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream Music7 {
+            get {
+                return ResourceManager.GetStream("Music7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream Music8 {
+            get {
+                return ResourceManager.GetStream("Music8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream Music9 {
+            get {
+                return ResourceManager.GetStream("Music9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream Prize {
+            get {
+                return ResourceManager.GetStream("Prize", resourceCulture);
             }
         }
         

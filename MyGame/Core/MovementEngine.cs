@@ -6,9 +6,9 @@ namespace MyGame.Core;
 public class MovementEngine
 {
     // Time between frames
-    private const int FrameMs = 120;
+    private const int FrameMs = 100;
 
-    public event AudioEngine.AudioHandler? PlaySound;
+    public event AudioEngine.SoundHandler? PlayAudio;
 
     public bool Move(Map map)
     {
@@ -16,51 +16,61 @@ public class MovementEngine
         {
             var key = Console.ReadKey(true).Key;
 
-            // While key is defined in game's controls
-            while (Enum.IsDefined((Direction)key))
+            // Movement begins when key is defined in controls
+            var isMoving = Enum.IsDefined((Direction)key);
+
+            while (isMoving)
             {
                 var (x, y) = map.GetDestination(map.Player.X, map.Player.Y, (Direction)key);
 
-                if (map[x, y] is Wall)
+                PlayAudioOnCell(map[x, y]);
+
+                switch (map[x, y])
                 {
-                    PlaySound?.Invoke(Resources.Wall);
-                    break; // Stop moving
+                    case Prize or Stop:
+                        map.ClearCell(x, y);
+                        isMoving = false;
+                        break;
+
+                    case Wall:
+                        isMoving = false;
+                        continue;
+
+                    case Trap:
+                        return false;
                 }
 
-                if (map[x, y] is Trap)
+                if (map.PrizeCount == 0)
                 {
-                    PlaySound?.Invoke(Resources.GameOver);
-                    return false; // Game over
+                    PlayAudioOnWin();
+                    return true;
                 }
 
-                map.Player.Clear();
-
-                (map.Player.X, map.Player.Y) = (x, y);
-
-                map.Player.Draw();
-
-                if (map[x, y] is Prize or Stop)
-                {
-                    if (map[x, y] is Prize)
-                        PlaySound?.Invoke(Resources.Pickup);
-
-                    if (map[x, y] is Stop)
-                        PlaySound?.Invoke(Resources.Stop);
-
-                    map.ClearCell(x, y);
-
-                    if (map.PrizeCount == 0)
-                    {
-                        PlaySound?.Invoke(Resources.Win);
-                        return true; // Win
-                    }
-
-                    break; // Stop moving
-                }
+                ChangePlayerPosition(map.Player, x, y);
 
                 // Artificial lag for smooth movement
                 Thread.Sleep(FrameMs);
             }
         }
+    }
+
+    private void PlayAudioOnCell<T>(T cellObject) where T : Cell
+    {
+        switch (cellObject)
+        {
+            case Wall: PlayAudio?.Invoke("Wall"); break;
+            case Trap: PlayAudio?.Invoke("Trap"); break;
+            case Prize: PlayAudio?.Invoke("Prize"); break;
+            case Stop: PlayAudio?.Invoke("Stop"); break;
+        }
+    }
+
+    private void PlayAudioOnWin() => PlayAudio?.Invoke("Win");
+
+    private void ChangePlayerPosition(Player player, int x, int y)
+    {
+        player.Clear();
+        (player.X, player.Y) = (x, y);
+        player.Draw();
     }
 }

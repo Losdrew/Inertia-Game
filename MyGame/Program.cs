@@ -14,8 +14,6 @@ public class Program
         Map map = new();
         AudioEngine audioEngine = new();
 
-        audioEngine.PlaySound(Resources.Music);
-
         var currentGameState = GameState.InMenu;
 
         while (currentGameState != GameState.Quit)
@@ -72,8 +70,8 @@ public class Program
     {
         Console.Clear();
         Console.CursorVisible = false;
-        Console.SetWindowSize(Map.MapLeftMargin * 2 + Map.MapWidth, Map.MapHeight * 2);
-        Console.SetBufferSize(Map.MapLeftMargin * 2 + Map.MapWidth, Map.MapHeight * 2);
+        Console.SetWindowSize(Map.MapWidth * 4, Map.MapHeight * 2);
+        Console.SetBufferSize(Map.MapWidth * 4, Map.MapHeight * 2);
 
         Map currentMap = new(map); // Create a copy of map
         MovementEngine movementHandler = new();
@@ -82,7 +80,7 @@ public class Program
         score.Draw();
 
         currentMap.UpdateScore += score.Update;
-        movementHandler.PlaySound += audioEngine.PlaySound;
+        movementHandler.PlayAudio += audioEngine.PlayAudio;
 
         score.ResetCurrent();
 

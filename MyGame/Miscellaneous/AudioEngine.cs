@@ -5,26 +5,81 @@ namespace MyGame.Miscellaneous;
 
 public class AudioEngine
 {
-    private readonly IWavePlayer _outputDevice;
+    // All available sounds
+    private readonly Dictionary<string, UnmanagedMemoryStream> _audio = new()
+    {
+        // Background music
+        { "Music1", Resources.Music1 }, 
+        { "Music2", Resources.Music2 }, 
+        { "Music3", Resources.Music3 }, 
+        { "Music4", Resources.Music4 }, 
+        { "Music5", Resources.Music5 }, 
+        { "Music6", Resources.Music6 },
+        { "Music7", Resources.Music7 },
+        { "Music8", Resources.Music8 }, 
+        { "Music9", Resources.Music9 },
 
-    private readonly MixingSampleProvider _mixer;
+        // Sound Effects
+        { "Wall", Resources.Wall },
+        { "Stop", Resources.Stop },
+        { "Prize", Resources.Prize },
+        { "Trap", Resources.GameOver },
+        { "Win", Resources.Win }
+    };
 
-    public delegate void AudioHandler(Stream audioStream);
+    private readonly IWavePlayer _soundOut;
+    private readonly IWavePlayer _musicOut;
 
-    // Only 44.1 kHz 8-bit Mono .wav files are allowed
+    private readonly MixingSampleProvider _soundMixer;
+    private readonly MixingSampleProvider _musicMixer;
+
+    public delegate void SoundHandler(string soundName);
+
     public AudioEngine()
     {
-        _outputDevice = new WaveOutEvent();
-        _mixer = new MixingSampleProvider(WaveFormat.CreateIeeeFloatWaveFormat(44100, 1));
-        _mixer.ReadFully = true;
-        _outputDevice.Init(_mixer);
-        _outputDevice.Play();
+        Initialize(out _soundOut, out _soundMixer);
+        Initialize(out _musicOut, out _musicMixer);
+        StartMusicPlaylist();
     }
 
-    public void PlaySound(Stream audioStream)
+    public void PlayAudio(string soundName)
     {
-        var reader = new WaveFileReader(audioStream);
-        _mixer.AddMixerInput(new AutoDisposeFileReader(reader));
+        var stream = _audio[soundName];
+        RefreshStreamPosition(stream);
+        var reader = new WaveFileReader(stream);
+        ChooseMixer(soundName).AddMixerInput(new AutoDisposeFileReader(reader));
+    }
+
+    private void Initialize(out IWavePlayer player, out MixingSampleProvider mixer)
+    {
+        // Only 44.1 kHz 8-bit Mono .wav files are allowed
+        mixer = new MixingSampleProvider(WaveFormat.CreateIeeeFloatWaveFormat(44100, 1));
+        mixer.ReadFully = true;
+        player = new WaveOutEvent();
+        player.Init(mixer);
+        player.Play();
+    }
+
+    private void StartMusicPlaylist()
+    {
+        PlayMusic();
+        _musicMixer.MixerInputEnded += (sender, args) => PlayMusic();
+    }
+
+    private void PlayMusic()
+    {
+        // Music is chosen at random
+        PlayAudio("Music" + new Random().Next(1, 10));
+    }
+
+    private void RefreshStreamPosition(Stream stream)
+    {
+        stream.Position = 0;
+    }
+
+    private MixingSampleProvider ChooseMixer(string soundName)
+    {
+        return soundName.Contains("Music") ? _musicMixer : _soundMixer;
     }
 }
 
