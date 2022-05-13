@@ -21,3 +21,15 @@
 - % is Trap
 
 - \# is Wall 
+
+:page_with_curl: Credits:
+
+- https://audiosoundclips.com/chiptune-8-bit-volume-2-creative-commons-music-cc-3-0/ Background Music
+
+- https://www.freesoundslibrary.com/8bit-background-intro-music/ Background Music © SPANAC
+
+- https://audiosoundclips.com/chiptune-8-bit-music/ Background Music
+
+- https://www.FesliyanStudios.com Background Music
+
+- https://www.freesoundslibrary.com/8bit-retro-success-victory Sound Effect © SPANAC
