@@ -1,41 +1,66 @@
-﻿#pragma warning disable CA1416
-
-using MyGame.Core;
+﻿using MyGame.Core;
 using MyGame.Miscellaneous;
 using MyGame.Screens;
 
 namespace MyGame;
 
-public class Program
+public static class Program
 {
     public static void Main()
     {
-        Score score = new();
         Map map = new();
+        Score score = new();
         AudioEngine audioEngine = new();
+        MovementEngine movementEngine = new();
+
+        movementEngine.PlayAudio += audioEngine.PlayAudio;
 
         var currentGameState = GameState.InMenu;
 
-        while (currentGameState != GameState.Quit)
+        while (true)
         {
             currentGameState = currentGameState switch
             {
                 GameState.InMenu => Menu(),
                 GameState.Start => Start(out map),
-                GameState.Play => Play(map, score, audioEngine),
+                GameState.Play => Play(map, score, movementEngine),
                 GameState.Win => Win(),
                 GameState.GameOver => GameOver(),
+                GameState.Restart => Restart(score),
                 GameState.Continue => Continue(score),
-                GameState.CreateNew => CreateNew(score)
+                GameState.CreateNew => CreateNew(score),
+                _ => Quit()
             };
         }
-
-        Environment.Exit(0);
     }
 
     private static GameState Menu()
     {
         return new MainMenuScreen().GetInput();
+    }
+
+    private static GameState Start(out Map map)
+    {
+        map = new Map();
+        map.CreateMap();
+        return GameState.Play;
+    }
+
+    private static GameState Play(Map map, Score score, MovementEngine movementEngine)
+    {
+        Console.Clear();
+        Console.CursorVisible = false;
+        Console.SetWindowSize(Map.MapWidth * 4, Map.MapHeight * 2);
+        Console.SetBufferSize(Map.MapWidth * 4, Map.MapHeight * 2);
+
+        Map currentMap = new(map); // Create a copy of map
+
+        currentMap.Draw();
+        score.Draw();
+
+        currentMap.UpdateScore += score.Update;
+
+        return movementEngine.Move(currentMap) ? GameState.Win : GameState.GameOver;
     }
 
     private static GameState Win()
@@ -48,9 +73,9 @@ public class Program
         return new GameOverScreen().GetInput();
     }
 
-    private static GameState Start(out Map map)
+    private static GameState Restart(Score score)
     {
-        (map = new Map()).CreateMap();
+        score.ResetCurrent();
         return GameState.Play;
     }
 
@@ -66,24 +91,9 @@ public class Program
         return GameState.Start;
     }
 
-    private static GameState Play(Map map, Score score, AudioEngine audioEngine)
+    private static GameState Quit()
     {
-        Console.Clear();
-        Console.CursorVisible = false;
-        Console.SetWindowSize(Map.MapWidth * 4, Map.MapHeight * 2);
-        Console.SetBufferSize(Map.MapWidth * 4, Map.MapHeight * 2);
-
-        Map currentMap = new(map); // Create a copy of map
-        MovementEngine movementHandler = new();
-
-        currentMap.Draw();
-        score.Draw();
-
-        currentMap.UpdateScore += score.Update;
-        movementHandler.PlayAudio += audioEngine.PlayAudio;
-
-        score.ResetCurrent();
-
-        return movementHandler.Move(currentMap) ? GameState.Win : GameState.GameOver;
+        Environment.Exit(0);
+        return GameState.Quit;
     }
 }

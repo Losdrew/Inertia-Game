@@ -8,7 +8,7 @@ public class Map : VisualObject
     public const int MapWidth = 20;
     public const int MapHeight = 9;
 
-    public Player Player { get; private set; }
+    public Player? Player { get; private set; }
 
     private Cell[,] Matrix { get; }
 
@@ -37,22 +37,40 @@ public class Map : VisualObject
 
         for (var y = 0; y < MapHeight; y++)
         for (var x = 0; x < MapWidth; x++)
-            Matrix[x, y] = map[x, y];
+            this[x, y] = map[x, y];
 
-        Player = new Player(map.Player.X, map.Player.Y);
+        if (map.Player != null) 
+            Player = new Player(map.Player.X, map.Player.Y);
 
         PrizeCount = map.PrizeCount;
     }
 
     public event Score.ScoreHandler? UpdateScore;
 
-    public Cell this[int x, int y] => Matrix[x, y];
+    public Cell this[int x, int y]
+    {
+        get { return Matrix[x, y]; }
+        set
+        {
+            if (value is Player)
+                Player = value as Player;
+
+            if (value is Prize)
+                PrizeCount++;
+
+            if (Matrix[x, y] is Prize)
+                PrizeCount--;
+
+            Matrix[x, y] = value;
+        }
+    }
 
     public void CreateMap()
     {
         var random = new Random();
 
         CreateCompletablePath(random);
+
         FillMap(random);
     }
 
@@ -67,7 +85,8 @@ public class Map : VisualObject
             Direction.LeftUp => (x - 1, y - 1),
             Direction.RightUp => (x + 1, y - 1),
             Direction.LeftDown => (x - 1, y + 1),
-            Direction.RightDown => (x + 1, y + 1)
+            Direction.RightDown => (x + 1, y + 1),
+            _ => (x, y)
         };
     }
 
@@ -94,39 +113,32 @@ public class Map : VisualObject
         // Draw map
         for (var y = 0; y < MapHeight; y++)
         for (var x = 0; x < MapWidth; x++)
-            Matrix[x, y].Draw();
+            this[x, y].Draw();
 
         // Draw player
-        Player.Draw();
-    }
-
-    public void ClearCell(int x, int y)
-    {
-        if (Matrix[x, y] is Prize)
-            PrizeCount--;
-
-        CreateCell(x, y, "Empty");
+        Player?.Draw();
     }
 
     private void CreateCompletablePath(Random random)
     {
-        var pathLength = random.Next((MapWidth - 2) * (MapHeight - 2) / 4, (MapWidth - 2) * (MapHeight - 2) / 2);
+        var pathLength = random.Next(GetAreaOfMap() / 2, GetAreaOfMap());
         var start = (random.Next(1, MapWidth - 1), random.Next(1, MapHeight - 1));
 
         // (x, y) is current position
         var (x, y) = start;
 
         // Place player at the start of path 
-        CreateCell(x, y, "Player");
+        this[x, y] = new Player(x, y);
         pathLength--;
 
-        var currentDirection = GetRandomDirection(random);
         var tries = 0;
+        var currentDirection = GetRandomDirection(random);
 
         while (pathLength > 0)
         {
             var (newX, newY) = GetDestination(x, y, currentDirection);
 
+            // Stop pathmaking if blocked from all sides
             if (tries == 8)
                 break;
 
@@ -140,20 +152,26 @@ public class Map : VisualObject
 
                 switch (random.Next(100))
                 {
-                    case < 10: CreateCell(x, y, "WallAhead", currentDirection); break;
-                    case < 20: CreateCell(x, y, "Prize"); break;
-                    case < 30: CreateCell(x, y, "Stop"); break;
-                    default: CreateCell(x, y, "Empty"); continue;
+                    case < 10: CreateWallAhead(x, y, currentDirection); break;
+                    case < 20: this[x, y] = new Prize(x, y); break;
+                    case < 30: this[x, y] = new Stop(x, y); break;
+                    default: this[x, y] = new Cell(x, y); continue;
                 }
             }
 
+            else tries++;
+
             currentDirection = GetRandomDirection(random);
-            tries++;
         }
 
         // If no prize was created, place one at path end
         if (PrizeCount == 0)
-            CreateCell(x, y, "Prize");
+            this[x, y] = new Prize(x, y);
+    }
+
+    private int GetAreaOfMap()
+    {
+        return (MapWidth - 2) * (MapHeight - 2);
     }
 
     private Direction GetRandomDirection(Random random)
@@ -170,51 +188,22 @@ public class Map : VisualObject
 
     private bool IsEmpty(int x, int y)
     {
-        return Matrix[x, y].GetType().IsAssignableFrom(typeof(Cell));
+        return this[x, y].GetType().IsAssignableFrom(typeof(Cell));
     }
 
     private bool IsUndefined(int x, int y)
     {
-        return Matrix[x, y] == null;
+        return this[x, y] == null;
     }
 
-    private void CreateCell(int x, int y, string cellType, Direction direction = 0)
+    private void CreateWallAhead(int x, int y, Direction direction)
     {
-        switch (cellType)
-        {
-            case "Player":
-                Matrix[x, y] = new Player(x, y);
-                Player = new Player(x, y);
-                break;
+        this[x, y] = new Cell(x, y);
 
-            case "Prize":
-                Matrix[x, y] = new Prize(x, y);
-                PrizeCount++;
-                break;
+        var (newX, newY) = GetDestination(x, y, direction);
 
-            case "Stop":
-                Matrix[x, y] = new Stop(x, y);
-                break;
-
-            case "Trap":
-                Matrix[x, y] = new Trap(x, y);
-                break;
-
-            case "WallAt":
-                Matrix[x, y] = new Wall(x, y);
-                break;
-
-            case "WallAhead":
-                Matrix[x, y] = new Cell(x, y);
-                var (newX, newY) = GetDestination(x, y, direction);
-                if (IsUndefined(newX, newY) && IsInRangeOfMap(newX, newY))
-                    Matrix[newX, newY] = new Wall(newX, newY);
-                break;
-
-            default:
-                Matrix[x, y] = new Cell(x, y);
-                break;
-        }
+        if (IsInRangeOfMap(newX, newY) && IsUndefined(newX, newY))
+            this[newX, newY] = new Wall(newX, newY);
     }
 
     private void FillMap(Random random)
@@ -222,27 +211,25 @@ public class Map : VisualObject
         for (var y = 0; y < MapHeight; y++)
         for (var x = 0; x < MapWidth; x++)
         {
-            // To create map borders
-            if (!IsInRangeOfMap(x, y))
-            {
-                CreateCell(x, y, "WallAt");
-                continue;
-            }
+            // Create wall at map border
+            if (!IsInRangeOfMap(x, y)) 
+                this[x, y] = new Wall(x, y);
 
-            // Skip if cell is part of previously defined path
+            // Skip if cell is part of predefined path or wall has been placed
             if (!IsUndefined(x, y)) continue;
 
-            switch (random.Next(100))
-            {
-                case < 10: CreateCell(x, y, "WallAt"); break;
-                case < 30: CreateCell(x, y, "Trap"); break;
-                case < 35: CreateCell(x, y, "Stop"); break;
-                default: CreateCell(x, y, "Empty"); break;
-            }
+            // Place cell
+            this[x, y] = random.Next(100) switch
+            {   
+                < 10 => new Wall(x, y),
+                < 30 => new Trap(x, y),
+                < 35 => new Stop(x, y),
+                _ => new Cell(x, y),
+            };
 
             // To make gaps between cells (if previous cell is not empty)
             if (IsInRangeOfMap(x + 1, y) && IsUndefined(x + 1, y) && !IsEmpty(x, y))
-                CreateCell(++x, y, "Cell");
+                this[++x, y] = new Cell(x, y);
         }
     }
 }

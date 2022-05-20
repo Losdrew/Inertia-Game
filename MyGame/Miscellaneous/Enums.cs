@@ -7,8 +7,9 @@ public enum GameState
     Play,
     Win,
     GameOver,
-    CreateNew,
+    Restart,
     Continue,
+    CreateNew,
     Quit
 }
 

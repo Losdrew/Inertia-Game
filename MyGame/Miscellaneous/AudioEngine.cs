@@ -27,20 +27,17 @@ public class AudioEngine
         { "Win", Resources.Win }
     };
 
-    private readonly IWavePlayer _soundOut;
-    private readonly IWavePlayer _musicOut;
-
     private readonly MixingSampleProvider _soundMixer;
     private readonly MixingSampleProvider _musicMixer;
 
-    public delegate void SoundHandler(string soundName);
-
     public AudioEngine()
     {
-        Initialize(out _soundOut, out _soundMixer);
-        Initialize(out _musicOut, out _musicMixer);
+        Initialize(out _soundMixer);
+        Initialize(out _musicMixer);
         StartMusicPlaylist();
     }
+
+    public delegate void SoundHandler(string soundName);
 
     public void PlayAudio(string soundName)
     {
@@ -50,20 +47,23 @@ public class AudioEngine
         ChooseMixer(soundName).AddMixerInput(new AutoDisposeFileReader(reader));
     }
 
-    private void Initialize(out IWavePlayer player, out MixingSampleProvider mixer)
+    private void Initialize(out MixingSampleProvider mixer)
     {
         // Only 44.1 kHz 8-bit Mono .wav files are allowed
         mixer = new MixingSampleProvider(WaveFormat.CreateIeeeFloatWaveFormat(44100, 1));
         mixer.ReadFully = true;
-        player = new WaveOutEvent();
-        player.Init(mixer);
-        player.Play();
+        var output = new WaveOutEvent();
+        output.Init(mixer);
+        output.Play();
     }
 
     private void StartMusicPlaylist()
     {
-        PlayMusic();
+        // Play next music when previous ends
         _musicMixer.MixerInputEnded += (sender, args) => PlayMusic();
+
+        // Start playing music
+        PlayMusic();
     }
 
     private void PlayMusic()

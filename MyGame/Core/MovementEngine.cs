@@ -16,11 +16,13 @@ public class MovementEngine
         {
             var key = Console.ReadKey(true).Key;
 
-            // Movement begins when key is defined in controls
+            // Movement begins if key is defined in controls
             var isMoving = Enum.IsDefined((Direction)key);
 
             while (isMoving)
             {
+                if (map.Player == null) return false;
+
                 var (x, y) = map.GetDestination(map.Player.X, map.Player.Y, (Direction)key);
 
                 PlayAudioOnCell(map[x, y]);
@@ -28,7 +30,7 @@ public class MovementEngine
                 switch (map[x, y])
                 {
                     case Prize or Stop:
-                        map.ClearCell(x, y);
+                        map[x, y] = new Cell(x, y);
                         isMoving = false;
                         break;
 
@@ -36,10 +38,12 @@ public class MovementEngine
                         isMoving = false;
                         continue;
 
+                    // Lose condition
                     case Trap:
                         return false;
                 }
 
+                // Win condition
                 if (map.PrizeCount == 0)
                 {
                     PlayAudioOnWin();
@@ -54,7 +58,7 @@ public class MovementEngine
         }
     }
 
-    private void PlayAudioOnCell<T>(T cellObject) where T : Cell
+    private void PlayAudioOnCell<T>(T cellObject) where T : Cell?
     {
         switch (cellObject)
         {
@@ -67,8 +71,10 @@ public class MovementEngine
 
     private void PlayAudioOnWin() => PlayAudio?.Invoke("Win");
 
-    private void ChangePlayerPosition(Player player, int x, int y)
+    private void ChangePlayerPosition(Player? player, int x, int y)
     {
+        if (player == null) return;
+
         player.Clear();
         (player.X, player.Y) = (x, y);
         player.Draw();

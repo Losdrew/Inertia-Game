@@ -1,6 +1,4 @@
-﻿#pragma warning disable CA1416
-
-using MyGame.Core;
+﻿using MyGame.Core;
 using MyGame.Miscellaneous;
 using Pastel;
 
@@ -10,9 +8,9 @@ public abstract class ScreenBase : VisualObject
 {
     protected (int x, int y) WindowSize { get; init; }
 
-    protected string Text { get; init; }
+    protected string? Text { get; init; }
 
-    protected Dictionary<ConsoleKey, GameState> Choice { get; init; }
+    protected Dictionary<ConsoleKey, GameState>? Choice { get; init; }
 
     public override void Draw()
     {
@@ -20,6 +18,8 @@ public abstract class ScreenBase : VisualObject
         Console.CursorVisible = false;
         Console.SetWindowSize(WindowSize.x, WindowSize.y);
         Console.SetBufferSize(WindowSize.x, WindowSize.y);
+
+        if (Text == null) return;
 
         var changeColorAt = Text.IndexOf('╔');
 
@@ -34,7 +34,7 @@ public abstract class ScreenBase : VisualObject
         {
             var key = Console.ReadKey(true).Key;
 
-            if (Choice.ContainsKey(key))
+            if (Choice != null && Choice.ContainsKey(key))
                 return Choice[key];
         }
     }

@@ -13,7 +13,7 @@ public class GameOverScreen : ScreenBase
 
         Choice = new Dictionary<ConsoleKey, GameState>
         {
-            { ConsoleKey.D1, GameState.Play },
+            { ConsoleKey.D1, GameState.Restart },
             { ConsoleKey.D2, GameState.CreateNew },
             { ConsoleKey.D3, GameState.Quit }
         };

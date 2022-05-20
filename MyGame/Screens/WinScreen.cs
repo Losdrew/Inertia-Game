@@ -14,7 +14,7 @@ public class WinScreen : ScreenBase
         Choice = new Dictionary<ConsoleKey, GameState>
         {
             { ConsoleKey.D1, GameState.Continue },
-            { ConsoleKey.D2, GameState.Play },
+            { ConsoleKey.D2, GameState.Restart },
             { ConsoleKey.D3, GameState.Quit }
         };
     }
