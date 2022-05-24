@@ -27,17 +27,21 @@ public class AudioEngine
         { "Win", Resources.Win }
     };
 
+    private readonly IWavePlayer _soundOut;
+    private readonly IWavePlayer _musicOut;
+
     private readonly MixingSampleProvider _soundMixer;
     private readonly MixingSampleProvider _musicMixer;
 
     public AudioEngine()
     {
-        Initialize(out _soundMixer);
-        Initialize(out _musicMixer);
+        Initialize(out _soundOut, out _soundMixer);
+        Initialize(out _musicOut, out _musicMixer);
         StartMusicPlaylist();
     }
 
     public delegate void SoundHandler(string soundName);
+    public delegate void MusicHandler();
 
     public void PlayAudio(string soundName)
     {
@@ -47,12 +51,33 @@ public class AudioEngine
         ChooseMixer(soundName).AddMixerInput(new AutoDisposeFileReader(reader));
     }
 
-    private void Initialize(out MixingSampleProvider mixer)
+    public void PlayMusic()
+    {
+        // Clean mixer off previous music
+        _musicMixer.RemoveAllMixerInputs();
+
+        // Start playback if it's stopped or paused
+        if (_musicOut.PlaybackState != PlaybackState.Playing)
+            _musicOut.Play();
+
+        // Music is chosen at random
+        PlayAudio("Music" + new Random().Next(1, 10));
+    }
+
+    public void PauseMusic()
+    {
+        if (_musicOut.PlaybackState == PlaybackState.Playing)
+            _musicOut.Pause();
+
+        else _musicOut.Play();
+    }
+
+    private void Initialize(out IWavePlayer output, out MixingSampleProvider mixer)
     {
         // Only 44.1 kHz 8-bit Mono .wav files are allowed
         mixer = new MixingSampleProvider(WaveFormat.CreateIeeeFloatWaveFormat(44100, 1));
         mixer.ReadFully = true;
-        var output = new WaveOutEvent();
+        output = new WaveOutEvent();
         output.Init(mixer);
         output.Play();
     }
@@ -64,12 +89,6 @@ public class AudioEngine
 
         // Start playing music
         PlayMusic();
-    }
-
-    private void PlayMusic()
-    {
-        // Music is chosen at random
-        PlayAudio("Music" + new Random().Next(1, 10));
     }
 
     private void RefreshStreamPosition(Stream stream)

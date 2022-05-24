@@ -3,26 +3,25 @@ using MyGame.Miscellaneous;
 
 namespace MyGame.Core;
 
-public class MovementEngine
+public static class MovementEngine
 {
     // Time between frames
     private const int FrameMs = 100;
 
-    public event AudioEngine.SoundHandler? PlayAudio;
+    private static bool _isMoving;
 
-    public bool Move(Map map)
+    public static event AudioEngine.SoundHandler? PlayAudio;
+
+    public static bool Move(Map map)
     {
         while (true)
         {
-            var key = Console.ReadKey(true).Key;
+            var key = InputEngine.GetInput(Enum.GetValues<Direction>().Cast<ConsoleKey>());
 
-            // Movement begins if key is defined in controls
-            var isMoving = Enum.IsDefined((Direction)key);
+            _isMoving = true;
 
-            while (isMoving)
+            while (_isMoving)
             {
-                if (map.Player == null) return false;
-
                 var (x, y) = map.GetDestination(map.Player.X, map.Player.Y, (Direction)key);
 
                 PlayAudioOnCell(map[x, y]);
@@ -31,11 +30,11 @@ public class MovementEngine
                 {
                     case Prize or Stop:
                         map[x, y] = new Cell(x, y);
-                        isMoving = false;
+                        _isMoving = false;
                         break;
 
                     case Wall:
-                        isMoving = false;
+                        _isMoving = false;
                         continue;
 
                     // Lose condition
@@ -58,7 +57,7 @@ public class MovementEngine
         }
     }
 
-    private void PlayAudioOnCell<T>(T cellObject) where T : Cell?
+    private static void PlayAudioOnCell<T>(T cellObject) where T : Cell?
     {
         switch (cellObject)
         {
@@ -69,12 +68,10 @@ public class MovementEngine
         }
     }
 
-    private void PlayAudioOnWin() => PlayAudio?.Invoke("Win");
+    private static void PlayAudioOnWin() => PlayAudio?.Invoke("Win");
 
-    private void ChangePlayerPosition(Player? player, int x, int y)
+    private static void ChangePlayerPosition(Player player, int x, int y)
     {
-        if (player == null) return;
-
         player.Clear();
         (player.X, player.Y) = (x, y);
         player.Draw();

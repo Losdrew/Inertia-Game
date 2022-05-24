@@ -1,4 +1,5 @@
 ﻿using MyGame.Core;
+using MyGame.Miscellaneous;
 using Pastel;
 
 namespace MyGame.Entities;
@@ -29,7 +30,7 @@ public class Cell : VisualObject
     private void SetPosition()
     {
         Console.SetCursorPosition(
-            (Console.WindowWidth - Map.MapWidth) / 2 + X, 
-            (Console.WindowHeight - Map.MapHeight) / 2 + Y);
+            ControlsTip.Width + X, 
+            (Console.WindowHeight - Map.Height) / 2 + Y);
     }
 }

@@ -14,12 +14,10 @@ public abstract class ScreenBase : VisualObject
 
     public override void Draw()
     {
-        Console.Clear();
-        Console.CursorVisible = false;
-        Console.SetWindowSize(WindowSize.x, WindowSize.y);
-        Console.SetBufferSize(WindowSize.x, WindowSize.y);
+        if (Text == null) 
+            return;
 
-        if (Text == null) return;
+        SetScreen();
 
         var changeColorAt = Text.IndexOf('╔');
 
@@ -28,14 +26,19 @@ public abstract class ScreenBase : VisualObject
 
     public GameState GetInput()
     {
+        if (Choice == null) 
+            return GameState.InMenu;
+
         Draw();
 
-        while (true)
-        {
-            var key = Console.ReadKey(true).Key;
+        return Choice[InputEngine.GetInput(Choice.Keys)];
+    }
 
-            if (Choice != null && Choice.ContainsKey(key))
-                return Choice[key];
-        }
+    private void SetScreen()
+    {
+        Console.Clear();
+        Console.CursorVisible = false;
+        Console.SetWindowSize(WindowSize.x, WindowSize.y);
+        Console.SetBufferSize(WindowSize.x, WindowSize.y);
     }
 }

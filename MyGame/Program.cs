@@ -11,9 +11,10 @@ public static class Program
         Map map = new();
         Score score = new();
         AudioEngine audioEngine = new();
-        MovementEngine movementEngine = new();
 
-        movementEngine.PlayAudio += audioEngine.PlayAudio;
+        MovementEngine.PlayAudio += audioEngine.PlayAudio;
+        InputEngine.PauseMusic += audioEngine.PauseMusic;
+        InputEngine.SwitchMusic += audioEngine.PlayMusic;
 
         var currentGameState = GameState.InMenu;
 
@@ -23,7 +24,7 @@ public static class Program
             {
                 GameState.InMenu => Menu(),
                 GameState.Start => Start(out map),
-                GameState.Play => Play(map, score, movementEngine),
+                GameState.Play => Play(map, score),
                 GameState.Win => Win(),
                 GameState.GameOver => GameOver(),
                 GameState.Restart => Restart(score),
@@ -46,12 +47,9 @@ public static class Program
         return GameState.Play;
     }
 
-    private static GameState Play(Map map, Score score, MovementEngine movementEngine)
+    private static GameState Play(Map map, Score score)
     {
-        Console.Clear();
-        Console.CursorVisible = false;
-        Console.SetWindowSize(Map.MapWidth * 4, Map.MapHeight * 2);
-        Console.SetBufferSize(Map.MapWidth * 4, Map.MapHeight * 2);
+        SetScreen();
 
         Map currentMap = new(map); // Create a copy of map
 
@@ -60,7 +58,15 @@ public static class Program
 
         currentMap.UpdateScore += score.Update;
 
-        return movementEngine.Move(currentMap) ? GameState.Win : GameState.GameOver;
+        return MovementEngine.Move(currentMap) ? GameState.Win : GameState.GameOver;
+    }
+
+    private static void SetScreen()
+    {
+        Console.Clear();
+        Console.CursorVisible = false;
+        Console.SetWindowSize(ControlsTip.Width + Map.Width + Score.Width, Map.Height * 2);
+        Console.SetBufferSize(ControlsTip.Width + Map.Width + Score.Width, Map.Height * 2);
     }
 
     private static GameState Win()

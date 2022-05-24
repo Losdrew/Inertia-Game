@@ -24,3 +24,9 @@ public enum Direction
     LeftDown = ConsoleKey.Z,
     RightDown = ConsoleKey.C
 }
+
+public enum MusicControls
+{
+    PauseMusic = ConsoleKey.R,
+    SwitchMusic = ConsoleKey.F
+}

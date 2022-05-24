@@ -5,10 +5,10 @@ namespace MyGame.Core;
 
 public class Map : VisualObject
 {
-    public const int MapWidth = 20;
-    public const int MapHeight = 9;
+    public const int Width = 25;
+    public const int Height = 10;
 
-    public Player? Player { get; private set; }
+    public Player Player { get; private set; }
 
     private Cell[,] Matrix { get; }
 
@@ -28,19 +28,19 @@ public class Map : VisualObject
 
     public Map()
     {
-        Matrix = new Cell[MapWidth, MapHeight];
+        Matrix = new Cell[Width, Height];
+        Player = new Player(0, 0);
     }
 
     public Map(Map map)
     {
-        Matrix = new Cell[MapWidth, MapHeight];
+        Matrix = new Cell[Width, Height];
 
-        for (var y = 0; y < MapHeight; y++)
-        for (var x = 0; x < MapWidth; x++)
+        for (var y = 0; y < Height; y++)
+        for (var x = 0; x < Width; x++)
             this[x, y] = map[x, y];
 
-        if (map.Player != null) 
-            Player = new Player(map.Player.X, map.Player.Y);
+        Player = new Player(map.Player.X, map.Player.Y);
 
         PrizeCount = map.PrizeCount;
     }
@@ -49,11 +49,11 @@ public class Map : VisualObject
 
     public Cell this[int x, int y]
     {
-        get { return Matrix[x, y]; }
+        get => Matrix[x, y];
         set
         {
-            if (value is Player)
-                Player = value as Player;
+            if (value is Player player)
+                Player = player;
 
             if (value is Prize)
                 PrizeCount++;
@@ -92,37 +92,21 @@ public class Map : VisualObject
 
     public override void Draw()
     {
-        Console.SetCursorPosition(0, MapHeight - 9 / 2 - 1);
-
-        List<Direction> directions = new()
-        {
-            Direction.LeftUp, Direction.Up, Direction.RightUp, Direction.Left,
-            Direction.Right, Direction.LeftDown, Direction.Down, Direction.RightDown
-        };
-
-        // Get controls template
-        var controls = Resources.ControlsTip;
-
-        // Replace numbers in controls string with corresponding keys
-        for (var i = 0; controls.Contains(i.ToString()); i++)
-            controls = controls.Replace(i.ToString(), ((ConsoleKey)directions[i]).ToString());
-
-        // Draw controls
-        Console.WriteLine(controls);
+        new ControlsTip().Draw();
 
         // Draw map
-        for (var y = 0; y < MapHeight; y++)
-        for (var x = 0; x < MapWidth; x++)
+        for (var y = 0; y < Height; y++)
+        for (var x = 0; x < Width; x++)
             this[x, y].Draw();
 
         // Draw player
-        Player?.Draw();
+        Player.Draw();
     }
 
     private void CreateCompletablePath(Random random)
     {
         var pathLength = random.Next(GetAreaOfMap() / 2, GetAreaOfMap());
-        var start = (random.Next(1, MapWidth - 1), random.Next(1, MapHeight - 1));
+        var start = (random.Next(1, Width - 1), random.Next(1, Height - 1));
 
         // (x, y) is current position
         var (x, y) = start;
@@ -136,11 +120,11 @@ public class Map : VisualObject
 
         while (pathLength > 0)
         {
-            var (newX, newY) = GetDestination(x, y, currentDirection);
-
-            // Stop pathmaking if blocked from all sides
-            if (tries == 8)
+            // Stop path-making if blocked from all sides
+            if (tries == Enum.GetNames<Direction>().Length)
                 break;
+
+            var (newX, newY) = GetDestination(x, y, currentDirection);
 
             if (IsInRangeOfMap(newX, newY) && (IsUndefined(newX, newY) || IsEmpty(newX, newY)))
             {
@@ -171,7 +155,7 @@ public class Map : VisualObject
 
     private int GetAreaOfMap()
     {
-        return (MapWidth - 2) * (MapHeight - 2);
+        return (Width - 2) * (Height - 2);
     }
 
     private Direction GetRandomDirection(Random random)
@@ -183,7 +167,7 @@ public class Map : VisualObject
 
     private bool IsInRangeOfMap(int x, int y)
     {
-        return x is > 0 and < MapWidth - 1 && y is > 0 and < MapHeight - 1;
+        return x is > 0 and < Width - 1 && y is > 0 and < Height - 1;
     }
 
     private bool IsEmpty(int x, int y)
@@ -193,7 +177,7 @@ public class Map : VisualObject
 
     private bool IsUndefined(int x, int y)
     {
-        return this[x, y] == null;
+        return this?[x, y] == null;
     }
 
     private void CreateWallAhead(int x, int y, Direction direction)
@@ -208,8 +192,8 @@ public class Map : VisualObject
 
     private void FillMap(Random random)
     {
-        for (var y = 0; y < MapHeight; y++)
-        for (var x = 0; x < MapWidth; x++)
+        for (var y = 0; y < Height; y++)
+        for (var x = 0; x < Width; x++)
         {
             // Create wall at map border
             if (!IsInRangeOfMap(x, y)) 

@@ -6,7 +6,10 @@ namespace MyGame.Miscellaneous;
 
 public class Score : VisualObject
 {
-    private readonly string _scoreText;
+    public const int Width = 32;
+    private const int Height = 1;
+
+    private string Text { get; }
 
     private int CurrentScore { get; set; }
 
@@ -14,7 +17,11 @@ public class Score : VisualObject
 
     public Score()
     {
-        _scoreText = "Score: ";
+        Text = Resources.Score;
+
+        X = ControlsTip.Width + Map.Width + Width / 2 - Text.Length;
+        Y = Map.Height - Height;
+
         Color = Color.FromArgb(12, 216, 0);
     }
 
@@ -23,20 +30,13 @@ public class Score : VisualObject
     public override void Draw()
     {
         SetPosition();
-        Console.Write(_scoreText + TotalScore.ToString().Pastel(Color));
+        Console.Write(Text + TotalScore.ToString().Pastel(Color));
     }
 
     public void Update()
     {
-        SetPosition(_scoreText.Length);
+        SetPosition(Text.Length);
         Console.Write((TotalScore + ++CurrentScore).ToString().Pastel(Color));
-    }
-
-    private void SetPosition(int leftMargin = 0, int topMargin = 0)
-    {
-        Console.SetCursorPosition(
-            Console.WindowWidth - Map.MapWidth + leftMargin,
-            Map.MapHeight - 1 + topMargin);
     }
 
     public void Save()
@@ -54,5 +54,10 @@ public class Score : VisualObject
     public void ResetCurrent()
     {
         CurrentScore = 0;
+    }
+
+    private void SetPosition(int leftMargin = 0)
+    {
+        Console.SetCursorPosition(X + leftMargin, Y);
     }
 }

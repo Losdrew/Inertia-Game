@@ -160,6 +160,9 @@
   <data name="Prize" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Audio\SoundEffects\Prize.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Score" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\TextFiles\Score.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
   <data name="Stop" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Audio\SoundEffects\Stop.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

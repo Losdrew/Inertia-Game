@@ -61,15 +61,19 @@ namespace MyGame {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to            Controls
-        ///      0       1       2
-        ///   Left Up    ↑   Right Up
-        ///
-        ///      3               4
-        ///      ←               →
-        ///
-        ///      5       6       7 
-        ///  Left Down   ↓   Right Down.
+        ///   Looks up a localized string similar to                Controls
+        ///    
+        ///          0       1       2
+        ///       Left Up    ↑   Right Up
+        ///    
+        ///          3               4
+        ///          ←               →
+        ///    
+        ///          5       6       7 
+        ///      Left Down   ↓   Right Down
+        ///    
+        ///          R               F
+        ///     Pause Music     Switch Music.
         /// </summary>
         public static string ControlsTip {
             get {
@@ -202,6 +206,15 @@ namespace MyGame {
         public static System.IO.UnmanagedMemoryStream Prize {
             get {
                 return ResourceManager.GetStream("Prize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 	Score: .
+        /// </summary>
+        public static string Score {
+            get {
+                return ResourceManager.GetString("Score", resourceCulture);
             }
         }
         
