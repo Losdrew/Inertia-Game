@@ -29,4 +29,10 @@
     <PackageReference Include="Pastel" Version="3.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Resources\TextFiles\ControlsTip.txt">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

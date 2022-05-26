@@ -26,19 +26,19 @@ public static class MovementEngine
 
                 PlayAudioOnCell(map[x, y]);
 
-                switch (map[x, y])
+                switch (map[x, y].CollisionType)
                 {
-                    case Prize or Stop:
+                    case Collision.At:
                         map[x, y] = new Cell(x, y);
                         _isMoving = false;
                         break;
 
-                    case Wall:
+                    case Collision.Before:
                         _isMoving = false;
                         continue;
 
                     // Lose condition
-                    case Trap:
+                    case Collision.GameOver:
                         return false;
                 }
 

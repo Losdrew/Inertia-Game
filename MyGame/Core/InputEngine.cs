@@ -13,14 +13,24 @@ public static class InputEngine
         {
             var key = Console.ReadKey(true).Key;
 
-            if (key is (ConsoleKey)MusicControls.PauseMusic)
-                PauseMusic?.Invoke();
-
-            if (key is (ConsoleKey)MusicControls.SwitchMusic)
-                SwitchMusic?.Invoke();
+            CheckForMusicControls(key);
 
             if (enumerable.Contains(key))
                 return key;
+        }
+    }
+
+    private static void CheckForMusicControls(ConsoleKey key)
+    {
+        switch (key)
+        {
+            case (ConsoleKey)MusicControls.PauseMusic:
+                PauseMusic?.Invoke();
+                break;
+
+            case (ConsoleKey)MusicControls.SwitchMusic:
+                SwitchMusic?.Invoke();
+                break;
         }
     }
 }

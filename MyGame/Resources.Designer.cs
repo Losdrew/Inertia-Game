@@ -62,17 +62,17 @@ namespace MyGame {
         
         /// <summary>
         ///   Looks up a localized string similar to                Controls
-        ///    
+        ///
         ///          0       1       2
         ///       Left Up    ↑   Right Up
-        ///    
+        ///
         ///          3               4
         ///          ←               →
-        ///    
+        ///
         ///          5       6       7 
         ///      Left Down   ↓   Right Down
-        ///    
-        ///          R               F
+        ///
+        ///          8               9
         ///     Pause Music     Switch Music.
         /// </summary>
         public static string ControlsTip {

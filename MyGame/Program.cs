@@ -8,8 +8,10 @@ public static class Program
 {
     public static void Main()
     {
+        ControlsTip controlsTip = new();
         Map map = new();
         Score score = new();
+
         AudioEngine audioEngine = new();
 
         MovementEngine.PlayAudio += audioEngine.PlayAudio;
@@ -24,7 +26,7 @@ public static class Program
             {
                 GameState.InMenu => Menu(),
                 GameState.Start => Start(out map),
-                GameState.Play => Play(map, score),
+                GameState.Play => Play(map, score, controlsTip),
                 GameState.Win => Win(),
                 GameState.GameOver => GameOver(),
                 GameState.Restart => Restart(score),
@@ -47,12 +49,14 @@ public static class Program
         return GameState.Play;
     }
 
-    private static GameState Play(Map map, Score score)
+    private static GameState Play(Map map, Score score, ControlsTip controlsTip)
     {
+        // Create a copy of map
+        Map currentMap = new(map); 
+
         SetScreen();
 
-        Map currentMap = new(map); // Create a copy of map
-
+        controlsTip.Draw();
         currentMap.Draw();
         score.Draw();
 

@@ -1,5 +1,4 @@
 ﻿using MyGame.Entities;
-using MyGame.Miscellaneous;
 
 namespace MyGame.Core;
 
@@ -8,17 +7,33 @@ public class Map : VisualObject
     public const int Width = 25;
     public const int Height = 10;
 
-    public Player Player { get; private set; }
+    private const int MaxPlayerCount = 1;
 
-    private Cell[,] Matrix { get; }
+    private Player? _player;
+
+    private int _playerCount;
 
     private int _prizeCount;
+
+    public Player Player 
+    {
+        get => _player ?? throw new NullReferenceException("Player not placed.");
+        private set
+        {
+            if (_playerCount >= MaxPlayerCount)
+                throw new Exception($"Player count can't exceed {MaxPlayerCount}.");
+
+            _player = value;
+            _playerCount++;
+        }
+    }
 
     public int PrizeCount
     {
         get => _prizeCount;
         private set
         {
+            // When prize count decreases, score increases
             if (value < _prizeCount)
                 UpdateScore?.Invoke();
 
@@ -26,35 +41,30 @@ public class Map : VisualObject
         }
     }
 
+    private Cell[,] Matrix { get; }
+
     public Map()
     {
         Matrix = new Cell[Width, Height];
-        Player = new Player(0, 0);
     }
 
-    public Map(Map map)
+    public Map(Map map) : this()
     {
-        Matrix = new Cell[Width, Height];
-
         for (var y = 0; y < Height; y++)
         for (var x = 0; x < Width; x++)
             this[x, y] = map[x, y];
-
-        Player = new Player(map.Player.X, map.Player.Y);
-
-        PrizeCount = map.PrizeCount;
     }
 
-    public event Score.ScoreHandler? UpdateScore;
+    public event Miscellaneous.Score.ScoreHandler? UpdateScore;
 
     public Cell this[int x, int y]
     {
         get => Matrix[x, y];
         set
         {
-            if (value is Player player)
-                Player = player;
-
+            if (value is Player)
+                Player = new Player(value.X, value.Y);
+                
             if (value is Prize)
                 PrizeCount++;
 
@@ -92,8 +102,6 @@ public class Map : VisualObject
 
     public override void Draw()
     {
-        new ControlsTip().Draw();
-
         // Draw map
         for (var y = 0; y < Height; y++)
         for (var x = 0; x < Width; x++)
@@ -172,7 +180,7 @@ public class Map : VisualObject
 
     private bool IsEmpty(int x, int y)
     {
-        return this[x, y].GetType().IsAssignableFrom(typeof(Cell));
+        return this[x, y].CellType == " ";
     }
 
     private bool IsUndefined(int x, int y)

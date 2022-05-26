@@ -1,18 +1,20 @@
 ﻿using MyGame.Core;
-using MyGame.Miscellaneous;
 using Pastel;
 
 namespace MyGame.Entities;
 
 public class Cell : VisualObject
 {
-    protected string CellType { get; init; }
+    public string CellType { get; protected init; }
+     
+    public Collision CollisionType { get; protected init; }
 
     public Cell(int x, int y)
     {
         X = x;
         Y = y;
         CellType = " ";
+        CollisionType = Collision.None;
     }
 
     public override void Draw()
@@ -30,7 +32,7 @@ public class Cell : VisualObject
     private void SetPosition()
     {
         Console.SetCursorPosition(
-            ControlsTip.Width + X, 
+            Miscellaneous.ControlsTip.Width + X, 
             (Console.WindowHeight - Map.Height) / 2 + Y);
     }
 }

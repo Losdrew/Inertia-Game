@@ -1,32 +1,47 @@
-﻿namespace MyGame.Miscellaneous;
-
-public enum GameState
+﻿namespace MyGame
 {
-    InMenu,
-    Start,
-    Play,
-    Win,
-    GameOver,
-    Restart,
-    Continue,
-    CreateNew,
-    Quit
+    public enum GameState
+    {
+        InMenu,
+        Start,
+        Play,
+        Win,
+        GameOver,
+        Restart,
+        Continue,
+        CreateNew,
+        Quit
+    }
 }
 
-public enum Direction
+namespace MyGame.Entities
 {
-    Up = ConsoleKey.W,
-    Down = ConsoleKey.X,
-    Left = ConsoleKey.A,
-    Right = ConsoleKey.D,
-    LeftUp = ConsoleKey.Q,
-    RightUp = ConsoleKey.E,
-    LeftDown = ConsoleKey.Z,
-    RightDown = ConsoleKey.C
+    public enum Collision
+    {
+        None,
+        At,
+        Before,
+        GameOver
+    }
 }
 
-public enum MusicControls
+namespace MyGame.Core
 {
-    PauseMusic = ConsoleKey.R,
-    SwitchMusic = ConsoleKey.F
+    public enum Direction
+    {
+        Up = ConsoleKey.W,
+        Down = ConsoleKey.X,
+        Left = ConsoleKey.A,
+        Right = ConsoleKey.D,
+        LeftUp = ConsoleKey.Q,
+        RightUp = ConsoleKey.E,
+        LeftDown = ConsoleKey.Z,
+        RightDown = ConsoleKey.C
+    }
+
+    public enum MusicControls
+    {
+        PauseMusic = ConsoleKey.R,
+        SwitchMusic = ConsoleKey.F
+    }
 }
