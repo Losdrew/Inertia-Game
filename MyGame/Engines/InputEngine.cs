@@ -1,6 +1,6 @@
-﻿using MyGame.Miscellaneous;
+﻿using MyGame.Core;
 
-namespace MyGame.Core;
+namespace MyGame.Engines;
 
 public static class InputEngine
 {

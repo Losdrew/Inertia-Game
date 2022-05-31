@@ -84,7 +84,7 @@ public class Map : VisualObject
         FillMap(random);
     }
 
-    public (int x, int y) GetDestination(int x, int y, Direction direction)
+    public static (int x, int y) GetDestination(int x, int y, Direction direction)
     {
         return direction switch
         {
@@ -161,19 +161,19 @@ public class Map : VisualObject
             this[x, y] = new Prize(x, y);
     }
 
-    private int GetAreaOfMap()
+    private static int GetAreaOfMap()
     {
         return (Width - 2) * (Height - 2);
     }
 
-    private Direction GetRandomDirection(Random random)
+    private static Direction GetRandomDirection(Random random)
     {
         var directions = Enum.GetValues<Direction>();
 
         return directions[random.Next(directions.Length)];
     }
 
-    private bool IsInRangeOfMap(int x, int y)
+    private static bool IsInRangeOfMap(int x, int y)
     {
         return x is > 0 and < Width - 1 && y is > 0 and < Height - 1;
     }

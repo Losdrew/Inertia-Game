@@ -1,14 +1,12 @@
-﻿using MyGame.Entities;
-using MyGame.Miscellaneous;
+﻿using MyGame.Core;
+using MyGame.Entities;
 
-namespace MyGame.Core;
+namespace MyGame.Engines;
 
 public static class MovementEngine
 {
     // Time between frames
     private const int FrameMs = 100;
-
-    private static bool _isMoving;
 
     public static event AudioEngine.SoundHandler? PlayAudio;
 
@@ -18,11 +16,11 @@ public static class MovementEngine
         {
             var key = InputEngine.GetInput(Enum.GetValues<Direction>().Cast<ConsoleKey>());
 
-            _isMoving = true;
+            var isMoving = true;
 
-            while (_isMoving)
+            while (isMoving)
             {
-                var (x, y) = map.GetDestination(map.Player.X, map.Player.Y, (Direction)key);
+                var (x, y) = Map.GetDestination(map.Player.X, map.Player.Y, (Direction)key);
 
                 PlayAudioOnCell(map[x, y]);
 
@@ -30,11 +28,11 @@ public static class MovementEngine
                 {
                     case Collision.At:
                         map[x, y] = new Cell(x, y);
-                        _isMoving = false;
+                        isMoving = false;
                         break;
 
                     case Collision.Before:
-                        _isMoving = false;
+                        isMoving = false;
                         continue;
 
                     // Lose condition

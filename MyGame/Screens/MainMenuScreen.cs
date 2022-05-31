@@ -1,5 +1,5 @@
 ﻿using System.Drawing;
-using MyGame.Miscellaneous;
+using MyGame.Core;
 
 namespace MyGame.Screens;
 

@@ -1,22 +1,22 @@
 ﻿using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
 
-namespace MyGame.Miscellaneous;
+namespace MyGame.Engines;
 
-public class AudioEngine
+public static class AudioEngine
 {
     // All available sounds
-    private readonly Dictionary<string, UnmanagedMemoryStream> _audio = new()
+    private static readonly Dictionary<string, UnmanagedMemoryStream> Audio = new()
     {
         // Background music
-        { "Music1", Resources.Music1 }, 
-        { "Music2", Resources.Music2 }, 
-        { "Music3", Resources.Music3 }, 
-        { "Music4", Resources.Music4 }, 
-        { "Music5", Resources.Music5 }, 
+        { "Music1", Resources.Music1 },
+        { "Music2", Resources.Music2 },
+        { "Music3", Resources.Music3 },
+        { "Music4", Resources.Music4 },
+        { "Music5", Resources.Music5 },
         { "Music6", Resources.Music6 },
         { "Music7", Resources.Music7 },
-        { "Music8", Resources.Music8 }, 
+        { "Music8", Resources.Music8 },
         { "Music9", Resources.Music9 },
 
         // Sound Effects
@@ -27,52 +27,60 @@ public class AudioEngine
         { "Win", Resources.Win }
     };
 
-    private readonly IWavePlayer _soundOut;
-    private readonly IWavePlayer _musicOut;
+    private static readonly IWavePlayer SoundOut;
+    private static readonly IWavePlayer MusicOut;
 
-    private readonly MixingSampleProvider _soundMixer;
-    private readonly MixingSampleProvider _musicMixer;
+    private static readonly MixingSampleProvider SoundMixer;
+    private static readonly MixingSampleProvider MusicMixer;
 
-    public AudioEngine()
+    static AudioEngine()
     {
-        Initialize(out _soundOut, out _soundMixer);
-        Initialize(out _musicOut, out _musicMixer);
-        StartMusicPlaylist();
+        Initialize(out SoundOut, out SoundMixer);
+        Initialize(out MusicOut, out MusicMixer);
     }
 
     public delegate void SoundHandler(string soundName);
     public delegate void MusicHandler();
 
-    public void PlayAudio(string soundName)
+    public static void PlayAudio(string soundName)
     {
-        var stream = _audio[soundName];
+        var stream = Audio[soundName];
         RefreshStreamPosition(stream);
         var reader = new WaveFileReader(stream);
         ChooseMixer(soundName).AddMixerInput(new AutoDisposeFileReader(reader));
     }
 
-    public void PlayMusic()
+    public static void StartMusicPlaylist()
+    {
+        // Play next music when previous ends
+        MusicMixer.MixerInputEnded += (sender, args) => PlayMusic();
+
+        // Start playing music
+        PlayMusic();
+    }
+
+    public static void PlayMusic()
     {
         // Clean mixer off previous music
-        _musicMixer.RemoveAllMixerInputs();
+        MusicMixer.RemoveAllMixerInputs();
 
         // Start playback if it's stopped or paused
-        if (_musicOut.PlaybackState != PlaybackState.Playing)
-            _musicOut.Play();
+        if (MusicOut.PlaybackState != PlaybackState.Playing)
+            MusicOut.Play();
 
         // Music is chosen at random
         PlayAudio("Music" + new Random().Next(1, 10));
     }
 
-    public void PauseMusic()
+    public static void PauseMusic()
     {
-        if (_musicOut.PlaybackState == PlaybackState.Playing)
-            _musicOut.Pause();
+        if (MusicOut.PlaybackState == PlaybackState.Playing)
+            MusicOut.Pause();
 
-        else _musicOut.Play();
+        else MusicOut.Play();
     }
 
-    private void Initialize(out IWavePlayer output, out MixingSampleProvider mixer)
+    private static void Initialize(out IWavePlayer output, out MixingSampleProvider mixer)
     {
         // Only 44.1 kHz 8-bit Mono .wav files are allowed
         mixer = new MixingSampleProvider(WaveFormat.CreateIeeeFloatWaveFormat(44100, 1));
@@ -82,23 +90,15 @@ public class AudioEngine
         output.Play();
     }
 
-    private void StartMusicPlaylist()
-    {
-        // Play next music when previous ends
-        _musicMixer.MixerInputEnded += (sender, args) => PlayMusic();
 
-        // Start playing music
-        PlayMusic();
-    }
-
-    private void RefreshStreamPosition(Stream stream)
+    private static void RefreshStreamPosition(Stream stream)
     {
         stream.Position = 0;
     }
 
-    private MixingSampleProvider ChooseMixer(string soundName)
+    private static MixingSampleProvider ChooseMixer(string soundName)
     {
-        return soundName.Contains("Music") ? _musicMixer : _soundMixer;
+        return soundName.Contains("Music") ? MusicMixer : SoundMixer;
     }
 }
 

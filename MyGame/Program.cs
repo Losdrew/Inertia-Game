@@ -1,4 +1,5 @@
 ﻿using MyGame.Core;
+using MyGame.Engines;
 using MyGame.Miscellaneous;
 using MyGame.Screens;
 
@@ -12,11 +13,11 @@ public static class Program
         Map map = new();
         Score score = new();
 
-        AudioEngine audioEngine = new();
+        MovementEngine.PlayAudio += AudioEngine.PlayAudio;
+        InputEngine.PauseMusic += AudioEngine.PauseMusic;
+        InputEngine.SwitchMusic += AudioEngine.PlayMusic;
 
-        MovementEngine.PlayAudio += audioEngine.PlayAudio;
-        InputEngine.PauseMusic += audioEngine.PauseMusic;
-        InputEngine.SwitchMusic += audioEngine.PlayMusic;
+        AudioEngine.StartMusicPlaylist();
 
         var currentGameState = GameState.InMenu;
 
