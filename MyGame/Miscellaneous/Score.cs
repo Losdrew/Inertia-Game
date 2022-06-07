@@ -19,7 +19,7 @@ public class Score : VisualObject
     {
         Text = Resources.Score;
 
-        X = ControlsTip.Width + Map.Width + Width / 2 - Text.Length;
+        X = ControlsTip.Width + Map.Width + Width / 2 - Text.Length / 2;
         Y = Map.Height - Height;
 
         Color = Color.FromArgb(12, 216, 0);

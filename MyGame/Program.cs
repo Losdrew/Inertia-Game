@@ -1,5 +1,6 @@
 ﻿using MyGame.Core;
 using MyGame.Engines;
+using MyGame.Entities;
 using MyGame.Miscellaneous;
 using MyGame.Screens;
 
@@ -12,10 +13,6 @@ public static class Program
         ControlsTip controlsTip = new();
         Map map = new();
         Score score = new();
-
-        MovementEngine.PlayAudio += AudioEngine.PlayAudio;
-        InputEngine.PauseMusic += AudioEngine.PauseMusic;
-        InputEngine.SwitchMusic += AudioEngine.PlayMusic;
 
         AudioEngine.StartMusicPlaylist();
 
@@ -40,7 +37,9 @@ public static class Program
 
     private static GameState Menu()
     {
-        return new MainMenuScreen().GetInput();
+        MainMenuScreen mainMenuScreen = new();
+        mainMenuScreen.Draw();
+        return mainMenuScreen.GetInput();
     }
 
     private static GameState Start(out Map map)
@@ -63,7 +62,7 @@ public static class Program
 
         currentMap.UpdateScore += score.Update;
 
-        return MovementEngine.Move(currentMap) ? GameState.Win : GameState.GameOver;
+        return MovementEngine.Start(currentMap);
     }
 
     private static void SetScreen()
@@ -76,12 +75,16 @@ public static class Program
 
     private static GameState Win()
     {
-        return new WinScreen().GetInput();
+        WinScreen winScreen = new();
+        winScreen.Draw();
+        return winScreen.GetInput();
     }
 
     private static GameState GameOver()
     {
-        return new GameOverScreen().GetInput();
+        GameOverScreen gameOverScreen = new();
+        gameOverScreen.Draw();
+        return gameOverScreen.GetInput();
     }
 
     private static GameState Restart(Score score)

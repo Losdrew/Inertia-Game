@@ -4,9 +4,6 @@ namespace MyGame.Engines;
 
 public static class InputEngine
 {
-    public static event AudioEngine.MusicHandler? PauseMusic;
-    public static event AudioEngine.MusicHandler? SwitchMusic;
-
     public static ConsoleKey GetInput(IEnumerable<ConsoleKey> enumerable)
     {
         while (true)
@@ -25,11 +22,11 @@ public static class InputEngine
         switch (key)
         {
             case (ConsoleKey)MusicControls.PauseMusic:
-                PauseMusic?.Invoke();
+                AudioEngine.PauseMusic();
                 break;
 
             case (ConsoleKey)MusicControls.SwitchMusic:
-                SwitchMusic?.Invoke();
+                AudioEngine.SwitchMusic();
                 break;
         }
     }

@@ -5,73 +5,52 @@ namespace MyGame.Engines;
 
 public static class MovementEngine
 {
-    // Time between frames
-    private const int FrameMs = 100;
+    private static bool IsMoving, IsWin, IsGameOver;
 
-    public static event AudioEngine.SoundHandler? PlayAudio;
-
-    public static bool Move(Map map)
+    public static GameState Start(Map map)
     {
+        // Refreshing values because variables are static
+        IsWin = false;
+        IsGameOver = false;
+
         while (true)
         {
             var key = InputEngine.GetInput(Enum.GetValues<Direction>().Cast<ConsoleKey>());
 
-            var isMoving = true;
+            IsMoving = true;
 
-            while (isMoving)
-            {
-                var (x, y) = Map.GetDestination(map.Player.X, map.Player.Y, (Direction)key);
+            while (IsMoving)
+                Move(map, (Direction)key);
 
-                PlayAudioOnCell(map[x, y]);
+            if (IsWin)
+                return GameState.Win;
 
-                switch (map[x, y].CollisionType)
-                {
-                    case Collision.At:
-                        map[x, y] = new Cell(x, y);
-                        isMoving = false;
-                        break;
-
-                    case Collision.Before:
-                        isMoving = false;
-                        continue;
-
-                    // Lose condition
-                    case Collision.GameOver:
-                        return false;
-                }
-
-                // Win condition
-                if (map.PrizeCount == 0)
-                {
-                    PlayAudioOnWin();
-                    return true;
-                }
-
-                ChangePlayerPosition(map.Player, x, y);
-
-                // Artificial lag for smooth movement
-                Thread.Sleep(FrameMs);
-            }
+            if (IsGameOver)
+                return GameState.GameOver;
         }
     }
 
-    private static void PlayAudioOnCell<T>(T cellObject) where T : Cell?
+    public static void SetMovement(bool value)
     {
-        switch (cellObject)
-        {
-            case Wall: PlayAudio?.Invoke("Wall"); break;
-            case Trap: PlayAudio?.Invoke("Trap"); break;
-            case Prize: PlayAudio?.Invoke("Prize"); break;
-            case Stop: PlayAudio?.Invoke("Stop"); break;
-        }
+        IsMoving = value;
     }
 
-    private static void PlayAudioOnWin() => PlayAudio?.Invoke("Win");
-
-    private static void ChangePlayerPosition(Player player, int x, int y)
+    public static void SetWin(bool value)
     {
-        player.Clear();
-        (player.X, player.Y) = (x, y);
-        player.Draw();
+        IsWin = value;
+    }
+    public static void SetGameOver(bool value)
+    {
+        IsGameOver = value;
+    }
+
+    private static void Move(Map map, Direction direction)
+    {
+        var (x, y) = Map.GetDestination(map.Player.X, map.Player.Y, direction);
+
+        if (map[x, y].CollisionType is Collision.At or Collision.None)
+            map.Player.ChangePosition(x, y);
+
+        map[x, y].Action(map);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using MyGame.Core;
+using Pastel;
 
 namespace MyGame.Screens;
 
@@ -7,15 +8,17 @@ public class WinScreen : ScreenBase
 {
     public WinScreen()
     {
-        WindowSize = (119, 41);
-        Text = Resources.WinScreen;
-        Color = Color = Color.FromArgb(12, 216, 0);
+        Color = Color.FromArgb(12, 216, 0);
 
-        Choice = new Dictionary<ConsoleKey, GameState>
+        MenuItems = new MenuItems
         {
-            { ConsoleKey.D1, GameState.Continue },
-            { ConsoleKey.D2, GameState.Restart },
-            { ConsoleKey.D3, GameState.Quit }
+            { "1. Continue", ConsoleKey.D1, GameState.Continue },
+            { "2. Restart current level", ConsoleKey.D2, GameState.Restart },
+            { "3. Quit", ConsoleKey.D3, GameState.Quit }
         };
+
+        ScreenText.AddFirst(BuildMenuTable(MenuItems.Titles()).ToString());
+
+        ScreenText.AddFirst(Resources.WinLabel.Pastel(Color));
     }
 }

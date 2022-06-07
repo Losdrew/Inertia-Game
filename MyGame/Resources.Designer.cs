@@ -91,31 +91,31 @@ namespace MyGame {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to             ▄▄▄▄▄
-        ///        ▄███▀▀▀▀███
-        ///       ███       ▀▀▀    ▄▄▄▄▄▄     ▄▄ ▄▄▄▄▄  ▄▄▄▄      ▄▄▄▄▄            ▄▄▄▄▄▄    ▄▄      ▄▄    ▄▄▄▄▄      ▄▄ ▄▄▄
-        ///      ███              ██▀  ███    ███▀▀▀███▀▀▀███   ██▀▀▀▀██         ███▀▀▀▀██   ███    ██▀  ▄██▀ ▀███   ████▀▀▀
-        ///      ██▌    ██████    ▄▄▄▄▄███   ██▌   ███    ██▌  ███▄▄▄▄██▌       ███     ███   ██   ██   ███▄▄▄▄███  ▐██▌
-        ///      ███       ██▌  ▄██▀   ██▌  ▐██    ██▌   ▐██  ▐██▀              ██▌     ██▌   ██▌▄██    ███▀        ██▌
-        ///       ████▄▄▄████    [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to 
+        ///      ▄▄▄▄▄                                                                                              
+        ///  ▄███▀▀▀▀███                                                                                            
+        /// ███       ▀▀▀    ▄▄▄▄▄▄     ▄▄ ▄▄▄▄▄  ▄▄▄▄      ▄▄▄▄▄          ▄▄▄▄▄▄    ▄▄      ▄▄    ▄▄▄▄▄      ▄▄ ▄▄▄
+        ///███              ██▀  ███    ███▀▀▀███▀▀▀███   ██▀▀▀▀██       ███▀▀▀▀██   ███    ██▀  ▄██▀ ▀███   ████▀▀▀
+        ///██▌    ██████    ▄▄▄▄▄███   ██▌   ███    ██▌  ███▄▄▄▄██      ███     ███   ██   ██ [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string GameOverScreen {
+        public static string GameOverLabel {
             get {
-                return ResourceManager.GetString("GameOverScreen", resourceCulture);
+                return ResourceManager.GetString("GameOverLabel", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 	  ▄▄▄▄▄                                                                    ▄▄▄▄
-        ///         ▐████▌                                                          ▄▄█      ████▌
-        ///         █████                                                         ████▌       
-        ///         ████▌    ▄▄▄▄   ▄▄███▄▄         ▄▄████▄▄        ▄▄▄▄  ▄▄██ ▄▄▄████▄▄▄   ▄▄▄▄       ▄▄▄████▄▄ 
-        ///        █████     ████████▀██████     ▄███████████▄     ▐████▄█████ █████████▌   ████     █████▀▀▀█████
-        ///        ████▌    ▐█████     ▐████    ████▀      [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to 
+        ///    ▄▄▄▄▄                                                                    ▄▄▄▄                 
+        ///   ▐████▌                                                          ▄▄█      ████▌                 
+        ///   █████                                                         ████▌                            
+        ///   ████▌    ▄▄▄▄   ▄▄███▄▄         ▄▄████▄▄        ▄▄▄▄  ▄▄██ ▄▄▄████▄▄▄   ▄▄▄▄       ▄▄▄████▄▄   
+        ///  █████     ████████▀██████     ▄███████████▄     ▐████▄█████ █████████▌   ████     █████▀▀▀█████ 
+        ///  ████▌    [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string MainMenuScreen {
+        public static string MainMenuLabel {
             get {
-                return ResourceManager.GetString("MainMenuScreen", resourceCulture);
+                return ResourceManager.GetString("MainMenuLabel", resourceCulture);
             }
         }
         
@@ -210,11 +210,30 @@ namespace MyGame {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 	Score: .
+        ///   Looks up a localized string similar to Score: .
         /// </summary>
         public static string Score {
             get {
                 return ResourceManager.GetString("Score", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to                 ╓╖╖╖╖                          
+        ///             ║╢╢║╢╢╢╢║║╣          ░▒░░▒        
+        ///            ╓░▒░░░▒░▒╢╢║╣    ░▒░░░░▒░░▒░       
+        ///            ▒╙▀╜░╙▀╜░╢╢║╣  ▒░░▒░░░░░░░░        
+        ///             ╙▓▓▓▓▓▓▓╣╜╜░░░░░░                 
+        ///             ▄▄░░░▒▒▒▒░░░░░░                   
+        ///         ▄███████▄░░░░░░███                    
+        ///        █████████████████████▄▄                
+        ///       ████▀  ██████████████████▒▒▒            
+        ///       ████   █████████████▀▀                  
+        ///       ███▀   ████████ [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string SkiRunner {
+            get {
+                return ResourceManager.GetString("SkiRunner", resourceCulture);
             }
         }
         
@@ -246,15 +265,16 @@ namespace MyGame {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to       ▀███       ▄███▀                                                               ███▌                    ▐███ 
-        ///       ▀███     ████▀                                                                                        ███▌
-        ///        ████  ▄███▀     ▄███████▄      ▐███    ▐███           ███    ▐███     ███▌  ███▌   ▐███ ▄█████▄     ▐███
-        ///         ████████     ████▀   ▀███▌    ███▌    ███▌           ███    ████▌   ███▌  ▐███    ████▀▀   ███▌    ▐██ 
-        ///          █████▀     ████      ▐███   ▐███     ███    [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to 
+        ///▀███       ▄███▀                                                             ███                     ▐███
+        /// ▀███     ████▀                                                                                      ███▌
+        ///   ████  ▄███▀     ▄███████▄      ▐███    ▐███        ███    ▐███     ███▌  ███▌   ▐███ ▄█████▄     ▐███ 
+        ///    ████████     ████▀   ▀███▌    ███▌    ███▌        ███    ████▌   ███▌  ▐███    ████▀▀   ███▌    ▐██  
+        ///     █████▀     ████      ▐███   ▐███     ███         ███▌  █████▌  ███▀   ███▌    [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string WinScreen {
+        public static string WinLabel {
             get {
-                return ResourceManager.GetString("WinScreen", resourceCulture);
+                return ResourceManager.GetString("WinLabel", resourceCulture);
             }
         }
     }

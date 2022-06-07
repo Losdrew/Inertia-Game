@@ -119,16 +119,16 @@
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="ControlsTip" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\TextFiles\ControlsTip.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Resources\TextFiles\Interface\ControlsTip.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="GameOver" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Audio\SoundEffects\GameOver.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="GameOverScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\TextFiles\GameOverScreen.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="GameOverLabel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\TextFiles\Screen\GameOverLabel.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="MainMenuScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\TextFiles\MainMenuScreen.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="MainMenuLabel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\TextFiles\Screen\MainMenuLabel.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="Music1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Audio\Music\Music1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -161,7 +161,10 @@
     <value>Resources\Audio\SoundEffects\Prize.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Score" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\TextFiles\Score.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>Resources\TextFiles\Interface\Score.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="SkiRunner" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\TextFiles\Screen\SkiRunner.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="Stop" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Audio\SoundEffects\Stop.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -172,7 +175,7 @@
   <data name="Win" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Audio\SoundEffects\Win.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="WinScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\TextFiles\WinScreen.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="WinLabel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\TextFiles\Screen\WinLabel.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

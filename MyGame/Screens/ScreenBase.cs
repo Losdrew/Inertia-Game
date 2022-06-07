@@ -1,44 +1,79 @@
-﻿using MyGame.Core;
+﻿using System.Text;
+using ConsoleTableExt;
+using MyGame.Core;
 using MyGame.Engines;
-using Pastel;
 
 namespace MyGame.Screens;
 
 public abstract class ScreenBase : VisualObject
 {
-    protected (int x, int y) WindowSize { get; init; }
+    private const int Width = 118;
+    private const int Height = 44;
 
-    protected string? Text { get; init; }
+    protected MenuItems MenuItems { get; init; }
 
-    protected Dictionary<ConsoleKey, GameState>? Choice { get; init; }
+    protected LinkedList<string> ScreenText { get; }
+
+    protected ScreenBase()
+    {
+        MenuItems = new MenuItems();
+        ScreenText = new LinkedList<string>();
+
+        ScreenText.AddFirst(Resources.SkiRunner);
+    }
 
     public override void Draw()
     {
-        if (Text == null) 
-            return;
-
         SetScreen();
 
-        var changeColorAt = Text.IndexOf('╔');
-
-        Console.Write(Text[..changeColorAt].Pastel(Color) + Text[changeColorAt..]);
+        foreach (var section in ScreenText)
+            DrawCentered(section);
     }
 
     public GameState GetInput()
     {
-        if (Choice == null) 
-            return GameState.InMenu;
-
-        Draw();
-
-        return Choice[InputEngine.GetInput(Choice.Keys)];
+        return MenuItems.GetState(InputEngine.GetInput(MenuItems.Keys()));
     }
 
-    private void SetScreen()
+    protected static StringBuilder BuildMenuTable(List<string> titles)
+    {
+        return ConsoleTableBuilder
+            .From(titles)
+            .WithColumn("Choose an option")
+            .WithTextAlignment(new Dictionary<int, TextAligntment> {
+                { 0, TextAligntment.Center }
+            })
+            .WithCharMapDefinition(new Dictionary<CharMapPositions, char> {
+                { CharMapPositions.BottomLeft, '╚' },
+                { CharMapPositions.BottomRight, '╝' },
+                { CharMapPositions.BorderLeft, '║' },
+                { CharMapPositions.BorderRight, '║' },
+                { CharMapPositions.BorderBottom, '═' }
+            })
+            .WithHeaderCharMapDefinition(new Dictionary<HeaderCharMapPositions, char> {
+                {HeaderCharMapPositions.TopLeft, '╔' },
+                {HeaderCharMapPositions.TopRight, '╗' },
+                {HeaderCharMapPositions.BottomLeft, '╠' },
+                {HeaderCharMapPositions.BottomRight, '╣' },
+                {HeaderCharMapPositions.BorderTop, '═' },
+                {HeaderCharMapPositions.BorderRight, '║' },
+                {HeaderCharMapPositions.BorderBottom, '═' },
+                {HeaderCharMapPositions.BorderLeft, '║' }
+            })
+            .Export();
+    }
+
+    private static void SetScreen()
     {
         Console.Clear();
         Console.CursorVisible = false;
-        Console.SetWindowSize(WindowSize.x, WindowSize.y);
-        Console.SetBufferSize(WindowSize.x, WindowSize.y);
+        Console.SetWindowSize(Width, Height);
+        Console.SetBufferSize(Width, Height);
+    }
+
+    private static void DrawCentered(string text)
+    {
+        foreach (var line in text.Split('\n'))
+            Console.WriteLine("{0," + (Width / 2 + line.Length / 2) + "}", line);
     }
 }

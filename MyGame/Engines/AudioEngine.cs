@@ -59,7 +59,15 @@ public static class AudioEngine
         PlayMusic();
     }
 
-    public static void PlayMusic()
+    public static void PauseMusic()
+    {
+        if (MusicOut.PlaybackState == PlaybackState.Playing)
+            MusicOut.Pause();
+
+        else MusicOut.Play();
+    }
+
+    public static void SwitchMusic()
     {
         // Clean mixer off previous music
         MusicMixer.RemoveAllMixerInputs();
@@ -68,16 +76,13 @@ public static class AudioEngine
         if (MusicOut.PlaybackState != PlaybackState.Playing)
             MusicOut.Play();
 
-        // Music is chosen at random
-        PlayAudio("Music" + new Random().Next(1, 10));
+        PlayMusic();
     }
 
-    public static void PauseMusic()
+    private static void PlayMusic()
     {
-        if (MusicOut.PlaybackState == PlaybackState.Playing)
-            MusicOut.Pause();
-
-        else MusicOut.Play();
+        // Music is chosen at random
+        PlayAudio("Music" + new Random().Next(1, 10));
     }
 
     private static void Initialize(out IWavePlayer output, out MixingSampleProvider mixer)
@@ -89,7 +94,6 @@ public static class AudioEngine
         output.Init(mixer);
         output.Play();
     }
-
 
     private static void RefreshStreamPosition(Stream stream)
     {

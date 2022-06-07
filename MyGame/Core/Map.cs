@@ -41,11 +41,11 @@ public class Map : VisualObject
         }
     }
 
-    private Cell[,] Matrix { get; }
+    private CellBase[,] Matrix { get; }
 
     public Map()
     {
-        Matrix = new Cell[Width, Height];
+        Matrix = new CellBase[Width, Height];
     }
 
     public Map(Map map) : this()
@@ -57,7 +57,7 @@ public class Map : VisualObject
 
     public event Miscellaneous.Score.ScoreHandler? UpdateScore;
 
-    public Cell this[int x, int y]
+    public CellBase this[int x, int y]
     {
         get => Matrix[x, y];
         set
@@ -147,7 +147,7 @@ public class Map : VisualObject
                     case < 10: CreateWallAhead(x, y, currentDirection); break;
                     case < 20: this[x, y] = new Prize(x, y); break;
                     case < 30: this[x, y] = new Stop(x, y); break;
-                    default: this[x, y] = new Cell(x, y); continue;
+                    default: this[x, y] = new Empty(x, y); continue;
                 }
             }
 
@@ -180,7 +180,7 @@ public class Map : VisualObject
 
     private bool IsEmpty(int x, int y)
     {
-        return this[x, y].CellType == " ";
+        return this[x, y] is Empty;
     }
 
     private bool IsUndefined(int x, int y)
@@ -190,7 +190,7 @@ public class Map : VisualObject
 
     private void CreateWallAhead(int x, int y, Direction direction)
     {
-        this[x, y] = new Cell(x, y);
+        this[x, y] = new Empty(x, y);
 
         var (newX, newY) = GetDestination(x, y, direction);
 
@@ -216,12 +216,12 @@ public class Map : VisualObject
                 < 10 => new Wall(x, y),
                 < 30 => new Trap(x, y),
                 < 35 => new Stop(x, y),
-                _ => new Cell(x, y),
+                _ => new Empty(x, y),
             };
 
-            // To make gaps between cells (if previous cell is not empty)
-            if (IsInRangeOfMap(x + 1, y) && IsUndefined(x + 1, y) && !IsEmpty(x, y))
-                this[++x, y] = new Cell(x, y);
+                //// To make gaps between cells (if previous cell is not empty)
+                if (IsInRangeOfMap(x + 1, y) && IsUndefined(x + 1, y) && !IsEmpty(x, y))
+                    this[++x, y] = new Empty(x, y);
         }
     }
 }

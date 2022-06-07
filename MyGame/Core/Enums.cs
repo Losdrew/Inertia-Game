@@ -20,8 +20,7 @@ namespace MyGame.Entities
     {
         None,
         At,
-        Before,
-        GameOver
+        Before
     }
 }
 

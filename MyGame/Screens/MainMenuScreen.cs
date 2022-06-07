@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using MyGame.Core;
+using Pastel;
 
 namespace MyGame.Screens;
 
@@ -7,14 +8,16 @@ public class MainMenuScreen : ScreenBase
 {
     public MainMenuScreen()
     {
-        WindowSize = (107, 43);
-        Text = Resources.MainMenuScreen;
         Color = Color.Snow;
 
-        Choice = new Dictionary<ConsoleKey, GameState>
+        MenuItems = new MenuItems
         {
-            { ConsoleKey.D1, GameState.Start },
-            { ConsoleKey.D2, GameState.Quit }
+            { "1. Start Game", ConsoleKey.D1, GameState.Start },
+            { "2. Quit", ConsoleKey.D2, GameState.Quit }
         };
+
+        ScreenText.AddFirst(BuildMenuTable(MenuItems.Titles()).ToString());
+
+        ScreenText.AddFirst(Resources.MainMenuLabel.Pastel(Color));
     }
 }
