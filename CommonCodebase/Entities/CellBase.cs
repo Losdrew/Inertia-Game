@@ -4,13 +4,17 @@ namespace CommonCodebase.Entities;
 
 public abstract class CellBase : VisualObject
 {
-    public Collision CollisionType { get; protected init; }
-
     protected CellBase(int x, int y)
     {
         X = x;
         Y = y;
     }
+
+    public int X { get; protected set; }
+
+    public int Y { get; protected set; }
+
+    public Collision CollisionType { get; protected init; }
 
     public static event EventHandler? DrawCell;
 
@@ -19,12 +23,14 @@ public abstract class CellBase : VisualObject
         DrawCell?.Invoke(this, EventArgs.Empty);
     }
 
-    protected static void Draw(object? sender, EventArgs e)
+    public virtual void Action(Map map)
     {
-        DrawCell?.Invoke(sender, e);
     }
 
-    public virtual void Action(Map map) { }
+    protected void ClearOnScreen()
+    {
+        DrawCell?.Invoke(new Empty(X, Y), EventArgs.Empty);
+    }
 
     protected void ClearOnMap(Map map)
     {

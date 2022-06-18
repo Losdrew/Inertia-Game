@@ -1,7 +1,5 @@
 ﻿using System.Drawing;
-using CommonCodebase;
 using CommonCodebase.Core;
-using Pastel;
 
 namespace ConsoleApplication.Screens;
 
@@ -11,14 +9,12 @@ public class MainMenuScreen : ScreenBase
     {
         Color = Color.Snow;
 
-        MenuItems = new MenuItems
+        Label = Resources.MainMenuLabel;
+
+        MenuItems = new List<MenuItem>
         {
-            { "1. Start Game", ConsoleKey.D1, GameState.Start },
-            { "2. Quit", ConsoleKey.D2, GameState.Quit }
+            new("1. Start Game", ConsoleKey.D1, GameState.Start),
+            new("2. Quit", ConsoleKey.D2, GameState.Quit)
         };
-
-        ScreenText.AddFirst(BuildMenuTable(MenuItems.Titles()).ToString());
-
-        ScreenText.AddFirst(Resources.MainMenuLabel.Pastel(Color));
     }
 }

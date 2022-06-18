@@ -1,26 +1,20 @@
-﻿using CommonCodebase.Core;
+﻿namespace CommonCodebase.Miscellaneous;
 
-namespace CommonCodebase.Miscellaneous;
-
-public class ControlsTip : VisualObject
+public class ControlsTip : LabelBase
 {
-    public const int Width = 38;
-    private const int Height = 13 / 2 + 1;
-
-    public string Text { get; }
-
     public ControlsTip()
     {
-        X = 0;
-        Y = Map.Height - Height;
+        Text = CommonResources.ControlsTip;
 
-        Text = Resources.ControlsTip;
+        Height = CalculateHeight();
     }
 
-    public static event EventHandler? DrawControls;
+    public static int Height { get; private set; }
+
+    public static event EventHandler? DrawControlsTip;
 
     public override void Draw()
     {
-        DrawControls?.Invoke(this, EventArgs.Empty);
+        DrawControlsTip?.Invoke(this, EventArgs.Empty);
     }
 }

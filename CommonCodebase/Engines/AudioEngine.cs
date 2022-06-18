@@ -9,22 +9,22 @@ public static class AudioEngine
     private static readonly Dictionary<string, UnmanagedMemoryStream> Audio = new()
     {
         // Background music
-        { "Music1", Resources.Music1 },
-        { "Music2", Resources.Music2 },
-        { "Music3", Resources.Music3 },
-        { "Music4", Resources.Music4 },
-        { "Music5", Resources.Music5 },
-        { "Music6", Resources.Music6 },
-        { "Music7", Resources.Music7 },
-        { "Music8", Resources.Music8 },
-        { "Music9", Resources.Music9 },
+        { "Music1", CommonResources.Music1 },
+        { "Music2", CommonResources.Music2 },
+        { "Music3", CommonResources.Music3 },
+        { "Music4", CommonResources.Music4 },
+        { "Music5", CommonResources.Music5 },
+        { "Music6", CommonResources.Music6 },
+        { "Music7", CommonResources.Music7 },
+        { "Music8", CommonResources.Music8 },
+        { "Music9", CommonResources.Music9 },
 
         // Sound Effects
-        { "Wall", Resources.Wall },
-        { "Stop", Resources.Stop },
-        { "Prize", Resources.Prize },
-        { "Trap", Resources.GameOver },
-        { "Win", Resources.Win }
+        { "Wall", CommonResources.Wall },
+        { "Stop", CommonResources.Stop },
+        { "Prize", CommonResources.Prize },
+        { "Trap", CommonResources.GameOver },
+        { "Win", CommonResources.Win }
     };
 
     private static readonly IWavePlayer SoundOut;
@@ -103,19 +103,19 @@ public static class AudioEngine
     }
 }
 
-internal class AutoDisposeFileReader : IWaveProvider
+public class AutoDisposeFileReader : IWaveProvider
 {
     private readonly WaveFileReader _reader;
 
     private bool _isDisposed;
-
-    public WaveFormat WaveFormat { get; }
 
     public AutoDisposeFileReader(WaveFileReader reader)
     {
         _reader = reader;
         WaveFormat = reader.WaveFormat;
     }
+
+    public WaveFormat WaveFormat { get; }
 
     public int Read(byte[] buffer, int offset, int count)
     {

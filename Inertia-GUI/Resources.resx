@@ -118,64 +118,31 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ControlsTip" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\TextFiles\Interface\ControlsTip.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="Error" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\EntityImages\Error.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="GameOver" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Audio\SoundEffects\GameOver.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\OtherImages\Icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="GameOverLabel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\TextFiles\Screen\GameOverLabel.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="MapBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\OtherImages\MapBackground.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MainMenuLabel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\TextFiles\Screen\MainMenuLabel.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="MenuLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\OtherImages\MenuLogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Music1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Audio\Music\Music1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Music2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Audio\Music\Music2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Music3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Audio\Music\Music3.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Music4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Audio\Music\Music4.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Music5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Audio\Music\Music5.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Music6" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Audio\Music\Music6.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Music7" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Audio\Music\Music7.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Music8" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Audio\Music\Music8.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Music9" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Audio\Music\Music9.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Player" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\EntityImages\Player.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Prize" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Audio\SoundEffects\Prize.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Score" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\TextFiles\Interface\Score.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
-  </data>
-  <data name="SkiRunner" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\TextFiles\Screen\SkiRunner.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Resources\EntityImages\Prize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Stop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Audio\SoundEffects\Stop.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>Resources\EntityImages\Stop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Trap" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\EntityImages\Trap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Wall" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Audio\SoundEffects\Wall.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Win" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Audio\SoundEffects\Win.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="WinLabel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\TextFiles\Screen\WinLabel.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>Resources\EntityImages\Wall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

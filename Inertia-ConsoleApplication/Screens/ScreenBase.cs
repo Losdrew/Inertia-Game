@@ -1,9 +1,8 @@
 ﻿using System.Text;
-using CommonCodebase;
 using CommonCodebase.Core;
-using CommonCodebase.Engines;
-using ConsoleTableExt;
 using ConsoleApplication.Engines;
+using ConsoleTableExt;
+using Pastel;
 
 namespace ConsoleApplication.Screens;
 
@@ -12,49 +11,67 @@ public abstract class ScreenBase : VisualObject
     private const int Width = 118;
     private const int Height = 44;
 
-    protected MenuItems MenuItems { get; init; }
-
-    protected LinkedList<string> ScreenText { get; }
-
     protected ScreenBase()
     {
-        MenuItems = new MenuItems();
-        ScreenText = new LinkedList<string>();
-
-        ScreenText.AddFirst(Resources.SkiRunner);
+        MenuItems = new List<MenuItem>();
     }
 
-    public static InputHandler<ConsoleKey>? GetScreenInput;
+    protected string? Label { get; init; }
+
+    protected List<MenuItem> MenuItems { get; init; }
+
+    public static Func<Enum>? GetScreenInput { get; set; }
 
     public override void Draw()
     {
         GraphicsEngine.SetScreen(Width, Height);
 
-        foreach (var section in ScreenText)
+        foreach (var section in GenerateScreenContent())
             GraphicsEngine.DrawCentered(Width, section);
     }
 
     public GameState GetInput()
     {
-        return MenuItems.GetState((ConsoleKey)GetScreenInput?.Invoke()!);
+        InputEngine.ScreenControls.Clear();
+
+        foreach (var item in MenuItems)
+            InputEngine.ScreenControls.Add(item.Key, item.State);
+
+        return (GameState)GetScreenInput!.Invoke();
     }
 
-    protected static StringBuilder BuildMenuTable(List<string> titles)
+    private List<string> GenerateScreenContent()
+    {
+        // Getting titles of all menu items in MenuItems list
+        var titles = MenuItems.Select(item => item.Title).ToList();
+
+        return new List<string>
+        {
+            Label.Pastel(Color),
+            BuildMenuTable(titles).ToString(),
+            Resources.SkiRunner
+        };
+    }
+
+    private static StringBuilder BuildMenuTable(List<string> titles)
     {
         return ConsoleTableBuilder
             .From(titles)
             .WithColumn("Choose an option")
-            .WithTextAlignment(new Dictionary<int, TextAligntment> {
+            .WithTextAlignment(new Dictionary<int, TextAligntment>
+            {
                 { 0, TextAligntment.Center }
             })
-            .WithCharMapDefinition(new Dictionary<CharMapPositions, char> {
+            .WithCharMapDefinition(new Dictionary<CharMapPositions, char>
+            {
                 { CharMapPositions.BottomLeft, '╚' },
                 { CharMapPositions.BottomRight, '╝' },
                 { CharMapPositions.BorderLeft, '║' },
                 { CharMapPositions.BorderRight, '║' },
                 { CharMapPositions.BorderBottom, '═' }
             })
-            .WithHeaderCharMapDefinition(new Dictionary<HeaderCharMapPositions, char> {
+            .WithHeaderCharMapDefinition(new Dictionary<HeaderCharMapPositions, char>
+            {
                 { HeaderCharMapPositions.TopLeft, '╔' },
                 { HeaderCharMapPositions.TopRight, '╗' },
                 { HeaderCharMapPositions.BottomLeft, '╠' },

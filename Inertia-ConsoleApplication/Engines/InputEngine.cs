@@ -5,32 +5,40 @@ namespace ConsoleApplication.Engines;
 
 public static class InputEngine
 {
-    private static readonly Dictionary<ConsoleKey, Direction> DirectionControls = new()
-    {
-        { ConsoleKey.W, Direction.Up },
-        { ConsoleKey.X, Direction.Down },
-        { ConsoleKey.A, Direction.Left },
-        { ConsoleKey.D, Direction.Right },
-        { ConsoleKey.Q, Direction.LeftUp },
-        { ConsoleKey.E, Direction.RightUp },
-        { ConsoleKey.Z, Direction.LeftDown },
-        { ConsoleKey.C, Direction.RightDown }
-    };
+    public static readonly Dictionary<ConsoleKey, GameState> ScreenControls;
+    private static readonly Dictionary<ConsoleKey, Music> MusicControls;
+    private static readonly Dictionary<ConsoleKey, Direction> DirectionControls;
 
-    private static readonly Dictionary<ConsoleKey, Music> MusicControls = new()
+    static InputEngine()
     {
-        { ConsoleKey.R, Music.PauseMusic },
-        { ConsoleKey.F, Music.SwitchMusic },
-    };
+        ScreenControls = new Dictionary<ConsoleKey, GameState>();
 
-    public static Enum GetInput<T>()
+        MusicControls = new Dictionary<ConsoleKey, Music>
+        {
+            { ConsoleKey.R, Music.PauseMusic },
+            { ConsoleKey.F, Music.SwitchMusic }
+        };
+
+        DirectionControls = new Dictionary<ConsoleKey, Direction>
+        {
+            { ConsoleKey.W, Direction.Up },
+            { ConsoleKey.X, Direction.Down },
+            { ConsoleKey.A, Direction.Left },
+            { ConsoleKey.D, Direction.Right },
+            { ConsoleKey.Q, Direction.LeftUp },
+            { ConsoleKey.E, Direction.RightUp },
+            { ConsoleKey.Z, Direction.LeftDown },
+            { ConsoleKey.C, Direction.RightDown }
+        };
+    }
+
+    public static Enum GetInput()
     {
         while (true)
         {
             var key = Console.ReadKey(true).Key;
 
             if (MusicControls.ContainsKey(key))
-            {
                 switch (MusicControls[key])
                 {
                     case Music.PauseMusic:
@@ -41,18 +49,12 @@ public static class InputEngine
                         AudioEngine.SwitchMusic();
                         continue;
                 }
-            }
 
-            switch(typeof(T))
-            {
-                case { } direction when direction == typeof(Direction):
-                    return DirectionControls[key];
+            if (DirectionControls.ContainsKey(key))
+                return DirectionControls[key];
 
-                case { } direction when direction == typeof(ConsoleKey):
-                    return key;
-
-                default: continue;
-            };
+            if (ScreenControls.ContainsKey(key))
+                return ScreenControls[key];
         }
     }
 }

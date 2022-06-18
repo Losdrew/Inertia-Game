@@ -1,11 +1,10 @@
 ﻿using CommonCodebase.Entities;
-using CommonCodebase.Miscellaneous;
 
 namespace CommonCodebase.Core;
 
 public class Map : VisualObject
 {
-    public const int Width = 25;
+    public const int Width = 20;
     public const int Height = 10;
 
     private const int MaxPlayerCount = 1;
@@ -16,7 +15,19 @@ public class Map : VisualObject
 
     private int _prizeCount;
 
-    public Player Player 
+    public Map()
+    {
+        Matrix = new CellBase[Width, Height];
+    }
+
+    public Map(Map map) : this()
+    {
+        for (var y = 0; y < Height; y++)
+        for (var x = 0; x < Width; x++)
+            this[x, y] = map[x, y];
+    }
+
+    public Player Player
     {
         get => _player ?? throw new NullReferenceException("Player not placed.");
         private set
@@ -44,20 +55,6 @@ public class Map : VisualObject
 
     private CellBase[,] Matrix { get; }
 
-    public Map()
-    {
-        Matrix = new CellBase[Width, Height];
-    }
-
-    public Map(Map map) : this()
-    {
-        for (var y = 0; y < Height; y++)
-        for (var x = 0; x < Width; x++)
-            this[x, y] = map[x, y];
-    }
-
-    public event EventHandler? UpdateScore;
-
     public CellBase this[int x, int y]
     {
         get => Matrix[x, y];
@@ -65,7 +62,7 @@ public class Map : VisualObject
         {
             if (value is Player)
                 Player = new Player(value.X, value.Y);
-                
+
             if (value is Prize)
                 PrizeCount++;
 
@@ -75,6 +72,8 @@ public class Map : VisualObject
             Matrix[x, y] = value;
         }
     }
+
+    public event EventHandler? UpdateScore;
 
     public void CreateMap()
     {
@@ -145,14 +144,25 @@ public class Map : VisualObject
 
                 switch (random.Next(100))
                 {
-                    case < 10: CreateWallAhead(x, y, currentDirection); break;
-                    case < 20: this[x, y] = new Prize(x, y); break;
-                    case < 30: this[x, y] = new Stop(x, y); break;
-                    default: this[x, y] = new Empty(x, y); continue;
+                    case < 10:
+                        CreateWallAhead(x, y, currentDirection);
+                        break;
+                    case < 20:
+                        this[x, y] = new Prize(x, y);
+                        break;
+                    case < 30:
+                        this[x, y] = new Stop(x, y);
+                        break;
+                    default:
+                        this[x, y] = new Empty(x, y);
+                        continue;
                 }
             }
 
-            else tries++;
+            else
+            {
+                tries++;
+            }
 
             currentDirection = GetRandomDirection(random);
         }
@@ -205,7 +215,7 @@ public class Map : VisualObject
         for (var x = 0; x < Width; x++)
         {
             // Create wall at map border
-            if (!IsInRangeOfMap(x, y)) 
+            if (!IsInRangeOfMap(x, y))
                 this[x, y] = new Wall(x, y);
 
             // Skip if cell is part of predefined path or wall has been placed
@@ -213,16 +223,16 @@ public class Map : VisualObject
 
             // Place cell
             this[x, y] = random.Next(100) switch
-            {   
+            {
                 < 10 => new Wall(x, y),
                 < 30 => new Trap(x, y),
                 < 35 => new Stop(x, y),
-                _ => new Empty(x, y),
+                _ => new Empty(x, y)
             };
 
-                //// To make gaps between cells (if previous cell is not empty)
-                if (IsInRangeOfMap(x + 1, y) && IsUndefined(x + 1, y) && !IsEmpty(x, y))
-                    this[++x, y] = new Empty(x, y);
+            //// To make gaps between cells (if previous cell is not empty)
+            if (IsInRangeOfMap(x + 1, y) && IsUndefined(x + 1, y) && !IsEmpty(x, y))
+                this[++x, y] = new Empty(x, y);
         }
     }
 }

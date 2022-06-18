@@ -6,7 +6,7 @@ public static class MovementEngine
 {
     private static bool _isMoving, _isWin, _isGameOver;
 
-    public static InputHandler<Direction>? GetMovementInput;
+    public static Func<Enum>? GetMovementInput { get; set; }
 
     public static GameState Start(Map map)
     {
@@ -18,7 +18,7 @@ public static class MovementEngine
         {
             _isMoving = true;
 
-            var direction = (Direction)GetMovementInput?.Invoke()!;
+            var direction = (Direction)GetMovementInput!.Invoke();
 
             while (_isMoving)
                 Move(map, direction);

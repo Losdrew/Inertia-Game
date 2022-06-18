@@ -22,14 +22,14 @@ namespace CommonCodebase {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    public class CommonResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        public CommonResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace CommonCodebase {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CommonCodebase.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CommonCodebase.CommonResources", typeof(CommonResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,19 +61,19 @@ namespace CommonCodebase {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to                Controls
-        ///
-        ///          0       1       2
-        ///       Left Up    ↑   Right Up
-        ///
-        ///          3               4
-        ///          ←               →
-        ///
-        ///          5       6       7 
-        ///      Left Down   ↓   Right Down
-        ///
-        ///          8               9
-        ///     Pause Music     Switch Music.
+        ///   Looks up a localized string similar to           Controls          
+        ///                            
+        ///     Q       W       E      
+        ///  Left Up    ↑   Right Up   
+        ///                            
+        ///     A               D      
+        ///     ←               →      
+        ///                            
+        ///     Z       X       C      
+        /// Left Down   ↓   Right Down 
+        ///                            
+        ///     R               F      
+        ///Pause Music    Switch Music.
         /// </summary>
         public static string ControlsTip {
             get {
@@ -87,35 +87,6 @@ namespace CommonCodebase {
         public static System.IO.UnmanagedMemoryStream GameOver {
             get {
                 return ResourceManager.GetStream("GameOver", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 
-        ///      ▄▄▄▄▄                                                                                              
-        ///  ▄███▀▀▀▀███                                                                                            
-        /// ███       ▀▀▀    ▄▄▄▄▄▄     ▄▄ ▄▄▄▄▄  ▄▄▄▄      ▄▄▄▄▄          ▄▄▄▄▄▄    ▄▄      ▄▄    ▄▄▄▄▄      ▄▄ ▄▄▄
-        ///███              ██▀  ███    ███▀▀▀███▀▀▀███   ██▀▀▀▀██       ███▀▀▀▀██   ███    ██▀  ▄██▀ ▀███   ████▀▀▀
-        ///██▌    ██████    ▄▄▄▄▄███   ██▌   ███    ██▌  ███▄▄▄▄██      ███     ███   ██   ██ [rest of string was truncated]&quot;;.
-        /// </summary>
-        public static string GameOverLabel {
-            get {
-                return ResourceManager.GetString("GameOverLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 
-        ///    ▄▄▄▄▄                                                                    ▄▄▄▄                 
-        ///   ▐████▌                                                          ▄▄█      ████▌                 
-        ///   █████                                                         ████▌                            
-        ///   ████▌    ▄▄▄▄   ▄▄███▄▄         ▄▄████▄▄        ▄▄▄▄  ▄▄██ ▄▄▄████▄▄▄   ▄▄▄▄       ▄▄▄████▄▄   
-        ///  █████     ████████▀██████     ▄███████████▄     ▐████▄█████ █████████▌   ████     █████▀▀▀█████ 
-        ///  ████▌    [rest of string was truncated]&quot;;.
-        /// </summary>
-        public static string MainMenuLabel {
-            get {
-                return ResourceManager.GetString("MainMenuLabel", resourceCulture);
             }
         }
         
@@ -210,34 +181,6 @@ namespace CommonCodebase {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Score: .
-        /// </summary>
-        public static string Score {
-            get {
-                return ResourceManager.GetString("Score", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to                 ╓╖╖╖╖                          
-        ///             ║╢╢║╢╢╢╢║║╣          ░▒░░▒        
-        ///            ╓░▒░░░▒░▒╢╢║╣    ░▒░░░░▒░░▒░       
-        ///            ▒╙▀╜░╙▀╜░╢╢║╣  ▒░░▒░░░░░░░░        
-        ///             ╙▓▓▓▓▓▓▓╣╜╜░░░░░░                 
-        ///             ▄▄░░░▒▒▒▒░░░░░░                   
-        ///         ▄███████▄░░░░░░███                    
-        ///        █████████████████████▄▄                
-        ///       ████▀  ██████████████████▒▒▒            
-        ///       ████   █████████████▀▀                  
-        ///       ███▀   ████████ [rest of string was truncated]&quot;;.
-        /// </summary>
-        public static string SkiRunner {
-            get {
-                return ResourceManager.GetString("SkiRunner", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         public static System.IO.UnmanagedMemoryStream Stop {
@@ -261,20 +204,6 @@ namespace CommonCodebase {
         public static System.IO.UnmanagedMemoryStream Win {
             get {
                 return ResourceManager.GetStream("Win", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 
-        ///▀███       ▄███▀                                                             ███                     ▐███
-        /// ▀███     ████▀                                                                                      ███▌
-        ///   ████  ▄███▀     ▄███████▄      ▐███    ▐███        ███    ▐███     ███▌  ███▌   ▐███ ▄█████▄     ▐███ 
-        ///    ████████     ████▀   ▀███▌    ███▌    ███▌        ███    ████▌   ███▌  ▐███    ████▀▀   ███▌    ▐██  
-        ///     █████▀     ████      ▐███   ▐███     ███         ███▌  █████▌  ███▀   ███▌    [rest of string was truncated]&quot;;.
-        /// </summary>
-        public static string WinLabel {
-            get {
-                return ResourceManager.GetString("WinLabel", resourceCulture);
             }
         }
     }

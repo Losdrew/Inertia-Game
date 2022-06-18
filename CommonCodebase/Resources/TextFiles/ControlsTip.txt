@@ -1,0 +1,13 @@
+          Controls          
+                            
+     Q       W       E      
+  Left Up    ↑   Right Up   
+                            
+     A               D      
+     ←               →      
+                            
+     Z       X       C      
+ Left Down   ↓   Right Down 
+                            
+     R               F      
+Pause Music    Switch Music

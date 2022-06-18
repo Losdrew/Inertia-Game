@@ -16,16 +16,11 @@ public class Player : CellBase
 
     public void ChangePosition(int x, int y)
     {
-        Clear();
+        ClearOnScreen();
         (X, Y) = (x, y);
         Draw();
 
         // Artificial lag for smooth movement
         Thread.Sleep(FrameMs);
-    }
-
-    private void Clear()
-    {
-        Draw(new Empty(X, Y), EventArgs.Empty);
     }
 }

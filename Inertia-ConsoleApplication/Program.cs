@@ -4,7 +4,6 @@ using CommonCodebase.Entities;
 using CommonCodebase.Miscellaneous;
 using ConsoleApplication.Engines;
 using ConsoleApplication.Screens;
-using InputEngine = ConsoleApplication.Engines.InputEngine;
 
 namespace ConsoleApplication;
 
@@ -41,10 +40,10 @@ public static class Program
     {
         CellBase.DrawCell += GraphicsEngine.DrawCell;
         Score.DrawScore += GraphicsEngine.DrawScore;
-        Score.UpdateScore += GraphicsEngine.UpdateScore;
-        ControlsTip.DrawControls += GraphicsEngine.DrawControls;
-        MovementEngine.GetMovementInput += InputEngine.GetInput<Direction>;
-        ScreenBase.GetScreenInput += InputEngine.GetInput<ConsoleKey>;
+        Score.UpdateScore += GraphicsEngine.DrawScore;
+        ControlsTip.DrawControlsTip += GraphicsEngine.DrawControls;
+        MovementEngine.GetMovementInput += InputEngine.GetInput;
+        ScreenBase.GetScreenInput += InputEngine.GetInput;
     }
 
     private static GameState Menu()
