@@ -1,6 +1,6 @@
-﻿namespace GUI.Forms;
+﻿namespace GUI.Forms.Screens;
 
-partial class GameOverForm
+partial class WinScreenForm
 {
     /// <summary>
     ///  Required designer variable.
@@ -28,23 +28,24 @@ partial class GameOverForm
     /// </summary>
     private void InitializeComponent()
     {
-            this.RestartButton = new System.Windows.Forms.Button();
+            this.ContinueButton = new System.Windows.Forms.Button();
             this.QuitButton = new System.Windows.Forms.Button();
             this.SkiRunnerImage = new System.Windows.Forms.PictureBox();
             this.GameOverLabel = new System.Windows.Forms.Label();
-            this.CreateNewButton = new System.Windows.Forms.Button();
+            this.RestartLevelButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SkiRunnerImage)).BeginInit();
             this.SuspendLayout();
             // 
-            // RestartButton
+            // ContinueButton
             // 
-            this.RestartButton.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.RestartButton.Location = new System.Drawing.Point(350, 184);
-            this.RestartButton.Name = "RestartButton";
-            this.RestartButton.Size = new System.Drawing.Size(201, 39);
-            this.RestartButton.TabIndex = 1;
-            this.RestartButton.Text = "Restart current level";
-            this.RestartButton.UseVisualStyleBackColor = true;
+            this.ContinueButton.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ContinueButton.Location = new System.Drawing.Point(350, 184);
+            this.ContinueButton.Name = "ContinueButton";
+            this.ContinueButton.Size = new System.Drawing.Size(201, 39);
+            this.ContinueButton.TabIndex = 1;
+            this.ContinueButton.Text = "Continue";
+            this.ContinueButton.UseVisualStyleBackColor = true;
+            this.ContinueButton.Click += new System.EventHandler(this.ContinueButton_Click);
             // 
             // QuitButton
             // 
@@ -70,38 +71,40 @@ partial class GameOverForm
             // 
             this.GameOverLabel.AutoSize = true;
             this.GameOverLabel.Font = new System.Drawing.Font("Arial", 90F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.GameOverLabel.Location = new System.Drawing.Point(14, 9);
+            this.GameOverLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(220)))), ((int)(((byte)(0)))));
+            this.GameOverLabel.Location = new System.Drawing.Point(94, 9);
             this.GameOverLabel.Margin = new System.Windows.Forms.Padding(0);
             this.GameOverLabel.Name = "GameOverLabel";
-            this.GameOverLabel.Size = new System.Drawing.Size(846, 172);
+            this.GameOverLabel.Size = new System.Drawing.Size(693, 172);
             this.GameOverLabel.TabIndex = 4;
-            this.GameOverLabel.Text = "Game over";
+            this.GameOverLabel.Text = "You win!";
             // 
-            // CreateNewButton
+            // RestartLevelButton
             // 
-            this.CreateNewButton.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CreateNewButton.Location = new System.Drawing.Point(350, 243);
-            this.CreateNewButton.Name = "CreateNewButton";
-            this.CreateNewButton.Size = new System.Drawing.Size(201, 39);
-            this.CreateNewButton.TabIndex = 5;
-            this.CreateNewButton.Text = "Create new level";
-            this.CreateNewButton.UseVisualStyleBackColor = true;
+            this.RestartLevelButton.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.RestartLevelButton.Location = new System.Drawing.Point(350, 243);
+            this.RestartLevelButton.Name = "RestartLevelButton";
+            this.RestartLevelButton.Size = new System.Drawing.Size(201, 39);
+            this.RestartLevelButton.TabIndex = 5;
+            this.RestartLevelButton.Text = "Restart current level";
+            this.RestartLevelButton.UseVisualStyleBackColor = true;
+            this.RestartLevelButton.Click += new System.EventHandler(this.RestartLevelButton_Click);
             // 
-            // GameOver
+            // WinScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(882, 753);
-            this.Controls.Add(this.CreateNewButton);
+            this.Controls.Add(this.RestartLevelButton);
             this.Controls.Add(this.GameOverLabel);
             this.Controls.Add(this.SkiRunnerImage);
             this.Controls.Add(this.QuitButton);
-            this.Controls.Add(this.RestartButton);
+            this.Controls.Add(this.ContinueButton);
             this.Icon = global::GUI.Resources.Icon;
-            this.Name = "GameOver";
+            this.Name = "WinScreenForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Menu";
+            this.Text = "You win!";
             ((System.ComponentModel.ISupportInitialize)(this.SkiRunnerImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -109,9 +112,9 @@ partial class GameOverForm
     }
 
     #endregion
-    private Button RestartButton;
+    private Button ContinueButton;
     private Button QuitButton;
     private PictureBox SkiRunnerImage;
     private Label GameOverLabel;
-    private Button CreateNewButton;
+    private Button RestartLevelButton;
 }

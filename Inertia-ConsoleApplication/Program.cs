@@ -2,8 +2,8 @@
 using CommonCodebase.Engines;
 using CommonCodebase.Entities;
 using CommonCodebase.Miscellaneous;
-using ConsoleApplication.Engines;
-using ConsoleApplication.Screens;
+using Engines;
+using Screens;
 
 namespace ConsoleApplication;
 
@@ -22,6 +22,7 @@ public static class Program
         var currentGameState = GameState.InMenu;
 
         while (true)
+        {
             currentGameState = currentGameState switch
             {
                 GameState.InMenu => Menu(),
@@ -34,15 +35,16 @@ public static class Program
                 GameState.CreateNew => CreateNew(score),
                 _ => Quit()
             };
+        }
     }
 
     private static void SetTargetMethods()
     {
         CellBase.DrawCell += GraphicsEngine.DrawCell;
+        Player.StartMovementAnimation += GraphicsEngine.MovementAnimation;
         Score.DrawScore += GraphicsEngine.DrawScore;
         Score.UpdateScore += GraphicsEngine.DrawScore;
         ControlsTip.DrawControlsTip += GraphicsEngine.DrawControls;
-        MovementEngine.GetMovementInput += InputEngine.GetInput;
         ScreenBase.GetScreenInput += InputEngine.GetInput;
     }
 

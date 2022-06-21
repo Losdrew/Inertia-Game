@@ -1,11 +1,12 @@
-﻿using System.Text;
-using System.Text.RegularExpressions;
-using CommonCodebase.Core;
+﻿using CommonCodebase.Core;
 using CommonCodebase.Entities;
 using CommonCodebase.Miscellaneous;
 using Pastel;
+using System.Text;
+using System.Text.RegularExpressions;
+using CommonCodebase.Engines;
 
-namespace ConsoleApplication.Engines;
+namespace Engines;
 
 public static class GraphicsEngine
 {
@@ -36,16 +37,22 @@ public static class GraphicsEngine
 
     public static void DrawControls(object? sender, EventArgs e)
     {
-        if (sender is not ControlsTip controlsTip) return;
+        if (sender is not ControlsTip controlsTip)
+        {
+            return;
+        }
 
-        SetCursorPosition(0, Map.Height - ControlsTip.Height / 2);
+        SetCursorPosition(0, Map.Height - (ControlsTip.Height / 2));
 
         DrawCentered(LeftSectionWidth, controlsTip.Text);
     }
 
     public static void DrawCell(object? sender, EventArgs e)
     {
-        if (sender is not CellBase cell) return;
+        if (sender is not CellBase cell)
+        {
+            return;
+        }
 
         var symbol = cell switch
         {
@@ -65,11 +72,14 @@ public static class GraphicsEngine
 
     public static void DrawScore(object? sender, EventArgs e)
     {
-        if (sender is not Score score) return;
+        if (sender is not Score score)
+        {
+            return;
+        }
 
         var text = score.Text + score.ScoreToDraw.ToString().Pastel(score.Color);
 
-        SetCursorPosition(LeftSectionWidth + Map.Width, Map.Height - Score.Height / 2);
+        SetCursorPosition(LeftSectionWidth + Map.Width, Map.Height - (Score.Height / 2));
 
         DrawCentered(RightSectionWidth, text);
     }
@@ -88,6 +98,12 @@ public static class GraphicsEngine
 
             Console.WriteLine(new string(' ', (width - colorlessLine.Length) / 2) + line);
         }
+    }
+
+    public static void MovementAnimation()
+    {
+        // Artificial lag for smooth movement
+        Thread.Sleep(MovementEngine.FrameMs);
     }
 
     private static void DrawText(string text)

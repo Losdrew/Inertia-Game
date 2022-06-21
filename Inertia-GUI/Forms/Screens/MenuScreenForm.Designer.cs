@@ -1,6 +1,6 @@
-﻿namespace GUI.Forms;
+﻿namespace GUI.Forms.Screens;
 
-partial class WinForm
+partial class MenuScreenForm
 {
     /// <summary>
     ///  Required designer variable.
@@ -28,30 +28,30 @@ partial class WinForm
     /// </summary>
     private void InitializeComponent()
     {
-            this.ContinueButton = new System.Windows.Forms.Button();
+            this.StartButton = new System.Windows.Forms.Button();
             this.QuitButton = new System.Windows.Forms.Button();
             this.SkiRunnerImage = new System.Windows.Forms.PictureBox();
-            this.GameOverLabel = new System.Windows.Forms.Label();
-            this.RestartButton = new System.Windows.Forms.Button();
+            this.MenuLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.SkiRunnerImage)).BeginInit();
             this.SuspendLayout();
             // 
-            // ContinueButton
+            // StartButton
             // 
-            this.ContinueButton.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ContinueButton.Location = new System.Drawing.Point(350, 184);
-            this.ContinueButton.Name = "ContinueButton";
-            this.ContinueButton.Size = new System.Drawing.Size(201, 39);
-            this.ContinueButton.TabIndex = 1;
-            this.ContinueButton.Text = "Continue";
-            this.ContinueButton.UseVisualStyleBackColor = true;
+            this.StartButton.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.StartButton.Location = new System.Drawing.Point(363, 200);
+            this.StartButton.Name = "StartButton";
+            this.StartButton.Size = new System.Drawing.Size(173, 43);
+            this.StartButton.TabIndex = 1;
+            this.StartButton.Text = "Start Game";
+            this.StartButton.UseVisualStyleBackColor = true;
+            this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
             // QuitButton
             // 
             this.QuitButton.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.QuitButton.Location = new System.Drawing.Point(350, 302);
+            this.QuitButton.Location = new System.Drawing.Point(363, 262);
             this.QuitButton.Name = "QuitButton";
-            this.QuitButton.Size = new System.Drawing.Size(201, 39);
+            this.QuitButton.Size = new System.Drawing.Size(173, 42);
             this.QuitButton.TabIndex = 2;
             this.QuitButton.Text = "Quit";
             this.QuitButton.UseVisualStyleBackColor = true;
@@ -60,46 +60,35 @@ partial class WinForm
             // SkiRunnerImage
             // 
             this.SkiRunnerImage.Image = global::GUI.Resources.MenuLogo;
-            this.SkiRunnerImage.Location = new System.Drawing.Point(270, 366);
+            this.SkiRunnerImage.Location = new System.Drawing.Point(270, 336);
             this.SkiRunnerImage.Name = "SkiRunnerImage";
             this.SkiRunnerImage.Size = new System.Drawing.Size(360, 360);
             this.SkiRunnerImage.TabIndex = 3;
             this.SkiRunnerImage.TabStop = false;
             // 
-            // GameOverLabel
+            // MenuLabel
             // 
-            this.GameOverLabel.AutoSize = true;
-            this.GameOverLabel.Font = new System.Drawing.Font("Arial", 90F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.GameOverLabel.Location = new System.Drawing.Point(94, 9);
-            this.GameOverLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.GameOverLabel.Name = "GameOverLabel";
-            this.GameOverLabel.Size = new System.Drawing.Size(693, 172);
-            this.GameOverLabel.TabIndex = 4;
-            this.GameOverLabel.Text = "You win!";
+            this.MenuLabel.AutoSize = true;
+            this.MenuLabel.Font = new System.Drawing.Font("Arial", 90F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.MenuLabel.Location = new System.Drawing.Point(189, 9);
+            this.MenuLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.MenuLabel.Name = "MenuLabel";
+            this.MenuLabel.Size = new System.Drawing.Size(522, 172);
+            this.MenuLabel.TabIndex = 4;
+            this.MenuLabel.Text = "Inertia";
             // 
-            // RestartButton
-            // 
-            this.RestartButton.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.RestartButton.Location = new System.Drawing.Point(350, 243);
-            this.RestartButton.Name = "RestartButton";
-            this.RestartButton.Size = new System.Drawing.Size(201, 39);
-            this.RestartButton.TabIndex = 5;
-            this.RestartButton.Text = "Restart current level";
-            this.RestartButton.UseVisualStyleBackColor = true;
-            // 
-            // WinForm
+            // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(882, 753);
-            this.Controls.Add(this.RestartButton);
-            this.Controls.Add(this.GameOverLabel);
+            this.Controls.Add(this.MenuLabel);
             this.Controls.Add(this.SkiRunnerImage);
             this.Controls.Add(this.QuitButton);
-            this.Controls.Add(this.ContinueButton);
+            this.Controls.Add(this.StartButton);
             this.Icon = global::GUI.Resources.Icon;
-            this.Name = "WinForm";
+            this.Name = "MenuForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
             ((System.ComponentModel.ISupportInitialize)(this.SkiRunnerImage)).EndInit();
@@ -109,9 +98,8 @@ partial class WinForm
     }
 
     #endregion
-    private Button ContinueButton;
+    private Button StartButton;
     private Button QuitButton;
     private PictureBox SkiRunnerImage;
-    private Label GameOverLabel;
-    private Button RestartButton;
+    private Label MenuLabel;
 }

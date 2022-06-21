@@ -1,6 +1,6 @@
-﻿using System.Drawing;
-using CommonCodebase.Core;
+﻿using CommonCodebase.Core;
 using CommonCodebase.Engines;
+using System.Drawing;
 
 namespace CommonCodebase.Entities;
 
@@ -14,8 +14,8 @@ public class Trap : CellBase
 
     public override void Action(Map map)
     {
-        MovementEngine.SetMovement(false);
-        MovementEngine.SetGameOver(true);
+        MovementEngine.SetGameOver();
         AudioEngine.PlayAudio("Trap");
+        MovementEngine.MovementAvailable = false;
     }
 }

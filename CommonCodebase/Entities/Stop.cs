@@ -1,6 +1,6 @@
-﻿using System.Drawing;
-using CommonCodebase.Core;
+﻿using CommonCodebase.Core;
 using CommonCodebase.Engines;
+using System.Drawing;
 
 namespace CommonCodebase.Entities;
 
@@ -15,7 +15,7 @@ public class Stop : CellBase
     public override void Action(Map map)
     {
         ClearOnMap(map);
-        MovementEngine.SetMovement(false);
         AudioEngine.PlayAudio("Stop");
+        MovementEngine.MovementAvailable = false;
     }
 }

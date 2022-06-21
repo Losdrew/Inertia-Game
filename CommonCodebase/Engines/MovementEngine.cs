@@ -4,55 +4,62 @@ namespace CommonCodebase.Engines;
 
 public static class MovementEngine
 {
-    private static bool _isMoving, _isWin, _isGameOver;
+    // Time between frames (used for movement animation)
+    public const int FrameMs = 85;
 
-    public static Func<Enum>? GetMovementInput { get; set; }
+    public static Action? Win;
+    public static Action? GameOver;
 
-    public static GameState Start(Map map)
+    public static Action? StartMovement;
+    public static Action? StopMovement;
+
+    private static Direction _currentDirection;
+
+    public static bool MovementAvailable { get; set; }
+
+    private static Map? Map { get; set; }
+
+    public static void Start(Map currentMap)
     {
-        // Refreshing values because variables are static
-        _isWin = false;
-        _isGameOver = false;
+        Map = currentMap;
+    }
 
-        while (true)
+    public static void Move(object? sender, EventArgs e)
+    {
+        if (Map is null)
         {
-            _isMoving = true;
+            return;
+        }
 
-            var direction = (Direction)GetMovementInput!.Invoke();
+        var (x, y) = Map.GetDestination(Map.Player.X, Map.Player.Y, _currentDirection);
 
-            while (_isMoving)
-                Move(map, direction);
+        if (Map[x, y].CollisionType is Collision.At or Collision.None)
+        {
+            Map.Player.ChangePosition(x, y);
+        }
 
-            if (_isWin)
-                return GameState.Win;
+        Map[x, y].Action(Map);
 
-            if (_isGameOver)
-                return GameState.GameOver;
+        if (!MovementAvailable)
+        {
+            StopMovement?.Invoke();
         }
     }
 
-    public static void SetMovement(bool value)
+    public static void SetWin()
     {
-        _isMoving = value;
+        Win?.Invoke();
     }
 
-    public static void SetWin(bool value)
+    public static void SetGameOver()
     {
-        _isWin = value;
+        GameOver?.Invoke();
     }
 
-    public static void SetGameOver(bool value)
+    public static void GetInput(Direction direction)
     {
-        _isGameOver = value;
-    }
-
-    private static void Move(Map map, Direction direction)
-    {
-        var (x, y) = Map.GetDestination(map.Player.X, map.Player.Y, direction);
-
-        if (map[x, y].CollisionType is Collision.At or Collision.None)
-            map.Player.ChangePosition(x, y);
-
-        map[x, y].Action(map);
+        _currentDirection = direction;
+        MovementAvailable = true;
+        StartMovement?.Invoke();
     }
 }

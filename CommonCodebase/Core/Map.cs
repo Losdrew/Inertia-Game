@@ -23,8 +23,12 @@ public class Map : VisualObject
     public Map(Map map) : this()
     {
         for (var y = 0; y < Height; y++)
-        for (var x = 0; x < Width; x++)
-            this[x, y] = map[x, y];
+        {
+            for (var x = 0; x < Width; x++)
+            {
+                this[x, y] = map[x, y];
+            }
+        }
     }
 
     public Player Player
@@ -33,7 +37,9 @@ public class Map : VisualObject
         private set
         {
             if (_playerCount >= MaxPlayerCount)
+            {
                 throw new Exception($"Player count can't exceed {MaxPlayerCount}.");
+            }
 
             _player = value;
             _playerCount++;
@@ -47,7 +53,9 @@ public class Map : VisualObject
         {
             // When prize count decreases, score increases
             if (value < _prizeCount)
+            {
                 UpdateScore?.Invoke(this, EventArgs.Empty);
+            }
 
             _prizeCount = value;
         }
@@ -61,13 +69,19 @@ public class Map : VisualObject
         set
         {
             if (value is Player)
+            {
                 Player = new Player(value.X, value.Y);
+            }
 
             if (value is Prize)
+            {
                 PrizeCount++;
+            }
 
             if (Matrix[x, y] is Prize)
+            {
                 PrizeCount--;
+            }
 
             Matrix[x, y] = value;
         }
@@ -104,8 +118,12 @@ public class Map : VisualObject
     {
         // Draw map
         for (var y = 0; y < Height; y++)
-        for (var x = 0; x < Width; x++)
-            this[x, y].Draw();
+        {
+            for (var x = 0; x < Width; x++)
+            {
+                this[x, y].Draw();
+            }
+        }
 
         // Draw player
         Player.Draw();
@@ -124,13 +142,16 @@ public class Map : VisualObject
         pathLength--;
 
         var tries = 0;
+
         var currentDirection = GetRandomDirection(random);
 
         while (pathLength > 0)
         {
             // Stop path-making if blocked from all sides
             if (tries == Enum.GetNames<Direction>().Length)
+            {
                 break;
+            }
 
             var (newX, newY) = GetDestination(x, y, currentDirection);
 
@@ -169,7 +190,9 @@ public class Map : VisualObject
 
         // If no prize was created, place one at path end
         if (PrizeCount == 0)
+        {
             this[x, y] = new Prize(x, y);
+        }
     }
 
     private static int GetAreaOfMap()
@@ -206,33 +229,44 @@ public class Map : VisualObject
         var (newX, newY) = GetDestination(x, y, direction);
 
         if (IsInRangeOfMap(newX, newY) && IsUndefined(newX, newY))
+        {
             this[newX, newY] = new Wall(newX, newY);
+        }
     }
 
     private void FillMap(Random random)
     {
         for (var y = 0; y < Height; y++)
-        for (var x = 0; x < Width; x++)
         {
-            // Create wall at map border
-            if (!IsInRangeOfMap(x, y))
-                this[x, y] = new Wall(x, y);
-
-            // Skip if cell is part of predefined path or wall has been placed
-            if (!IsUndefined(x, y)) continue;
-
-            // Place cell
-            this[x, y] = random.Next(100) switch
+            for (var x = 0; x < Width; x++)
             {
-                < 10 => new Wall(x, y),
-                < 30 => new Trap(x, y),
-                < 35 => new Stop(x, y),
-                _ => new Empty(x, y)
-            };
+                // Create wall at map border
+                if (!IsInRangeOfMap(x, y))
+                {
+                    this[x, y] = new Wall(x, y);
+                }
 
-            //// To make gaps between cells (if previous cell is not empty)
-            if (IsInRangeOfMap(x + 1, y) && IsUndefined(x + 1, y) && !IsEmpty(x, y))
-                this[++x, y] = new Empty(x, y);
+                // Skip if cell is part of predefined path or wall has been placed
+                if (!IsUndefined(x, y))
+                {
+                    continue;
+                }
+
+                // Place cell
+                this[x, y] = random.Next(100) switch
+                {
+                    < 10 => new Wall(x, y),
+                    < 30 => new Trap(x, y),
+                    < 35 => new Stop(x, y),
+                    _ => new Empty(x, y)
+                };
+
+                //// To make gaps between cells (if previous cell is not empty)
+                if (IsInRangeOfMap(x + 1, y) && IsUndefined(x + 1, y) && !IsEmpty(x, y))
+                {
+                    this[++x, y] = new Empty(x, y);
+                }
+            }
         }
     }
 }

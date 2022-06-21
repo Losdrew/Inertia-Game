@@ -1,7 +1,7 @@
 ﻿using CommonCodebase.Core;
 using CommonCodebase.Engines;
 
-namespace ConsoleApplication.Engines;
+namespace Engines;
 
 public static class InputEngine
 {
@@ -39,6 +39,7 @@ public static class InputEngine
             var key = Console.ReadKey(true).Key;
 
             if (MusicControls.ContainsKey(key))
+            {
                 switch (MusicControls[key])
                 {
                     case Music.PauseMusic:
@@ -49,12 +50,17 @@ public static class InputEngine
                         AudioEngine.SwitchMusic();
                         continue;
                 }
+            }
 
             if (DirectionControls.ContainsKey(key))
+            {
                 return DirectionControls[key];
+            }
 
             if (ScreenControls.ContainsKey(key))
+            {
                 return ScreenControls[key];
+            }
         }
     }
 }

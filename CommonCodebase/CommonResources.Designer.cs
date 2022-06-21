@@ -29,7 +29,7 @@ namespace CommonCodebase {
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public CommonResources() {
+        internal CommonResources() {
         }
         
         /// <summary>
@@ -73,7 +73,7 @@ namespace CommonCodebase {
         /// Left Down   ↓   Right Down 
         ///                            
         ///     R               F      
-        ///Pause Music    Switch Music.
+        ///Pause Music    Switch Music .
         /// </summary>
         public static string ControlsTip {
             get {

@@ -59,9 +59,13 @@ public static class AudioEngine
     public static void PauseMusic()
     {
         if (MusicOut.PlaybackState == PlaybackState.Playing)
+        {
             MusicOut.Pause();
-
-        else MusicOut.Play();
+        }
+        else
+        {
+            MusicOut.Play();
+        }
     }
 
     public static void SwitchMusic()
@@ -71,7 +75,9 @@ public static class AudioEngine
 
         // Start playback if it's stopped or paused
         if (MusicOut.PlaybackState != PlaybackState.Playing)
+        {
             MusicOut.Play();
+        }
 
         PlayMusic();
     }
@@ -85,8 +91,10 @@ public static class AudioEngine
     private static void Initialize(out IWavePlayer output, out MixingSampleProvider mixer)
     {
         // Only 44.1 kHz 8-bit Mono .wav files are allowed
-        mixer = new MixingSampleProvider(WaveFormat.CreateIeeeFloatWaveFormat(44100, 1));
-        mixer.ReadFully = true;
+        mixer = new MixingSampleProvider(WaveFormat.CreateIeeeFloatWaveFormat(44100, 1))
+        {
+            ReadFully = true
+        };
         output = new WaveOutEvent();
         output.Init(mixer);
         output.Play();
@@ -119,7 +127,10 @@ public class AutoDisposeFileReader : IWaveProvider
 
     public int Read(byte[] buffer, int offset, int count)
     {
-        if (_isDisposed) return 0;
+        if (_isDisposed)
+        {
+            return 0;
+        }
 
         var read = _reader.Read(buffer, offset, count);
 

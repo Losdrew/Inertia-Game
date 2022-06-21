@@ -4,32 +4,31 @@ namespace CommonCodebase.Entities;
 
 public abstract class CellBase : VisualObject
 {
-    protected CellBase(int x, int y)
-    {
-        X = x;
-        Y = y;
-    }
-
     public int X { get; protected set; }
 
     public int Y { get; protected set; }
 
     public Collision CollisionType { get; protected init; }
 
+    protected CellBase(int x, int y)
+    {
+        X = x;
+        Y = y;
+    }
+
     public static event EventHandler? DrawCell;
+    public static event EventHandler? ClearCell;
 
     public override void Draw()
     {
         DrawCell?.Invoke(this, EventArgs.Empty);
     }
 
-    public virtual void Action(Map map)
-    {
-    }
+    public virtual void Action(Map map) { }
 
     protected void ClearOnScreen()
     {
-        DrawCell?.Invoke(new Empty(X, Y), EventArgs.Empty);
+        ClearCell?.Invoke(this, EventArgs.Empty);
     }
 
     protected void ClearOnMap(Map map)

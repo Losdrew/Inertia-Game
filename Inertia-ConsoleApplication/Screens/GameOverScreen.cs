@@ -1,7 +1,8 @@
-﻿using System.Drawing;
-using CommonCodebase.Core;
+﻿using CommonCodebase.Core;
+using ConsoleApplication;
+using System.Drawing;
 
-namespace ConsoleApplication.Screens;
+namespace Screens;
 
 public class GameOverScreen : ScreenBase
 {

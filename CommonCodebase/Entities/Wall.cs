@@ -1,6 +1,6 @@
-﻿using System.Drawing;
-using CommonCodebase.Core;
+﻿using CommonCodebase.Core;
 using CommonCodebase.Engines;
+using System.Drawing;
 
 namespace CommonCodebase.Entities;
 
@@ -14,7 +14,7 @@ public class Wall : CellBase
 
     public override void Action(Map map)
     {
-        MovementEngine.SetMovement(false);
         AudioEngine.PlayAudio("Wall");
+        MovementEngine.MovementAvailable = false;
     }
 }

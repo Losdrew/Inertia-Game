@@ -10,4 +10,4 @@
  Left Down   ↓   Right Down 
                             
      R               F      
-Pause Music    Switch Music
+Pause Music    Switch Music 

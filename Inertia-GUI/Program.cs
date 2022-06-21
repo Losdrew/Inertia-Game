@@ -1,10 +1,10 @@
-using GUI.Forms;
+using GUI.Forms.Screens;
 
 namespace GUI;
 
 public static class Program
 {
-    public static readonly ApplicationContext AppContext = new(new MenuForm());
+    public static readonly ApplicationContext AppContext = new(new MenuScreenForm());
 
     [STAThread]
     private static void Main()

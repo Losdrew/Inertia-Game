@@ -1,10 +1,11 @@
-﻿using System.Text;
-using CommonCodebase.Core;
-using ConsoleApplication.Engines;
+﻿using CommonCodebase.Core;
+using ConsoleApplication;
 using ConsoleTableExt;
+using Engines;
 using Pastel;
+using System.Text;
 
-namespace ConsoleApplication.Screens;
+namespace Screens;
 
 public abstract class ScreenBase : VisualObject
 {
@@ -27,7 +28,9 @@ public abstract class ScreenBase : VisualObject
         GraphicsEngine.SetScreen(Width, Height);
 
         foreach (var section in GenerateScreenContent())
+        {
             GraphicsEngine.DrawCentered(Width, section);
+        }
     }
 
     public GameState GetInput()
@@ -35,7 +38,9 @@ public abstract class ScreenBase : VisualObject
         InputEngine.ScreenControls.Clear();
 
         foreach (var item in MenuItems)
+        {
             InputEngine.ScreenControls.Add(item.Key, item.State);
+        }
 
         return (GameState)GetScreenInput!.Invoke();
     }
