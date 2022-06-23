@@ -8,6 +8,8 @@ public static class InputEngine
     private static readonly Dictionary<Keys, Music> MusicControls;
     private static readonly Dictionary<Keys, Direction> DirectionControls;
 
+    public static InputType AllowedInput { get; set; }
+
     static InputEngine()
     {
         MusicControls = new Dictionary<Keys, Music>
@@ -31,23 +33,40 @@ public static class InputEngine
 
     public static void ReadKey(object? sender, KeyEventArgs e)
     {
-        if (MusicControls.ContainsKey(e.KeyCode))
+        if (AllowedInput.HasFlag(InputType.MusicInput))
         {
-            switch (MusicControls[e.KeyCode])
-            {
-                case Music.PauseMusic:
-                    AudioEngine.PauseMusic();
-                    break;
-
-                case Music.SwitchMusic:
-                    AudioEngine.SwitchMusic();
-                    break;
-            }
+            CheckForMusicInput(e.KeyCode);
         }
 
-        if (DirectionControls.ContainsKey(e.KeyCode))
+        if (AllowedInput.HasFlag(InputType.MovementInput))
         {
-            MovementEngine.GetInput(DirectionControls[e.KeyCode]);
+            CheckForMovementInput(e.KeyCode);
+        }
+    }
+
+    private static void CheckForMusicInput(Keys key)
+    {
+        if (!MusicControls.ContainsKey(key))
+        {
+            return;
+        }
+
+        switch (MusicControls[key])
+        {
+            case Music.PauseMusic:
+                AudioEngine.PauseMusic();
+                break;
+            case Music.SwitchMusic:
+                AudioEngine.SwitchMusic();
+                break;
+        }
+    }
+
+    private static void CheckForMovementInput(Keys key)
+    {
+        if (DirectionControls.ContainsKey(key))
+        {
+            MovementEngine.GetInput(DirectionControls[key]);
         }
     }
 }

@@ -28,6 +28,7 @@ partial class MenuScreenForm
     /// </summary>
     private void InitializeComponent()
     {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuScreenForm));
             this.StartButton = new System.Windows.Forms.Button();
             this.QuitButton = new System.Windows.Forms.Button();
             this.SkiRunnerImage = new System.Windows.Forms.PictureBox();
@@ -59,7 +60,7 @@ partial class MenuScreenForm
             // 
             // SkiRunnerImage
             // 
-            this.SkiRunnerImage.Image = global::GUI.Resources.MenuLogo;
+            this.SkiRunnerImage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SkiRunnerImage.BackgroundImage")));
             this.SkiRunnerImage.Location = new System.Drawing.Point(270, 336);
             this.SkiRunnerImage.Name = "SkiRunnerImage";
             this.SkiRunnerImage.Size = new System.Drawing.Size(360, 360);
@@ -77,7 +78,7 @@ partial class MenuScreenForm
             this.MenuLabel.TabIndex = 4;
             this.MenuLabel.Text = "Inertia";
             // 
-            // MenuForm
+            // MenuScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -87,10 +88,11 @@ partial class MenuScreenForm
             this.Controls.Add(this.SkiRunnerImage);
             this.Controls.Add(this.QuitButton);
             this.Controls.Add(this.StartButton);
-            this.Icon = global::GUI.Resources.Icon;
-            this.Name = "MenuForm";
+            this.Icon = global::GUI.Properties.Resources.Icon;
+            this.Name = "MenuScreenForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormBase_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.SkiRunnerImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

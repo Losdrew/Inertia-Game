@@ -2,17 +2,25 @@
 using CommonCodebase.Entities;
 using CommonCodebase.Miscellaneous;
 using GUI.Forms;
-using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
+using GUI.Properties;
 
 namespace GUI.Engines;
 
 public static class GraphicsEngine
 {
-    private const int CellWidthScale = 40;
+    private const int CellWidthScale = 45;
     private const int CellHeightScale = 45;
 
-    public static GameForm? GameForm { private get; set; }
+    private static GameForm? GameForm { get; set; }
+
+    private static PictureBox? PlayerPictureBox { get; set; }
+
+    private static (int x, int y) NewPlayerPosition { get; set; }
+
+    public static void GetGameForm(GameForm gameForm)
+    {
+        GameForm = gameForm;
+    }
 
     public static void SetMapBox()
     {
@@ -37,7 +45,7 @@ public static class GraphicsEngine
 
         var image = cell switch
         {
-            Player => Resources.Player,
+            Player => Resources.PlayerAnimated,
             Prize => Resources.Prize,
             Stop => Resources.Stop,
             Trap => Resources.Trap,
@@ -45,16 +53,21 @@ public static class GraphicsEngine
             _ => Resources.Error
         };
 
-        image = ResizeImage(image, CellWidthScale, CellHeightScale);
-
         var cellPictureBox = new PictureBox
         {
             Image = image,
-            Region = CreateRegion(image),
+            Enabled = false,
             Parent = GameForm.MapBox,
+            BackColor = Color.Transparent,
+            SizeMode = PictureBoxSizeMode.Zoom,
             Size = new Size(CellWidthScale, CellHeightScale),
-            Location = new Point(cell.X * CellWidthScale, cell.Y * CellHeightScale)
+            Location = new Point(cell.X * CellWidthScale, cell.Y * CellHeightScale),
         };
+
+        if (cell is Player)
+        {
+            PlayerPictureBox = cellPictureBox;
+        }
 
         GameForm.MapBox.Controls.Add(cellPictureBox);
     }
@@ -66,15 +79,37 @@ public static class GraphicsEngine
             return;
         }
 
-        var cellPictureBoxLocation = new Point(cell.X * CellWidthScale, cell.Y * CellHeightScale);
+        var cellPictureBox = FindPictureBoxOnMap(new Point(cell.X * CellWidthScale, cell.Y * CellHeightScale));
 
-        foreach (Control control in GameForm.MapBox.Controls)
+        if (cellPictureBox != PlayerPictureBox)
         {
-            if (control.Location == cellPictureBoxLocation)
+            ClearPictureBoxFromMap(cellPictureBox);
+        }
+    }
+
+    private static PictureBox? FindPictureBoxOnMap(Point pictureBoxLocation)
+    {
+        if (GameForm != null)
+        {
+            foreach (Control control in GameForm.MapBox.Controls)
             {
-                GameForm.MapBox.Controls.Remove(control);
+                if (control.Location == pictureBoxLocation)
+                {
+                    return control as PictureBox;
+                }
             }
         }
+
+        return null;
+    }
+    private static void ClearPictureBoxFromMap(PictureBox? pictureBox)
+    {
+        if (pictureBox is null || GameForm is null)
+        {
+            return;
+        }
+
+        GameForm.MapBox.Controls.Remove(pictureBox);
     }
 
     public static void DrawControlsTip(object? sender, EventArgs e)
@@ -114,47 +149,82 @@ public static class GraphicsEngine
         }
 
         GameForm.ScoreNumberLabel.Text = score.ScoreToDraw.ToString();
-        GameForm.ScoreNumberLabel.ForeColor = score.Color;
     }
 
-    private static Bitmap ResizeImage(Image image, int width, int height)
+    public static void StartAnimationTimer(object? sender, EventArgs e)
     {
-        var destRect = new Rectangle(0, 0, width, height);
-        var destImage = new Bitmap(width, height);
-
-        destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
-
-        var graphics = Graphics.FromImage(destImage);
-
-        graphics.CompositingMode = CompositingMode.SourceCopy;
-        graphics.CompositingQuality = CompositingQuality.HighQuality;
-        graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-        graphics.SmoothingMode = SmoothingMode.HighQuality;
-        graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
-
-        var wrapMode = new ImageAttributes();
-        wrapMode.SetWrapMode(WrapMode.TileFlipXY);
-        graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
-
-        return destImage;
-    }
-
-    private static Region CreateRegion(Bitmap maskImage)
-    {
-        var mask = maskImage.GetPixel(0, 0);
-        var graphicsPath = new GraphicsPath();
-
-        for (var x = 0; x < maskImage.Width; x++)
+        if (sender is not Player player || PlayerPictureBox is null || GameForm is null)
         {
-            for (var y = 0; y < maskImage.Height; y++)
+            return;
+        }
+
+        NewPlayerPosition = (player.X * CellWidthScale, player.Y * CellHeightScale);
+
+        PlayerPictureBox.Enabled = true;
+
+        GameForm.AnimationTimer.Start();
+    }
+
+    public static void DoPlayerAnimation(object? sender, EventArgs e)
+    {
+        if (PlayerPictureBox is null || GameForm is null)
+        {
+            return;
+        }
+
+        var playerLocation = new Point(NewPlayerPosition.x, NewPlayerPosition.y);
+
+        if (PlayerPictureBox.Location != playerLocation)
+        {
+            if (PlayerPictureBox.Location.X < playerLocation.X)
             {
-                if (!maskImage.GetPixel(x, y).Equals(mask))
-                {
-                    graphicsPath.AddRectangle(new Rectangle(x, y, 1, 1));
-                }
+                PlayerPictureBox.Left += 5;
+            }
+
+            if (PlayerPictureBox.Location.X > playerLocation.X)
+            {
+                PlayerPictureBox.Left -= 5;
+            }
+
+            if (PlayerPictureBox.Location.Y < playerLocation.Y)
+            {
+                PlayerPictureBox.Top += 5;
+            }
+
+            if (PlayerPictureBox.Location.Y > playerLocation.Y)
+            {
+                PlayerPictureBox.Top -= 5;
             }
         }
 
-        return new Region(graphicsPath);
+        else
+        {
+            StopAnimationTimer();
+            return;
+        }
+
+        var destinationPictureBox = FindPictureBoxOnMap(playerLocation);
+
+        if (destinationPictureBox == null || destinationPictureBox == PlayerPictureBox)
+        {
+            return;
+        }
+
+        if (destinationPictureBox.Bounds.Contains(PlayerPictureBox.Location))
+        {
+            ClearPictureBoxFromMap(destinationPictureBox);
+        }
+    }
+
+    private static void StopAnimationTimer()
+    {
+        if (PlayerPictureBox is null || GameForm is null)
+        {
+            return;
+        }
+
+        PlayerPictureBox.Enabled = false;
+
+        GameForm.AnimationTimer.Stop();
     }
 }

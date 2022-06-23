@@ -1,7 +1,7 @@
 ﻿using CommonCodebase.Core;
 using CommonCodebase.Engines;
 
-namespace Engines;
+namespace ConsoleApplication.Engines;
 
 public static class InputEngine
 {

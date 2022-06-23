@@ -1,39 +1,53 @@
-﻿namespace CommonCodebase.Core;
-
-public enum GameState
+﻿namespace CommonCodebase.Core
 {
-    InMenu,
-    Start,
-    Play,
-    Win,
-    GameOver,
-    Restart,
-    Continue,
-    CreateNew,
-    Quit
+    public enum Collision
+    {
+        None,
+        At,
+        Before
+    }
+
+    public enum Direction
+    {
+        Up,
+        Down,
+        Left,
+        Right,
+        LeftUp,
+        RightUp,
+        LeftDown,
+        RightDown
+    }
+
+    public enum Music
+    {
+        PauseMusic,
+        SwitchMusic
+    }
 }
 
-public enum Collision
+namespace ConsoleApplication
 {
-    None,
-    At,
-    Before
+    public enum GameState
+    {
+        InMenu,
+        Start,
+        Play,
+        Win,
+        GameOver,
+        Restart,
+        Continue,
+        CreateNew,
+        Quit
+    }
 }
 
-public enum Direction
+namespace GUI.Engines
 {
-    Up,
-    Down,
-    Left,
-    Right,
-    LeftUp,
-    RightUp,
-    LeftDown,
-    RightDown
-}
-
-public enum Music
-{
-    PauseMusic,
-    SwitchMusic
+    [Flags]
+    public enum InputType
+    {
+        MovementInput,
+        MusicInput
+    }
 }

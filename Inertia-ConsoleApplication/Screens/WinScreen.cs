@@ -1,8 +1,7 @@
 ﻿using CommonCodebase.Core;
-using ConsoleApplication;
 using System.Drawing;
 
-namespace Screens;
+namespace ConsoleApplication.Screens;
 
 public class WinScreen : ScreenBase
 {

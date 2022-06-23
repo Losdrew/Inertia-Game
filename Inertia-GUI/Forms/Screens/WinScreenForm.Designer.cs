@@ -28,6 +28,7 @@ partial class WinScreenForm
     /// </summary>
     private void InitializeComponent()
     {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WinScreenForm));
             this.ContinueButton = new System.Windows.Forms.Button();
             this.QuitButton = new System.Windows.Forms.Button();
             this.SkiRunnerImage = new System.Windows.Forms.PictureBox();
@@ -53,14 +54,14 @@ partial class WinScreenForm
             this.QuitButton.Location = new System.Drawing.Point(350, 302);
             this.QuitButton.Name = "QuitButton";
             this.QuitButton.Size = new System.Drawing.Size(201, 39);
-            this.QuitButton.TabIndex = 2;
+            this.QuitButton.TabIndex = 3;
             this.QuitButton.Text = "Quit";
             this.QuitButton.UseVisualStyleBackColor = true;
             this.QuitButton.Click += new System.EventHandler(this.QuitButton_Click);
             // 
             // SkiRunnerImage
             // 
-            this.SkiRunnerImage.Image = global::GUI.Resources.MenuLogo;
+            this.SkiRunnerImage.Image = ((System.Drawing.Image)(resources.GetObject("SkiRunnerImage.Image")));
             this.SkiRunnerImage.Location = new System.Drawing.Point(270, 366);
             this.SkiRunnerImage.Name = "SkiRunnerImage";
             this.SkiRunnerImage.Size = new System.Drawing.Size(360, 360);
@@ -85,7 +86,7 @@ partial class WinScreenForm
             this.RestartLevelButton.Location = new System.Drawing.Point(350, 243);
             this.RestartLevelButton.Name = "RestartLevelButton";
             this.RestartLevelButton.Size = new System.Drawing.Size(201, 39);
-            this.RestartLevelButton.TabIndex = 5;
+            this.RestartLevelButton.TabIndex = 2;
             this.RestartLevelButton.Text = "Restart current level";
             this.RestartLevelButton.UseVisualStyleBackColor = true;
             this.RestartLevelButton.Click += new System.EventHandler(this.RestartLevelButton_Click);
@@ -101,13 +102,14 @@ partial class WinScreenForm
             this.Controls.Add(this.SkiRunnerImage);
             this.Controls.Add(this.QuitButton);
             this.Controls.Add(this.ContinueButton);
-            this.Icon = global::GUI.Resources.Icon;
             this.Name = "WinScreenForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "You win!";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormBase_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.SkiRunnerImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+            this.Icon = global::GUI.Properties.Resources.Icon;
 
     }
 

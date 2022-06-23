@@ -1,16 +1,11 @@
-﻿using System.Drawing;
-
-namespace CommonCodebase.Miscellaneous;
+﻿namespace CommonCodebase.Miscellaneous;
 
 public class Score : LabelBase
 {
     public Score()
     {
         Text = "Score: ";
-
         Height = CalculateHeight();
-
-        Color = Color.FromArgb(12, 216, 0);
     }
 
     public static int Height { get; private set; }
@@ -30,7 +25,7 @@ public class Score : LabelBase
         DrawScore?.Invoke(this, EventArgs.Empty);
     }
 
-    public void Update(object? sender, EventArgs e)
+    public void Update()
     {
         ScoreToDraw = TotalScore + ++CurrentScore;
         UpdateScore?.Invoke(this, EventArgs.Empty);

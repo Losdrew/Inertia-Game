@@ -54,7 +54,7 @@ public class Map : VisualObject
             // When prize count decreases, score increases
             if (value < _prizeCount)
             {
-                UpdateScore?.Invoke(this, EventArgs.Empty);
+                UpdateScore?.Invoke();
             }
 
             _prizeCount = value;
@@ -87,7 +87,7 @@ public class Map : VisualObject
         }
     }
 
-    public event EventHandler? UpdateScore;
+    public event Action? UpdateScore;
 
     public void CreateMap()
     {

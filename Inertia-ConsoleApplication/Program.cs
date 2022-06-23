@@ -2,8 +2,8 @@
 using CommonCodebase.Engines;
 using CommonCodebase.Entities;
 using CommonCodebase.Miscellaneous;
-using Engines;
-using Screens;
+using ConsoleApplication.Engines;
+using ConsoleApplication.Screens;
 
 namespace ConsoleApplication;
 
@@ -41,11 +41,17 @@ public static class Program
     private static void SetTargetMethods()
     {
         CellBase.DrawCell += GraphicsEngine.DrawCell;
-        Player.StartMovementAnimation += GraphicsEngine.MovementAnimation;
+        CellBase.ClearCell += GraphicsEngine.ClearCell;
+        CellBase.StopMovement += MovementEngine.StopMovement;
+
+        Prize.Win += MovementEngine.SetWin;
+        Trap.GameOver += MovementEngine.SetGameOver;
+        Player.StartMovementAnimation += GraphicsEngine.StartMovementAnimation;
+
         Score.DrawScore += GraphicsEngine.DrawScore;
         Score.UpdateScore += GraphicsEngine.DrawScore;
+
         ControlsTip.DrawControlsTip += GraphicsEngine.DrawControls;
-        ScreenBase.GetScreenInput += InputEngine.GetInput;
     }
 
     private static GameState Menu()

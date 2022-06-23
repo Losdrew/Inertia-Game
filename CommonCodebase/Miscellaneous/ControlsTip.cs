@@ -5,7 +5,6 @@ public class ControlsTip : LabelBase
     public ControlsTip()
     {
         Text = CommonResources.ControlsTip;
-
         Height = CalculateHeight();
     }
 

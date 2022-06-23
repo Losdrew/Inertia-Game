@@ -1,27 +1,29 @@
 ﻿using CommonCodebase.Core;
 using CommonCodebase.Engines;
-using System.Drawing;
 
 namespace CommonCodebase.Entities;
 
 public class Prize : CellBase
 {
+    public static Action? Win;
+
     public Prize(int x, int y) : base(x, y)
     {
         CollisionType = Collision.At;
-        Color = Color.FromArgb(12, 216, 0);
     }
 
     public override void Action(Map map)
     {
         ClearOnMap(map);
+
+        StopMovement?.Invoke();
+
         AudioEngine.PlayAudio("Prize");
-        MovementEngine.MovementAvailable = false;
 
         if (map.PrizeCount == 0)
         {
+            Win?.Invoke();
             AudioEngine.PlayAudio("Win");
-            MovementEngine.SetWin();
         }
     }
 }

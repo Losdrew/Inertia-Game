@@ -38,6 +38,7 @@ partial class GameForm
             this.ScoreLabel = new System.Windows.Forms.Label();
             this.ScoreNumberLabel = new System.Windows.Forms.Label();
             this.MovementTimer = new System.Windows.Forms.Timer(this.components);
+            this.AnimationTimer = new System.Windows.Forms.Timer(this.components);
             this.LeftSection.SuspendLayout();
             this.CenterSection.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MapBox)).BeginInit();
@@ -82,7 +83,7 @@ partial class GameForm
             // 
             // MapBox
             // 
-            this.MapBox.BackgroundImage = global::GUI.Resources.MapBackground;
+            this.MapBox.BackgroundImage = global::GUI.Properties.Resources.MapBackground;
             this.MapBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.MapBox.Location = new System.Drawing.Point(0, 0);
             this.MapBox.Name = "MapBox";
@@ -145,14 +146,12 @@ partial class GameForm
             // 
             // GameForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(982, 453);
             this.Controls.Add(this.CenterSection);
             this.Controls.Add(this.RightSection);
             this.Controls.Add(this.LeftSection);
-            this.Icon = global::GUI.Resources.Icon;
-            this.KeyPreview = true;
+            this.Icon = global::GUI.Properties.Resources.Icon;
             this.Name = "GameForm";
             this.Padding = new System.Windows.Forms.Padding(30, 60, 30, 60);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -182,5 +181,6 @@ partial class GameForm
     public Panel LeftSection;
     public Panel RightSection;
     public PictureBox MapBox;
-    internal System.Windows.Forms.Timer MovementTimer;
+    internal System.Windows.Forms.Timer AnimationTimer;
+    private System.Windows.Forms.Timer MovementTimer;
 }

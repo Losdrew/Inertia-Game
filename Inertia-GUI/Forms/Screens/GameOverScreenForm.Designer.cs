@@ -28,6 +28,7 @@ partial class GameOverScreenForm
     /// </summary>
     private void InitializeComponent()
     {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameOverScreenForm));
             this.RestartLevelButton = new System.Windows.Forms.Button();
             this.QuitButton = new System.Windows.Forms.Button();
             this.SkiRunnerImage = new System.Windows.Forms.PictureBox();
@@ -53,14 +54,14 @@ partial class GameOverScreenForm
             this.QuitButton.Location = new System.Drawing.Point(350, 302);
             this.QuitButton.Name = "QuitButton";
             this.QuitButton.Size = new System.Drawing.Size(201, 39);
-            this.QuitButton.TabIndex = 2;
+            this.QuitButton.TabIndex = 3;
             this.QuitButton.Text = "Quit";
             this.QuitButton.UseVisualStyleBackColor = true;
             this.QuitButton.Click += new System.EventHandler(this.QuitButton_Click);
             // 
             // SkiRunnerImage
             // 
-            this.SkiRunnerImage.Image = global::GUI.Resources.MenuLogo;
+            this.SkiRunnerImage.Image = ((System.Drawing.Image)(resources.GetObject("SkiRunnerImage.Image")));
             this.SkiRunnerImage.Location = new System.Drawing.Point(270, 366);
             this.SkiRunnerImage.Name = "SkiRunnerImage";
             this.SkiRunnerImage.Size = new System.Drawing.Size(360, 360);
@@ -85,7 +86,7 @@ partial class GameOverScreenForm
             this.CreateNewLevelButton.Location = new System.Drawing.Point(350, 243);
             this.CreateNewLevelButton.Name = "CreateNewLevelButton";
             this.CreateNewLevelButton.Size = new System.Drawing.Size(201, 39);
-            this.CreateNewLevelButton.TabIndex = 5;
+            this.CreateNewLevelButton.TabIndex = 2;
             this.CreateNewLevelButton.Text = "Create new level";
             this.CreateNewLevelButton.UseVisualStyleBackColor = true;
             this.CreateNewLevelButton.Click += new System.EventHandler(this.CreateNewLevelButton_Click);
@@ -101,10 +102,11 @@ partial class GameOverScreenForm
             this.Controls.Add(this.SkiRunnerImage);
             this.Controls.Add(this.QuitButton);
             this.Controls.Add(this.RestartLevelButton);
-            this.Icon = global::GUI.Resources.Icon;
+            this.Icon = global::GUI.Properties.Resources.Icon;
             this.Name = "GameOverScreenForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Game over";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormBase_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.SkiRunnerImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

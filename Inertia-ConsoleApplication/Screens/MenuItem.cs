@@ -1,6 +1,6 @@
 ﻿using CommonCodebase.Core;
 
-namespace Screens;
+namespace ConsoleApplication.Screens;
 
 public class MenuItem
 {

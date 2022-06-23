@@ -2,11 +2,11 @@
 using CommonCodebase.Entities;
 using CommonCodebase.Miscellaneous;
 using Pastel;
+using System.Drawing;
 using System.Text;
 using System.Text.RegularExpressions;
-using CommonCodebase.Engines;
 
-namespace Engines;
+namespace ConsoleApplication.Engines;
 
 public static class GraphicsEngine
 {
@@ -65,9 +65,31 @@ public static class GraphicsEngine
             _ => "?" // Error value
         };
 
+        var color = cell switch
+        {
+            Player => Color.DodgerBlue,
+            Prize => Color.FromArgb(12, 216, 0),
+            Stop => Color.Yellow,
+            Trap => Color.FromArgb(255, 65, 82),
+            Wall => Color.White,
+            _ => Color.Transparent
+        };
+
         SetCursorPosition(cell.X + MapLocationX, cell.Y + MapLocationY);
 
-        DrawText(symbol.Pastel(cell.Color));
+        DrawText(symbol.Pastel(color));
+    }
+
+    public static void ClearCell(object? sender, EventArgs e)
+    {
+        if (sender is not CellBase cell)
+        {
+            return;
+        }
+
+        SetCursorPosition(cell.X + MapLocationX, cell.Y + MapLocationY);
+
+        DrawText(" ");
     }
 
     public static void DrawScore(object? sender, EventArgs e)
@@ -77,7 +99,7 @@ public static class GraphicsEngine
             return;
         }
 
-        var text = score.Text + score.ScoreToDraw.ToString().Pastel(score.Color);
+        var text = score.Text + score.ScoreToDraw.ToString().Pastel(Color.FromArgb(12, 216, 0));
 
         SetCursorPosition(LeftSectionWidth + Map.Width, Map.Height - (Score.Height / 2));
 
@@ -100,10 +122,10 @@ public static class GraphicsEngine
         }
     }
 
-    public static void MovementAnimation()
+    public static void StartMovementAnimation(object? sender, EventArgs e)
     {
         // Artificial lag for smooth movement
-        Thread.Sleep(MovementEngine.FrameMs);
+        Thread.Sleep(85);
     }
 
     private static void DrawText(string text)

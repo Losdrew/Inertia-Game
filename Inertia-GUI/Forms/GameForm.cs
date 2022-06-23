@@ -10,23 +10,21 @@ namespace GUI.Forms;
 
 public partial class GameForm : FormBase
 {
-    private Map Map { get; set; }
-
-    private Score Score { get; }
-
     public GameForm()
     {
         InitializeComponent();
 
         SetTargetMethods();
 
-        AudioEngine.StartMusicPlaylist();
-
-        GraphicsEngine.GameForm = this;
+        GraphicsEngine.GetGameForm(this);
 
         Map = new Map();
         Score = new Score();
     }
+
+    private Map Map { get; set; }
+
+    private Score Score { get; }
 
     public void StartGame()
     {
@@ -67,6 +65,9 @@ public partial class GameForm : FormBase
         currentMap.UpdateScore += Score.Update;
 
         MovementEngine.Start(currentMap);
+
+        // Start accepting movement and music input
+        InputEngine.AllowedInput = InputType.MovementInput | InputType.MusicInput;
     }
 
     private static void Win()
@@ -79,34 +80,25 @@ public partial class GameForm : FormBase
         new GameOverScreenForm().MakeActive();
     }
 
-    private void StartMovementTimer()
-    {
-        MovementTimer.Start();
-    }
-
-    private void StopMovementTimer()
-    {
-        MovementTimer.Stop();
-    }
-
     private void SetTargetMethods()
     {
-        KeyDown += InputEngine.ReadKey;
-
-        MovementTimer.Tick += MovementEngine.Move;
-        MovementTimer.Interval = MovementEngine.FrameMs;
+        Player.StartMovementAnimation += GraphicsEngine.StartAnimationTimer;
+        AnimationTimer.Tick += GraphicsEngine.DoPlayerAnimation;
+        AnimationTimer.Interval = 1;
 
         CellBase.DrawCell += GraphicsEngine.DrawCell;
         CellBase.ClearCell += GraphicsEngine.ClearCell;
+        CellBase.StopMovement += MovementEngine.SetMovementUnavailable;
+
+        Prize.Win += Win;
+        Trap.GameOver += GameOver;
+        
+        MovementEngine.Win += Win;
+        MovementEngine.GameOver += GameOver;
 
         Score.DrawScore += GraphicsEngine.DrawScore;
         Score.UpdateScore += GraphicsEngine.UpdateScore;
 
         ControlsTip.DrawControlsTip += GraphicsEngine.DrawControlsTip;
-
-        MovementEngine.Win += Win;
-        MovementEngine.GameOver += GameOver;
-        MovementEngine.StartMovement += StartMovementTimer;
-        MovementEngine.StopMovement += StopMovementTimer;
     }
 }

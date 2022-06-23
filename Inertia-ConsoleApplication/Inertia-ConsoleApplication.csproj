@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CommonCodebase\CommonCodebase.csproj" />
-    <ProjectReference Include="..\Inertia-GUI\Inertia-GUI.csproj" />
   </ItemGroup>
 
   <ItemGroup>

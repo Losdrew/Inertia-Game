@@ -1,11 +1,11 @@
 ﻿using CommonCodebase.Core;
-using ConsoleApplication;
+using ConsoleApplication.Engines;
 using ConsoleTableExt;
-using Engines;
 using Pastel;
+using System.Drawing;
 using System.Text;
 
-namespace Screens;
+namespace ConsoleApplication.Screens;
 
 public abstract class ScreenBase : VisualObject
 {
@@ -17,11 +17,11 @@ public abstract class ScreenBase : VisualObject
         MenuItems = new List<MenuItem>();
     }
 
+    protected Color Color { get; init; }
+
     protected string? Label { get; init; }
 
     protected List<MenuItem> MenuItems { get; init; }
-
-    public static Func<Enum>? GetScreenInput { get; set; }
 
     public override void Draw()
     {
@@ -42,7 +42,7 @@ public abstract class ScreenBase : VisualObject
             InputEngine.ScreenControls.Add(item.Key, item.State);
         }
 
-        return (GameState)GetScreenInput!.Invoke();
+        return (GameState)InputEngine.GetInput();
     }
 
     private List<string> GenerateScreenContent()
