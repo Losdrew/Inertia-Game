@@ -1,5 +1,6 @@
 ﻿using CommonCodebase.Core;
 using ConsoleApplication.Engines;
+using ConsoleApplication.Properties;
 using ConsoleTableExt;
 using Pastel;
 using System.Drawing;
@@ -7,7 +8,7 @@ using System.Text;
 
 namespace ConsoleApplication.Screens;
 
-public abstract class ScreenBase : VisualObject
+internal abstract class ScreenBase : VisualObject
 {
     private const int Width = 118;
     private const int Height = 44;

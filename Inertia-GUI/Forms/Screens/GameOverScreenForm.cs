@@ -2,7 +2,7 @@ using GUI.Forms.Base;
 
 namespace GUI.Forms.Screens;
 
-public partial class GameOverScreenForm : ScreenFormBase
+internal partial class GameOverScreenForm : ScreenFormBase
 {
     public GameOverScreenForm()
     {

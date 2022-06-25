@@ -37,7 +37,6 @@ partial class GameForm
             this.ScoreBox = new System.Windows.Forms.SplitContainer();
             this.ScoreLabel = new System.Windows.Forms.Label();
             this.ScoreNumberLabel = new System.Windows.Forms.Label();
-            this.MovementTimer = new System.Windows.Forms.Timer(this.components);
             this.AnimationTimer = new System.Windows.Forms.Timer(this.components);
             this.LeftSection.SuspendLayout();
             this.CenterSection.SuspendLayout();
@@ -137,7 +136,7 @@ partial class GameForm
             // ScoreNumberLabel
             // 
             this.ScoreNumberLabel.AutoSize = true;
-            this.ScoreNumberLabel.ForeColor = System.Drawing.Color.LimeGreen;
+            this.ScoreNumberLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(174)))), ((int)(((byte)(102)))));
             this.ScoreNumberLabel.Location = new System.Drawing.Point(3, 0);
             this.ScoreNumberLabel.Name = "ScoreNumberLabel";
             this.ScoreNumberLabel.Size = new System.Drawing.Size(26, 31);
@@ -182,5 +181,4 @@ partial class GameForm
     public Panel RightSection;
     public PictureBox MapBox;
     internal System.Windows.Forms.Timer AnimationTimer;
-    private System.Windows.Forms.Timer MovementTimer;
 }

@@ -1,9 +1,9 @@
-﻿using CommonCodebase.Core;
+﻿using ConsoleApplication.Properties;
 using System.Drawing;
 
 namespace ConsoleApplication.Screens;
 
-public class MainMenuScreen : ScreenBase
+internal class MainMenuScreen : ScreenBase
 {
     public MainMenuScreen()
     {

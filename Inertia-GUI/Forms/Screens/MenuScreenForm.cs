@@ -3,7 +3,7 @@ using GUI.Forms.Base;
 
 namespace GUI.Forms.Screens;
 
-public partial class MenuScreenForm : ScreenFormBase
+internal partial class MenuScreenForm : ScreenFormBase
 {
     public MenuScreenForm()
     {

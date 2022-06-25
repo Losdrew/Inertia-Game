@@ -10,12 +10,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="11.2.1" />
-	  <PackageReference Include="Magick.NET.SystemDrawing" Version="5.0.3" />
-	  <PackageReference Include="PhotoSauce.MagicScaler" Version="0.13.0" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<ProjectReference Include="..\CommonCodebase\CommonCodebase.csproj" />
 	</ItemGroup>
 

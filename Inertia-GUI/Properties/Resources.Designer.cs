@@ -103,9 +103,9 @@ namespace GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Player {
+        internal static System.Drawing.Bitmap PlayerAnimated {
             get {
-                object obj = ResourceManager.GetObject("Player", resourceCulture);
+                object obj = ResourceManager.GetObject("PlayerAnimated", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap PlayerAnimated {
+        internal static System.Drawing.Bitmap PlayerAnimated_Mirrored {
             get {
-                object obj = ResourceManager.GetObject("PlayerAnimated", resourceCulture);
+                object obj = ResourceManager.GetObject("PlayerAnimated_Mirrored", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

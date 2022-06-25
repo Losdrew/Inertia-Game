@@ -3,7 +3,14 @@ using CommonCodebase.Engines;
 
 namespace GUI.Engines;
 
-public static class InputEngine
+[Flags]
+internal enum InputType
+{
+    MovementInput,
+    MusicInput
+}
+
+internal static class InputEngine
 {
     private static readonly Dictionary<Keys, Music> MusicControls;
     private static readonly Dictionary<Keys, Direction> DirectionControls;

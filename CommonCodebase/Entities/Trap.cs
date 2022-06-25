@@ -15,6 +15,7 @@ public class Trap : CellBase
     public override void Action(Map map)
     {
         StopMovement?.Invoke();
+
         GameOver?.Invoke();
 
         AudioEngine.PlayAudio("Trap");

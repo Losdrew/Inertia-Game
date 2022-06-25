@@ -1,9 +1,8 @@
-﻿using CommonCodebase.Core;
-using GUI.Engines;
+﻿using GUI.Engines;
 
 namespace GUI.Forms.Base;
 
-public partial class FormBase : Form
+internal partial class FormBase : Form
 {
     protected FormBase()
     {

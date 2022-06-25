@@ -3,7 +3,7 @@ using CommonCodebase.Engines;
 
 namespace ConsoleApplication.Engines;
 
-public static class InputEngine
+internal static class InputEngine
 {
     public static readonly Dictionary<ConsoleKey, GameState> ScreenControls;
     private static readonly Dictionary<ConsoleKey, Music> MusicControls;

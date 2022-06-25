@@ -2,7 +2,7 @@ using GUI.Forms.Base;
 
 namespace GUI.Forms.Screens;
 
-public partial class WinScreenForm : ScreenFormBase
+internal partial class WinScreenForm : ScreenFormBase
 {
     public WinScreenForm()
     {

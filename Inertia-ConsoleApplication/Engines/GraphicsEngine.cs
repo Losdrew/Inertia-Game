@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace ConsoleApplication.Engines;
 
-public static class GraphicsEngine
+internal static class GraphicsEngine
 {
     private const int LeftSectionWidth = 38;
     private const int RightSectionWidth = 32;

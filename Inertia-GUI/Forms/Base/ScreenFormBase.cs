@@ -1,6 +1,6 @@
 ﻿namespace GUI.Forms.Base;
 
-public partial class ScreenFormBase : FormBase
+internal partial class ScreenFormBase : FormBase
 {
     protected static readonly GameForm GameForm = new();
 

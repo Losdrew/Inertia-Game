@@ -7,7 +7,20 @@ using ConsoleApplication.Screens;
 
 namespace ConsoleApplication;
 
-public static class Program
+internal enum GameState
+{
+    InMenu,
+    Start,
+    Play,
+    Win,
+    GameOver,
+    Restart,
+    Continue,
+    CreateNew,
+    Quit
+}
+
+internal static class Program
 {
     public static void Main()
     {
@@ -15,7 +28,7 @@ public static class Program
         Map map = new();
         Score score = new();
 
-        SetTargetMethods();
+        SubscribeToEvents();
 
         AudioEngine.StartMusicPlaylist();
 
@@ -38,7 +51,7 @@ public static class Program
         }
     }
 
-    private static void SetTargetMethods()
+    private static void SubscribeToEvents()
     {
         CellBase.DrawCell += GraphicsEngine.DrawCell;
         CellBase.ClearCell += GraphicsEngine.ClearCell;
@@ -46,7 +59,6 @@ public static class Program
 
         Prize.Win += MovementEngine.SetWin;
         Trap.GameOver += MovementEngine.SetGameOver;
-        Player.StartMovementAnimation += GraphicsEngine.StartMovementAnimation;
 
         Score.DrawScore += GraphicsEngine.DrawScore;
         Score.UpdateScore += GraphicsEngine.DrawScore;

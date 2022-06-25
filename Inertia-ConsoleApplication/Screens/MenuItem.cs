@@ -1,8 +1,6 @@
-﻿using CommonCodebase.Core;
+﻿namespace ConsoleApplication.Screens;
 
-namespace ConsoleApplication.Screens;
-
-public class MenuItem
+internal class MenuItem
 {
     public MenuItem(string title, ConsoleKey key, GameState state)
     {

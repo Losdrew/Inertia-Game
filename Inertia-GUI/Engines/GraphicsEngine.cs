@@ -6,39 +6,42 @@ using GUI.Properties;
 
 namespace GUI.Engines;
 
-public static class GraphicsEngine
+internal static class GraphicsEngine
 {
     private const int CellWidthScale = 45;
     private const int CellHeightScale = 45;
 
-    private static GameForm? GameForm { get; set; }
-
-    private static PictureBox? PlayerPictureBox { get; set; }
-
-    private static (int x, int y) NewPlayerPosition { get; set; }
+    private static GameForm? _gameForm;
 
     public static void GetGameForm(GameForm gameForm)
     {
-        GameForm = gameForm;
+        _gameForm = gameForm;
     }
 
     public static void SetMapBox()
     {
-        if (GameForm is null)
+        if (_gameForm is null)
         {
             return;
         }
 
-        // Clearing all controls to draw on an empty MapBox
-        GameForm.MapBox.Controls.Clear();
+        var (width, height) = GetScaledValues(Map.Width, Map.Height);
 
-        GameForm.MapBox.Size = new Size(Map.Width * CellWidthScale, Map.Height * CellHeightScale);
+        _gameForm.MapBox.Size = new Size(width, height);
+
+        // Clearing all controls to draw on an empty MapBox
+        _gameForm.MapBox.Controls.Clear();
+    }
+
+    public static (int first, int second) GetScaledValues(int first = 1, int second = 1)
+    {
+        return (first * CellWidthScale, second * CellHeightScale);
     }
 
     public static void DrawCell(object? sender, EventArgs e)
     {
         // Don't draw if cell is an empty one
-        if (sender is not CellBase cell || cell is Empty || GameForm is null)
+        if (sender is not CellBase cell || cell is Empty || _gameForm is null)
         {
             return;
         }
@@ -53,45 +56,91 @@ public static class GraphicsEngine
             _ => Resources.Error
         };
 
+        var (width, height) = GetScaledValues();
+        var (x, y) = GetScaledValues(cell.X, cell.Y);
+
         var cellPictureBox = new PictureBox
         {
             Image = image,
             Enabled = false,
-            Parent = GameForm.MapBox,
+            Parent = _gameForm.MapBox,
+            Location = new Point(x, y),
             BackColor = Color.Transparent,
+            Size = new Size(width, height),
             SizeMode = PictureBoxSizeMode.Zoom,
-            Size = new Size(CellWidthScale, CellHeightScale),
-            Location = new Point(cell.X * CellWidthScale, cell.Y * CellHeightScale),
         };
 
         if (cell is Player)
         {
-            PlayerPictureBox = cellPictureBox;
+            AnimationEngine.PlayerPictureBox = cellPictureBox;
         }
 
-        GameForm.MapBox.Controls.Add(cellPictureBox);
+        _gameForm.MapBox.Controls.Add(cellPictureBox);
     }
 
     public static void ClearCell(object? sender, EventArgs e)
     {
-        if (sender is not CellBase cell || GameForm is null)
+        if (sender is not CellBase cell || _gameForm is null)
         {
             return;
         }
 
-        var cellPictureBox = FindPictureBoxOnMap(new Point(cell.X * CellWidthScale, cell.Y * CellHeightScale));
+        var (x, y) = GetScaledValues(cell.X, cell.Y);
 
-        if (cellPictureBox != PlayerPictureBox)
+        var cellPictureBox = FindPictureBoxOnMap(new Point(x, y));
+
+        if (cellPictureBox != null)
         {
-            ClearPictureBoxFromMap(cellPictureBox);
+            ClearPictureBoxOnMap(cellPictureBox);
         }
     }
 
-    private static PictureBox? FindPictureBoxOnMap(Point pictureBoxLocation)
+    public static void DrawControlsTip(object? sender, EventArgs e)
     {
-        if (GameForm != null)
+        if (sender is not ControlsTip controlsTip || _gameForm is null)
         {
-            foreach (Control control in GameForm.MapBox.Controls)
+            return;
+        }
+
+        _gameForm.ControlsTipLabel.Text = controlsTip.Text;
+
+        var sectionSize = _gameForm.LeftSection.Size;
+        var tipSize = _gameForm.ControlsTipLabel.Size;
+
+        _gameForm.ControlsTipLabel.Location = GetCenteredLocation(sectionSize, tipSize);
+    }
+
+    public static void DrawScore(object? sender, EventArgs e)
+    {
+        if (sender is not Score score || _gameForm is null)
+        {
+            return;
+        }
+
+        _gameForm.ScoreLabel.Text = score.Text;
+        _gameForm.ScoreNumberLabel.Text = score.ScoreToDraw.ToString();
+
+        var sectionSize = _gameForm.RightSection.Size;
+        var boxSize = _gameForm.ScoreBox.Size;
+
+        _gameForm.ScoreBox.Location = GetCenteredLocation(sectionSize, boxSize);
+    }
+
+    public static void UpdateScore(object? sender, EventArgs e)
+    {
+        if (sender is not Score score || _gameForm is null)
+        {
+            return;
+        }
+
+        _gameForm.ScoreNumberLabel.Text = score.ScoreToDraw.ToString();
+    }
+
+    public static PictureBox? FindPictureBoxOnMap(Point pictureBoxLocation)
+    {
+        if (_gameForm != null)
+        {
+            foreach (Control control in _gameForm.MapBox.Controls)
             {
                 if (control.Location == pictureBoxLocation)
                 {
@@ -102,129 +151,22 @@ public static class GraphicsEngine
 
         return null;
     }
-    private static void ClearPictureBoxFromMap(PictureBox? pictureBox)
+
+    public static void ClearPictureBoxOnMap(PictureBox? pictureBox)
     {
-        if (pictureBox is null || GameForm is null)
+        if (pictureBox == AnimationEngine.PlayerPictureBox || pictureBox is null || _gameForm is null)
         {
             return;
         }
 
-        GameForm.MapBox.Controls.Remove(pictureBox);
+        _gameForm.MapBox.Controls.Remove(pictureBox);
     }
 
-    public static void DrawControlsTip(object? sender, EventArgs e)
+    private static Point GetCenteredLocation(Size parentSize, Size childSize)
     {
-        if (sender is not ControlsTip controlsTip || GameForm is null)
-        {
-            return;
-        }
+        var x = (parentSize.Width - childSize.Width) / 2;
+        var y = (parentSize.Height - childSize.Height) / 2;
 
-        GameForm.ControlsTipLabel.Text = controlsTip.Text;
-
-        // Horizontal and vertical centering relative to parent panel
-        GameForm.ControlsTipLabel.Top = (GameForm.LeftSection.Height - GameForm.ControlsTipLabel.Height) / 2;
-        GameForm.ControlsTipLabel.Left = (GameForm.LeftSection.Width - GameForm.ControlsTipLabel.Width) / 2;
-    }
-
-    public static void DrawScore(object? sender, EventArgs e)
-    {
-        if (sender is not Score score || GameForm is null)
-        {
-            return;
-        }
-
-        GameForm.ScoreLabel.Text = score.Text;
-        GameForm.ScoreNumberLabel.Text = score.ScoreToDraw.ToString();
-
-        // Horizontal and vertical centering relative to parent panel
-        GameForm.ScoreBox.Top = (GameForm.RightSection.Height - GameForm.ScoreBox.Height) / 2;
-        GameForm.ScoreBox.Left = (GameForm.RightSection.Width - GameForm.ScoreBox.Width) / 2;
-    }
-
-    public static void UpdateScore(object? sender, EventArgs e)
-    {
-        if (sender is not Score score || GameForm is null)
-        {
-            return;
-        }
-
-        GameForm.ScoreNumberLabel.Text = score.ScoreToDraw.ToString();
-    }
-
-    public static void StartAnimationTimer(object? sender, EventArgs e)
-    {
-        if (sender is not Player player || PlayerPictureBox is null || GameForm is null)
-        {
-            return;
-        }
-
-        NewPlayerPosition = (player.X * CellWidthScale, player.Y * CellHeightScale);
-
-        PlayerPictureBox.Enabled = true;
-
-        GameForm.AnimationTimer.Start();
-    }
-
-    public static void DoPlayerAnimation(object? sender, EventArgs e)
-    {
-        if (PlayerPictureBox is null || GameForm is null)
-        {
-            return;
-        }
-
-        var playerLocation = new Point(NewPlayerPosition.x, NewPlayerPosition.y);
-
-        if (PlayerPictureBox.Location != playerLocation)
-        {
-            if (PlayerPictureBox.Location.X < playerLocation.X)
-            {
-                PlayerPictureBox.Left += 5;
-            }
-
-            if (PlayerPictureBox.Location.X > playerLocation.X)
-            {
-                PlayerPictureBox.Left -= 5;
-            }
-
-            if (PlayerPictureBox.Location.Y < playerLocation.Y)
-            {
-                PlayerPictureBox.Top += 5;
-            }
-
-            if (PlayerPictureBox.Location.Y > playerLocation.Y)
-            {
-                PlayerPictureBox.Top -= 5;
-            }
-        }
-
-        else
-        {
-            StopAnimationTimer();
-            return;
-        }
-
-        var destinationPictureBox = FindPictureBoxOnMap(playerLocation);
-
-        if (destinationPictureBox == null || destinationPictureBox == PlayerPictureBox)
-        {
-            return;
-        }
-
-        if (destinationPictureBox.Bounds.Contains(PlayerPictureBox.Location))
-        {
-            ClearPictureBoxFromMap(destinationPictureBox);
-        }
-    }
-
-    private static void StopAnimationTimer()
-    {
-        if (PlayerPictureBox is null || GameForm is null)
-        {
-            return;
-        }
-
-        PlayerPictureBox.Enabled = false;
-
-        GameForm.AnimationTimer.Stop();
+        return new Point(x, y);
     }
 }

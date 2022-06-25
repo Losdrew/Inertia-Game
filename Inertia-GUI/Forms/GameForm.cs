@@ -1,5 +1,4 @@
 ﻿using CommonCodebase.Core;
-using CommonCodebase.Engines;
 using CommonCodebase.Entities;
 using CommonCodebase.Miscellaneous;
 using GUI.Engines;
@@ -8,63 +7,64 @@ using GUI.Forms.Screens;
 
 namespace GUI.Forms;
 
-public partial class GameForm : FormBase
+internal partial class GameForm : FormBase
 {
+    private Map _map;
+    private readonly Score _score;
+
     public GameForm()
     {
         InitializeComponent();
 
-        SetTargetMethods();
+        SubscribeToEvents();
+
+        _map = new Map();
+        _score = new Score();
 
         GraphicsEngine.GetGameForm(this);
 
-        Map = new Map();
-        Score = new Score();
+        AnimationEngine.GetAnimationTimer(AnimationTimer);
     }
-
-    private Map Map { get; set; }
-
-    private Score Score { get; }
 
     public void StartGame()
     {
-        Map = new Map();
-        Map.CreateMap();
+        _map = new Map();
+        _map.CreateMap();
         Play();
     }
 
     public void Restart()
     {
-        Score.ResetCurrent();
+        _score.ResetCurrent();
         Play();
     }
 
     public void Continue()
     {
-        Score.Save();
+        _score.Save();
         StartGame();
     }
 
     public void CreateNew()
     {
-        Score.ResetAll();
+        _score.ResetAll();
         StartGame();
     }
 
     private void Play()
     {
         // Create a copy of map
-        Map currentMap = new(Map);
+        Map currentMap = new(_map);
 
         GraphicsEngine.SetMapBox();
 
         currentMap.Draw();
-        Score.Draw();
+        _score.Draw();
         new ControlsTip().Draw();
 
-        currentMap.UpdateScore += Score.Update;
+        currentMap.UpdateScore += _score.Update;
 
-        MovementEngine.Start(currentMap);
+        MovementEngine.GetCurrentMap(currentMap);
 
         // Start accepting movement and music input
         InputEngine.AllowedInput = InputType.MovementInput | InputType.MusicInput;
@@ -80,25 +80,21 @@ public partial class GameForm : FormBase
         new GameOverScreenForm().MakeActive();
     }
 
-    private void SetTargetMethods()
+    private void SubscribeToEvents()
     {
-        Player.StartMovementAnimation += GraphicsEngine.StartAnimationTimer;
-        AnimationTimer.Tick += GraphicsEngine.DoPlayerAnimation;
+        AnimationTimer.Tick += AnimationEngine.PlayAnimation;
         AnimationTimer.Interval = 1;
 
         CellBase.DrawCell += GraphicsEngine.DrawCell;
         CellBase.ClearCell += GraphicsEngine.ClearCell;
-        CellBase.StopMovement += MovementEngine.SetMovementUnavailable;
+        CellBase.StopMovement += MovementEngine.StopMovement;
 
         Prize.Win += Win;
         Trap.GameOver += GameOver;
-        
-        MovementEngine.Win += Win;
-        MovementEngine.GameOver += GameOver;
 
         Score.DrawScore += GraphicsEngine.DrawScore;
         Score.UpdateScore += GraphicsEngine.UpdateScore;
 
         ControlsTip.DrawControlsTip += GraphicsEngine.DrawControlsTip;
     }
-}
+}  

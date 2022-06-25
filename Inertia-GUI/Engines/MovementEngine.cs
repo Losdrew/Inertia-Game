@@ -1,61 +1,59 @@
 ﻿using CommonCodebase.Core;
 
-namespace CommonCodebase.Engines;
+namespace GUI.Engines;
 
 public static class MovementEngine
 {
-    public static Action? Win;
-    public static Action? GameOver;
+    public static Action? StartMovement;
 
-    private static Action? _startMovement;
+    private static Map? _map;
+
+    private static bool _isMovementOngoing;
 
     private static Direction _currentDirection;
 
-    private static Map? Map { get; set; }
-
-    public static bool MovementAvailable { get; set; }
-
-    public static void Start(Map currentMap)
+    public static void GetCurrentMap(Map currentMap)
     {
-        Map = currentMap;
+        _map = currentMap;
 
-        _startMovement += Move;
+        StartMovement += Move;
     }
 
     private static void Move()
     {
-        if (Map is null)
+        if (!_isMovementOngoing || _map is null)
         {
             return;
         }
 
-        while (MovementAvailable)
+        var (x, y) = Map.GetDestination(_map.Player.X, _map.Player.Y, _currentDirection);
+
+        if (_map[x, y].CollisionType is Collision.At or Collision.None)
         {
-            var (x, y) = Map.GetDestination(Map.Player.X, Map.Player.Y, _currentDirection);
-
-            if (Map[x, y].CollisionType is Collision.At or Collision.None)
-            {
-                Map.Player.ChangePosition(x, y);
-            }
-
-            Map[x, y].Action(Map);
+            _map.Player.ChangePosition(x, y);
+            AnimationEngine.StartAnimation(_map.Player);
         }
+
+        _map[x, y].Action(_map);
     }
 
-    public static void SetMovementUnavailable()
+    public static void StopMovement()
     {
-        MovementAvailable = false;
+        _isMovementOngoing = false;
+        AnimationEngine.SetPlayerGifAnimation(false);
     }
 
     public static void GetInput(Direction direction)
     {
-        if (MovementAvailable)
+        // Input must not be accepted while movement is in progress
+        if (_isMovementOngoing)
         {
             return;
         }
 
+        _isMovementOngoing = true;
         _currentDirection = direction;
-        MovementAvailable = true;
-        _startMovement?.Invoke();
+        AnimationEngine.SetPlayerGifAnimation(true);
+        StartMovement?.Invoke();
     }
 }

@@ -1,9 +1,9 @@
-﻿using CommonCodebase.Core;
+﻿using ConsoleApplication.Properties;
 using System.Drawing;
 
 namespace ConsoleApplication.Screens;
 
-public class WinScreen : ScreenBase
+internal class WinScreen : ScreenBase
 {
     public WinScreen()
     {

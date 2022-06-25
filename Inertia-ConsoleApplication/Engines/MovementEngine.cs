@@ -2,7 +2,7 @@
 
 namespace ConsoleApplication.Engines;
 
-public static class MovementEngine
+internal static class MovementEngine
 {
     private static bool _movementAvailable, _isWin, _isGameOver;
 
@@ -57,6 +57,7 @@ public static class MovementEngine
         if (map[x, y].CollisionType is Collision.At or Collision.None)
         {
             map.Player.ChangePosition(x, y);
+            AnimationEngine.StartAnimation(map.Player);
         }
 
         map[x, y].Action(map);
