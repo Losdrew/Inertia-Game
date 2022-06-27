@@ -3,9 +3,9 @@ using System.Drawing;
 
 namespace ConsoleApplication.Screens;
 
-internal class MainMenuScreen : ScreenBase
+internal class MenuScreen : ScreenBase
 {
-    public MainMenuScreen()
+    public MenuScreen()
     {
         Color = Color.Snow;
 

@@ -122,12 +122,6 @@ internal static class GraphicsEngine
         }
     }
 
-    public static void StartMovementAnimation(object? sender, EventArgs e)
-    {
-        // Artificial lag for smooth movement
-        Thread.Sleep(85);
-    }
-
     private static void DrawText(string text)
     {
         Console.Write(text);

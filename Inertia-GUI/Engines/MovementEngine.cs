@@ -4,8 +4,6 @@ namespace GUI.Engines;
 
 public static class MovementEngine
 {
-    public static Action? StartMovement;
-
     private static Map? _map;
 
     private static bool _isMovementOngoing;
@@ -15,11 +13,9 @@ public static class MovementEngine
     public static void GetCurrentMap(Map currentMap)
     {
         _map = currentMap;
-
-        StartMovement += Move;
     }
 
-    private static void Move()
+    public static void Move()
     {
         if (!_isMovementOngoing || _map is null)
         {
@@ -54,6 +50,7 @@ public static class MovementEngine
         _isMovementOngoing = true;
         _currentDirection = direction;
         AnimationEngine.SetPlayerGifAnimation(true);
-        StartMovement?.Invoke();
+
+        Move();
     }
 }

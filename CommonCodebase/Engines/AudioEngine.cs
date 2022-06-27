@@ -62,6 +62,7 @@ public static class AudioEngine
         {
             MusicOut.Pause();
         }
+
         else
         {
             MusicOut.Play();

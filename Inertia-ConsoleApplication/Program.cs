@@ -68,7 +68,7 @@ internal static class Program
 
     private static GameState Menu()
     {
-        MainMenuScreen mainMenuScreen = new();
+        MenuScreen mainMenuScreen = new();
         mainMenuScreen.Draw();
         return mainMenuScreen.GetInput();
     }

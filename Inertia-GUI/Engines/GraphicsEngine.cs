@@ -72,6 +72,7 @@ internal static class GraphicsEngine
 
         if (cell is Player)
         {
+            AnimationEngine.IsPlayerMirrored = false;
             AnimationEngine.PlayerPictureBox = cellPictureBox;
         }
 

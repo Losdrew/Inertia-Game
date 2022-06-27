@@ -2,16 +2,16 @@
 
 internal class MenuItem
 {
+    public readonly string Title;
+
+    public readonly ConsoleKey Key;
+
+    public readonly GameState State;
+
     public MenuItem(string title, ConsoleKey key, GameState state)
     {
         Title = title;
         Key = key;
         State = state;
     }
-
-    public string Title { get; }
-
-    public ConsoleKey Key { get; }
-
-    public GameState State { get; }
 }

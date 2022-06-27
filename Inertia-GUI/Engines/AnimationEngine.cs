@@ -8,18 +8,16 @@ internal static class AnimationEngine
 {
     private const int AnimationOffset = 5;
 
-    private static bool _isMirrored;
+    public static bool IsPlayerMirrored;
+    public static PictureBox? PlayerPictureBox;
 
     private static Timer? _animationTimer;
 
     private static Point _newPlayerLocation;
-
     private static PictureBox? _destinationPictureBox;
 
     private static readonly Image PlayerImage = Resources.PlayerAnimated;
     private static readonly Image PlayerImageMirrored = Resources.PlayerAnimated_Mirrored;
-
-    public static PictureBox? PlayerPictureBox { get; set; }
 
     public static void GetAnimationTimer(Timer animationTimer)
     {
@@ -94,11 +92,11 @@ internal static class AnimationEngine
     private static void StartAnimationTimer()
     {
         // When moving to left, mirror player's image
-        if ((!_isMirrored && _newPlayerLocation.X < PlayerPictureBox?.Location.X) ||
-            (_isMirrored && _newPlayerLocation.X > PlayerPictureBox?.Location.X))
+        if ((!IsPlayerMirrored && _newPlayerLocation.X < PlayerPictureBox?.Location.X) ||
+            (IsPlayerMirrored && _newPlayerLocation.X > PlayerPictureBox?.Location.X))
         {
-            PlayerPictureBox.Image = _isMirrored ? PlayerImage : PlayerImageMirrored;
-            _isMirrored = !_isMirrored;
+            PlayerPictureBox.Image = IsPlayerMirrored ? PlayerImage : PlayerImageMirrored;
+            IsPlayerMirrored = !IsPlayerMirrored;
         }
 
         _animationTimer?.Start();
@@ -108,6 +106,6 @@ internal static class AnimationEngine
     {
         _animationTimer?.Stop();
 
-        MovementEngine.StartMovement?.Invoke();
+        MovementEngine.Move();
     }
 } 

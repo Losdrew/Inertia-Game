@@ -9,6 +9,8 @@ public class Map : VisualObject
 
     private const int MaxPlayerCount = 1;
 
+    private readonly CellBase[,] _matrix;
+
     private Player? _player;
 
     private int _playerCount;
@@ -17,7 +19,7 @@ public class Map : VisualObject
 
     public Map()
     {
-        Matrix = new CellBase[Width, Height];
+        _matrix = new CellBase[Width, Height];
     }
 
     public Map(Map map) : this()
@@ -61,11 +63,9 @@ public class Map : VisualObject
         }
     }
 
-    private CellBase[,] Matrix { get; }
-
     public CellBase this[int x, int y]
     {
-        get => Matrix[x, y];
+        get => _matrix[x, y];
         set
         {
             if (value is Player)
@@ -78,12 +78,12 @@ public class Map : VisualObject
                 PrizeCount++;
             }
 
-            if (Matrix[x, y] is Prize)
+            if (_matrix[x, y] is Prize)
             {
                 PrizeCount--;
             }
 
-            Matrix[x, y] = value;
+            _matrix[x, y] = value;
         }
     }
 

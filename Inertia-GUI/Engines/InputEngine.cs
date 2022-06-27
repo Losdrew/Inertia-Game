@@ -12,10 +12,10 @@ internal enum InputType
 
 internal static class InputEngine
 {
+    public static InputType AllowedInput;
+
     private static readonly Dictionary<Keys, Music> MusicControls;
     private static readonly Dictionary<Keys, Direction> DirectionControls;
-
-    public static InputType AllowedInput { get; set; }
 
     static InputEngine()
     {
