@@ -1,4 +1,5 @@
 ﻿using CommonCodebase.Core;
+using CommonCodebase.Engines;
 using CommonCodebase.Entities;
 using CommonCodebase.Miscellaneous;
 using GUI.Engines;
@@ -64,7 +65,7 @@ internal partial class GameForm : FormBase
 
         currentMap.UpdateScore += _score.Update;
 
-        MovementEngine.GetCurrentMap(currentMap);
+        MovementEngine.Movement.GetCurrentMap(currentMap);
 
         // Start accepting movement and music input
         InputEngine.AllowedInput = InputType.MovementInput | InputType.MusicInput;
@@ -89,12 +90,21 @@ internal partial class GameForm : FormBase
         CellBase.ClearCell += GraphicsEngine.ClearCell;
         CellBase.StopMovement += MovementEngine.StopMovement;
 
-        Prize.Win += Win;
-        Trap.GameOver += GameOver;
+        Prize.Win += MovementEngine.Movement.SetWin;
+        Trap.GameOver += MovementEngine.Movement.SetGameOver;
+
+        MovementEngine.Movement.Win += Win;
+        MovementEngine.Movement.GameOver += GameOver;
+        MovementEngine.Movement.StartAnimation += AnimationEngine.StartAnimation; 
 
         Score.DrawScore += GraphicsEngine.DrawScore;
         Score.UpdateScore += GraphicsEngine.UpdateScore;
 
         ControlsTip.DrawControlsTip += GraphicsEngine.DrawControlsTip;
     }
-}  
+
+    private void AudioVolumeSlider_VolumeChanged(object sender, EventArgs e)
+    {
+        AudioEngine.ChangeVolume(AudioVolumeSlider.Volume);
+    }
+}

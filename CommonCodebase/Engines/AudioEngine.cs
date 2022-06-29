@@ -83,6 +83,11 @@ public static class AudioEngine
         PlayMusic();
     }
 
+    public static void ChangeVolume(float volume)
+    {
+        SoundOut.Volume = volume;
+    }
+
     private static void PlayMusic()
     {
         // Music is chosen at random

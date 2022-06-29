@@ -38,6 +38,10 @@ partial class GameForm
             this.ScoreLabel = new System.Windows.Forms.Label();
             this.ScoreNumberLabel = new System.Windows.Forms.Label();
             this.AnimationTimer = new System.Windows.Forms.Timer(this.components);
+            this.BottomSection = new System.Windows.Forms.Panel();
+            this.AudioVolumeContainer = new System.Windows.Forms.SplitContainer();
+            this.AudioVolumeLabel = new System.Windows.Forms.Label();
+            this.AudioVolumeSlider = new NAudio.Gui.VolumeSlider();
             this.LeftSection.SuspendLayout();
             this.CenterSection.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MapBox)).BeginInit();
@@ -46,6 +50,11 @@ partial class GameForm
             this.ScoreBox.Panel1.SuspendLayout();
             this.ScoreBox.Panel2.SuspendLayout();
             this.ScoreBox.SuspendLayout();
+            this.BottomSection.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AudioVolumeContainer)).BeginInit();
+            this.AudioVolumeContainer.Panel1.SuspendLayout();
+            this.AudioVolumeContainer.Panel2.SuspendLayout();
+            this.AudioVolumeContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // ControlsTipLabel
@@ -67,7 +76,7 @@ partial class GameForm
             this.LeftSection.Location = new System.Drawing.Point(30, 60);
             this.LeftSection.Name = "LeftSection";
             this.LeftSection.Padding = new System.Windows.Forms.Padding(20);
-            this.LeftSection.Size = new System.Drawing.Size(129, 333);
+            this.LeftSection.Size = new System.Drawing.Size(129, 302);
             this.LeftSection.TabIndex = 4;
             // 
             // CenterSection
@@ -77,7 +86,7 @@ partial class GameForm
             this.CenterSection.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CenterSection.Location = new System.Drawing.Point(159, 60);
             this.CenterSection.Name = "CenterSection";
-            this.CenterSection.Size = new System.Drawing.Size(591, 333);
+            this.CenterSection.Size = new System.Drawing.Size(591, 302);
             this.CenterSection.TabIndex = 6;
             // 
             // MapBox
@@ -98,7 +107,7 @@ partial class GameForm
             this.RightSection.Location = new System.Drawing.Point(750, 60);
             this.RightSection.Name = "RightSection";
             this.RightSection.Padding = new System.Windows.Forms.Padding(20);
-            this.RightSection.Size = new System.Drawing.Size(202, 333);
+            this.RightSection.Size = new System.Drawing.Size(202, 302);
             this.RightSection.TabIndex = 5;
             // 
             // ScoreBox
@@ -143,6 +152,53 @@ partial class GameForm
             this.ScoreNumberLabel.TabIndex = 3;
             this.ScoreNumberLabel.Text = "0";
             // 
+            // BottomSection
+            // 
+            this.BottomSection.Controls.Add(this.AudioVolumeContainer);
+            this.BottomSection.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.BottomSection.Location = new System.Drawing.Point(30, 362);
+            this.BottomSection.Name = "BottomSection";
+            this.BottomSection.Padding = new System.Windows.Forms.Padding(3);
+            this.BottomSection.Size = new System.Drawing.Size(922, 31);
+            this.BottomSection.TabIndex = 7;
+            // 
+            // AudioVolumeContainer
+            // 
+            this.AudioVolumeContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AudioVolumeContainer.Location = new System.Drawing.Point(3, 3);
+            this.AudioVolumeContainer.Name = "AudioVolumeContainer";
+            // 
+            // AudioVolumeContainer.Panel1
+            // 
+            this.AudioVolumeContainer.Panel1.Controls.Add(this.AudioVolumeLabel);
+            // 
+            // AudioVolumeContainer.Panel2
+            // 
+            this.AudioVolumeContainer.Panel2.Controls.Add(this.AudioVolumeSlider);
+            this.AudioVolumeContainer.Size = new System.Drawing.Size(916, 25);
+            this.AudioVolumeContainer.SplitterDistance = 441;
+            this.AudioVolumeContainer.TabIndex = 6;
+            // 
+            // AudioVolumeLabel
+            // 
+            this.AudioVolumeLabel.AutoSize = true;
+            this.AudioVolumeLabel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.AudioVolumeLabel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.AudioVolumeLabel.Location = new System.Drawing.Point(321, 0);
+            this.AudioVolumeLabel.Name = "AudioVolumeLabel";
+            this.AudioVolumeLabel.Size = new System.Drawing.Size(120, 23);
+            this.AudioVolumeLabel.TabIndex = 5;
+            this.AudioVolumeLabel.Text = "Audio volume:";
+            // 
+            // AudioVolumeSlider
+            // 
+            this.AudioVolumeSlider.Dock = System.Windows.Forms.DockStyle.Left;
+            this.AudioVolumeSlider.Location = new System.Drawing.Point(0, 0);
+            this.AudioVolumeSlider.Name = "AudioVolumeSlider";
+            this.AudioVolumeSlider.Size = new System.Drawing.Size(120, 25);
+            this.AudioVolumeSlider.TabIndex = 0;
+            this.AudioVolumeSlider.VolumeChanged += new System.EventHandler(this.AudioVolumeSlider_VolumeChanged);
+            // 
             // GameForm
             // 
             this.AutoSize = true;
@@ -150,6 +206,7 @@ partial class GameForm
             this.Controls.Add(this.CenterSection);
             this.Controls.Add(this.RightSection);
             this.Controls.Add(this.LeftSection);
+            this.Controls.Add(this.BottomSection);
             this.Icon = global::GUI.Properties.Resources.Icon;
             this.Name = "GameForm";
             this.Padding = new System.Windows.Forms.Padding(30, 60, 30, 60);
@@ -166,6 +223,12 @@ partial class GameForm
             this.ScoreBox.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ScoreBox)).EndInit();
             this.ScoreBox.ResumeLayout(false);
+            this.BottomSection.ResumeLayout(false);
+            this.AudioVolumeContainer.Panel1.ResumeLayout(false);
+            this.AudioVolumeContainer.Panel1.PerformLayout();
+            this.AudioVolumeContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.AudioVolumeContainer)).EndInit();
+            this.AudioVolumeContainer.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,4 +244,8 @@ partial class GameForm
     public Panel RightSection;
     public PictureBox MapBox;
     internal System.Windows.Forms.Timer AnimationTimer;
+    private Panel BottomSection;
+    private NAudio.Gui.VolumeSlider AudioVolumeSlider;
+    private Label AudioVolumeLabel;
+    private SplitContainer AudioVolumeContainer;
 }

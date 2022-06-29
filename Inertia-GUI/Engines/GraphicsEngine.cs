@@ -48,7 +48,7 @@ internal static class GraphicsEngine
 
         var image = cell switch
         {
-            Player => Resources.PlayerAnimated,
+            Player => Resources.Player_Right,
             Prize => Resources.Prize,
             Stop => Resources.Stop,
             Trap => Resources.Trap,
@@ -67,12 +67,12 @@ internal static class GraphicsEngine
             Location = new Point(x, y),
             BackColor = Color.Transparent,
             Size = new Size(width, height),
-            SizeMode = PictureBoxSizeMode.Zoom,
+            SizeMode = PictureBoxSizeMode.Zoom
         };
 
         if (cell is Player)
         {
-            AnimationEngine.IsPlayerMirrored = false;
+            AnimationEngine.IsPlayerFacingRight = true;
             AnimationEngine.PlayerPictureBox = cellPictureBox;
         }
 

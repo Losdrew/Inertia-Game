@@ -36,6 +36,8 @@ internal abstract class ScreenBase : VisualObject
 
     public GameState GetInput()
     {
+        InputEngine.AllowedInput = InputType.MusicInput | InputType.ScreenInput;
+
         InputEngine.ScreenControls.Clear();
 
         foreach (var item in MenuItems)
@@ -48,7 +50,7 @@ internal abstract class ScreenBase : VisualObject
 
     private List<string> GenerateScreenContent()
     {
-        // Getting titles of all menu items in MenuItems list
+        // Get titles of all menu items in MenuItems list
         var titles = MenuItems.Select(item => item.Title).ToList();
 
         return new List<string>

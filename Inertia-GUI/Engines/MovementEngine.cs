@@ -1,54 +1,43 @@
 ﻿using CommonCodebase.Core;
+using CommonCodebase.Engines; 
 
 namespace GUI.Engines;
 
 public static class MovementEngine
 {
-    private static Map? _map;
-
-    private static bool _isMovementOngoing;
-
-    private static Direction _currentDirection;
-
-    public static void GetCurrentMap(Map currentMap)
-    {
-        _map = currentMap;
-    }
+    public static readonly MovementEngineBase Movement = new();
 
     public static void Move()
     {
-        if (!_isMovementOngoing || _map is null)
+        if (Movement.IsWin)
         {
-            return;
+            Movement.Win?.Invoke();
         }
 
-        var (x, y) = Map.GetDestination(_map.Player.X, _map.Player.Y, _currentDirection);
-
-        if (_map[x, y].CollisionType is Collision.At or Collision.None)
+        if (Movement.IsGameOver)
         {
-            _map.Player.ChangePosition(x, y);
-            AnimationEngine.StartAnimation(_map.Player);
+            Movement.GameOver?.Invoke();
         }
 
-        _map[x, y].Action(_map);
+        Movement.Move();
     }
 
     public static void StopMovement()
     {
-        _isMovementOngoing = false;
+        Movement.StopMovement();
         AnimationEngine.SetPlayerGifAnimation(false);
     }
 
     public static void GetInput(Direction direction)
     {
         // Input must not be accepted while movement is in progress
-        if (_isMovementOngoing)
+        if (Movement.IsMovementOngoing)
         {
             return;
         }
 
-        _isMovementOngoing = true;
-        _currentDirection = direction;
+        Movement.IsMovementOngoing = true;
+        Movement.CurrentDirection = direction;
         AnimationEngine.SetPlayerGifAnimation(true);
 
         Move();

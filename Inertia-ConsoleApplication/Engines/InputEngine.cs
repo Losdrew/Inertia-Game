@@ -3,8 +3,18 @@ using CommonCodebase.Engines;
 
 namespace ConsoleApplication.Engines;
 
+[Flags]
+internal enum InputType
+{
+    MovementInput = 1,
+    MusicInput = 2,
+    ScreenInput = 4
+}
+
 internal static class InputEngine
 {
+    public static InputType AllowedInput;
+
     public static readonly Dictionary<ConsoleKey, GameState> ScreenControls;
     private static readonly Dictionary<ConsoleKey, Music> MusicControls;
     private static readonly Dictionary<ConsoleKey, Direction> DirectionControls;
@@ -38,29 +48,44 @@ internal static class InputEngine
         {
             var key = Console.ReadKey(true).Key;
 
-            if (MusicControls.ContainsKey(key))
+            if (AllowedInput.HasFlag(InputType.MusicInput))
             {
-                switch (MusicControls[key])
-                {
-                    case Music.PauseMusic:
-                        AudioEngine.PauseMusic();
-                        continue;
+                CheckForMusicInput(key);
+            }
 
-                    case Music.SwitchMusic:
-                        AudioEngine.SwitchMusic();
-                        continue;
+            if (AllowedInput.HasFlag(InputType.MovementInput))
+            {
+                if (DirectionControls.ContainsKey(key))
+                {
+                    return DirectionControls[key];
                 }
             }
 
-            if (DirectionControls.ContainsKey(key))
+            if (AllowedInput.HasFlag(InputType.ScreenInput))
             {
-                return DirectionControls[key];
+                if (ScreenControls.ContainsKey(key))
+                {
+                    return ScreenControls[key];
+                }
             }
+        }
+    }
 
-            if (ScreenControls.ContainsKey(key))
-            {
-                return ScreenControls[key];
-            }
+    private static void CheckForMusicInput(ConsoleKey key)
+    {
+        if (!MusicControls.ContainsKey(key))
+        {
+            return;
+        }
+
+        switch (MusicControls[key])
+        {
+            case Music.PauseMusic:
+                AudioEngine.PauseMusic();
+                break;
+            case Music.SwitchMusic:
+                AudioEngine.SwitchMusic();
+                break;
         }
     }
 }

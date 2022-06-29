@@ -8,7 +8,7 @@ internal static class AnimationEngine
 {
     private const int AnimationOffset = 5;
 
-    public static bool IsPlayerMirrored;
+    public static bool IsPlayerFacingRight;
     public static PictureBox? PlayerPictureBox;
 
     private static Timer? _animationTimer;
@@ -16,8 +16,8 @@ internal static class AnimationEngine
     private static Point _newPlayerLocation;
     private static PictureBox? _destinationPictureBox;
 
-    private static readonly Image PlayerImage = Resources.PlayerAnimated;
-    private static readonly Image PlayerImageMirrored = Resources.PlayerAnimated_Mirrored;
+    private static readonly Image PlayerImageLeft = Resources.Player_Left;
+    private static readonly Image PlayerImageRight = Resources.Player_Right;
 
     public static void GetAnimationTimer(Timer animationTimer)
     {
@@ -42,40 +42,23 @@ internal static class AnimationEngine
 
     public static void PlayAnimation(object? sender, EventArgs e)
     {
-        if (PlayerPictureBox is null || _animationTimer is null)
+        if (PlayerPictureBox is null)
         {
             return;
         }
 
-        if (PlayerPictureBox.Location.X < _newPlayerLocation.X)
-        {
-            PlayerPictureBox.Left += AnimationOffset;
-        }
+        PlayerPictureBox.Left += GetOffset(PlayerPictureBox.Location.X, _newPlayerLocation.X);
 
-        if (PlayerPictureBox.Location.X > _newPlayerLocation.X)
-        {
-            PlayerPictureBox.Left -= AnimationOffset;
-        }
+        PlayerPictureBox.Top += GetOffset(PlayerPictureBox.Location.Y, _newPlayerLocation.Y);
 
-        if (PlayerPictureBox.Location.Y < _newPlayerLocation.Y)
+        if (_destinationPictureBox != null && PlayerPictureBox.Bounds.IntersectsWith(_destinationPictureBox.Bounds))
         {
-            PlayerPictureBox.Top += AnimationOffset;
-        }
-
-        if (PlayerPictureBox.Location.Y > _newPlayerLocation.Y)
-        {
-            PlayerPictureBox.Top -= AnimationOffset;
+            GraphicsEngine.ClearPictureBoxOnMap(_destinationPictureBox);
         }
 
         if (PlayerPictureBox.Location == _newPlayerLocation)
         {
             StopAnimationTimer();
-            return;
-        }
-
-        if (_destinationPictureBox != null && PlayerPictureBox.Bounds.IntersectsWith(_destinationPictureBox.Bounds))
-        {
-            GraphicsEngine.ClearPictureBoxOnMap(_destinationPictureBox);
         }
     }
 
@@ -89,17 +72,37 @@ internal static class AnimationEngine
         PlayerPictureBox.Enabled = value;
     }
 
-    private static void StartAnimationTimer()
+    private static int GetOffset(int currentLocation, int destinationLocation)
     {
-        // When moving to left, mirror player's image
-        if ((!IsPlayerMirrored && _newPlayerLocation.X < PlayerPictureBox?.Location.X) ||
-            (IsPlayerMirrored && _newPlayerLocation.X > PlayerPictureBox?.Location.X))
+        if (currentLocation < destinationLocation)
         {
-            PlayerPictureBox.Image = IsPlayerMirrored ? PlayerImage : PlayerImageMirrored;
-            IsPlayerMirrored = !IsPlayerMirrored;
+            return AnimationOffset;
         }
 
+        if (currentLocation > destinationLocation)
+        {
+            return -AnimationOffset;
+        }
+
+        return 0;
+    }
+
+    private static void StartAnimationTimer()
+    {
         _animationTimer?.Start();
+
+        if (PlayerPictureBox is null)
+        {
+            return;
+        }
+
+        var isMovingRight = _newPlayerLocation.X > PlayerPictureBox.Location.X;
+
+        if ((IsPlayerFacingRight && !isMovingRight) || (!IsPlayerFacingRight && isMovingRight))
+        {
+            PlayerPictureBox.Image = IsPlayerFacingRight ? PlayerImageLeft : PlayerImageRight;
+            IsPlayerFacingRight = !IsPlayerFacingRight;
+        }
     }
 
     private static void StopAnimationTimer()

@@ -6,8 +6,8 @@ namespace GUI.Engines;
 [Flags]
 internal enum InputType
 {
-    MovementInput,
-    MusicInput
+    MovementInput = 1,
+    MusicInput = 2
 }
 
 internal static class InputEngine

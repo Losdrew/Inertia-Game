@@ -55,15 +55,17 @@ internal static class Program
     {
         CellBase.DrawCell += GraphicsEngine.DrawCell;
         CellBase.ClearCell += GraphicsEngine.ClearCell;
-        CellBase.StopMovement += MovementEngine.StopMovement;
+        CellBase.StopMovement += MovementEngine.Movement.StopMovement;
 
-        Prize.Win += MovementEngine.SetWin;
-        Trap.GameOver += MovementEngine.SetGameOver;
+        Prize.Win += MovementEngine.Movement.SetWin;
+        Trap.GameOver += MovementEngine.Movement.SetGameOver;
 
         Score.DrawScore += GraphicsEngine.DrawScore;
         Score.UpdateScore += GraphicsEngine.DrawScore;
 
         ControlsTip.DrawControlsTip += GraphicsEngine.DrawControls;
+
+        MovementEngine.Movement.StartAnimation += AnimationEngine.StartAnimation;
     }
 
     private static GameState Menu()
@@ -93,7 +95,11 @@ internal static class Program
 
         currentMap.UpdateScore += score.Update;
 
-        return MovementEngine.Start(currentMap);
+        MovementEngine.Movement.GetCurrentMap(currentMap);
+
+        InputEngine.AllowedInput = InputType.MusicInput | InputType.MovementInput;
+
+        return MovementEngine.Start();
     }
 
     private static GameState Win()

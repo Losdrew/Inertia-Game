@@ -1,65 +1,34 @@
 ﻿using CommonCodebase.Core;
+using CommonCodebase.Engines;
 
 namespace ConsoleApplication.Engines;
 
 internal static class MovementEngine
 {
-    private static bool _movementAvailable, _isWin, _isGameOver;
+    public static readonly MovementEngineBase Movement = new();
 
-    public static GameState Start(Map map)
+    public static GameState Start()
     {
-        // Refreshing values because variables are static
-        _isWin = false;
-        _isGameOver = false;
-
         while (true)
         {
-            _movementAvailable = true;
+            Movement.CurrentDirection = (Direction)InputEngine.GetInput();
 
-            var direction = (Direction)InputEngine.GetInput();
+            Movement.IsMovementOngoing = true;
 
-            while (_movementAvailable)
+            while (Movement.IsMovementOngoing)
             {
-                Move(map, direction);
+                Movement.Move();
             }
 
-            if (_isWin)
+            if (Movement.IsWin)
             {
                 return GameState.Win;
             }
 
-            if (_isGameOver)
+            if (Movement.IsGameOver)
             {
                 return GameState.GameOver;
             }
         }
-    }
-
-    public static void StopMovement()
-    {
-        _movementAvailable = false;
-    }
-
-    public static void SetWin()
-    {
-        _isWin = true;
-    }
-
-    public static void SetGameOver()
-    {
-        _isGameOver = true;
-    }
-
-    private static void Move(Map map, Direction direction)
-    {
-        var (x, y) = Map.GetDestination(map.Player.X, map.Player.Y, direction);
-
-        if (map[x, y].CollisionType is Collision.At or Collision.None)
-        {
-            map.Player.ChangePosition(x, y);
-            AnimationEngine.StartAnimation(map.Player);
-        }
-
-        map[x, y].Action(map);
     }
 }
