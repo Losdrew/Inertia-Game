@@ -24,6 +24,9 @@
       <LastGenOutput>CommonResources.Designer.cs</LastGenOutput>
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="CommonResources.uk-ua.resx">
+      <DependentUpon>CommonResources.resx</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

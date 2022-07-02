@@ -2,16 +2,10 @@
 
 internal partial class ScreenFormBase : FormBase
 {
-    protected static readonly GameForm GameForm = new();
-
     protected void RestartLevelButton_Click(object? sender, EventArgs e)
     {
-        GameForm.Restart();
-        GameForm.MakeActive();
-    }
-
-    protected void QuitButton_Click(object? sender, EventArgs e)
-    {
-        Application.Exit();
+        GameForm gameForm = new();
+        gameForm.Restart();
+        gameForm.MakeActive();
     }
 }

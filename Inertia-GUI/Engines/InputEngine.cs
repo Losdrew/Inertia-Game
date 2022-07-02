@@ -13,30 +13,8 @@ internal enum InputType
 internal static class InputEngine
 {
     public static InputType AllowedInput;
-
-    private static readonly Dictionary<Keys, Music> MusicControls;
-    private static readonly Dictionary<Keys, Direction> DirectionControls;
-
-    static InputEngine()
-    {
-        MusicControls = new Dictionary<Keys, Music>
-        {
-            { Keys.R, Music.PauseMusic },
-            { Keys.F, Music.SwitchMusic }
-        };
-
-        DirectionControls = new Dictionary<Keys, Direction>
-        {
-            { Keys.W, Direction.Up },
-            { Keys.X, Direction.Down },
-            { Keys.A, Direction.Left },
-            { Keys.D, Direction.Right },
-            { Keys.Q, Direction.LeftUp },
-            { Keys.E, Direction.RightUp },
-            { Keys.Z, Direction.LeftDown },
-            { Keys.C, Direction.RightDown }
-        };
-    }
+    public static Dictionary<Keys, Music>? MusicControls;
+    public static Dictionary<Keys, Direction>? DirectionControls;
 
     public static void ReadKey(object? sender, KeyEventArgs e)
     {
@@ -53,24 +31,32 @@ internal static class InputEngine
 
     private static void CheckForMusicInput(Keys key)
     {
-        if (!MusicControls.ContainsKey(key))
+        if (MusicControls == null)
         {
             return;
         }
 
-        switch (MusicControls[key])
+        if (MusicControls.ContainsKey(key))
         {
-            case Music.PauseMusic:
-                AudioEngine.PauseMusic();
-                break;
-            case Music.SwitchMusic:
-                AudioEngine.SwitchMusic();
-                break;
+            switch (MusicControls[key])
+            {
+                case Music.PauseMusic:
+                    AudioEngine.PauseMusic();
+                    break;
+                case Music.SwitchMusic:
+                    AudioEngine.SwitchMusic();
+                    break;
+            }
         }
     }
 
     private static void CheckForMovementInput(Keys key)
     {
+        if (DirectionControls is null)
+        {
+            return;
+        }
+
         if (DirectionControls.ContainsKey(key))
         {
             MovementEngine.GetInput(DirectionControls[key]);

@@ -1,3 +1,5 @@
+using CommonCodebase.Engines;
+using GUI.Forms;
 using GUI.Forms.Screens;
 
 namespace GUI;
@@ -10,6 +12,8 @@ public static class Program
     private static void Main()
     {
         ApplicationConfiguration.Initialize();
+        AudioEngine.StartMusicPlaylist();
+        OptionsForm.ApplyOptions();
         Application.Run(AppContext);
     }
 }

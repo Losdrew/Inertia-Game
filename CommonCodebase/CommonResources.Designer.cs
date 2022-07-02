@@ -61,27 +61,6 @@ namespace CommonCodebase {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to           Controls          
-        ///                            
-        ///     Q       W       E      
-        ///  Left Up    ↑   Right Up   
-        ///                            
-        ///     A               D      
-        ///     ←               →      
-        ///                            
-        ///     Z       X       C      
-        /// Left Down   ↓   Right Down 
-        ///                            
-        ///     R               F      
-        ///Pause Music    Switch Music .
-        /// </summary>
-        public static string ControlsTip {
-            get {
-                return ResourceManager.GetString("ControlsTip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         public static System.IO.UnmanagedMemoryStream GameOver {

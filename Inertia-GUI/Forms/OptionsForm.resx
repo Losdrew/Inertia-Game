@@ -1,0 +1,1113 @@
+﻿<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="LanguageContainer.IsSplitterFixed" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="LanguageContainer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>252, 422</value>
+  </data>
+  <data name="LanguageLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LanguageLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10.8pt</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="LanguageLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LanguageLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 27</value>
+  </data>
+  <data name="LanguageLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 25</value>
+  </data>
+  <data name="LanguageLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="LanguageLabel.Text" xml:space="preserve">
+    <value>Language:</value>
+  </data>
+  <data name="&gt;&gt;LanguageLabel.Name" xml:space="preserve">
+    <value>LanguageLabel</value>
+  </data>
+  <data name="&gt;&gt;LanguageLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LanguageLabel.Parent" xml:space="preserve">
+    <value>LanguageContainer.Panel1</value>
+  </data>
+  <data name="&gt;&gt;LanguageLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;LanguageContainer.Panel1.Name" xml:space="preserve">
+    <value>LanguageContainer.Panel1</value>
+  </data>
+  <data name="&gt;&gt;LanguageContainer.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LanguageContainer.Panel1.Parent" xml:space="preserve">
+    <value>LanguageContainer</value>
+  </data>
+  <data name="&gt;&gt;LanguageContainer.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="UkrainianRadioButton.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="UkrainianRadioButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="UkrainianRadioButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 43</value>
+  </data>
+  <data name="UkrainianRadioButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 24</value>
+  </data>
+  <data name="UkrainianRadioButton.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="UkrainianRadioButton.Text" xml:space="preserve">
+    <value>Ukrainian</value>
+  </data>
+  <data name="&gt;&gt;UkrainianRadioButton.Name" xml:space="preserve">
+    <value>UkrainianRadioButton</value>
+  </data>
+  <data name="&gt;&gt;UkrainianRadioButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;UkrainianRadioButton.Parent" xml:space="preserve">
+    <value>LanguageContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;UkrainianRadioButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="EnglishRadioButton.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="EnglishRadioButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="EnglishRadioButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 13</value>
+  </data>
+  <data name="EnglishRadioButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 24</value>
+  </data>
+  <data name="EnglishRadioButton.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="EnglishRadioButton.Text" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="&gt;&gt;EnglishRadioButton.Name" xml:space="preserve">
+    <value>EnglishRadioButton</value>
+  </data>
+  <data name="&gt;&gt;EnglishRadioButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EnglishRadioButton.Parent" xml:space="preserve">
+    <value>LanguageContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;EnglishRadioButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;LanguageContainer.Panel2.Name" xml:space="preserve">
+    <value>LanguageContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;LanguageContainer.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LanguageContainer.Panel2.Parent" xml:space="preserve">
+    <value>LanguageContainer</value>
+  </data>
+  <data name="&gt;&gt;LanguageContainer.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="LanguageContainer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 79</value>
+  </data>
+  <data name="LanguageContainer.SplitterDistance" type="System.Int32, mscorlib">
+    <value>85</value>
+  </data>
+  <data name="LanguageContainer.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;LanguageContainer.Name" xml:space="preserve">
+    <value>LanguageContainer</value>
+  </data>
+  <data name="&gt;&gt;LanguageContainer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LanguageContainer.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;LanguageContainer.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ControlsContainer.IsSplitterFixed" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ControlsContainer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>145, 104</value>
+  </data>
+  <data name="ControlsLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ControlsLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10.8pt</value>
+  </data>
+  <data name="ControlsLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ControlsLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 135</value>
+  </data>
+  <data name="ControlsLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 25</value>
+  </data>
+  <data name="ControlsLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="ControlsLabel.Text" xml:space="preserve">
+    <value>Controls:</value>
+  </data>
+  <data name="&gt;&gt;ControlsLabel.Name" xml:space="preserve">
+    <value>ControlsLabel</value>
+  </data>
+  <data name="&gt;&gt;ControlsLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ControlsLabel.Parent" xml:space="preserve">
+    <value>ControlsContainer.Panel1</value>
+  </data>
+  <data name="&gt;&gt;ControlsLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ControlsContainer.Panel1.Name" xml:space="preserve">
+    <value>ControlsContainer.Panel1</value>
+  </data>
+  <data name="&gt;&gt;ControlsContainer.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ControlsContainer.Panel1.Parent" xml:space="preserve">
+    <value>ControlsContainer</value>
+  </data>
+  <data name="&gt;&gt;ControlsContainer.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="SwitchMusicLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="SwitchMusicLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10.2pt</value>
+  </data>
+  <data name="SwitchMusicLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="SwitchMusicLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>134, 268</value>
+  </data>
+  <data name="SwitchMusicLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 23</value>
+  </data>
+  <data name="SwitchMusicLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="SwitchMusicLabel.Text" xml:space="preserve">
+    <value>Switch Music</value>
+  </data>
+  <data name="&gt;&gt;SwitchMusicLabel.Name" xml:space="preserve">
+    <value>SwitchMusicLabel</value>
+  </data>
+  <data name="&gt;&gt;SwitchMusicLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SwitchMusicLabel.Parent" xml:space="preserve">
+    <value>ControlsContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;SwitchMusicLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="PauseMusicLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="PauseMusicLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10.2pt</value>
+  </data>
+  <data name="PauseMusicLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="PauseMusicLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 268</value>
+  </data>
+  <data name="PauseMusicLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 23</value>
+  </data>
+  <data name="PauseMusicLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="PauseMusicLabel.Text" xml:space="preserve">
+    <value>Pause Music</value>
+  </data>
+  <data name="&gt;&gt;PauseMusicLabel.Name" xml:space="preserve">
+    <value>PauseMusicLabel</value>
+  </data>
+  <data name="&gt;&gt;PauseMusicLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PauseMusicLabel.Parent" xml:space="preserve">
+    <value>ControlsContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;PauseMusicLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="SwitchMusicBox.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="SwitchMusicBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>160, 233</value>
+  </data>
+  <data name="SwitchMusicBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 28</value>
+  </data>
+  <data name="SwitchMusicBox.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;SwitchMusicBox.Name" xml:space="preserve">
+    <value>SwitchMusicBox</value>
+  </data>
+  <data name="&gt;&gt;SwitchMusicBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SwitchMusicBox.Parent" xml:space="preserve">
+    <value>ControlsContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;SwitchMusicBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="PauseMusicBox.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="PauseMusicBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 233</value>
+  </data>
+  <data name="PauseMusicBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 28</value>
+  </data>
+  <data name="PauseMusicBox.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;PauseMusicBox.Name" xml:space="preserve">
+    <value>PauseMusicBox</value>
+  </data>
+  <data name="&gt;&gt;PauseMusicBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PauseMusicBox.Parent" xml:space="preserve">
+    <value>ControlsContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;PauseMusicBox.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="RightDownLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="RightDownLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 13.8pt</value>
+  </data>
+  <data name="RightDownLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="RightDownLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>197, 190</value>
+  </data>
+  <data name="RightDownLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 31</value>
+  </data>
+  <data name="RightDownLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="RightDownLabel.Text" xml:space="preserve">
+    <value>↘</value>
+  </data>
+  <data name="&gt;&gt;RightDownLabel.Name" xml:space="preserve">
+    <value>RightDownLabel</value>
+  </data>
+  <data name="&gt;&gt;RightDownLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RightDownLabel.Parent" xml:space="preserve">
+    <value>ControlsContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;RightDownLabel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="DownLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DownLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 13.8pt</value>
+  </data>
+  <data name="DownLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="DownLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>108, 190</value>
+  </data>
+  <data name="DownLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 31</value>
+  </data>
+  <data name="DownLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="DownLabel.Text" xml:space="preserve">
+    <value>↓</value>
+  </data>
+  <data name="&gt;&gt;DownLabel.Name" xml:space="preserve">
+    <value>DownLabel</value>
+  </data>
+  <data name="&gt;&gt;DownLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DownLabel.Parent" xml:space="preserve">
+    <value>ControlsContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;DownLabel.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="LeftDownLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LeftDownLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 13.8pt</value>
+  </data>
+  <data name="LeftDownLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LeftDownLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 190</value>
+  </data>
+  <data name="LeftDownLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 31</value>
+  </data>
+  <data name="LeftDownLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="LeftDownLabel.Text" xml:space="preserve">
+    <value>↙</value>
+  </data>
+  <data name="&gt;&gt;LeftDownLabel.Name" xml:space="preserve">
+    <value>LeftDownLabel</value>
+  </data>
+  <data name="&gt;&gt;LeftDownLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LeftDownLabel.Parent" xml:space="preserve">
+    <value>ControlsContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;LeftDownLabel.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="RightLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="RightLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 13.8pt</value>
+  </data>
+  <data name="RightLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="RightLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>199, 108</value>
+  </data>
+  <data name="RightLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 31</value>
+  </data>
+  <data name="RightLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="RightLabel.Text" xml:space="preserve">
+    <value>→</value>
+  </data>
+  <data name="&gt;&gt;RightLabel.Name" xml:space="preserve">
+    <value>RightLabel</value>
+  </data>
+  <data name="&gt;&gt;RightLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RightLabel.Parent" xml:space="preserve">
+    <value>ControlsContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;RightLabel.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="LeftLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LeftLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 13.8pt</value>
+  </data>
+  <data name="LeftLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LeftLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 108</value>
+  </data>
+  <data name="LeftLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 31</value>
+  </data>
+  <data name="LeftLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="LeftLabel.Text" xml:space="preserve">
+    <value>←</value>
+  </data>
+  <data name="&gt;&gt;LeftLabel.Name" xml:space="preserve">
+    <value>LeftLabel</value>
+  </data>
+  <data name="&gt;&gt;LeftLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LeftLabel.Parent" xml:space="preserve">
+    <value>ControlsContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;LeftLabel.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="RightDownBox.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="RightDownBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>182, 159</value>
+  </data>
+  <data name="RightDownBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 28</value>
+  </data>
+  <data name="RightDownBox.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;RightDownBox.Name" xml:space="preserve">
+    <value>RightDownBox</value>
+  </data>
+  <data name="&gt;&gt;RightDownBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RightDownBox.Parent" xml:space="preserve">
+    <value>ControlsContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;RightDownBox.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="DownBox.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="DownBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 159</value>
+  </data>
+  <data name="DownBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 28</value>
+  </data>
+  <data name="DownBox.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;DownBox.Name" xml:space="preserve">
+    <value>DownBox</value>
+  </data>
+  <data name="&gt;&gt;DownBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DownBox.Parent" xml:space="preserve">
+    <value>ControlsContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;DownBox.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="LeftDownBox.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LeftDownBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 159</value>
+  </data>
+  <data name="LeftDownBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 28</value>
+  </data>
+  <data name="LeftDownBox.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;LeftDownBox.Name" xml:space="preserve">
+    <value>LeftDownBox</value>
+  </data>
+  <data name="&gt;&gt;LeftDownBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LeftDownBox.Parent" xml:space="preserve">
+    <value>ControlsContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;LeftDownBox.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="RightBox.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="RightBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>182, 77</value>
+  </data>
+  <data name="RightBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 28</value>
+  </data>
+  <data name="RightBox.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;RightBox.Name" xml:space="preserve">
+    <value>RightBox</value>
+  </data>
+  <data name="&gt;&gt;RightBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RightBox.Parent" xml:space="preserve">
+    <value>ControlsContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;RightBox.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="LeftBox.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LeftBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 77</value>
+  </data>
+  <data name="LeftBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 28</value>
+  </data>
+  <data name="LeftBox.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;LeftBox.Name" xml:space="preserve">
+    <value>LeftBox</value>
+  </data>
+  <data name="&gt;&gt;LeftBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LeftBox.Parent" xml:space="preserve">
+    <value>ControlsContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;LeftBox.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="RightUpLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="RightUpLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 13.8pt</value>
+  </data>
+  <data name="RightUpLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="RightUpLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>197, 34</value>
+  </data>
+  <data name="RightUpLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 31</value>
+  </data>
+  <data name="RightUpLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="RightUpLabel.Text" xml:space="preserve">
+    <value>↗</value>
+  </data>
+  <data name="&gt;&gt;RightUpLabel.Name" xml:space="preserve">
+    <value>RightUpLabel</value>
+  </data>
+  <data name="&gt;&gt;RightUpLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RightUpLabel.Parent" xml:space="preserve">
+    <value>ControlsContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;RightUpLabel.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="RightUpBox.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="RightUpBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>182, 3</value>
+  </data>
+  <data name="RightUpBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 28</value>
+  </data>
+  <data name="RightUpBox.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;RightUpBox.Name" xml:space="preserve">
+    <value>RightUpBox</value>
+  </data>
+  <data name="&gt;&gt;RightUpBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RightUpBox.Parent" xml:space="preserve">
+    <value>ControlsContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;RightUpBox.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="UpLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="UpLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 13.8pt</value>
+  </data>
+  <data name="UpLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="UpLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>108, 34</value>
+  </data>
+  <data name="UpLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 31</value>
+  </data>
+  <data name="UpLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="UpLabel.Text" xml:space="preserve">
+    <value>↑</value>
+  </data>
+  <data name="&gt;&gt;UpLabel.Name" xml:space="preserve">
+    <value>UpLabel</value>
+  </data>
+  <data name="&gt;&gt;UpLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;UpLabel.Parent" xml:space="preserve">
+    <value>ControlsContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;UpLabel.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="UpBox.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="UpBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 3</value>
+  </data>
+  <data name="UpBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 28</value>
+  </data>
+  <data name="UpBox.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;UpBox.Name" xml:space="preserve">
+    <value>UpBox</value>
+  </data>
+  <data name="&gt;&gt;UpBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;UpBox.Parent" xml:space="preserve">
+    <value>ControlsContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;UpBox.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="LeftUpLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LeftUpLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 13.8pt</value>
+  </data>
+  <data name="LeftUpLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LeftUpLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 34</value>
+  </data>
+  <data name="LeftUpLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 31</value>
+  </data>
+  <data name="LeftUpLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="LeftUpLabel.Text" xml:space="preserve">
+    <value>↖</value>
+  </data>
+  <data name="&gt;&gt;LeftUpLabel.Name" xml:space="preserve">
+    <value>LeftUpLabel</value>
+  </data>
+  <data name="&gt;&gt;LeftUpLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LeftUpLabel.Parent" xml:space="preserve">
+    <value>ControlsContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;LeftUpLabel.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="LeftUpBox.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LeftUpBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 3</value>
+  </data>
+  <data name="LeftUpBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 28</value>
+  </data>
+  <data name="LeftUpBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;LeftUpBox.Name" xml:space="preserve">
+    <value>LeftUpBox</value>
+  </data>
+  <data name="&gt;&gt;LeftUpBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LeftUpBox.Parent" xml:space="preserve">
+    <value>ControlsContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;LeftUpBox.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;ControlsContainer.Panel2.Name" xml:space="preserve">
+    <value>ControlsContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;ControlsContainer.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ControlsContainer.Panel2.Parent" xml:space="preserve">
+    <value>ControlsContainer</value>
+  </data>
+  <data name="&gt;&gt;ControlsContainer.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ControlsContainer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>333, 303</value>
+  </data>
+  <data name="ControlsContainer.SplitterDistance" type="System.Int32, mscorlib">
+    <value>81</value>
+  </data>
+  <data name="ControlsContainer.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;ControlsContainer.Name" xml:space="preserve">
+    <value>ControlsContainer</value>
+  </data>
+  <data name="&gt;&gt;ControlsContainer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ControlsContainer.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ControlsContainer.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="MapSizeContainer.IsSplitterFixed" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="MapSizeContainer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>241, 48</value>
+  </data>
+  <data name="MapSizeLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="MapSizeLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="MapSizeLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10.8pt</value>
+  </data>
+  <data name="MapSizeLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="MapSizeLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="MapSizeLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 25</value>
+  </data>
+  <data name="MapSizeLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="MapSizeLabel.Text" xml:space="preserve">
+    <value>Map size:</value>
+  </data>
+  <data name="&gt;&gt;MapSizeLabel.Name" xml:space="preserve">
+    <value>MapSizeLabel</value>
+  </data>
+  <data name="&gt;&gt;MapSizeLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MapSizeLabel.Parent" xml:space="preserve">
+    <value>MapSizeContainer.Panel1</value>
+  </data>
+  <data name="&gt;&gt;MapSizeLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;MapSizeContainer.Panel1.Name" xml:space="preserve">
+    <value>MapSizeContainer.Panel1</value>
+  </data>
+  <data name="&gt;&gt;MapSizeContainer.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MapSizeContainer.Panel1.Parent" xml:space="preserve">
+    <value>MapSizeContainer</value>
+  </data>
+  <data name="&gt;&gt;MapSizeContainer.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="MapHeight.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="MapHeight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="MapHeight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 0</value>
+  </data>
+  <data name="MapHeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 27</value>
+  </data>
+  <data name="MapHeight.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;MapHeight.Name" xml:space="preserve">
+    <value>MapHeight</value>
+  </data>
+  <data name="&gt;&gt;MapHeight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MapHeight.Parent" xml:space="preserve">
+    <value>MapSizeContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;MapHeight.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="XLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="XLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10.8pt</value>
+  </data>
+  <data name="XLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="XLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>56, 0</value>
+  </data>
+  <data name="XLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 25</value>
+  </data>
+  <data name="XLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="XLabel.Text" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="&gt;&gt;XLabel.Name" xml:space="preserve">
+    <value>XLabel</value>
+  </data>
+  <data name="&gt;&gt;XLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;XLabel.Parent" xml:space="preserve">
+    <value>MapSizeContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;XLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="MapWidth.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="MapWidth.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="MapWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="MapWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 27</value>
+  </data>
+  <data name="MapWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;MapWidth.Name" xml:space="preserve">
+    <value>MapWidth</value>
+  </data>
+  <data name="&gt;&gt;MapWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MapWidth.Parent" xml:space="preserve">
+    <value>MapSizeContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;MapWidth.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;MapSizeContainer.Panel2.Name" xml:space="preserve">
+    <value>MapSizeContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;MapSizeContainer.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MapSizeContainer.Panel2.Parent" xml:space="preserve">
+    <value>MapSizeContainer</value>
+  </data>
+  <data name="&gt;&gt;MapSizeContainer.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="MapSizeContainer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 29</value>
+  </data>
+  <data name="MapSizeContainer.SplitterDistance" type="System.Int32, mscorlib">
+    <value>81</value>
+  </data>
+  <data name="MapSizeContainer.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;MapSizeContainer.Name" xml:space="preserve">
+    <value>MapSizeContainer</value>
+  </data>
+  <data name="&gt;&gt;MapSizeContainer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MapSizeContainer.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;MapSizeContainer.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="MenuButton.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="MenuButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="MenuButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="MenuButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 36</value>
+  </data>
+  <data name="MenuButton.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;MenuButton.Name" xml:space="preserve">
+    <value>MenuButton</value>
+  </data>
+  <data name="&gt;&gt;MenuButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MenuButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;MenuButton.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="SaveSettingsButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10.8pt</value>
+  </data>
+  <data name="SaveSettingsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="SaveSettingsButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>264, 527</value>
+  </data>
+  <data name="SaveSettingsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 34</value>
+  </data>
+  <data name="SaveSettingsButton.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="SaveSettingsButton.Text" xml:space="preserve">
+    <value>Save settings</value>
+  </data>
+  <data name="&gt;&gt;SaveSettingsButton.Name" xml:space="preserve">
+    <value>SaveSettingsButton</value>
+  </data>
+  <data name="&gt;&gt;SaveSettingsButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SaveSettingsButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SaveSettingsButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>8, 20</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>682, 597</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>OptionsForm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>GUI.Forms.Base.FormBase, Inertia-GUI, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+</root>

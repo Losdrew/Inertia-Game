@@ -4,8 +4,7 @@ namespace CommonCodebase.Core;
 
 public class Map : VisualObject
 {
-    public const int Width = 20;
-    public const int Height = 10;
+    public static (int Width, int Height) Size = (20, 10);
 
     private const int MaxPlayerCount = 1;
 
@@ -19,14 +18,14 @@ public class Map : VisualObject
 
     public Map()
     {
-        _matrix = new CellBase[Width, Height];
+        _matrix = new CellBase[Size.Width, Size.Height];
     }
 
     public Map(Map map) : this()
     {
-        for (var y = 0; y < Height; y++)
+        for (var y = 0; y < Size.Height; y++)
         {
-            for (var x = 0; x < Width; x++)
+            for (var x = 0; x < Size.Width; x++)
             {
                 this[x, y] = map[x, y];
             }
@@ -117,9 +116,9 @@ public class Map : VisualObject
     public override void Draw()
     {
         // Draw map
-        for (var y = 0; y < Height; y++)
+        for (var y = 0; y < Size.Height; y++)
         {
-            for (var x = 0; x < Width; x++)
+            for (var x = 0; x < Size.Width; x++)
             {
                 this[x, y].Draw();
             }
@@ -132,7 +131,7 @@ public class Map : VisualObject
     private void CreateCompletablePath(Random random)
     {
         var pathLength = random.Next(GetAreaOfMap() / 2, GetAreaOfMap());
-        var start = (random.Next(1, Width - 1), random.Next(1, Height - 1));
+        var start = (random.Next(1, Size.Width - 1), random.Next(1, Size.Height - 1));
 
         // (x, y) is current position
         var (x, y) = start;
@@ -197,7 +196,7 @@ public class Map : VisualObject
 
     private static int GetAreaOfMap()
     {
-        return (Width - 2) * (Height - 2);
+        return (Size.Width - 2) * (Size.Height - 2);
     }
 
     private static Direction GetRandomDirection(Random random)
@@ -209,7 +208,7 @@ public class Map : VisualObject
 
     private static bool IsInRangeOfMap(int x, int y)
     {
-        return x is > 0 and < Width - 1 && y is > 0 and < Height - 1;
+        return x > 0 && x < Size.Width - 1 && y > 0 && y < Size.Height - 1;
     }
 
     private bool IsEmpty(int x, int y)
@@ -236,9 +235,9 @@ public class Map : VisualObject
 
     private void FillMap(Random random)
     {
-        for (var y = 0; y < Height; y++)
+        for (var y = 0; y < Size.Height; y++)
         {
-            for (var x = 0; x < Width; x++)
+            for (var x = 0; x < Size.Width; x++)
             {
                 // Create wall at map border
                 if (!IsInRangeOfMap(x, y))

@@ -1,0 +1,129 @@
+﻿<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ScoreBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ScoreBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 151</value>
+  </data>
+  <data name="ScoreLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <data name="ScoreLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 31</value>
+  </data>
+  <data name="ScoreLabel.Text" xml:space="preserve">
+    <value>Рахунок:</value>
+  </data>
+  <data name="ScoreBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>159, 31</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ScoreBox.SplitterDistance" type="System.Int32, mscorlib">
+    <value>106</value>
+  </data>
+  <data name="AudioVolumeLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>318, 0</value>
+  </data>
+  <data name="AudioVolumeLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 23</value>
+  </data>
+  <data name="AudioVolumeLabel.Text" xml:space="preserve">
+    <value>Гучність аудіо:</value>
+  </data>
+  <data name="ControlsTipLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>328, 403</value>
+  </data>
+  <data name="ControlsTipLabel.Text" xml:space="preserve">
+    <value>Керування
+
+0         1         2
+ ↖         ↑          ↗
+
+3                     4
+←                     →
+
+5          6         7
+↙          ↓          ↘
+
+8                        9
+Призуп. музику    Змін. музику</value>
+  </data>
+  <data name="LeftSection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>368, 403</value>
+  </data>
+  <data name="MapBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>351, 403</value>
+  </data>
+  <data name="CenterSection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>398, 60</value>
+  </data>
+  <data name="CenterSection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>349, 403</value>
+  </data>
+  <data name="RightSection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>747, 60</value>
+  </data>
+  <data name="RightSection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 403</value>
+  </data>
+</root>

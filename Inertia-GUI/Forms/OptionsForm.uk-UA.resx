@@ -1,0 +1,154 @@
+﻿<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="LanguageContainer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>247, 421</value>
+  </data>
+  <data name="LanguageLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 27</value>
+  </data>
+  <data name="LanguageLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 25</value>
+  </data>
+  <data name="LanguageLabel.Text" xml:space="preserve">
+    <value>Мова:</value>
+  </data>
+  <data name="UkrainianRadioButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 24</value>
+  </data>
+  <data name="UkrainianRadioButton.Text" xml:space="preserve">
+    <value>Українська</value>
+  </data>
+  <data name="EnglishRadioButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 24</value>
+  </data>
+  <data name="EnglishRadioButton.Text" xml:space="preserve">
+    <value>Англійська</value>
+  </data>
+  <data name="LanguageContainer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 79</value>
+  </data>
+  <data name="ControlsContainer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>132, 102</value>
+  </data>
+  <data name="ControlsLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-4, 113</value>
+  </data>
+  <data name="ControlsLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 50</value>
+  </data>
+  <data name="ControlsLabel.Text" xml:space="preserve">
+    <value>Елементи
+керування:</value>
+  </data>
+  <data name="SwitchMusicLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>139, 268</value>
+  </data>
+  <data name="SwitchMusicLabel.Text" xml:space="preserve">
+    <value>Змін. музику</value>
+  </data>
+  <data name="PauseMusicLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 23</value>
+  </data>
+  <data name="PauseMusicLabel.Text" xml:space="preserve">
+    <value>Призуп. музику</value>
+  </data>
+  <data name="ControlsContainer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>348, 303</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ControlsContainer.SplitterDistance" type="System.Int32, mscorlib">
+    <value>96</value>
+  </data>
+  <data name="MapSizeContainer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>220, 49</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="MapSizeLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="MapSizeLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-1, 0</value>
+  </data>
+  <data name="MapSizeLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 25</value>
+  </data>
+  <data name="MapSizeLabel.Text" xml:space="preserve">
+    <value>Розмір карти:</value>
+  </data>
+  <data name="MapSizeContainer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 29</value>
+  </data>
+  <data name="MapSizeContainer.SplitterDistance" type="System.Int32, mscorlib">
+    <value>123</value>
+  </data>
+  <data name="SaveSettingsButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>245, 526</value>
+  </data>
+  <data name="SaveSettingsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 34</value>
+  </data>
+  <data name="SaveSettingsButton.Text" xml:space="preserve">
+    <value>Зберегти налаштування</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Налаштування</value>
+  </data>
+</root>

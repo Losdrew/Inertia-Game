@@ -10,6 +10,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<ProjectReference Include="..\CommonCodebase\CommonCodebase.csproj" />
 	</ItemGroup>
 
@@ -29,9 +33,27 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Update="Forms\Base\ScreenFormBase.uk-ua.resx">
+	    <DependentUpon>ScreenFormBase.resx</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\GameForm.uk-ua.resx">
+	    <DependentUpon>GameForm.resx</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\Screens\GameOverScreenForm.uk-ua.resx">
+	    <DependentUpon>GameOverScreenForm.resx</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\Screens\MenuScreenForm.uk-ua.resx">
+	    <DependentUpon>MenuScreenForm.resx</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\Screens\WinScreenForm.uk-ua.resx">
+	    <DependentUpon>WinScreenForm.resx</DependentUpon>
+	  </EmbeddedResource>
 	  <EmbeddedResource Update="Properties\Resources.resx">
 	    <Generator>ResXFileCodeGenerator</Generator>
 	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Properties\Resources.uk-ua.resx">
+	    <DependentUpon>Resources.resx</DependentUpon>
 	  </EmbeddedResource>
 	</ItemGroup>
 
@@ -41,37 +63,31 @@
 	    <LastGenOutput>Settings.Designer.cs</LastGenOutput>
 	  </None>
 	  <None Update="Resources\EntityImages\Error.png">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </None>
-	  <None Update="Resources\EntityImages\Player.png">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Resources\EntityImages\PlayerAnimated.gif">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Resources\EntityImages\PlayerAnimated1.gif">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Resources\EntityImages\Prize.png">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		<None Update="Resources\EntityImages\Prize.png">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </None>
 	  <None Update="Resources\EntityImages\Stop.png">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </None>
 	  <None Update="Resources\EntityImages\Trap.png">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </None>
 	  <None Update="Resources\EntityImages\Wall.png">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\JsonFiles\Options.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
 	  <None Update="Resources\OtherImages\Icon.ico">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </None>
 	  <None Update="Resources\OtherImages\MapBackground.jpg">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </None>
 	  <None Update="Resources\OtherImages\MenuLogo.png">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>
 

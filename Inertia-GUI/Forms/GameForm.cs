@@ -10,8 +10,8 @@ namespace GUI.Forms;
 
 internal partial class GameForm : FormBase
 {
+    private static readonly Score Score = new();
     private Map _map;
-    private readonly Score _score;
 
     public GameForm()
     {
@@ -20,7 +20,6 @@ internal partial class GameForm : FormBase
         SubscribeToEvents();
 
         _map = new Map();
-        _score = new Score();
 
         GraphicsEngine.GetGameForm(this);
 
@@ -36,19 +35,19 @@ internal partial class GameForm : FormBase
 
     public void Restart()
     {
-        _score.ResetCurrent();
+        Score.ResetCurrent();
         Play();
     }
 
     public void Continue()
     {
-        _score.Save();
+        Score.Save();
         StartGame();
     }
 
     public void CreateNew()
     {
-        _score.ResetAll();
+        Score.Save();
         StartGame();
     }
 
@@ -60,10 +59,10 @@ internal partial class GameForm : FormBase
         GraphicsEngine.SetMapBox();
 
         currentMap.Draw();
-        _score.Draw();
+        Score.Draw();
         new ControlsTip().Draw();
 
-        currentMap.UpdateScore += _score.Update;
+        currentMap.UpdateScore += Score.Update;
 
         MovementEngine.Movement.GetCurrentMap(currentMap);
 

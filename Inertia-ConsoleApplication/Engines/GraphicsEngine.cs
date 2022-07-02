@@ -1,6 +1,7 @@
 ﻿using CommonCodebase.Core;
 using CommonCodebase.Entities;
 using CommonCodebase.Miscellaneous;
+using ConsoleApplication.Properties;
 using Pastel;
 using System.Drawing;
 using System.Text;
@@ -13,11 +14,11 @@ internal static class GraphicsEngine
     private const int LeftSectionWidth = 38;
     private const int RightSectionWidth = 32;
 
-    private const int PlayZoneScreenWidth = LeftSectionWidth + Map.Width + RightSectionWidth;
-    private const int PlayZoneScreenHeight = Map.Height * 2;
+    private static readonly int PlayZoneScreenWidth = LeftSectionWidth + Map.Size.Width + RightSectionWidth;
+    private static readonly int PlayZoneScreenHeight = Map.Size.Height * 2;
 
-    private const int MapLocationX = LeftSectionWidth;
-    private const int MapLocationY = PlayZoneScreenHeight / 4;
+    private static readonly int MapLocationX = LeftSectionWidth;
+    private static readonly int MapLocationY = PlayZoneScreenHeight / 4;
 
     public static void SetPlayZoneScreen()
     {
@@ -33,18 +34,6 @@ internal static class GraphicsEngine
         Console.CursorVisible = false;
         Console.SetWindowSize(x, y);
         Console.SetBufferSize(x, y);
-    }
-
-    public static void DrawControls(object? sender, EventArgs e)
-    {
-        if (sender is not ControlsTip controlsTip)
-        {
-            return;
-        }
-
-        SetCursorPosition(0, Map.Height - (ControlsTip.Height / 2));
-
-        DrawCentered(LeftSectionWidth, controlsTip.Text);
     }
 
     public static void DrawCell(object? sender, EventArgs e)
@@ -92,6 +81,20 @@ internal static class GraphicsEngine
         DrawText(" ");
     }
 
+    public static void DrawControls(object? sender, EventArgs e)
+    {
+        if (sender is not ControlsTip controlsTip)
+        {
+            return;
+        }
+
+        controlsTip.Text = Resources.ControlsTip;
+
+        SetCursorPosition(0, Map.Size.Height - ControlsTip.Height / 2);
+
+        DrawCentered(LeftSectionWidth, controlsTip.Text);
+    }
+
     public static void DrawScore(object? sender, EventArgs e)
     {
         if (sender is not Score score)
@@ -101,7 +104,7 @@ internal static class GraphicsEngine
 
         var text = score.Text + score.ScoreToDraw.ToString().Pastel(Color.FromArgb(12, 216, 0));
 
-        SetCursorPosition(LeftSectionWidth + Map.Width, Map.Height - (Score.Height / 2));
+        SetCursorPosition(LeftSectionWidth + Map.Size.Width, Map.Size.Height - Score.Height / 2);
 
         DrawCentered(RightSectionWidth, text);
     }

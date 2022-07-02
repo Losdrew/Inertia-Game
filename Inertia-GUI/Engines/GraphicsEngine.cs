@@ -25,7 +25,7 @@ internal static class GraphicsEngine
             return;
         }
 
-        var (width, height) = GetScaledValues(Map.Width, Map.Height);
+        var (width, height) = GetScaledValues(Map.Size.Width, Map.Size.Height);
 
         _gameForm.MapBox.Size = new Size(width, height);
 
@@ -103,7 +103,24 @@ internal static class GraphicsEngine
             return;
         }
 
-        _gameForm.ControlsTipLabel.Text = controlsTip.Text;
+        if (InputEngine.DirectionControls is null || InputEngine.MusicControls is null)
+        {
+            return;
+        }
+
+        var directionKeys = InputEngine.DirectionControls.Keys.ToList();
+        var musicKeys = InputEngine.MusicControls.Keys.ToList();
+
+        var controlsKeys = directionKeys.Concat(musicKeys).ToList();
+        var controls = _gameForm.ControlsTipLabel.Text;
+
+        // Replace numbers in controls tip template with corresponding keys
+        for (var i = 0; controls.Contains(i.ToString()); i++)
+        {
+            controls = controls.Replace(i.ToString(), controlsKeys[i].ToString());
+        }
+
+        _gameForm.ControlsTipLabel.Text = controls;
 
         var sectionSize = _gameForm.LeftSection.Size;
         var tipSize = _gameForm.ControlsTipLabel.Size;
@@ -118,7 +135,6 @@ internal static class GraphicsEngine
             return;
         }
 
-        _gameForm.ScoreLabel.Text = score.Text;
         _gameForm.ScoreNumberLabel.Text = score.ScoreToDraw.ToString();
 
         var sectionSize = _gameForm.RightSection.Size;

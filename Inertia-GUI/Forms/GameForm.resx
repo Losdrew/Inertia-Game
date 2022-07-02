@@ -57,7 +57,485 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, publicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ScoreBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ScoreBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 13.8pt</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ScoreBox.IsSplitterFixed" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ScoreBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>40, 154</value>
+  </data>
+  <data name="ScoreLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ScoreLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="ScoreLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-1, 0</value>
+  </data>
+  <data name="ScoreLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 31</value>
+  </data>
+  <data name="ScoreLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="ScoreLabel.Text" xml:space="preserve">
+    <value>Score:</value>
+  </data>
+  <data name="&gt;&gt;ScoreLabel.Name" xml:space="preserve">
+    <value>ScoreLabel</value>
+  </data>
+  <data name="&gt;&gt;ScoreLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ScoreLabel.Parent" xml:space="preserve">
+    <value>ScoreBox.Panel1</value>
+  </data>
+  <data name="&gt;&gt;ScoreLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ScoreBox.Panel1.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="&gt;&gt;ScoreBox.Panel1.Name" xml:space="preserve">
+    <value>ScoreBox.Panel1</value>
+  </data>
+  <data name="&gt;&gt;ScoreBox.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ScoreBox.Panel1.Parent" xml:space="preserve">
+    <value>ScoreBox</value>
+  </data>
+  <data name="&gt;&gt;ScoreBox.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ScoreNumberLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ScoreNumberLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="ScoreNumberLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="ScoreNumberLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 31</value>
+  </data>
+  <data name="ScoreNumberLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="ScoreNumberLabel.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ScoreNumberLabel.Name" xml:space="preserve">
+    <value>ScoreNumberLabel</value>
+  </data>
+  <data name="&gt;&gt;ScoreNumberLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ScoreNumberLabel.Parent" xml:space="preserve">
+    <value>ScoreBox.Panel2</value>
+  </data>
+  <data name="&gt;&gt;ScoreNumberLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ScoreBox.Panel2.Name" xml:space="preserve">
+    <value>ScoreBox.Panel2</value>
+  </data>
+  <data name="&gt;&gt;ScoreBox.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ScoreBox.Panel2.Parent" xml:space="preserve">
+    <value>ScoreBox</value>
+  </data>
+  <data name="&gt;&gt;ScoreBox.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ScoreBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 31</value>
+  </data>
+  <data name="ScoreBox.SplitterDistance" type="System.Int32, mscorlib">
+    <value>74</value>
+  </data>
+  <data name="ScoreBox.SplitterWidth" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="ScoreBox.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;ScoreBox.Name" xml:space="preserve">
+    <value>ScoreBox</value>
+  </data>
+  <data name="&gt;&gt;ScoreBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ScoreBox.Parent" xml:space="preserve">
+    <value>RightSection</value>
+  </data>
+  <data name="&gt;&gt;ScoreBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="AudioVolumeContainer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="AudioVolumeContainer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="AudioVolumeLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="AudioVolumeLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="AudioVolumeLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10.2pt</value>
+  </data>
+  <data name="AudioVolumeLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>321, 0</value>
+  </data>
+  <data name="AudioVolumeLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 23</value>
+  </data>
+  <data name="AudioVolumeLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="AudioVolumeLabel.Text" xml:space="preserve">
+    <value>Audio volume:</value>
+  </data>
+  <data name="&gt;&gt;AudioVolumeLabel.Name" xml:space="preserve">
+    <value>AudioVolumeLabel</value>
+  </data>
+  <data name="&gt;&gt;AudioVolumeLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AudioVolumeLabel.Parent" xml:space="preserve">
+    <value>AudioVolumeContainer.Panel1</value>
+  </data>
+  <data name="&gt;&gt;AudioVolumeLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;AudioVolumeContainer.Panel1.Name" xml:space="preserve">
+    <value>AudioVolumeContainer.Panel1</value>
+  </data>
+  <data name="&gt;&gt;AudioVolumeContainer.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AudioVolumeContainer.Panel1.Parent" xml:space="preserve">
+    <value>AudioVolumeContainer</value>
+  </data>
+  <data name="&gt;&gt;AudioVolumeContainer.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="AudioVolumeSlider.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="AudioVolumeSlider.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="AudioVolumeSlider.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 25</value>
+  </data>
+  <data name="AudioVolumeSlider.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;AudioVolumeSlider.Name" xml:space="preserve">
+    <value>AudioVolumeSlider</value>
+  </data>
+  <data name="&gt;&gt;AudioVolumeSlider.Type" xml:space="preserve">
+    <value>NAudio.Gui.VolumeSlider, NAudio.WinForms, Culture=neutral, PublicKeyToken=e279aa5131008a41</value>
+  </data>
+  <data name="&gt;&gt;AudioVolumeSlider.Parent" xml:space="preserve">
+    <value>AudioVolumeContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;AudioVolumeSlider.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;AudioVolumeContainer.Panel2.Name" xml:space="preserve">
+    <value>AudioVolumeContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;AudioVolumeContainer.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AudioVolumeContainer.Panel2.Parent" xml:space="preserve">
+    <value>AudioVolumeContainer</value>
+  </data>
+  <data name="&gt;&gt;AudioVolumeContainer.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="AudioVolumeContainer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>916, 25</value>
+  </data>
+  <data name="AudioVolumeContainer.SplitterDistance" type="System.Int32, mscorlib">
+    <value>441</value>
+  </data>
+  <data name="AudioVolumeContainer.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;AudioVolumeContainer.Name" xml:space="preserve">
+    <value>AudioVolumeContainer</value>
+  </data>
+  <data name="&gt;&gt;AudioVolumeContainer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AudioVolumeContainer.Parent" xml:space="preserve">
+    <value>BottomSection</value>
+  </data>
+  <data name="&gt;&gt;AudioVolumeContainer.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ControlsTipLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ControlsTipLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 13.8pt</value>
+  </data>
+  <data name="ControlsTipLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="ControlsTipLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>298, 403</value>
+  </data>
+  <data name="ControlsTipLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="ControlsTipLabel.Text" xml:space="preserve">
+    <value>Controls
+
+0         1         2
+ ↖         ↑          ↗
+
+3                     4
+←                     →
+
+5          6         7
+↙          ↓          ↘
+
+8                        9
+Pause Music    Switch Music</value>
+  </data>
+  <data name="ControlsTipLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;ControlsTipLabel.Name" xml:space="preserve">
+    <value>ControlsTipLabel</value>
+  </data>
+  <data name="&gt;&gt;ControlsTipLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ControlsTipLabel.Parent" xml:space="preserve">
+    <value>LeftSection</value>
+  </data>
+  <data name="&gt;&gt;ControlsTipLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="LeftSection.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LeftSection.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="LeftSection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 60</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="LeftSection.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>20, 20, 20, 20</value>
+  </data>
+  <data name="LeftSection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>341, 403</value>
+  </data>
+  <data name="LeftSection.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;LeftSection.Name" xml:space="preserve">
+    <value>LeftSection</value>
+  </data>
+  <data name="&gt;&gt;LeftSection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LeftSection.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;LeftSection.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="CenterSection.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="MapBox.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="MapBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="MapBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>382, 403</value>
+  </data>
+  <data name="MapBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;MapBox.Name" xml:space="preserve">
+    <value>MapBox</value>
+  </data>
+  <data name="&gt;&gt;MapBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MapBox.Parent" xml:space="preserve">
+    <value>CenterSection</value>
+  </data>
+  <data name="&gt;&gt;MapBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="CenterSection.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="CenterSection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>371, 60</value>
+  </data>
+  <data name="CenterSection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>379, 403</value>
+  </data>
+  <data name="CenterSection.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;CenterSection.Name" xml:space="preserve">
+    <value>CenterSection</value>
+  </data>
+  <data name="&gt;&gt;CenterSection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CenterSection.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;CenterSection.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="RightSection.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="RightSection.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="RightSection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>750, 60</value>
+  </data>
+  <data name="RightSection.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>20, 20, 20, 20</value>
+  </data>
+  <data name="RightSection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 403</value>
+  </data>
+  <data name="RightSection.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;RightSection.Name" xml:space="preserve">
+    <value>RightSection</value>
+  </data>
+  <data name="&gt;&gt;RightSection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RightSection.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;RightSection.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <metadata name="AnimationTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>24, 16</value>
   </metadata>
+  <data name="BottomSection.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="BottomSection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 463</value>
+  </data>
+  <data name="BottomSection.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="BottomSection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>922, 31</value>
+  </data>
+  <data name="BottomSection.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;BottomSection.Name" xml:space="preserve">
+    <value>BottomSection</value>
+  </data>
+  <data name="&gt;&gt;BottomSection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BottomSection.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;BottomSection.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="MenuButton.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="MenuButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="MenuButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="MenuButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="MenuButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 36</value>
+  </data>
+  <data name="MenuButton.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;MenuButton.Name" xml:space="preserve">
+    <value>MenuButton</value>
+  </data>
+  <data name="&gt;&gt;MenuButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MenuButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;MenuButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>982, 554</value>
+  </data>
+  <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>30, 60, 30, 60</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Inertia</value>
+  </data>
+  <data name="&gt;&gt;AnimationTimer.Name" xml:space="preserve">
+    <value>AnimationTimer</value>
+  </data>
+  <data name="&gt;&gt;AnimationTimer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>GameForm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>GUI.Forms.Base.FormBase, Inertia-GUI, Culture=neutral, PublicKeyToken=null</value>
+  </data>
 </root>

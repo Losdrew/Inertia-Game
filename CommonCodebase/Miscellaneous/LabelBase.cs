@@ -9,7 +9,7 @@ public abstract class LabelBase : VisualObject
         Text = "Placeholder";
     }
 
-    public string Text { get; protected init; }
+    public string Text { get; set; }
 
     protected int CalculateHeight()
     {
