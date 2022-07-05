@@ -9,10 +9,17 @@ public class Player : CellBase
         CollisionType = Collision.None;
     }
 
+    public static event EventHandler? ClearCell;
+
     public void ChangePosition(int x, int y)
     {
         ClearOnScreen(); // Clear past position
 
         (X, Y) = (x, y);
+    }
+
+    private void ClearOnScreen()
+    {
+        ClearCell?.Invoke(this, EventArgs.Empty);
     }
 }

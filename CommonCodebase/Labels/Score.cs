@@ -1,4 +1,4 @@
-﻿namespace CommonCodebase.Miscellaneous;
+﻿namespace CommonCodebase.Labels;
 
 public class Score : LabelBase
 {
@@ -12,9 +12,9 @@ public class Score : LabelBase
 
     public int ScoreToDraw { get; private set; }
 
-    private int TotalScore { get; set; }
+    public int TotalScore { get; private set; }
 
-    private int CurrentScore { get; set; }
+    public int CurrentScore { get; private set; }
 
     public static event EventHandler? DrawScore;
     public static event EventHandler? UpdateScore;

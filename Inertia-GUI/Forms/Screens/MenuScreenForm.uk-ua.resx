@@ -60,6 +60,10 @@
   <data name="StartButton.Text" xml:space="preserve">
     <value>Почати гру</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="QuitButton.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
   <data name="QuitButton.Text" xml:space="preserve">
     <value>Вийти</value>
   </data>
@@ -405,6 +409,12 @@
   </data>
   <data name="OptionsButton.Text" xml:space="preserve">
     <value>Налаштування</value>
+  </data>
+  <data name="LeaderboardsButton.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="LeaderboardsButton.Text" xml:space="preserve">
+    <value>Таблиці лідерів</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Меню</value>

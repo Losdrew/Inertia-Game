@@ -123,4 +123,18 @@
   <data name="ExitMessageBoxCaption" xml:space="preserve">
     <value>Вихід</value>
   </data>
+  <data name="PauseMessageBoxText" xml:space="preserve">
+    <value>Гру поставлено на паузу.
+
+Натисність OK щоб відновити гру.</value>
+  </data>
+  <data name="PauseMessageBoxCaption" xml:space="preserve">
+    <value>Пауза</value>
+  </data>
+  <data name="EndGameSessionCaption" xml:space="preserve">
+    <value>Закінчення ігрової сесії</value>
+  </data>
+  <data name="EndGameSessionText" xml:space="preserve">
+    <value>Ви впенені, що хочете закінчити поточну ігрову сесію? Ваші дані будуть збережені.</value>
+  </data>
 </root>

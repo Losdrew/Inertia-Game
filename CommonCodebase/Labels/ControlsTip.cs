@@ -1,4 +1,4 @@
-﻿namespace CommonCodebase.Miscellaneous;
+﻿namespace CommonCodebase.Labels;
 
 public class ControlsTip : LabelBase
 {

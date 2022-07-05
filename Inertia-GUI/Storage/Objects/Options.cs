@@ -1,6 +1,6 @@
 ﻿using CommonCodebase.Core;
 
-namespace GUI.Miscellaneous;
+namespace GUI.Storage.Objects;
 
 internal class Options
 {

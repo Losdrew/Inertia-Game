@@ -154,7 +154,7 @@ partial class GameForm
             this.MenuButton.FlatAppearance.BorderSize = 0;
             this.MenuButton.Name = "MenuButton";
             this.MenuButton.UseVisualStyleBackColor = false;
-            this.MenuButton.Click += new System.EventHandler(this.MenuButton_Click);
+            this.MenuButton.Click += new System.EventHandler(this.MenuButton_Click_ProgressSave);
             // 
             // GameForm
             // 
@@ -166,7 +166,7 @@ partial class GameForm
             this.Controls.Add(this.BottomSection);
             this.Icon = global::GUI.Properties.Resources.Icon;
             this.Name = "GameForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormBase_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GameForm_FormClosing);
             this.ScoreBox.Panel1.ResumeLayout(false);
             this.ScoreBox.Panel1.PerformLayout();
             this.ScoreBox.Panel2.ResumeLayout(false);

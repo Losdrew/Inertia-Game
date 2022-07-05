@@ -1,6 +1,6 @@
 ﻿using CommonCodebase.Core;
 using CommonCodebase.Entities;
-using CommonCodebase.Miscellaneous;
+using CommonCodebase.Labels;
 using GUI.Forms;
 using GUI.Properties;
 
@@ -11,26 +11,21 @@ internal static class GraphicsEngine
     private const int CellWidthScale = 45;
     private const int CellHeightScale = 45;
 
-    private static GameForm? _gameForm;
-
-    public static void GetGameForm(GameForm gameForm)
-    {
-        _gameForm = gameForm;
-    }
+    public static GameForm? GameForm { private get; set; }
 
     public static void SetMapBox()
     {
-        if (_gameForm is null)
+        if (GameForm is null)
         {
             return;
         }
 
         var (width, height) = GetScaledValues(Map.Size.Width, Map.Size.Height);
 
-        _gameForm.MapBox.Size = new Size(width, height);
+        GameForm.MapBox.Size = new Size(width, height);
 
         // Clearing all controls to draw on an empty MapBox
-        _gameForm.MapBox.Controls.Clear();
+        GameForm.MapBox.Controls.Clear();
     }
 
     public static (int first, int second) GetScaledValues(int first = 1, int second = 1)
@@ -41,7 +36,7 @@ internal static class GraphicsEngine
     public static void DrawCell(object? sender, EventArgs e)
     {
         // Don't draw if cell is an empty one
-        if (sender is not CellBase cell || cell is Empty || _gameForm is null)
+        if (sender is not CellBase cell || cell is Empty || GameForm is null)
         {
             return;
         }
@@ -63,7 +58,7 @@ internal static class GraphicsEngine
         {
             Image = image,
             Enabled = false,
-            Parent = _gameForm.MapBox,
+            Parent = GameForm.MapBox,
             Location = new Point(x, y),
             BackColor = Color.Transparent,
             Size = new Size(width, height),
@@ -76,12 +71,12 @@ internal static class GraphicsEngine
             AnimationEngine.PlayerPictureBox = cellPictureBox;
         }
 
-        _gameForm.MapBox.Controls.Add(cellPictureBox);
+        GameForm.MapBox.Controls.Add(cellPictureBox);
     }
 
     public static void ClearCell(object? sender, EventArgs e)
     {
-        if (sender is not CellBase cell || _gameForm is null)
+        if (sender is not CellBase cell || GameForm is null)
         {
             return;
         }
@@ -98,7 +93,7 @@ internal static class GraphicsEngine
 
     public static void DrawControlsTip(object? sender, EventArgs e)
     {
-        if (sender is not ControlsTip controlsTip || _gameForm is null)
+        if (sender is not ControlsTip controlsTip || GameForm is null)
         {
             return;
         }
@@ -112,7 +107,7 @@ internal static class GraphicsEngine
         var musicKeys = InputEngine.MusicControls.Keys.ToList();
 
         var controlsKeys = directionKeys.Concat(musicKeys).ToList();
-        var controls = _gameForm.ControlsTipLabel.Text;
+        var controls = GameForm.ControlsTipLabel.Text;
 
         // Replace numbers in controls tip template with corresponding keys
         for (var i = 0; controls.Contains(i.ToString()); i++)
@@ -120,44 +115,44 @@ internal static class GraphicsEngine
             controls = controls.Replace(i.ToString(), controlsKeys[i].ToString());
         }
 
-        _gameForm.ControlsTipLabel.Text = controls;
+        GameForm.ControlsTipLabel.Text = controls;
 
-        var sectionSize = _gameForm.LeftSection.Size;
-        var tipSize = _gameForm.ControlsTipLabel.Size;
+        var sectionSize = GameForm.LeftSection.Size;
+        var tipSize = GameForm.ControlsTipLabel.Size;
 
-        _gameForm.ControlsTipLabel.Location = GetCenteredLocation(sectionSize, tipSize);
+        GameForm.ControlsTipLabel.Location = GetCenteredLocation(sectionSize, tipSize);
     }
 
     public static void DrawScore(object? sender, EventArgs e)
     {
-        if (sender is not Score score || _gameForm is null)
+        if (sender is not Score score || GameForm is null)
         {
             return;
         }
 
-        _gameForm.ScoreNumberLabel.Text = score.ScoreToDraw.ToString();
+        GameForm.ScoreNumberLabel.Text = score.ScoreToDraw.ToString();
 
-        var sectionSize = _gameForm.RightSection.Size;
-        var boxSize = _gameForm.ScoreBox.Size;
+        var sectionSize = GameForm.RightSection.Size;
+        var boxSize = GameForm.ScoreBox.Size;
 
-        _gameForm.ScoreBox.Location = GetCenteredLocation(sectionSize, boxSize);
+        GameForm.ScoreBox.Location = GetCenteredLocation(sectionSize, boxSize);
     }
 
     public static void UpdateScore(object? sender, EventArgs e)
     {
-        if (sender is not Score score || _gameForm is null)
+        if (sender is not Score score || GameForm is null)
         {
             return;
         }
 
-        _gameForm.ScoreNumberLabel.Text = score.ScoreToDraw.ToString();
+        GameForm.ScoreNumberLabel.Text = score.ScoreToDraw.ToString();
     }
 
     public static PictureBox? FindPictureBoxOnMap(Point pictureBoxLocation)
     {
-        if (_gameForm != null)
+        if (GameForm != null)
         {
-            foreach (Control control in _gameForm.MapBox.Controls)
+            foreach (Control control in GameForm.MapBox.Controls)
             {
                 if (control.Location == pictureBoxLocation)
                 {
@@ -171,12 +166,12 @@ internal static class GraphicsEngine
 
     public static void ClearPictureBoxOnMap(PictureBox? pictureBox)
     {
-        if (pictureBox == AnimationEngine.PlayerPictureBox || pictureBox is null || _gameForm is null)
+        if (pictureBox == AnimationEngine.PlayerPictureBox || pictureBox is null || GameForm is null)
         {
             return;
         }
 
-        _gameForm.MapBox.Controls.Remove(pictureBox);
+        GameForm.MapBox.Controls.Remove(pictureBox);
     }
 
     private static Point GetCenteredLocation(Size parentSize, Size childSize)

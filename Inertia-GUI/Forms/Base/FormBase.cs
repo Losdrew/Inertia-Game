@@ -1,7 +1,8 @@
-﻿using System.Globalization;
-using GUI.Engines;
+﻿using GUI.Engines;
+using GUI.Forms.JsonStorage;
 using GUI.Forms.Screens;
 using GUI.Properties;
+using System.Globalization;
 
 namespace GUI.Forms.Base;
 
@@ -22,23 +23,6 @@ internal partial class FormBase : Form
         Program.AppContext.MainForm.Show();
     }
 
-    protected void MenuButton_Click(object sender, EventArgs e)
-    {
-        new MenuScreenForm().MakeActive();
-    }
-
-    protected void FormBase_FormClosing(object sender, FormClosingEventArgs e)
-    {
-        if (MessageBox.Show(
-                Resources.ExitMessageBoxText,
-                Resources.ExitMessageBoxCaption,
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Information) == DialogResult.No)
-        {
-            e.Cancel = true;
-        }
-    }
-
     protected static void ApplyLanguageSettings()
     {
         if (OptionsForm.Options?.Language is null)
@@ -47,5 +31,31 @@ internal partial class FormBase : Form
         }
 
         Thread.CurrentThread.CurrentUICulture = new CultureInfo(OptionsForm.Options.Language);
+    }
+
+    protected void MenuButton_Click(object sender, EventArgs e)
+    {
+        new MenuScreenForm().MakeActive();
+    }
+
+    protected void MenuButton_Click_ProgressSave(object sender, EventArgs e)
+    {
+        if (GameForm.IsEndingGameSession())
+        {
+            MenuButton_Click(sender, EventArgs.Empty);
+            GameForm.SaveUserInfo();
+        }
+    }
+
+    protected void FormBase_FormClosing(object sender, FormClosingEventArgs e)
+    {
+        if (MessageBox.Show(
+                Resources.ExitMessageBoxText,
+                Resources.ExitMessageBoxCaption,
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question) == DialogResult.No)
+        {
+            e.Cancel = true;
+        }
     }
 }

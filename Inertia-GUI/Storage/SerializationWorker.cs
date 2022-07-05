@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace GUI.Miscellaneous;
+namespace GUI.Storage;
 
 internal class SerializationWorker
 {

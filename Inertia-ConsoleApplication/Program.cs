@@ -1,7 +1,7 @@
 ﻿using CommonCodebase.Core;
 using CommonCodebase.Engines;
 using CommonCodebase.Entities;
-using CommonCodebase.Miscellaneous;
+using CommonCodebase.Labels;
 using ConsoleApplication.Engines;
 using ConsoleApplication.Screens;
 
@@ -54,8 +54,9 @@ internal static class Program
     private static void SubscribeToEvents()
     {
         CellBase.DrawCell += GraphicsEngine.DrawCell;
-        CellBase.ClearCell += GraphicsEngine.ClearCell;
         CellBase.StopMovement += MovementEngine.Movement.StopMovement;
+
+        Player.ClearCell += GraphicsEngine.ClearCell;
 
         Prize.Win += MovementEngine.Movement.SetWin;
         Trap.GameOver += MovementEngine.Movement.SetGameOver;

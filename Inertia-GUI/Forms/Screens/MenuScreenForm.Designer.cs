@@ -34,6 +34,7 @@ partial class MenuScreenForm
             this.SkiRunnerImage = new System.Windows.Forms.PictureBox();
             this.MenuLabel = new System.Windows.Forms.Label();
             this.OptionsButton = new System.Windows.Forms.Button();
+            this.LeaderboardsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SkiRunnerImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,10 +70,18 @@ partial class MenuScreenForm
             this.OptionsButton.UseVisualStyleBackColor = true;
             this.OptionsButton.Click += new System.EventHandler(this.OptionsButton_Click);
             // 
+            // LeaderboardsButton
+            // 
+            resources.ApplyResources(this.LeaderboardsButton, "LeaderboardsButton");
+            this.LeaderboardsButton.Name = "LeaderboardsButton";
+            this.LeaderboardsButton.UseVisualStyleBackColor = true;
+            this.LeaderboardsButton.Click += new System.EventHandler(this.LeaderboardsButton_Click);
+            // 
             // MenuScreenForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.LeaderboardsButton);
             this.Controls.Add(this.OptionsButton);
             this.Controls.Add(this.MenuLabel);
             this.Controls.Add(this.SkiRunnerImage);
@@ -93,4 +102,5 @@ partial class MenuScreenForm
     private PictureBox SkiRunnerImage;
     private Label MenuLabel;
     private Button OptionsButton;
+    private Button LeaderboardsButton;
 }

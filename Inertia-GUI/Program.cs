@@ -1,12 +1,11 @@
 using CommonCodebase.Engines;
-using GUI.Forms;
-using GUI.Forms.Screens;
+using GUI.Forms.JsonStorage;
 
 namespace GUI;
 
 public static class Program
 {
-    public static readonly ApplicationContext AppContext = new(new MenuScreenForm());
+    public static readonly ApplicationContext AppContext = new(new LoginForm());
 
     [STAThread]
     private static void Main()

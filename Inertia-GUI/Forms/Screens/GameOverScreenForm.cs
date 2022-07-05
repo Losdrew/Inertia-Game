@@ -11,8 +11,10 @@ internal partial class GameOverScreenForm : ScreenFormBase
 
     private void CreateNewLevelButton_Click(object? sender, EventArgs e)
     {
-        GameForm gameForm = new();
-        gameForm.CreateNew();
-        gameForm.MakeActive();
+        if (GameForm.IsEndingGameSession())
+        {
+            GameForm.CreateNew();
+            GameForm.MakeActive();
+        }
     }
 }

@@ -5,6 +5,8 @@ namespace CommonCodebase.Engines;
 
 public static class AudioEngine
 {
+    public static bool IsMusicPaused;
+
     // All available sounds
     private static readonly Dictionary<string, UnmanagedMemoryStream> Audio = new()
     {
@@ -58,14 +60,19 @@ public static class AudioEngine
 
     public static void PauseMusic()
     {
-        if (MusicOut.PlaybackState == PlaybackState.Playing)
+        if (!IsMusicPaused)
         {
             MusicOut.Pause();
+            IsMusicPaused = true;
         }
+    }
 
-        else
+    public static void ResumeMusic()
+    {
+        if (IsMusicPaused)
         {
             MusicOut.Play();
+            IsMusicPaused = false;
         }
     }
 

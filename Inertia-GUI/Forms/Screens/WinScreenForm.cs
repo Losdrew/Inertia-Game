@@ -11,8 +11,7 @@ internal partial class WinScreenForm : ScreenFormBase
 
     private void ContinueButton_Click(object? sender, EventArgs e)
     {
-        GameForm gameForm = new();
-        gameForm.Continue();
-        gameForm.MakeActive();
+        GameForm.Continue();
+        GameForm.MakeActive();
     }
 }

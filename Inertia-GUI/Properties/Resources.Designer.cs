@@ -61,6 +61,24 @@ namespace GUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to End game session.
+        /// </summary>
+        internal static string EndGameSessionCaption {
+            get {
+                return ResourceManager.GetString("EndGameSessionCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to end your current game session? Your data will be saved..
+        /// </summary>
+        internal static string EndGameSessionText {
+            get {
+                return ResourceManager.GetString("EndGameSessionText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Error {
@@ -125,6 +143,26 @@ namespace GUI.Properties {
             get {
                 object obj = ResourceManager.GetObject("MenuLogo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pause.
+        /// </summary>
+        internal static string PauseMessageBoxCaption {
+            get {
+                return ResourceManager.GetString("PauseMessageBoxCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Game is paused.
+        ///
+        ///Press OK to resume..
+        /// </summary>
+        internal static string PauseMessageBoxText {
+            get {
+                return ResourceManager.GetString("PauseMessageBoxText", resourceCulture);
             }
         }
         

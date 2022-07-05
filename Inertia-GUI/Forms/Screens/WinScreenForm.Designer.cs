@@ -49,7 +49,7 @@ partial class WinScreenForm
             resources.ApplyResources(this.MenuButton, "MenuButton");
             this.MenuButton.Name = "MenuButton";
             this.MenuButton.UseVisualStyleBackColor = true;
-            this.MenuButton.Click += new System.EventHandler(this.MenuButton_Click);
+            this.MenuButton.Click += new System.EventHandler(this.MenuButton_Click_ProgressSave);
             // 
             // SkiRunnerImage
             // 

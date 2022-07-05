@@ -19,7 +19,6 @@ public abstract class CellBase : VisualObject
     public Collision CollisionType { get; protected init; }
 
     public static event EventHandler? DrawCell;
-    public static event EventHandler? ClearCell;
 
     public override void Draw()
     {
@@ -28,11 +27,6 @@ public abstract class CellBase : VisualObject
 
     public virtual void Action(Map map)
     {
-    }
-
-    protected void ClearOnScreen()
-    {
-        ClearCell?.Invoke(this, EventArgs.Empty);
     }
 
     protected void ClearOnMap(Map map)

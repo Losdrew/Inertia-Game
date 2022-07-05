@@ -1,6 +1,6 @@
 ﻿using CommonCodebase.Core;
 using CommonCodebase.Entities;
-using CommonCodebase.Miscellaneous;
+using CommonCodebase.Labels;
 using ConsoleApplication.Properties;
 using Pastel;
 using System.Drawing;
@@ -64,9 +64,9 @@ internal static class GraphicsEngine
             _ => Color.Transparent
         };
 
-        SetCursorPosition(cell.X + MapLocationX, cell.Y + MapLocationY);
+        Console.SetCursorPosition(cell.X + MapLocationX, cell.Y + MapLocationY);
 
-        DrawText(symbol.Pastel(color));
+        Console.Write(symbol.Pastel(color));
     }
 
     public static void ClearCell(object? sender, EventArgs e)
@@ -76,9 +76,9 @@ internal static class GraphicsEngine
             return;
         }
 
-        SetCursorPosition(cell.X + MapLocationX, cell.Y + MapLocationY);
+        Console.SetCursorPosition(cell.X + MapLocationX, cell.Y + MapLocationY);
 
-        DrawText(" ");
+        Console.Write(" ");
     }
 
     public static void DrawControls(object? sender, EventArgs e)
@@ -90,7 +90,7 @@ internal static class GraphicsEngine
 
         controlsTip.Text = Resources.ControlsTip;
 
-        SetCursorPosition(0, Map.Size.Height - ControlsTip.Height / 2);
+        Console.SetCursorPosition(0, Map.Size.Height - ControlsTip.Height / 2);
 
         DrawCentered(LeftSectionWidth, controlsTip.Text);
     }
@@ -104,7 +104,7 @@ internal static class GraphicsEngine
 
         var text = score.Text + score.ScoreToDraw.ToString().Pastel(Color.FromArgb(12, 216, 0));
 
-        SetCursorPosition(LeftSectionWidth + Map.Size.Width, Map.Size.Height - Score.Height / 2);
+        Console.SetCursorPosition(LeftSectionWidth + Map.Size.Width, Map.Size.Height - Score.Height / 2);
 
         DrawCentered(RightSectionWidth, text);
     }
@@ -123,15 +123,5 @@ internal static class GraphicsEngine
 
             Console.WriteLine(new string(' ', (width - colorlessLine.Length) / 2) + line);
         }
-    }
-
-    private static void DrawText(string text)
-    {
-        Console.Write(text);
-    }
-
-    private static void SetCursorPosition(int x, int y)
-    {
-        Console.SetCursorPosition(x, y);
     }
 }

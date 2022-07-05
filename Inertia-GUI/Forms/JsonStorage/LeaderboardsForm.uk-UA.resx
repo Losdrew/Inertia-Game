@@ -1,0 +1,131 @@
+﻿<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="NameHeader.Text" xml:space="preserve">
+    <value>Імя</value>
+  </data>
+  <data name="PrizesCollectedHeader.Text" xml:space="preserve">
+    <value>Призів зібрано</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="PrizesCollectedHeader.Width" type="System.Int32, mscorlib">
+    <value>120</value>
+  </data>
+  <data name="LevelsCompletedHeader.Text" xml:space="preserve">
+    <value>Рівнів пройдено</value>
+  </data>
+  <data name="GameOversHeader.Text" xml:space="preserve">
+    <value>Поразок</value>
+  </data>
+  <data name="DateHeader.Text" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="DateHeader.Width" type="System.Int32, mscorlib">
+    <value>159</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="BestResultsListView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 89</value>
+  </data>
+  <data name="AllResultLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>931, 41</value>
+  </data>
+  <data name="AllResultLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 31</value>
+  </data>
+  <data name="AllResultLabel.Text" xml:space="preserve">
+    <value>Останні результати</value>
+  </data>
+  <data name="BestResultsLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>208, 41</value>
+  </data>
+  <data name="BestResultsLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>237, 31</value>
+  </data>
+  <data name="BestResultsLabel.Text" xml:space="preserve">
+    <value>Найкращі результати</value>
+  </data>
+  <data name="NameHeader1.Text" xml:space="preserve">
+    <value>Ім'я</value>
+  </data>
+  <data name="PrizesCollectedHeader1.Text" xml:space="preserve">
+    <value>Призів зібрано</value>
+  </data>
+  <data name="PrizesCollectedHeader1.Width" type="System.Int32, mscorlib">
+    <value>120</value>
+  </data>
+  <data name="LevelsCompletedHeader1.Text" xml:space="preserve">
+    <value>Рівнів пройдено</value>
+  </data>
+  <data name="GameOverHeader1.Text" xml:space="preserve">
+    <value>Поразок</value>
+  </data>
+  <data name="DateHeader1.Text" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="DateHeader1.Width" type="System.Int32, mscorlib">
+    <value>164</value>
+  </data>
+  <data name="LatestResultsListView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>702, 89</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Таблиці лідерів</value>
+  </data>
+</root>

@@ -1,6 +1,4 @@
-﻿using CommonCodebase.Core;
-
-namespace GUI.Forms
+﻿namespace GUI.Forms.JsonStorage
 {
     partial class OptionsForm
     {

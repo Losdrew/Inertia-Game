@@ -1,4 +1,5 @@
 using GUI.Forms.Base;
+using GUI.Forms.JsonStorage;
 
 namespace GUI.Forms.Screens;
 
@@ -11,14 +12,18 @@ internal partial class MenuScreenForm : ScreenFormBase
 
     private void StartButton_Click(object? sender, EventArgs e)
     {
-        GameForm gameForm = new();
-        gameForm.StartGame();
-        gameForm.MakeActive();
+        GameForm.StartGame();
+        GameForm.MakeActive();
     }
 
     private void OptionsButton_Click(object? sender, EventArgs e)
     {
         new OptionsForm().MakeActive();
+    }
+
+    private void LeaderboardsButton_Click(object sender, EventArgs e)
+    {
+        new LeaderboardsForm().MakeActive();
     }
 
     private void QuitButton_Click(object? sender, EventArgs e)

@@ -80,6 +80,9 @@
 	  <None Update="Resources\JsonFiles\Options.json">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
+	  <None Update="Resources\JsonFiles\Users.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
 	  <None Update="Resources\OtherImages\Icon.ico">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </None>

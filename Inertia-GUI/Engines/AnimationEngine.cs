@@ -11,18 +11,13 @@ internal static class AnimationEngine
     public static bool IsPlayerFacingRight;
     public static PictureBox? PlayerPictureBox;
 
-    private static Timer? _animationTimer;
-
     private static Point _newPlayerLocation;
     private static PictureBox? _destinationPictureBox;
 
     private static readonly Image PlayerImageLeft = Resources.Player_Left;
     private static readonly Image PlayerImageRight = Resources.Player_Right;
 
-    public static void GetAnimationTimer(Timer animationTimer)
-    {
-        _animationTimer = animationTimer;
-    }
+    public static Timer? AnimationTimer { private get; set; }
 
     public static void StartAnimation(Player player)
     {
@@ -89,7 +84,7 @@ internal static class AnimationEngine
 
     private static void StartAnimationTimer()
     {
-        _animationTimer?.Start();
+        AnimationTimer?.Start();
 
         if (PlayerPictureBox is null)
         {
@@ -107,7 +102,7 @@ internal static class AnimationEngine
 
     private static void StopAnimationTimer()
     {
-        _animationTimer?.Stop();
+        AnimationTimer?.Stop();
 
         MovementEngine.Move();
     }

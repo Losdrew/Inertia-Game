@@ -88,13 +88,15 @@ public class Map : VisualObject
 
     public event Action? UpdateScore;
 
-    public void CreateMap()
+    public Map CreateMap()
     {
         var random = new Random();
 
         CreateCompletablePath(random);
 
         FillMap(random);
+
+        return this;
     }
 
     public static (int x, int y) GetDestination(int x, int y, Direction direction)

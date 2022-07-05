@@ -1,10 +1,11 @@
 ﻿using CommonCodebase.Core;
 using GUI.Engines;
 using GUI.Forms.Base;
-using GUI.Miscellaneous;
+using GUI.Storage.Objects;
+using GUI.Storage.Repositories;
 using System.Globalization;
 
-namespace GUI.Forms;
+namespace GUI.Forms.JsonStorage;
 
 internal partial class OptionsForm : FormBase
 {

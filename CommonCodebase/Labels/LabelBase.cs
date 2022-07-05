@@ -1,6 +1,6 @@
 ﻿using CommonCodebase.Core;
 
-namespace CommonCodebase.Miscellaneous;
+namespace CommonCodebase.Labels;
 
 public abstract class LabelBase : VisualObject
 {
