@@ -25,7 +25,7 @@ internal static class Program
     public static void Main()
     {
         ControlsTip controlsTip = new();
-        Map map = new();
+        Map map = new(25, 10);
         Score score = new();
 
         SubscribeToEvents();
@@ -78,7 +78,7 @@ internal static class Program
 
     private static GameState Start(out Map map)
     {
-        map = new Map();
+        map = new Map(25, 10);
         map.CreateMap();
         return GameState.Play;
     }
@@ -88,7 +88,7 @@ internal static class Program
         // Create a copy of map
         Map currentMap = new(map);
 
-        GraphicsEngine.SetPlayZoneScreen();
+        GraphicsEngine.SetPlayZoneScreen(currentMap.Size);
 
         controlsTip.Draw();
         currentMap.Draw();

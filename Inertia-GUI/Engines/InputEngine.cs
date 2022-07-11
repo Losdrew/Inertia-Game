@@ -14,11 +14,11 @@ internal enum InputType
 
 internal static class InputEngine
 {
+    private const Keys PauseKey = Keys.Escape;
+
     public static InputType AllowedInput;
     public static Dictionary<Keys, Music>? MusicControls;
     public static Dictionary<Keys, Direction>? DirectionControls;
-
-    private const Keys PauseKey = Keys.Escape;
 
     public static void ReadKey(object? sender, KeyEventArgs e)
     {

@@ -4,23 +4,30 @@ using CommonCodebase.Entities;
 using CommonCodebase.Labels;
 using GUI.Engines;
 using GUI.Forms.Base;
+using GUI.Forms.JsonStorage;
 using GUI.Forms.Screens;
 using GUI.Properties;
 using GUI.Storage.Objects;
-using GUI.Storage.Repositories;
 
 namespace GUI.Forms;
 
+internal enum GameMode
+{
+    RandomMaps,
+    PremadeMaps
+}
+
 internal partial class GameForm : FormBase
 {
-    public static User User = new();
-    public static readonly UserRepository UserRepository = new();
+    public User User = new();
 
-    private static Map _map = new();
-    private static readonly Score Score = new();
-
+    private readonly Score _score = new();
+    private Map? _map;
+    
     public GameForm()
     {
+        GraphicsEngine.GameForm = this;
+
         CellBase.DrawCell += GraphicsEngine.DrawCell;
         CellBase.StopMovement += MovementEngine.StopMovement;
 
@@ -31,83 +38,90 @@ internal partial class GameForm : FormBase
 
         MovementEngine.Movement.Win += Win;
         MovementEngine.Movement.GameOver += GameOver;
-        MovementEngine.Movement.StartAnimation += AnimationEngine.StartAnimation; 
+        MovementEngine.Movement.StartAnimation += AnimationEngine.StartAnimation;
 
-        GameForm.Score.DrawScore += GraphicsEngine.DrawScore;
-        GameForm.Score.UpdateScore += GraphicsEngine.UpdateScore;
+        Score.DrawScore += GraphicsEngine.DrawScore;
+        Score.UpdateScore += GraphicsEngine.UpdateScore;
 
         ControlsTip.DrawControlsTip += GraphicsEngine.DrawControlsTip;
     }
 
-    public static void SaveUserInfo()
-    {
-        if (User.HasResults())
-        {
-            User.SavedDateTime = DateTime.Now;
-            UserRepository.SaveUser(User);
-        }
-
-        Score.ResetAll();
-        User = new User(User.Name);
-    }
+    public static GameMode CurrentGameMode { get; private set; }
 
     public static bool IsEndingGameSession()
     {
-        if (MessageBox.Show(
-                Resources.EndGameSessionText,
-                Resources.EndGameSessionCaption,
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning) == DialogResult.Yes)
-        {
-            return true;
-        }
-        
-        return false;
+        return MessageBox.Show(
+            Resources.EndGameSessionText,
+            Resources.EndGameSessionCaption,
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Warning) == DialogResult.Yes;
     }
 
-    public void StartGame()
+    public void SaveUserInfo()
     {
-        Initialize();
+        if (User.HasResults())
+        {
+            LeaderboardsForm.SaveUser(User);
+        }
+
+        _score.ResetAll();
+        User = new User(User.Name);
+    }
+
+    public void StartGame(GameMode gameMode, Map? map = null)
+    {
+        CurrentGameMode = gameMode;
+        Initialize(map);
         Play();
     }
 
     public void Restart()
     {
-        Score.ResetCurrent();
+        ResetCurrentScore();
         Play();
     }
 
     public void Continue()
     {
         SaveScore();
-        StartGame();
+        StartGame(GameMode.RandomMaps);
     }
 
     public void CreateNew()
     {
         SaveScore();
         SaveUserInfo();
-        StartGame();
+        StartGame(GameMode.RandomMaps);
     }
 
-    private static void SaveScore()
+    public void ResetCurrentScore()
     {
-        Score.Save();
-        User.PrizeCount = Score.TotalScore;
+        _score.ResetCurrent();
     }
 
-    private static void Play()
+    private void SaveScore()
     {
+        _score.Save();
+        User.PrizeCount = _score.TotalScore;
+    }
+
+    private void Play()
+    {
+        if (_map is null)
+        {
+            return;
+        }
+
         // Create a copy of map
         Map currentMap = new(_map);
 
-        GraphicsEngine.SetMapBox();
+        GraphicsEngine.SetMapBox(currentMap.Size);
 
         currentMap.Draw();
-        Score.Draw();
+        _score.Draw();
         new ControlsTip().Draw();
 
-        currentMap.UpdateScore += Score.Update;
+        currentMap.UpdateScore += _score.Update;
 
         MovementEngine.Movement.GetCurrentMap(currentMap);
 
@@ -115,32 +129,38 @@ internal partial class GameForm : FormBase
         InputEngine.AllowedInput = InputType.MovementInput | InputType.MusicInput | InputType.PauseInput;
     }
 
-    private static void Win()
+    private void Win()
     {
         User.CompletedLevelsCount++;
         new WinScreenForm().MakeActive();
     }
 
-    private static void GameOver()
+    private void GameOver()
     {
         User.GameOverCount++;
         new GameOverScreenForm().MakeActive();
     }
 
-    private void Initialize()
+    private void Initialize(Map? map)
     {
         // Ensure that form is empty before initialization
         Controls.Clear();
 
         InitializeComponent();
 
-        _map = new Map().CreateMap();
+        if (CurrentGameMode == GameMode.RandomMaps)
+        {
+            var (width, height) = OptionsForm.Options.MapSize;
+            _map = new Map(width, height).CreateMap();
+        }
 
-        AnimationTimer.Tick += AnimationEngine.PlayAnimation;
+        if (CurrentGameMode == GameMode.PremadeMaps)
+        {
+            _map = map;
+        }
+
         AnimationTimer.Interval = 1;
-
-        // Get references to game form and animation timer for engines
-        GraphicsEngine.GameForm = this;
+        AnimationTimer.Tick += AnimationEngine.PlayAnimation;
         AnimationEngine.AnimationTimer = AnimationTimer;
     }
 

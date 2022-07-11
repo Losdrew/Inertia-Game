@@ -416,6 +416,9 @@
   <data name="LeaderboardsButton.Text" xml:space="preserve">
     <value>Таблиці лідерів</value>
   </data>
+  <data name="LevelEditorButton.Text" xml:space="preserve">
+    <value>Редактор рівнів</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Меню</value>
   </data>

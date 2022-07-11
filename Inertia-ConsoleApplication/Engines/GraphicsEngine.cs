@@ -1,5 +1,4 @@
-﻿using CommonCodebase.Core;
-using CommonCodebase.Entities;
+﻿using CommonCodebase.Entities;
 using CommonCodebase.Labels;
 using ConsoleApplication.Properties;
 using Pastel;
@@ -14,18 +13,41 @@ internal static class GraphicsEngine
     private const int LeftSectionWidth = 38;
     private const int RightSectionWidth = 32;
 
-    private static readonly int PlayZoneScreenWidth = LeftSectionWidth + Map.Size.Width + RightSectionWidth;
-    private static readonly int PlayZoneScreenHeight = Map.Size.Height * 2;
+    private static int _playZoneWidth;
+    private static int _playZoneHeight;
 
-    private static readonly int MapLocationX = LeftSectionWidth;
-    private static readonly int MapLocationY = PlayZoneScreenHeight / 4;
+    private static int _mapLocationX;
+    private static int _mapLocationY;
 
-    public static void SetPlayZoneScreen()
+    private static (int Width, int Height) _mapSize;
+
+    private static (int Width, int Height) MapSize
     {
+        get => _mapSize;
+        set
+        {
+            if (_mapSize == value)
+            {
+                return;
+            }
+
+            _mapSize = value;
+
+            _playZoneWidth = LeftSectionWidth + _mapSize.Width + RightSectionWidth;
+            _playZoneHeight = _mapSize.Height * 2;
+
+            _mapLocationX = LeftSectionWidth;
+            _mapLocationY = _playZoneHeight / 4;
+        }
+    }
+
+    public static void SetPlayZoneScreen((int Width, int Height) mapSize)
+    {
+        MapSize = mapSize;
         Console.Clear();
         Console.CursorVisible = false;
-        Console.SetWindowSize(PlayZoneScreenWidth, PlayZoneScreenHeight);
-        Console.SetBufferSize(PlayZoneScreenWidth, PlayZoneScreenHeight);
+        Console.SetWindowSize(_playZoneWidth, _playZoneHeight);
+        Console.SetBufferSize(_playZoneWidth, _playZoneHeight);
     }
 
     public static void SetScreen(int x, int y)
@@ -64,7 +86,7 @@ internal static class GraphicsEngine
             _ => Color.Transparent
         };
 
-        Console.SetCursorPosition(cell.X + MapLocationX, cell.Y + MapLocationY);
+        Console.SetCursorPosition(cell.X + _mapLocationX, cell.Y + _mapLocationY);
 
         Console.Write(symbol.Pastel(color));
     }
@@ -76,7 +98,7 @@ internal static class GraphicsEngine
             return;
         }
 
-        Console.SetCursorPosition(cell.X + MapLocationX, cell.Y + MapLocationY);
+        Console.SetCursorPosition(cell.X + _mapLocationX, cell.Y + _mapLocationY);
 
         Console.Write(" ");
     }
@@ -90,7 +112,7 @@ internal static class GraphicsEngine
 
         controlsTip.Text = Resources.ControlsTip;
 
-        Console.SetCursorPosition(0, Map.Size.Height - ControlsTip.Height / 2);
+        Console.SetCursorPosition(0, (_playZoneHeight - controlsTip.Height) / 2);
 
         DrawCentered(LeftSectionWidth, controlsTip.Text);
     }
@@ -102,11 +124,11 @@ internal static class GraphicsEngine
             return;
         }
 
-        var text = score.Text + score.ScoreToDraw.ToString().Pastel(Color.FromArgb(12, 216, 0));
+        score.Text = "Score: " + score.ScoreToDraw.ToString().Pastel(Color.FromArgb(12, 216, 0));
 
-        Console.SetCursorPosition(LeftSectionWidth + Map.Size.Width, Map.Size.Height - Score.Height / 2);
+        Console.SetCursorPosition(LeftSectionWidth + MapSize.Width, (_playZoneHeight - score.Height) / 2);
 
-        DrawCentered(RightSectionWidth, text);
+        DrawCentered(RightSectionWidth, score.Text);
     }
 
     public static void DrawCentered(int width, string text)

@@ -9,7 +9,6 @@ internal static class AnimationEngine
     public static void StartAnimation(Player player)
     {
         player.Draw();
-
         Thread.Sleep(FrameMs);
     }
 }

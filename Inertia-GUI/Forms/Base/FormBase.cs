@@ -2,18 +2,21 @@
 using GUI.Forms.JsonStorage;
 using GUI.Forms.Screens;
 using GUI.Properties;
-using System.Globalization;
 
 namespace GUI.Forms.Base;
 
 internal partial class FormBase : Form
 {
+    protected static readonly GameForm GameForm = new();
+
+    private InputType _previousInputType;
+
     protected FormBase()
     {
-        ApplyLanguageSettings();
         KeyPreview = true;
         KeyDown += InputEngine.ReadKey;
         InputEngine.AllowedInput = InputType.MusicInput;
+        OptionsForm.ApplyLanguageSettings();
     }
 
     public void MakeActive()
@@ -23,14 +26,19 @@ internal partial class FormBase : Form
         Program.AppContext.MainForm.Show();
     }
 
-    protected static void ApplyLanguageSettings()
+    protected void TextBox_FocusEnter(object sender, EventArgs e)
     {
-        if (OptionsForm.Options?.Language is null)
-        {
-            return;
-        }
+        // Save previous input type
+        _previousInputType = InputEngine.AllowedInput;
 
-        Thread.CurrentThread.CurrentUICulture = new CultureInfo(OptionsForm.Options.Language);
+        // Disable any third party input 
+        InputEngine.AllowedInput = 0;
+    }
+
+    protected void TextBox_FocusLeave(object sender, EventArgs e)
+    {
+        // Restore previous input
+        InputEngine.AllowedInput = _previousInputType;
     }
 
     protected void MenuButton_Click(object sender, EventArgs e)
@@ -38,13 +46,15 @@ internal partial class FormBase : Form
         new MenuScreenForm().MakeActive();
     }
 
-    protected void MenuButton_Click_ProgressSave(object sender, EventArgs e)
+    protected void MenuButton_Click_SaveProgress(object sender, EventArgs e)
     {
-        if (GameForm.IsEndingGameSession())
+        if (!GameForm.IsEndingGameSession())
         {
-            MenuButton_Click(sender, EventArgs.Empty);
-            GameForm.SaveUserInfo();
+            return;
         }
+
+        GameForm.SaveUserInfo();
+        MenuButton_Click(sender, EventArgs.Empty);
     }
 
     protected void FormBase_FormClosing(object sender, FormClosingEventArgs e)

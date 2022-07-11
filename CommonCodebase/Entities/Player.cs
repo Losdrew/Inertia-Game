@@ -14,7 +14,6 @@ public class Player : CellBase
     public void ChangePosition(int x, int y)
     {
         ClearOnScreen(); // Clear past position
-
         (X, Y) = (x, y);
     }
 

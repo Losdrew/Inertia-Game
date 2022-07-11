@@ -1,4 +1,5 @@
 using GUI.Forms.Base;
+using GUI.Forms.JsonStorage;
 
 namespace GUI.Forms.Screens;
 
@@ -11,10 +12,19 @@ internal partial class GameOverScreenForm : ScreenFormBase
 
     private void CreateNewLevelButton_Click(object? sender, EventArgs e)
     {
-        if (GameForm.IsEndingGameSession())
+        if (GameForm.CurrentGameMode == GameMode.RandomMaps)
         {
-            GameForm.CreateNew();
-            GameForm.MakeActive();
+            if (GameForm.IsEndingGameSession())
+            {
+                GameForm.CreateNew();
+                GameForm.MakeActive();
+            }
+        }
+
+        if (GameForm.CurrentGameMode == GameMode.PremadeMaps)
+        {
+            GameForm.ResetCurrentScore();
+            new LevelEditorForm().MakeActive();
         }
     }
 }

@@ -1,0 +1,919 @@
+﻿<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="&gt;&gt;DeleteMapButton.Name" xml:space="preserve">
+    <value>DeleteMapButton</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="EraseCursorButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 52</value>
+  </data>
+  <data name="&gt;&gt;WallButton.Name" xml:space="preserve">
+    <value>WallButton</value>
+  </data>
+  <data name="StopButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 45</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="SelectCursorButton.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="MapWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 27</value>
+  </data>
+  <data name="PrizeButton.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;GameElementsLabelPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MapSizeContainer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 113</value>
+  </data>
+  <data name="&gt;&gt;PlayerButton.Name" xml:space="preserve">
+    <value>PlayerButton</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="MapWidth.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="&gt;&gt;MapSizeContainer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MapSizeContainer.Parent" xml:space="preserve">
+    <value>ActionPanel</value>
+  </data>
+  <data name="MapNameTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="MapPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="MapSizeLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;MapListView.Name" xml:space="preserve">
+    <value>MapListView</value>
+  </data>
+  <data name="&gt;&gt;MapListView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="PlayerButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;MapSizeLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="XLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 25</value>
+  </data>
+  <data name="PrizeButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="&gt;&gt;MapNameTextBox.Name" xml:space="preserve">
+    <value>MapNameTextBox</value>
+  </data>
+  <data name="&gt;&gt;GameElementsPanel.Name" xml:space="preserve">
+    <value>GameElementsPanel</value>
+  </data>
+  <data name="ElementSelectionStatusLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10.8pt</value>
+  </data>
+  <data name="&gt;&gt;TrapButton.Parent" xml:space="preserve">
+    <value>GameElementsPictureBoxPanel</value>
+  </data>
+  <data name="&gt;&gt;MapWidth.Parent" xml:space="preserve">
+    <value>MapSizeContainer.Panel2</value>
+  </data>
+  <data name="MenuButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="&gt;&gt;WallButton.Parent" xml:space="preserve">
+    <value>GameElementsPictureBoxPanel</value>
+  </data>
+  <data name="MapWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="MapSizeLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10.8pt</value>
+  </data>
+  <data name="EraseCursorButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 35</value>
+  </data>
+  <data name="&gt;&gt;StopButton.Parent" xml:space="preserve">
+    <value>GameElementsPictureBoxPanel</value>
+  </data>
+  <data name="GameElementsLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="MapSizeLabel.Text" xml:space="preserve">
+    <value>Map size:</value>
+  </data>
+  <data name="&gt;&gt;ActionPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GameElementsPictureBoxPanel.Name" xml:space="preserve">
+    <value>GameElementsPictureBoxPanel</value>
+  </data>
+  <data name="MapHeight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="PrizeButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 45</value>
+  </data>
+  <data name="TrapButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 45</value>
+  </data>
+  <data name="ListButtonsPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="EraseCursorButton.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;MapSizeContainer.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MapHeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 27</value>
+  </data>
+  <data name="&gt;&gt;SidePanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Level editor</value>
+  </data>
+  <data name="&gt;&gt;GameElementsLabel.Name" xml:space="preserve">
+    <value>GameElementsLabel</value>
+  </data>
+  <data name="ClearMapTemplateButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 237</value>
+  </data>
+  <data name="&gt;&gt;SelectCursorButton.Name" xml:space="preserve">
+    <value>SelectCursorButton</value>
+  </data>
+  <data name="&gt;&gt;XLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="MapSizeContainer.IsSplitterFixed" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;MapHeight.Parent" xml:space="preserve">
+    <value>MapSizeContainer.Panel2</value>
+  </data>
+  <data name="SelectCursorButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 35</value>
+  </data>
+  <data name="&gt;&gt;PlayButton.Parent" xml:space="preserve">
+    <value>ActionPanel</value>
+  </data>
+  <data name="PlayButton.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="WallButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 45</value>
+  </data>
+  <data name="&gt;&gt;PlayerButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CreateMapTemplateButton.Parent" xml:space="preserve">
+    <value>ActionPanel</value>
+  </data>
+  <data name="XLabel.Text" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="MenuButton.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="DeleteMapButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 32</value>
+  </data>
+  <data name="&gt;&gt;MapSizeContainer.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="MapSizeLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 25</value>
+  </data>
+  <data name="MapNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 14</value>
+  </data>
+  <data name="&gt;&gt;MapListPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DeleteMapButton.Parent" xml:space="preserve">
+    <value>ListButtonsPanel</value>
+  </data>
+  <data name="XLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;TrapButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="MapListView.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="MapHeight.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;EraseCursorButton.Name" xml:space="preserve">
+    <value>EraseCursorButton</value>
+  </data>
+  <data name="PrizeButton.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="GameElementsPictureBoxPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="CreateMapTemplateButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 38</value>
+  </data>
+  <data name="&gt;&gt;StopButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SidePanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;XLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ListButtonsPanel.Parent" xml:space="preserve">
+    <value>MapListPanel</value>
+  </data>
+  <data name="&gt;&gt;MapPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="PlayButton.Text" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="GameElementsLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 10</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>40, 40, 40, 40</value>
+  </data>
+  <data name="MapHeight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 0</value>
+  </data>
+  <data name="SelectCursorButton.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="&gt;&gt;MenuButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MapHeight.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>GUI.Forms.Base.FormBase, Inertia-GUI, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="ElementSelectionStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 25</value>
+  </data>
+  <data name="&gt;&gt;PrizeButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="PlayerButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="MapPanel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ListButtonsPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>248, 103</value>
+  </data>
+  <data name="MapNameTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 27</value>
+  </data>
+  <data name="&gt;&gt;GameElementsPanel.Parent" xml:space="preserve">
+    <value>SidePanel</value>
+  </data>
+  <data name="MapWidth.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="MapListView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="MapSizeContainer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 29</value>
+  </data>
+  <data name="PlayButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 38</value>
+  </data>
+  <data name="XLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10.8pt</value>
+  </data>
+  <data name="&gt;&gt;MapHeight.Name" xml:space="preserve">
+    <value>MapHeight</value>
+  </data>
+  <data name="ClearMapTemplateButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 38</value>
+  </data>
+  <data name="WallButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="&gt;&gt;ListButtonsPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PrizeButton.Parent" xml:space="preserve">
+    <value>GameElementsPictureBoxPanel</value>
+  </data>
+  <data name="GameElementsPictureBoxPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 45</value>
+  </data>
+  <data name="&gt;&gt;MapWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GameElementsPictureBoxPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="MapWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="MenuButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="PlayButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>66, 301</value>
+  </data>
+  <data name="&gt;&gt;MapListPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="WallButton.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="ListButtonsPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="WallButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>180, 0</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>908, 539</value>
+  </data>
+  <data name="&gt;&gt;TrapButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AddMapButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EraseCursorButton.Parent" xml:space="preserve">
+    <value>ActionPanel</value>
+  </data>
+  <data name="PlayButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt</value>
+  </data>
+  <data name="GameElementsLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 13.8pt</value>
+  </data>
+  <data name="&gt;&gt;GameElementsLabelPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;GameElementsLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ElementSelectionStatusLabel.Text" xml:space="preserve">
+    <value>Element not selected</value>
+  </data>
+  <data name="ActionPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="TrapButton.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="MapPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>352, 459</value>
+  </data>
+  <data name="&gt;&gt;XLabel.Name" xml:space="preserve">
+    <value>XLabel</value>
+  </data>
+  <data name="GameElementsPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="&gt;&gt;PlayButton.Name" xml:space="preserve">
+    <value>PlayButton</value>
+  </data>
+  <data name="&gt;&gt;MapListPanel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="MapSizeLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="GameElementsLabelPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;GameElementsLabel.Parent" xml:space="preserve">
+    <value>GameElementsLabelPanel</value>
+  </data>
+  <data name="SidePanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="AddMapButton.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="MapSizeLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="GameElementsPictureBoxPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="MenuButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 4</value>
+  </data>
+  <data name="ActionPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="&gt;&gt;GameElementsPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ClearMapTemplateButton.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;MapNameTextBox.Parent" xml:space="preserve">
+    <value>ListButtonsPanel</value>
+  </data>
+  <data name="&gt;&gt;PlayButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MenuButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 36</value>
+  </data>
+  <data name="&gt;&gt;ElementSelectionStatusLabel.Parent" xml:space="preserve">
+    <value>ActionPanel</value>
+  </data>
+  <data name="MapSizeContainer.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;ClearMapTemplateButton.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="GameElementsPictureBoxPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 45</value>
+  </data>
+  <data name="&gt;&gt;WallButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="StopButton.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="EraseCursorButton.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="&gt;&gt;MapWidth.Name" xml:space="preserve">
+    <value>MapWidth</value>
+  </data>
+  <data name="&gt;&gt;MapListView.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;TrapButton.Name" xml:space="preserve">
+    <value>TrapButton</value>
+  </data>
+  <data name="&gt;&gt;StopButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="XLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ListButtonsPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 354</value>
+  </data>
+  <data name="StopButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="CreateMapTemplateButton.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;MapSizeContainer.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="DeleteMapButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10.2pt</value>
+  </data>
+  <data name="TrapButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="&gt;&gt;PrizeButton.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;PlayerButton.Parent" xml:space="preserve">
+    <value>GameElementsPictureBoxPanel</value>
+  </data>
+  <data name="MapSizeLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;ListButtonsPanel.Name" xml:space="preserve">
+    <value>ListButtonsPanel</value>
+  </data>
+  <data name="PlayerButton.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="SidePanel.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;MapNameTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="TrapButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>135, 0</value>
+  </data>
+  <data name="StopButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>90, 0</value>
+  </data>
+  <data name="ActionPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 90</value>
+  </data>
+  <data name="StopButton.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="ClearMapTemplateButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt</value>
+  </data>
+  <data name="&gt;&gt;MapWidth.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="MapListPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="DeleteMapButton.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="AddMapButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 14</value>
+  </data>
+  <data name="GameElementsPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="MapListView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>248, 354</value>
+  </data>
+  <data name="&gt;&gt;SelectCursorButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;MapSizeLabel.Name" xml:space="preserve">
+    <value>MapSizeLabel</value>
+  </data>
+  <data name="SelectCursorButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>68, 52</value>
+  </data>
+  <data name="&gt;&gt;GameElementsPictureBoxPanel.Parent" xml:space="preserve">
+    <value>GameElementsPanel</value>
+  </data>
+  <data name="&gt;&gt;GameElementsLabelPanel.Parent" xml:space="preserve">
+    <value>GameElementsPanel</value>
+  </data>
+  <data name="AddMapButton.Text" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="&gt;&gt;MapSizeLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;MapSizeContainer.Panel2.Name" xml:space="preserve">
+    <value>MapSizeContainer.Panel2</value>
+  </data>
+  <data name="CreateMapTemplateButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 175</value>
+  </data>
+  <data name="DeleteMapButton.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="MapListPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="SidePanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>642, 40</value>
+  </data>
+  <data name="MapPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="ElementSelectionStatusLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;MapPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ElementSelectionStatusLabel.Name" xml:space="preserve">
+    <value>ElementSelectionStatusLabel</value>
+  </data>
+  <data name="&gt;&gt;WallButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DeleteMapButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;XLabel.Parent" xml:space="preserve">
+    <value>MapSizeContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;PrizeButton.Name" xml:space="preserve">
+    <value>PrizeButton</value>
+  </data>
+  <data name="&gt;&gt;MapListView.Parent" xml:space="preserve">
+    <value>MapListPanel</value>
+  </data>
+  <data name="ActionPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 367</value>
+  </data>
+  <data name="&gt;&gt;GameElementsLabelPanel.Name" xml:space="preserve">
+    <value>GameElementsLabelPanel</value>
+  </data>
+  <data name="&gt;&gt;ClearMapTemplateButton.Name" xml:space="preserve">
+    <value>ClearMapTemplateButton</value>
+  </data>
+  <data name="&gt;&gt;MapHeight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MapSizeContainer.Panel1.Parent" xml:space="preserve">
+    <value>MapSizeContainer</value>
+  </data>
+  <data name="&gt;&gt;PlayButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;AddMapButton.Parent" xml:space="preserve">
+    <value>ListButtonsPanel</value>
+  </data>
+  <data name="GameElementsLabel.Text" xml:space="preserve">
+    <value>Game elements</value>
+  </data>
+  <data name="&gt;&gt;MenuButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="WallButton.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;MapPanel.Name" xml:space="preserve">
+    <value>MapPanel</value>
+  </data>
+  <data name="CreateMapTemplateButton.Text" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="GameElementsPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="MapListPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>40, 40</value>
+  </data>
+  <data name="&gt;&gt;CreateMapTemplateButton.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="TrapButton.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="GameElementsPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 90</value>
+  </data>
+  <data name="&gt;&gt;MapSizeContainer.Panel1.Name" xml:space="preserve">
+    <value>MapSizeContainer.Panel1</value>
+  </data>
+  <data name="&gt;&gt;ListButtonsPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="PrizeButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 0</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>8, 20</value>
+  </data>
+  <data name="GameElementsLabelPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;SidePanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;MapPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="XLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="MapSizeContainer.SplitterDistance" type="System.Int32, mscorlib">
+    <value>81</value>
+  </data>
+  <data name="MapHeight.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="&gt;&gt;ActionPanel.Parent" xml:space="preserve">
+    <value>SidePanel</value>
+  </data>
+  <data name="&gt;&gt;ActionPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;MapSizeLabel.Parent" xml:space="preserve">
+    <value>MapSizeContainer.Panel1</value>
+  </data>
+  <data name="&gt;&gt;EraseCursorButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MenuButton.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="ClearMapTemplateButton.Text" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="PlayerButton.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="&gt;&gt;ElementSelectionStatusLabel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="GameElementsLabelPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="&gt;&gt;SelectCursorButton.Parent" xml:space="preserve">
+    <value>ActionPanel</value>
+  </data>
+  <data name="&gt;&gt;SelectCursorButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MapSizeContainer.Panel2.Parent" xml:space="preserve">
+    <value>MapSizeContainer</value>
+  </data>
+  <data name="&gt;&gt;StopButton.Name" xml:space="preserve">
+    <value>StopButton</value>
+  </data>
+  <data name="ElementSelectionStatusLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 14</value>
+  </data>
+  <data name="&gt;&gt;AddMapButton.Name" xml:space="preserve">
+    <value>AddMapButton</value>
+  </data>
+  <data name="&gt;&gt;ActionPanel.Name" xml:space="preserve">
+    <value>ActionPanel</value>
+  </data>
+  <data name="&gt;&gt;AddMapButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="MapListPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 459</value>
+  </data>
+  <data name="&gt;&gt;GameElementsPictureBoxPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="AddMapButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10.2pt</value>
+  </data>
+  <data name="MapListView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="SidePanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 459</value>
+  </data>
+  <data name="&gt;&gt;MenuButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="CreateMapTemplateButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt</value>
+  </data>
+  <data name="&gt;&gt;MapSizeContainer.Name" xml:space="preserve">
+    <value>MapSizeContainer</value>
+  </data>
+  <data name="&gt;&gt;GameElementsPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SidePanel.Name" xml:space="preserve">
+    <value>SidePanel</value>
+  </data>
+  <data name="&gt;&gt;MenuButton.Name" xml:space="preserve">
+    <value>MenuButton</value>
+  </data>
+  <data name="&gt;&gt;ElementSelectionStatusLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CreateMapTemplateButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MapSizeContainer.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;EraseCursorButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="DeleteMapButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>73, 58</value>
+  </data>
+  <data name="GameElementsLabelPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 45</value>
+  </data>
+  <data name="&gt;&gt;MapListPanel.Name" xml:space="preserve">
+    <value>MapListPanel</value>
+  </data>
+  <data name="&gt;&gt;SidePanel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;GameElementsLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MapNameTextBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;ClearMapTemplateButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="PlayerButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 45</value>
+  </data>
+  <data name="&gt;&gt;DeleteMapButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="GameElementsLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>173, 31</value>
+  </data>
+  <data name="MapSizeLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="&gt;&gt;PlayerButton.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;CreateMapTemplateButton.Name" xml:space="preserve">
+    <value>CreateMapTemplateButton</value>
+  </data>
+  <data name="MapPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>290, 40</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>LevelEditorForm</value>
+  </data>
+  <data name="&gt;&gt;ClearMapTemplateButton.Parent" xml:space="preserve">
+    <value>ActionPanel</value>
+  </data>
+  <data name="XLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>56, 0</value>
+  </data>
+  <data name="&gt;&gt;MapSizeContainer.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ElementSelectionStatusLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="GameElementsLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="AddMapButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 29</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+    <value>uk-UA</value>
+  </metadata>
+</root>

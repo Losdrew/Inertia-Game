@@ -61,6 +61,24 @@ namespace GUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Element not selected.
+        /// </summary>
+        internal static string ElementNotSelectedText {
+            get {
+                return ResourceManager.GetString("ElementNotSelectedText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Element selected.
+        /// </summary>
+        internal static string ElementSelectedText {
+            get {
+                return ResourceManager.GetString("ElementSelectedText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to End game session.
         /// </summary>
         internal static string EndGameSessionCaption {
@@ -70,11 +88,22 @@ namespace GUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to end your current game session? Your data will be saved..
+        ///   Looks up a localized string similar to Are you sure you want to end your current game session? 
+        ///Your results will be saved..
         /// </summary>
         internal static string EndGameSessionText {
             get {
                 return ResourceManager.GetString("EndGameSessionText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap EraseCursor {
+            get {
+                object obj = ResourceManager.GetObject("EraseCursor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -127,12 +156,49 @@ namespace GUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid name.
+        /// </summary>
+        internal static string ListContainsMapWithSameNameCaption {
+            get {
+                return ResourceManager.GetString("ListContainsMapWithSameNameCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Map list already contains map with the same name.
+        ///Enter a different name..
+        /// </summary>
+        internal static string ListContainsMapWithSameNameText {
+            get {
+                return ResourceManager.GetString("ListContainsMapWithSameNameText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap MapBackground {
             get {
                 object obj = ResourceManager.GetObject("MapBackground", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum player count exceeded.
+        /// </summary>
+        internal static string MaxPlayerCountExceededCaption {
+            get {
+                return ResourceManager.GetString("MaxPlayerCountExceededCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player count can&apos;t exceed .
+        /// </summary>
+        internal static string MaxPlayerCountExceededText {
+            get {
+                return ResourceManager.GetString("MaxPlayerCountExceededText", resourceCulture);
             }
         }
         
@@ -187,11 +253,39 @@ namespace GUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No player on map.
+        /// </summary>
+        internal static string PlayerNotPlacedCaption {
+            get {
+                return ResourceManager.GetString("PlayerNotPlacedCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player not placed on current map.
+        /// </summary>
+        internal static string PlayerNotPlacedText {
+            get {
+                return ResourceManager.GetString("PlayerNotPlacedText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Prize {
             get {
                 object obj = ResourceManager.GetObject("Prize", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SelectCursor {
+            get {
+                object obj = ResourceManager.GetObject("SelectCursor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

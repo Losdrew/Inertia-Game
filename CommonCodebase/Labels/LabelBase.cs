@@ -4,15 +4,17 @@ namespace CommonCodebase.Labels;
 
 public abstract class LabelBase : VisualObject
 {
-    protected LabelBase()
+    private string _text = "Placeholder";
+
+    public string Text
     {
-        Text = "Placeholder";
+        get => _text;
+        set
+        {
+            _text = value;
+            Height = Text.Split('\n').Length;
+        }
     }
 
-    public string Text { get; set; }
-
-    protected int CalculateHeight()
-    {
-        return Text.Split('\n').Length;
-    }
+    public int Height { get; private set; }
 }

@@ -154,7 +154,7 @@ partial class GameForm
             this.MenuButton.FlatAppearance.BorderSize = 0;
             this.MenuButton.Name = "MenuButton";
             this.MenuButton.UseVisualStyleBackColor = false;
-            this.MenuButton.Click += new System.EventHandler(this.MenuButton_Click_ProgressSave);
+            this.MenuButton.Click += new System.EventHandler(this.MenuButton_Click_SaveProgress);
             // 
             // GameForm
             // 

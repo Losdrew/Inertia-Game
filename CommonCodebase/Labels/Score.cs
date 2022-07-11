@@ -2,19 +2,11 @@
 
 public class Score : LabelBase
 {
-    public Score()
-    {
-        Text = "Score: ";
-        Height = CalculateHeight();
-    }
-
-    public static int Height { get; private set; }
-
     public int ScoreToDraw { get; private set; }
 
     public int TotalScore { get; private set; }
 
-    public int CurrentScore { get; private set; }
+    private int CurrentScore { get; set; }
 
     public static event EventHandler? DrawScore;
     public static event EventHandler? UpdateScore;

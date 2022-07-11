@@ -57,263 +57,101 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;LatestResultsListView.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="PrizesCollectedHeader.Width" type="System.Int32, mscorlib">
-    <value>115</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="AllResultLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>970, 22</value>
-  </data>
-  <data name="&gt;&gt;PrizesCollectedHeader.Name" xml:space="preserve">
-    <value>PrizesCollectedHeader</value>
-  </data>
-  <data name="&gt;&gt;LevelsCompletedHeader1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="BestResultsLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>258, 22</value>
-  </data>
-  <data name="PrizesCollectedHeader1.Text" xml:space="preserve">
-    <value>Prizes collected</value>
-  </data>
-  <data name="MenuButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 36</value>
-  </data>
-  <data name="&gt;&gt;BestResultsLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="LevelsCompletedHeader.Text" xml:space="preserve">
-    <value>Levels completed </value>
-  </data>
-  <data name="LevelsCompletedHeader.Width" type="System.Int32, mscorlib">
-    <value>135</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 20</value>
-  </data>
-  <data name="GameOverHeader1.Width" type="System.Int32, mscorlib">
-    <value>90</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>LeaderboardsForm</value>
-  </data>
-  <data name="&gt;&gt;PrizesCollectedHeader.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;NameHeader.Name" xml:space="preserve">
-    <value>NameHeader</value>
-  </data>
-  <data name="&gt;&gt;BestResultsLabel.Name" xml:space="preserve">
-    <value>BestResultsLabel</value>
-  </data>
-  <data name="LevelsCompletedHeader1.Width" type="System.Int32, mscorlib">
-    <value>135</value>
-  </data>
-  <data name="MenuButton.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;LatestResultsListView.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="BestResultsLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="DateHeader1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="PrizesCollectedHeader1.Width" type="System.Int32, mscorlib">
-    <value>115</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Leaderboards</value>
-  </data>
-  <data name="&gt;&gt;LevelsCompletedHeader1.Name" xml:space="preserve">
-    <value>LevelsCompletedHeader1</value>
-  </data>
-  <data name="GameOversHeader.Text" xml:space="preserve">
-    <value>Game overs</value>
-  </data>
-  <data name="AllResultLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 13.8pt</value>
-  </data>
-  <data name="DateHeader.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;LevelsCompletedHeader.Name" xml:space="preserve">
-    <value>LevelsCompletedHeader</value>
-  </data>
-  <data name="GameOverHeader1.Text" xml:space="preserve">
-    <value>Game overs</value>
-  </data>
-  <data name="PrizesCollectedHeader1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="DateHeader1.Text" xml:space="preserve">
-    <value>Date</value>
-  </data>
-  <data name="&gt;&gt;MenuButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MenuButton.Name" xml:space="preserve">
-    <value>MenuButton</value>
-  </data>
-  <data name="MenuButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="&gt;&gt;BestResultsLabel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="NameHeader.Text" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="PrizesCollectedHeader.Text" xml:space="preserve">
-    <value>Prizes collected</value>
-  </data>
-  <data name="MenuButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;BestResultsLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="GameOversHeader.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;NameHeader.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BestResultsListView.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="NameHeader1.Width" type="System.Int32, mscorlib">
-    <value>130</value>
-  </data>
-  <data name="PrizesCollectedHeader.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterScreen</value>
-  </data>
-  <data name="&gt;&gt;LatestResultsListView.Name" xml:space="preserve">
-    <value>LatestResultsListView</value>
-  </data>
-  <data name="BestResultsLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 13.8pt</value>
-  </data>
-  <data name="&gt;&gt;DateHeader1.Name" xml:space="preserve">
-    <value>DateHeader1</value>
-  </data>
-  <data name="&gt;&gt;PrizesCollectedHeader1.Name" xml:space="preserve">
-    <value>PrizesCollectedHeader1</value>
-  </data>
-  <data name="&gt;&gt;DateHeader.Name" xml:space="preserve">
-    <value>DateHeader</value>
-  </data>
-  <data name="BestResultsListView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 65</value>
-  </data>
-  <data name="BestResultsLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 31</value>
-  </data>
-  <data name="&gt;&gt;DateHeader.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="LatestResultsListView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>643, 547</value>
-  </data>
-  <data name="NameHeader.Width" type="System.Int32, mscorlib">
-    <value>130</value>
-  </data>
-  <data name="MenuButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="DateHeader.Width" type="System.Int32, mscorlib">
-    <value>164</value>
-  </data>
-  <data name="AllResultLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="AllResultLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <data name="&gt;&gt;AllResultLabel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="LevelsCompletedHeader1.Text" xml:space="preserve">
-    <value>Levels completed</value>
-  </data>
-  <data name="BestResultsListView.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="&gt;&gt;NameHeader1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="BestResultsLabel.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="LevelsCompletedHeader1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
+  <data name="AllResultLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="AllResultLabel.Text" xml:space="preserve">
-    <value>Latest results</value>
-  </data>
-  <data name="MenuButton.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Zoom</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>GUI.Forms.Base.FormBase, Inertia-GUI, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;DateHeader1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="BestResultsLabel.Text" xml:space="preserve">
-    <value>Best results</value>
-  </data>
-  <data name="&gt;&gt;MenuButton.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="LatestResultsListView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>706, 65</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1373, 671</value>
-  </data>
-  <data name="&gt;&gt;BestResultsListView.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;NameHeader1.Name" xml:space="preserve">
-    <value>NameHeader1</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
   </data>
   <data name="&gt;&gt;GameOversHeader.Name" xml:space="preserve">
     <value>GameOversHeader</value>
   </data>
-  <data name="&gt;&gt;PrizesCollectedHeader1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;BestResultsListView.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="MenuButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="NameHeader1.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="BestResultsListView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>638, 547</value>
+  </data>
+  <data name="LatestResultsListView.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;BestResultsLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="LevelsCompletedHeader1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>LeaderboardsForm</value>
+  </data>
+  <data name="&gt;&gt;LatestResultsListView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="AllResultLabel.Text" xml:space="preserve">
+    <value>Latest results</value>
+  </data>
+  <data name="&gt;&gt;LevelsCompletedHeader1.Name" xml:space="preserve">
+    <value>LevelsCompletedHeader1</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="MenuButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="&gt;&gt;PrizesCollectedHeader1.Name" xml:space="preserve">
+    <value>PrizesCollectedHeader1</value>
   </data>
   <data name="DateHeader1.Width" type="System.Int32, mscorlib">
     <value>169</value>
   </data>
-  <data name="GameOversHeader.Width" type="System.Int32, mscorlib">
-    <value>90</value>
+  <data name="LevelsCompletedHeader1.Text" xml:space="preserve">
+    <value>Levels completed</value>
   </data>
-  <data name="&gt;&gt;GameOverHeader1.Name" xml:space="preserve">
-    <value>GameOverHeader1</value>
-  </data>
-  <data name="&gt;&gt;GameOversHeader.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BestResultsListView.Name" xml:space="preserve">
-    <value>BestResultsListView</value>
-  </data>
-  <data name="&gt;&gt;AllResultLabel.Type" xml:space="preserve">
+  <data name="&gt;&gt;BestResultsLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="AllResultLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 31</value>
+  <data name="MenuButton.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="DateHeader.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;BestResultsLabel.Name" xml:space="preserve">
+    <value>BestResultsLabel</value>
+  </data>
+  <data name="MenuButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 36</value>
+  </data>
+  <data name="&gt;&gt;MenuButton.Name" xml:space="preserve">
+    <value>MenuButton</value>
   </data>
   <data name="LevelsCompletedHeader.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
   </data>
-  <data name="NameHeader1.Text" xml:space="preserve">
-    <value>Name</value>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>8, 20</value>
   </data>
   <data name="&gt;&gt;AllResultLabel.Name" xml:space="preserve">
     <value>AllResultLabel</value>
@@ -321,43 +159,208 @@
   <data name="&gt;&gt;LevelsCompletedHeader.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;MenuButton.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;NameHeader1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="DateHeader.Text" xml:space="preserve">
-    <value>Date</value>
-  </data>
   <data name="&gt;&gt;GameOverHeader1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="AllResultLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="BestResultsLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;BestResultsListView.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;NameHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="LatestResultsListView.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+  <data name="AllResultLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 13.8pt</value>
   </data>
-  <data name="&gt;&gt;LatestResultsListView.Type" xml:space="preserve">
+  <data name="&gt;&gt;BestResultsListView.Type" xml:space="preserve">
     <value>System.Windows.Forms.ListView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="BestResultsListView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>638, 547</value>
+  <data name="BestResultsLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>258, 22</value>
+  </data>
+  <data name="DateHeader.Width" type="System.Int32, mscorlib">
+    <value>164</value>
+  </data>
+  <data name="&gt;&gt;NameHeader1.Name" xml:space="preserve">
+    <value>NameHeader1</value>
+  </data>
+  <data name="&gt;&gt;MenuButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LevelsCompletedHeader1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1373, 671</value>
+  </data>
+  <data name="AllResultLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>970, 22</value>
   </data>
   <data name="&gt;&gt;AllResultLabel.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="&gt;&gt;PrizesCollectedHeader1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LatestResultsListView.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;LevelsCompletedHeader.Name" xml:space="preserve">
+    <value>LevelsCompletedHeader</value>
+  </data>
+  <data name="BestResultsLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 31</value>
+  </data>
+  <data name="LatestResultsListView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>706, 65</value>
+  </data>
+  <data name="&gt;&gt;AllResultLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LatestResultsListView.Name" xml:space="preserve">
+    <value>LatestResultsListView</value>
+  </data>
+  <data name="NameHeader1.Width" type="System.Int32, mscorlib">
+    <value>130</value>
+  </data>
+  <data name="&gt;&gt;NameHeader.Name" xml:space="preserve">
+    <value>NameHeader</value>
+  </data>
+  <data name="&gt;&gt;MenuButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="PrizesCollectedHeader.Text" xml:space="preserve">
+    <value>Prizes collected</value>
+  </data>
+  <data name="&gt;&gt;PrizesCollectedHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NameHeader.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="AllResultLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 31</value>
+  </data>
+  <data name="MenuButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="&gt;&gt;LatestResultsListView.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="GameOverHeader1.Width" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="GameOverHeader1.Text" xml:space="preserve">
+    <value>Game overs</value>
+  </data>
+  <data name="&gt;&gt;DateHeader1.Name" xml:space="preserve">
+    <value>DateHeader1</value>
+  </data>
+  <data name="BestResultsListView.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="NameHeader.Width" type="System.Int32, mscorlib">
+    <value>130</value>
+  </data>
+  <data name="&gt;&gt;BestResultsLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;DateHeader.Name" xml:space="preserve">
+    <value>DateHeader</value>
+  </data>
+  <data name="DateHeader1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="BestResultsListView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 65</value>
+  </data>
+  <data name="LevelsCompletedHeader.Width" type="System.Int32, mscorlib">
+    <value>135</value>
+  </data>
+  <data name="&gt;&gt;BestResultsListView.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="PrizesCollectedHeader1.Text" xml:space="preserve">
+    <value>Prizes collected</value>
+  </data>
+  <data name="DateHeader.Text" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="BestResultsLabel.Text" xml:space="preserve">
+    <value>Best results</value>
+  </data>
+  <data name="PrizesCollectedHeader.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="BestResultsLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 13.8pt</value>
+  </data>
+  <data name="GameOversHeader.Text" xml:space="preserve">
+    <value>Game overs</value>
+  </data>
+  <data name="DateHeader1.Text" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>GUI.Forms.Base.FormBase, Inertia-GUI, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;MenuButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;DateHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="GameOversHeader.Width" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="MenuButton.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="PrizesCollectedHeader1.Width" type="System.Int32, mscorlib">
+    <value>115</value>
+  </data>
+  <data name="GameOversHeader.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="PrizesCollectedHeader1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;GameOversHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Leaderboards</value>
+  </data>
+  <data name="&gt;&gt;PrizesCollectedHeader.Name" xml:space="preserve">
+    <value>PrizesCollectedHeader</value>
+  </data>
+  <data name="LevelsCompletedHeader1.Width" type="System.Int32, mscorlib">
+    <value>135</value>
+  </data>
+  <data name="PrizesCollectedHeader.Width" type="System.Int32, mscorlib">
+    <value>115</value>
+  </data>
+  <data name="&gt;&gt;BestResultsListView.Name" xml:space="preserve">
+    <value>BestResultsListView</value>
+  </data>
+  <data name="LevelsCompletedHeader.Text" xml:space="preserve">
+    <value>Levels completed </value>
+  </data>
+  <data name="&gt;&gt;DateHeader1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LatestResultsListView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>643, 547</value>
+  </data>
+  <data name="&gt;&gt;GameOverHeader1.Name" xml:space="preserve">
+    <value>GameOverHeader1</value>
+  </data>
   <data name="GameOverHeader1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
     <value>uk-UA</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
 </root>

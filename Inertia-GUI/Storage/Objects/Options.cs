@@ -4,14 +4,6 @@ namespace GUI.Storage.Objects;
 
 internal class Options
 {
-    public (int Width, int Height) MapSize { get; set; }
-
-    public Dictionary<Direction, Keys>? DirectionControls { get; set; }
-
-    public Dictionary<Music, Keys>? MusicControls { get; set; }
-
-    public string? Language { get; set; }
-
     public Options()
     {
         MapSize = (20, 10);
@@ -29,8 +21,16 @@ internal class Options
         MusicControls = new Dictionary<Music, Keys>
         {
             { Music.PauseMusic, Keys.R },
-            { Music.SwitchMusic, Keys.F },
+            { Music.SwitchMusic, Keys.F }
         };
         Language = "en-US";
     }
+
+    public (int Width, int Height) MapSize { get; set; }
+
+    public Dictionary<Direction, Keys> DirectionControls { get; set; }
+
+    public Dictionary<Music, Keys> MusicControls { get; set; }
+
+    public string Language { get; set; }
 }

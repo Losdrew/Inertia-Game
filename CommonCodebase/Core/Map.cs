@@ -1,27 +1,31 @@
 ﻿using CommonCodebase.Entities;
+using System.Runtime.Serialization;
 
 namespace CommonCodebase.Core;
 
+[DataContract]
 public class Map : VisualObject
 {
-    public static (int Width, int Height) Size = (20, 10);
+    public const int MaxPlayerCount = 1;
 
-    private const int MaxPlayerCount = 1;
-
-    private readonly CellBase[,] _matrix;
+    public int PlayerCount;
 
     private Player? _player;
-
-    private int _playerCount;
 
     private int _prizeCount;
 
     public Map()
     {
-        _matrix = new CellBase[Size.Width, Size.Height];
+        Matrix = new CellBase[Size.Width, Size.Height];
     }
 
-    public Map(Map map) : this()
+    public Map(int width, int height)
+    {
+        Size = (width, height);
+        Matrix = new CellBase[Size.Width, Size.Height];
+    }
+
+    public Map(Map map) : this(map.Size.Width, map.Size.Height)
     {
         for (var y = 0; y < Size.Height; y++)
         {
@@ -32,21 +36,33 @@ public class Map : VisualObject
         }
     }
 
-    public Player Player
+    [DataMember] 
+    public string? Name { get; set; }
+
+    [DataMember] 
+    public (int Width, int Height) Size { get; private set; }
+
+    [DataMember]
+    public Player? Player
     {
-        get => _player ?? throw new NullReferenceException("Player not placed.");
+        get => _player;
         private set
         {
-            if (_playerCount >= MaxPlayerCount)
+            if (value != null)
             {
-                throw new Exception($"Player count can't exceed {MaxPlayerCount}.");
+                if (PlayerCount >= MaxPlayerCount)
+                {
+                    throw new ArgumentOutOfRangeException($"Player count can't exceed {MaxPlayerCount}.");
+                }
+
+                PlayerCount++;
             }
 
             _player = value;
-            _playerCount++;
         }
     }
 
+    [DataMember]
     public int PrizeCount
     {
         get => _prizeCount;
@@ -62,42 +78,43 @@ public class Map : VisualObject
         }
     }
 
-    public CellBase this[int x, int y]
+    [DataMember] 
+    private CellBase?[,] Matrix { get; set; }
+
+    public CellBase? this[int x, int y]
     {
-        get => _matrix[x, y];
+        get => Matrix[x, y];
         set
         {
+            // Player assignment
             if (value is Player)
             {
                 Player = new Player(value.X, value.Y);
             }
 
+            // Player deletion
+            if (Matrix[x, y] is Player && value is not Player _)
+            {
+                Player = null;
+            }
+
+            // Prize assignment
             if (value is Prize)
             {
                 PrizeCount++;
             }
 
-            if (_matrix[x, y] is Prize)
+            // Prize deletion
+            if (Matrix[x, y] is Prize)
             {
                 PrizeCount--;
             }
 
-            _matrix[x, y] = value;
+            Matrix[x, y] = value;
         }
     }
 
     public event Action? UpdateScore;
-
-    public Map CreateMap()
-    {
-        var random = new Random();
-
-        CreateCompletablePath(random);
-
-        FillMap(random);
-
-        return this;
-    }
 
     public static (int x, int y) GetDestination(int x, int y, Direction direction)
     {
@@ -115,6 +132,14 @@ public class Map : VisualObject
         };
     }
 
+    public Map CreateMap()
+    {
+        var random = new Random();
+        CreateCompletablePath(random);
+        FillMap(random);
+        return this;
+    }
+
     public override void Draw()
     {
         // Draw map
@@ -122,12 +147,23 @@ public class Map : VisualObject
         {
             for (var x = 0; x < Size.Width; x++)
             {
-                this[x, y].Draw();
+                this[x, y]?.Draw();
             }
         }
 
         // Draw player
-        Player.Draw();
+        Player?.Draw();
+    }
+
+    public bool IsOnBorders(int x, int y)
+    {
+        return x == 0 || x == Size.Width - 1 || y == 0 || y == Size.Height - 1;
+    }
+
+    private static Direction GetRandomDirection(Random random)
+    {
+        var directions = Enum.GetValues<Direction>();
+        return directions[random.Next(directions.Length)];
     }
 
     private void CreateCompletablePath(Random random)
@@ -156,7 +192,7 @@ public class Map : VisualObject
 
             var (newX, newY) = GetDestination(x, y, currentDirection);
 
-            if (IsInRangeOfMap(newX, newY) && (IsUndefined(newX, newY) || IsEmpty(newX, newY)))
+            if (!IsOnBorders(newX, newY) && (IsUndefined(newX, newY) || IsEmpty(newX, newY)))
             {
                 tries = 0;
 
@@ -196,21 +232,9 @@ public class Map : VisualObject
         }
     }
 
-    private static int GetAreaOfMap()
+    private int GetAreaOfMap()
     {
         return (Size.Width - 2) * (Size.Height - 2);
-    }
-
-    private static Direction GetRandomDirection(Random random)
-    {
-        var directions = Enum.GetValues<Direction>();
-
-        return directions[random.Next(directions.Length)];
-    }
-
-    private static bool IsInRangeOfMap(int x, int y)
-    {
-        return x > 0 && x < Size.Width - 1 && y > 0 && y < Size.Height - 1;
     }
 
     private bool IsEmpty(int x, int y)
@@ -220,7 +244,7 @@ public class Map : VisualObject
 
     private bool IsUndefined(int x, int y)
     {
-        return this?[x, y] == null;
+        return this[x, y] is null;
     }
 
     private void CreateWallAhead(int x, int y, Direction direction)
@@ -229,7 +253,7 @@ public class Map : VisualObject
 
         var (newX, newY) = GetDestination(x, y, direction);
 
-        if (IsInRangeOfMap(newX, newY) && IsUndefined(newX, newY))
+        if (!IsOnBorders(newX, newY) && IsUndefined(newX, newY))
         {
             this[newX, newY] = new Wall(newX, newY);
         }
@@ -242,7 +266,7 @@ public class Map : VisualObject
             for (var x = 0; x < Size.Width; x++)
             {
                 // Create wall at map border
-                if (!IsInRangeOfMap(x, y))
+                if (IsOnBorders(x, y))
                 {
                     this[x, y] = new Wall(x, y);
                 }
@@ -262,8 +286,8 @@ public class Map : VisualObject
                     _ => new Empty(x, y)
                 };
 
-                //// To make gaps between cells (if previous cell is not empty)
-                if (IsInRangeOfMap(x + 1, y) && IsUndefined(x + 1, y) && !IsEmpty(x, y))
+                // To make gaps between cells (if previous cell is not empty)
+                if (!IsOnBorders(x + 1, y) && IsUndefined(x + 1, y) && !IsEmpty(x, y))
                 {
                     this[++x, y] = new Empty(x, y);
                 }

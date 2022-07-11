@@ -12,10 +12,7 @@ internal class OptionsRepository
     {
         var options = _serializationWorker?.Deserialize<Options>(OptionsFileLocation);
 
-        if (options?.MapSize == (0, 0) ||
-            options?.DirectionControls is null ||
-            options.MusicControls is null ||
-            options.Language is null)
+        if (options is null)
         {
             options = new Options();
             UpdateOptions(options);

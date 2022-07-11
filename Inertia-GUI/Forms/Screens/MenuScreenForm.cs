@@ -12,8 +12,13 @@ internal partial class MenuScreenForm : ScreenFormBase
 
     private void StartButton_Click(object? sender, EventArgs e)
     {
-        GameForm.StartGame();
+        GameForm.StartGame(GameMode.RandomMaps);
         GameForm.MakeActive();
+    }
+
+    private void LevelEditorButton_Click(object sender, EventArgs e)
+    {
+        new LevelEditorForm().MakeActive();
     }
 
     private void OptionsButton_Click(object? sender, EventArgs e)

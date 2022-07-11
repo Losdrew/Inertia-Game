@@ -1,5 +1,4 @@
-﻿using CommonCodebase.Core;
-using CommonCodebase.Entities;
+﻿using CommonCodebase.Entities;
 using CommonCodebase.Labels;
 using GUI.Forms;
 using GUI.Properties;
@@ -13,14 +12,14 @@ internal static class GraphicsEngine
 
     public static GameForm? GameForm { private get; set; }
 
-    public static void SetMapBox()
+    public static void SetMapBox((int Width, int Height) mapSize)
     {
         if (GameForm is null)
         {
             return;
         }
 
-        var (width, height) = GetScaledValues(Map.Size.Width, Map.Size.Height);
+        var (width, height) = GetScaledValues(mapSize.Width, mapSize.Height);
 
         GameForm.MapBox.Size = new Size(width, height);
 
@@ -51,19 +50,7 @@ internal static class GraphicsEngine
             _ => Resources.Error
         };
 
-        var (width, height) = GetScaledValues();
-        var (x, y) = GetScaledValues(cell.X, cell.Y);
-
-        var cellPictureBox = new PictureBox
-        {
-            Image = image,
-            Enabled = false,
-            Parent = GameForm.MapBox,
-            Location = new Point(x, y),
-            BackColor = Color.Transparent,
-            Size = new Size(width, height),
-            SizeMode = PictureBoxSizeMode.Zoom
-        };
+        var cellPictureBox = CreateCellPictureBox(cell.X, cell.Y, image, GameForm.MapBox);
 
         if (cell is Player)
         {
@@ -72,6 +59,33 @@ internal static class GraphicsEngine
         }
 
         GameForm.MapBox.Controls.Add(cellPictureBox);
+    }
+
+    public static PictureBox CreateCellPictureBox(int x, int y, Image? image, Control? parent)
+    {
+        var (width, height) = GetScaledValues();
+        var (cellX, cellY) = GetScaledValues(x, y);
+
+        var cellPictureBox = new PictureBox
+        {
+            Enabled = false,
+            Location = new Point(cellX, cellY),
+            BackColor = Color.Transparent,
+            Size = new Size(width, height),
+            SizeMode = PictureBoxSizeMode.Zoom
+        };
+
+        if (image != null)
+        {
+            cellPictureBox.Image = image;
+        }
+
+        if (parent != null)
+        {
+            cellPictureBox.Parent = parent;
+        }
+
+        return cellPictureBox;
     }
 
     public static void ClearCell(object? sender, EventArgs e)
@@ -105,22 +119,23 @@ internal static class GraphicsEngine
 
         var directionKeys = InputEngine.DirectionControls.Keys.ToList();
         var musicKeys = InputEngine.MusicControls.Keys.ToList();
-
         var controlsKeys = directionKeys.Concat(musicKeys).ToList();
-        var controls = GameForm.ControlsTipLabel.Text;
+
+        var controlsText = GameForm.ControlsTipLabel.Text;
 
         // Replace numbers in controls tip template with corresponding keys
-        for (var i = 0; controls.Contains(i.ToString()); i++)
+        for (var i = 0; controlsText.Contains(i.ToString()); i++)
         {
-            controls = controls.Replace(i.ToString(), controlsKeys[i].ToString());
+            controlsText = controlsText.Replace(i.ToString(), controlsKeys[i].ToString());
         }
 
-        GameForm.ControlsTipLabel.Text = controls;
+        controlsTip.Text = controlsText;
+        GameForm.ControlsTipLabel.Text = controlsTip.Text;
 
-        var sectionSize = GameForm.LeftSection.Size;
-        var tipSize = GameForm.ControlsTipLabel.Size;
+        var x = GetCenteredValue(GameForm.LeftSection.Size.Width, GameForm.ControlsTipLabel.Width);
+        var y = GetCenteredValue(GameForm.LeftSection.Size.Height, GameForm.ControlsTipLabel.Height);
 
-        GameForm.ControlsTipLabel.Location = GetCenteredLocation(sectionSize, tipSize);
+        GameForm.ControlsTipLabel.Location = new Point(x, y);
     }
 
     public static void DrawScore(object? sender, EventArgs e)
@@ -130,12 +145,19 @@ internal static class GraphicsEngine
             return;
         }
 
+        score.Text = "Score:";
+        GameForm.ScoreLabel.Text = score.Text;
         GameForm.ScoreNumberLabel.Text = score.ScoreToDraw.ToString();
 
-        var sectionSize = GameForm.RightSection.Size;
-        var boxSize = GameForm.ScoreBox.Size;
+        var x = GetCenteredValue(GameForm.RightSection.Size.Width, GameForm.ScoreBox.Width);
+        var y = GetCenteredValue(GameForm.RightSection.Size.Height, GameForm.ScoreBox.Height);
 
-        GameForm.ScoreBox.Location = GetCenteredLocation(sectionSize, boxSize);
+        GameForm.ScoreBox.Location = new Point(x, y);
+    }
+
+    public static int GetCenteredValue(int parentValue, int childValue)
+    {
+        return (parentValue - childValue) / 2;
     }
 
     public static void UpdateScore(object? sender, EventArgs e)
@@ -172,13 +194,5 @@ internal static class GraphicsEngine
         }
 
         GameForm.MapBox.Controls.Remove(pictureBox);
-    }
-
-    private static Point GetCenteredLocation(Size parentSize, Size childSize)
-    {
-        var x = (parentSize.Width - childSize.Width) / 2;
-        var y = (parentSize.Height - childSize.Height) / 2;
-
-        return new Point(x, y);
     }
 }

@@ -9,9 +9,9 @@ namespace GUI.Forms.JsonStorage;
 
 internal partial class OptionsForm : FormBase
 {
-    public static Options? Options;
-
     private static readonly OptionsRepository OptionsRepository = new();
+
+    private static Options? _options;
 
     public OptionsForm()
     {
@@ -19,35 +19,29 @@ internal partial class OptionsForm : FormBase
         Initialize();
     }
 
+    public static Options Options
+    {
+        get => _options ??= OptionsRepository.GetOptions();
+        private set => _options = value;
+    }
+
     public static void ApplyOptions()
     {
-        var options = OptionsRepository.GetOptions();
+        Options = OptionsRepository.GetOptions();
 
-        if (options.MapSize == (0, 0) || 
-            options.DirectionControls is null || 
-            options.MusicControls is null || 
-            options.Language is null)
-        {
-            return;
-        }
+        ApplyLanguageSettings();
+        InputEngine.DirectionControls = Options.DirectionControls.ToDictionary(x => x.Value, x => x.Key);
+        InputEngine.MusicControls = Options.MusicControls.ToDictionary(x => x.Value, x => x.Key);
+    }
 
-        Map.Size = options.MapSize;
-        Thread.CurrentThread.CurrentUICulture = new CultureInfo(options.Language);
-        InputEngine.DirectionControls = options.DirectionControls.ToDictionary(x => x.Value, x => x.Key);
-        InputEngine.MusicControls = options.MusicControls.ToDictionary(x => x.Value, x => x.Key);
+    public static void ApplyLanguageSettings()
+    {
+        Thread.CurrentThread.CurrentUICulture = new CultureInfo(Options.Language);
     }
 
     private void Initialize()
     {
         Options = OptionsRepository.GetOptions();
-
-        if (Options.MapSize == (0, 0) || 
-            Options.DirectionControls is null || 
-            Options.MusicControls is null || 
-            Options.Language is null)
-        {
-            return;
-        }
 
         MapWidth.Value = Options.MapSize.Width;
         MapHeight.Value = Options.MapSize.Height;
@@ -74,31 +68,15 @@ internal partial class OptionsForm : FormBase
 
     private void SaveSettingsButton_Click(object sender, EventArgs e)
     {
-        if (Options is null)
-        {
-            return;
-        }
-
         UpdateCurrentOptions();
-
         OptionsRepository.UpdateOptions(Options);
-
         ReloadForm();
-
         ApplyOptions();
     }
 
     private void UpdateCurrentOptions()
     {
-        if (Options is null)
-        {
-            return;
-        }
-
         Options.MapSize = ((int)MapWidth.Value, (int)MapHeight.Value);
-
-        Options.DirectionControls ??= new Dictionary<Direction, Keys>();
-        Options.MusicControls ??= new Dictionary<Music, Keys>();
 
         foreach (var comboBox in ControlsContainer.Panel2.Controls.OfType<ComboBox>())
         {
@@ -118,11 +96,6 @@ internal partial class OptionsForm : FormBase
 
     private void ReloadForm()
     {
-        if (Options?.Language is null)
-        {
-            return;
-        }
-
         ApplyLanguageSettings();
         Controls.Clear();
         InitializeComponent();

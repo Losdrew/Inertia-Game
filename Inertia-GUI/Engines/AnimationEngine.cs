@@ -103,7 +103,6 @@ internal static class AnimationEngine
     private static void StopAnimationTimer()
     {
         AnimationTimer?.Stop();
-
         MovementEngine.Move();
     }
-} 
+}

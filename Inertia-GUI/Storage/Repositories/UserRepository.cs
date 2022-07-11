@@ -16,9 +16,7 @@ internal class UserRepository
     public void SaveUser(User user)
     {
         var userList = GetAllUsers() ?? new List<User>();
-
         userList.Add(user);
-
         UpdateUserList(userList);
     }
 

@@ -135,6 +135,32 @@
     <value>Закінчення ігрової сесії</value>
   </data>
   <data name="EndGameSessionText" xml:space="preserve">
-    <value>Ви впенені, що хочете закінчити поточну ігрову сесію? Ваші дані будуть збережені.</value>
+    <value>Ви впенені, що хочете закінчити поточну ігрову сесію? 
+Ваші результати будуть збережені.</value>
+  </data>
+  <data name="MaxPlayerCountExceededCaption" xml:space="preserve">
+    <value>Максимальна кількість гравців перевищена</value>
+  </data>
+  <data name="MaxPlayerCountExceededText" xml:space="preserve">
+    <value>Кількість гравців не може перевищувати </value>
+  </data>
+  <data name="ElementNotSelectedText" xml:space="preserve">
+    <value>Елемент не вибрано</value>
+  </data>
+  <data name="ElementSelectedText" xml:space="preserve">
+    <value>Елемент вибрано</value>
+  </data>
+  <data name="PlayerNotPlacedCaption" xml:space="preserve">
+    <value>Немає гравця на карті</value>
+  </data>
+  <data name="PlayerNotPlacedText" xml:space="preserve">
+    <value>Гравця не розміщено на карті</value>
+  </data>
+  <data name="ListContainsMapWithSameNameCaption" xml:space="preserve">
+    <value>Неправильна назва</value>
+  </data>
+  <data name="ListContainsMapWithSameNameText" xml:space="preserve">
+    <value>У списку карт вже наявна карта з такою ж назвою.
+Уведіть іншу назву.</value>
   </data>
 </root>

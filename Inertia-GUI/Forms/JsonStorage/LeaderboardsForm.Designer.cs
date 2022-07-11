@@ -143,6 +143,7 @@
             this.Controls.Add(this.BestResultsListView);
             this.Icon = global::GUI.Properties.Resources.Icon;
             this.Name = "LeaderboardsForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormBase_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

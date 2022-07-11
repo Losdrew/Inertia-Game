@@ -1,4 +1,5 @@
 using GUI.Forms.Base;
+using GUI.Forms.JsonStorage;
 
 namespace GUI.Forms.Screens;
 
@@ -11,7 +12,16 @@ internal partial class WinScreenForm : ScreenFormBase
 
     private void ContinueButton_Click(object? sender, EventArgs e)
     {
-        GameForm.Continue();
-        GameForm.MakeActive();
+        if (GameForm.CurrentGameMode == GameMode.RandomMaps)
+        {
+            GameForm.Continue();
+            GameForm.MakeActive();
+        }
+
+        if (GameForm.CurrentGameMode == GameMode.PremadeMaps)
+        {
+            GameForm.ResetCurrentScore();
+            new LevelEditorForm().MakeActive();
+        }
     }
 }

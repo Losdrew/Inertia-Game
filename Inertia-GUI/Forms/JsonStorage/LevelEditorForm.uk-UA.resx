@@ -57,82 +57,51 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="NameHeader.Text" xml:space="preserve">
-    <value>Імя</value>
-  </data>
-  <data name="PrizesCollectedHeader.Text" xml:space="preserve">
-    <value>Призів зібрано</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="PrizesCollectedHeader.Width" type="System.Int32, mscorlib">
-    <value>120</value>
-  </data>
-  <data name="LevelsCompletedHeader.Text" xml:space="preserve">
-    <value>Рівнів пройдено</value>
-  </data>
-  <data name="GameOversHeader.Text" xml:space="preserve">
-    <value>Поразок</value>
-  </data>
-  <data name="DateHeader.Text" xml:space="preserve">
-    <value>Дата</value>
-  </data>
-  <data name="DateHeader.Width" type="System.Int32, mscorlib">
-    <value>159</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="MapSizeLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="BestResultsListView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 89</value>
+  <data name="MapSizeLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 0</value>
   </data>
-  <data name="AllResultLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>931, 41</value>
+  <data name="MapSizeLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 25</value>
   </data>
-  <data name="AllResultLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 31</value>
+  <data name="MapSizeLabel.Text" xml:space="preserve">
+    <value>Розмір:</value>
   </data>
-  <data name="AllResultLabel.Text" xml:space="preserve">
-    <value>Останні результати</value>
+  <data name="PlayButton.Text" xml:space="preserve">
+    <value>Грати</value>
   </data>
-  <data name="BestResultsLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>208, 41</value>
+  <data name="ClearMapTemplateButton.Text" xml:space="preserve">
+    <value>Очистити</value>
   </data>
-  <data name="BestResultsLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 31</value>
+  <data name="ElementSelectionStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 25</value>
   </data>
-  <data name="BestResultsLabel.Text" xml:space="preserve">
-    <value>Найкращі результати</value>
+  <data name="ElementSelectionStatusLabel.Text" xml:space="preserve">
+    <value>Елемент не вибрано</value>
   </data>
-  <data name="NameHeader1.Text" xml:space="preserve">
-    <value>Ім'я</value>
+  <data name="CreateMapTemplateButton.Text" xml:space="preserve">
+    <value>Створити</value>
   </data>
-  <data name="PrizesCollectedHeader1.Text" xml:space="preserve">
-    <value>Призів зібрано</value>
+  <data name="GameElementsLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 31</value>
   </data>
-  <data name="PrizesCollectedHeader1.Width" type="System.Int32, mscorlib">
-    <value>120</value>
+  <data name="GameElementsLabel.Text" xml:space="preserve">
+    <value>Ігрові елементи</value>
   </data>
-  <data name="LevelsCompletedHeader1.Text" xml:space="preserve">
-    <value>Рівнів пройдено</value>
+  <data name="DeleteMapButton.Text" xml:space="preserve">
+    <value>Видалити</value>
   </data>
-  <data name="GameOverHeader1.Text" xml:space="preserve">
-    <value>Поразок</value>
+  <data name="AddMapButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 29</value>
   </data>
-  <data name="DateHeader1.Text" xml:space="preserve">
-    <value>Дата</value>
-  </data>
-  <data name="DateHeader1.Width" type="System.Int32, mscorlib">
-    <value>164</value>
-  </data>
-  <data name="LatestResultsListView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>702, 89</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1373, 709</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Inherit</value>
+  <data name="AddMapButton.Text" xml:space="preserve">
+    <value>Додати</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Таблиці лідерів</value>
+    <value>Редактор рівнів</value>
   </data>
 </root>

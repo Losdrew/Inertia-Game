@@ -2,6 +2,11 @@
 
 internal class User
 {
+    public User(string name = "Anonymous")
+    {
+        Name = name;
+    }
+
     public string Name { get; set; }
 
     public int PrizeCount { get; set; }
@@ -11,11 +16,6 @@ internal class User
     public int GameOverCount { get; set; }
 
     public DateTime SavedDateTime { get; set; }
-
-    public User(string name = "Anonymous")
-    {
-        Name = name;
-    }
 
     public bool HasResults()
     {

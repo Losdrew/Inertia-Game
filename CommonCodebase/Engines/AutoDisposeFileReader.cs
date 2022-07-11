@@ -4,9 +4,8 @@ namespace CommonCodebase.Engines;
 
 internal class AutoDisposeFileReader : IWaveProvider
 {
-    private bool _isDisposed;
-
     private readonly WaveFileReader _reader;
+    private bool _isDisposed;
 
     public AutoDisposeFileReader(WaveFileReader reader)
     {

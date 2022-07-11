@@ -2,13 +2,6 @@
 
 public class ControlsTip : LabelBase
 {
-    public ControlsTip()
-    {
-        Height = CalculateHeight();
-    }
-
-    public static int Height { get; private set; }
-
     public static event EventHandler? DrawControlsTip;
 
     public override void Draw()
