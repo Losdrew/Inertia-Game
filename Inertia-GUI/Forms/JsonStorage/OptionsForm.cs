@@ -1,17 +1,19 @@
 ﻿using CommonCodebase.Core;
-using GUI.Engines;
 using GUI.Forms.Base;
+using GUI.Properties;
 using GUI.Storage.Objects;
-using GUI.Storage.Repositories;
-using System.Globalization;
+using GUI.Storage.Services;
 
 namespace GUI.Forms.JsonStorage;
 
 internal partial class OptionsForm : FormBase
 {
-    private static readonly OptionsRepository OptionsRepository = new();
+    private Options? _options;
 
-    private static Options? _options;
+    private Options Options
+    {
+        get => _options ??= OptionsService.GetOptions();
+    }
 
     public OptionsForm()
     {
@@ -19,30 +21,8 @@ internal partial class OptionsForm : FormBase
         Initialize();
     }
 
-    public static Options Options
-    {
-        get => _options ??= OptionsRepository.GetOptions();
-        private set => _options = value;
-    }
-
-    public static void ApplyOptions()
-    {
-        Options = OptionsRepository.GetOptions();
-
-        ApplyLanguageSettings();
-        InputEngine.DirectionControls = Options.DirectionControls.ToDictionary(x => x.Value, x => x.Key);
-        InputEngine.MusicControls = Options.MusicControls.ToDictionary(x => x.Value, x => x.Key);
-    }
-
-    public static void ApplyLanguageSettings()
-    {
-        Thread.CurrentThread.CurrentUICulture = new CultureInfo(Options.Language);
-    }
-
     private void Initialize()
     {
-        Options = OptionsRepository.GetOptions();
-
         MapWidth.Value = Options.MapSize.Width;
         MapHeight.Value = Options.MapSize.Height;
 
@@ -68,10 +48,38 @@ internal partial class OptionsForm : FormBase
 
     private void SaveSettingsButton_Click(object sender, EventArgs e)
     {
+        if (!AreControlsValid())
+        {
+            return;
+        }
+
         UpdateCurrentOptions();
-        OptionsRepository.UpdateOptions(Options);
+        OptionsService.UpdateOptions(Options);
+        OptionsService.ApplyOptions();
         ReloadForm();
-        ApplyOptions();
+    }
+
+    private bool AreControlsValid()
+    {
+        var selectedItems = new List<Keys>();
+
+        foreach (var comboBox in ControlsContainer.Panel2.Controls.OfType<ComboBox>())
+        {
+            selectedItems.Add((Keys)comboBox.SelectedItem);
+        }
+
+        if (selectedItems.Distinct().Count() < selectedItems.Count)
+        {
+            MessageBox.Show(
+                Resources.CannotAssignMultipleKeysText,
+                Resources.CannotAssignMultipleKeysCaption,
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+
+            return false;
+        }
+
+        return true;
     }
 
     private void UpdateCurrentOptions()
@@ -96,7 +104,6 @@ internal partial class OptionsForm : FormBase
 
     private void ReloadForm()
     {
-        ApplyLanguageSettings();
         Controls.Clear();
         InitializeComponent();
         Initialize();

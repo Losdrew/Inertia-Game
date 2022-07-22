@@ -121,9 +121,6 @@
   <data name="Error" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\EntityImages\Error.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ExitMessageBoxCaption" xml:space="preserve">
-    <value>Exit</value>
-  </data>
   <data name="ExitMessageBoxText" xml:space="preserve">
     <value>Are you sure you want to quit?</value>
   </data>
@@ -190,10 +187,10 @@ Your results will be saved.</value>
   <data name="ElementNotSelectedText" xml:space="preserve">
     <value>Element not selected</value>
   </data>
-  <data name="PlayerNotPlacedText" xml:space="preserve">
-    <value>Player not placed on current map</value>
+  <data name="NoPlayerPlacedText" xml:space="preserve">
+    <value>No player is placed on current map</value>
   </data>
-  <data name="PlayerNotPlacedCaption" xml:space="preserve">
+  <data name="NoPlayerPlacedCaption" xml:space="preserve">
     <value>No player on map</value>
   </data>
   <data name="ListContainsMapWithSameNameText" xml:space="preserve">
@@ -202,5 +199,23 @@ Enter a different name.</value>
   </data>
   <data name="ListContainsMapWithSameNameCaption" xml:space="preserve">
     <value>Invalid name</value>
+  </data>
+  <data name="ExitMessageBoxCaption" xml:space="preserve">
+    <value>Quit</value>
+  </data>
+  <data name="ExitWithoutSavingCurrentMap" xml:space="preserve">
+    <value>Exit without saving current map?</value>
+  </data>
+  <data name="NoPrizePlacedText" xml:space="preserve">
+	  <value>No prize is placed on current map</value>
+  </data>
+  <data name="NoPrizePlacedCaption" xml:space="preserve">
+	  <value>No prize placed</value>
+  </data>
+  <data name="CannotAssignMultipleKeysText" xml:space="preserve">
+	  <value>Cannot assign multiple keys to one action</value>
+  </data>
+  <data name="CannotAssignMultipleKeysCaption" xml:space="preserve">
+	  <value>Cannot assign keys</value>
   </data>
 </root>

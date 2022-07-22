@@ -12,7 +12,7 @@ internal partial class MenuScreenForm : ScreenFormBase
 
     private void StartButton_Click(object? sender, EventArgs e)
     {
-        GameForm.StartGame(GameMode.RandomMaps);
+        GameForm.StartGame();
         GameForm.MakeActive();
     }
 

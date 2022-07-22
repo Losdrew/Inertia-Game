@@ -61,6 +61,24 @@ namespace GUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot assign keys.
+        /// </summary>
+        internal static string CannotAssignMultipleKeysCaption {
+            get {
+                return ResourceManager.GetString("CannotAssignMultipleKeysCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot assign multiple keys to one action.
+        /// </summary>
+        internal static string CannotAssignMultipleKeysText {
+            get {
+                return ResourceManager.GetString("CannotAssignMultipleKeysText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Element not selected.
         /// </summary>
         internal static string ElementNotSelectedText {
@@ -118,7 +136,7 @@ namespace GUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Exit.
+        ///   Looks up a localized string similar to Quit.
         /// </summary>
         internal static string ExitMessageBoxCaption {
             get {
@@ -132,6 +150,15 @@ namespace GUI.Properties {
         internal static string ExitMessageBoxText {
             get {
                 return ResourceManager.GetString("ExitMessageBoxText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit without saving current map?.
+        /// </summary>
+        internal static string ExitWithoutSavingCurrentMap {
+            get {
+                return ResourceManager.GetString("ExitWithoutSavingCurrentMap", resourceCulture);
             }
         }
         
@@ -213,6 +240,42 @@ namespace GUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No player on map.
+        /// </summary>
+        internal static string NoPlayerPlacedCaption {
+            get {
+                return ResourceManager.GetString("NoPlayerPlacedCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No player is placed on current map.
+        /// </summary>
+        internal static string NoPlayerPlacedText {
+            get {
+                return ResourceManager.GetString("NoPlayerPlacedText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No prize placed.
+        /// </summary>
+        internal static string NoPrizePlacedCaption {
+            get {
+                return ResourceManager.GetString("NoPrizePlacedCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No prize is placed on current map.
+        /// </summary>
+        internal static string NoPrizePlacedText {
+            get {
+                return ResourceManager.GetString("NoPrizePlacedText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pause.
         /// </summary>
         internal static string PauseMessageBoxCaption {
@@ -249,24 +312,6 @@ namespace GUI.Properties {
             get {
                 object obj = ResourceManager.GetObject("Player_Right", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No player on map.
-        /// </summary>
-        internal static string PlayerNotPlacedCaption {
-            get {
-                return ResourceManager.GetString("PlayerNotPlacedCaption", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Player not placed on current map.
-        /// </summary>
-        internal static string PlayerNotPlacedText {
-            get {
-                return ResourceManager.GetString("PlayerNotPlacedText", resourceCulture);
             }
         }
         

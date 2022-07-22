@@ -40,10 +40,12 @@ internal partial class LevelEditorForm : FormBase
 
     private void GameElement_Select(object sender, EventArgs e)
     {
-        if (sender is not Button button || _currentCursorType == CursorType.Erase)
+        if (sender is not Button button)
         {
             return;
         }
+
+        _currentCursorType = CursorType.Select;
 
         var bitmapImage = new Bitmap(button.BackgroundImage, button.Size);
 
@@ -53,13 +55,7 @@ internal partial class LevelEditorForm : FormBase
         _isGameElementSelected = true;
         _selectedGameElement = (string)button.Tag; // tag has game element's name
 
-        // Update selection status to selected
-        ElementSelectionStatusLabel.ForeColor = Color.Green;
-        ElementSelectionStatusLabel.Text = Resources.ElementSelectedText;
-        ElementSelectionStatusLabel.Location = ElementSelectionStatusLabel.Location with
-        {
-            X = GraphicsEngine.GetCenteredValue(ActionPanel.Size.Width, ElementSelectionStatusLabel.Size.Width)
-        };
+        ChangeElementSelectionStatus(Color.Green, Resources.ElementSelectedText);
     }
 
     private void GameElement_Deselect(object sender, EventArgs e)
@@ -74,9 +70,13 @@ internal partial class LevelEditorForm : FormBase
         _isGameElementSelected = false;
         _selectedGameElement = null;
 
-        // Update selection status to deselected
-        ElementSelectionStatusLabel.ForeColor = Color.IndianRed;
-        ElementSelectionStatusLabel.Text = Resources.ElementNotSelectedText;
+        ChangeElementSelectionStatus(Color.IndianRed, Resources.ElementNotSelectedText);
+    }
+
+    private void ChangeElementSelectionStatus(Color color, string text)
+    {
+        ElementSelectionStatusLabel.ForeColor = color;
+        ElementSelectionStatusLabel.Text = text;
         ElementSelectionStatusLabel.Location = ElementSelectionStatusLabel.Location with
         {
             X = GraphicsEngine.GetCenteredValue(ActionPanel.Size.Width, ElementSelectionStatusLabel.Size.Width)
@@ -109,27 +109,22 @@ internal partial class LevelEditorForm : FormBase
         {
             for (var x = 0; x < width; x++)
             {
-                // Create map borders
-                if (_currentMap.IsOnBorders(x, y))
-                {
-                    _currentMap[x, y] = new Wall(x, y);
-                    CreateCellPictureBox(x, y, Resources.Wall);
-                }
-
-                else
-                {
-                    _currentMap[x, y] = new Empty(x, y);
-                    CreateCellPictureBox(x, y, null);
-                }
+                _currentMap[x, y] = _currentMap.IsOnBorders(x, y) ? new Wall(x, y) : new Empty(x, y);
+                CreateCellPictureBox(_currentMap[x, y]);
             }
         }
     }
 
-    private void CreateCellPictureBox(int x, int y, Image? image)
+    private void CreateCellPictureBox(CellBase? cell)
     {
-        var cellPictureBox = GraphicsEngine.CreateCellPictureBox(x, y, image, MapPanel);
+        if (cell is null)
+        {
+            return;
+        }
 
-        cellPictureBox.Tag = (x, y);
+        var cellPictureBox = GraphicsEngine.CreateCellPictureBox(cell, MapPanel);
+
+        cellPictureBox.Tag = (cell.X, cell.Y);
         cellPictureBox.Enabled = true;
         cellPictureBox.BorderStyle = BorderStyle.FixedSingle;
         cellPictureBox.MouseClick += CellPictureBox_MouseClick;
@@ -145,28 +140,33 @@ internal partial class LevelEditorForm : FormBase
 
     private void PlayButton_Click(object sender, EventArgs e)
     {
+        // Must not start if no player is placed on map
         if (_currentMap?.PlayerCount == 0)
         {
             MessageBox.Show(
-                Resources.PlayerNotPlacedText,
-                Resources.PlayerNotPlacedCaption,
+                Resources.NoPlayerPlacedText,
+                Resources.NoPlayerPlacedCaption,
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
 
             return;
         }
 
-        GameForm.StartGame(GameMode.PremadeMaps, _currentMap);
+        // Must not start if no prize is placed on map
+        if (_currentMap?.PrizeCount == 0)
+        {
+            MessageBox.Show(
+                Resources.NoPrizePlacedText,
+                Resources.NoPrizePlacedCaption,
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+
+            return;
+        }
+
+        GameForm.StartGame(_currentMap);
         GameForm.MakeActive();
         SaveMapList();
-    }
-
-    private void SaveMapList()
-    {
-        if (_mapList != null)
-        {
-            _mapRepository.UpdateMapList(_mapList);
-        }
     }
 
     private void CellPictureBox_MouseClick(object? sender, MouseEventArgs e)
@@ -203,41 +203,29 @@ internal partial class LevelEditorForm : FormBase
             return;
         }
 
-        switch (_selectedGameElement)
+        // Show error if max player count exceeded
+        if (_selectedGameElement == "Player" && _currentMap.PlayerCount >= Map.MaxPlayerCount)
         {
-            // Show error if max player count exceeded
-            case "Player" when _currentMap.PlayerCount >= Map.MaxPlayerCount:
-                MessageBox.Show(
-                    Resources.MaxPlayerCountExceededText + Map.MaxPlayerCount + ".",
-                    Resources.MaxPlayerCountExceededCaption,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                return;
-            case "Player":
-                _currentMap[x, y] = new Player(x, y);
-                cellPictureBox.Image = Resources.Player_Right;
-                break;
-            case "Prize":
-                _currentMap[x, y] = new Prize(x, y);
-                cellPictureBox.Image = Resources.Prize;
-                break;
-            case "Stop":
-                _currentMap[x, y] = new Stop(x, y);
-                cellPictureBox.Image = Resources.Stop;
-                break;
-            case "Trap":
-                _currentMap[x, y] = new Trap(x, y);
-                cellPictureBox.Image = Resources.Trap;
-                break;
-            case "Wall":
-                _currentMap[x, y] = new Wall(x, y);
-                cellPictureBox.Image = Resources.Wall;
-                break;
-            default:
-                _currentMap[x, y] = new Empty(x, y);
-                cellPictureBox.Image = Resources.Error;
-                break;
+            MessageBox.Show(
+                Resources.MaxPlayerCountExceededText + Map.MaxPlayerCount + ".",
+                Resources.MaxPlayerCountExceededCaption,
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+
+            return;
         }
+
+        _currentMap[x, y] = _selectedGameElement switch
+        {
+            "Player" => new Player(x, y),
+            "Prize" => new Prize(x, y),
+            "Stop" => new Stop(x, y),
+            "Trap" => new Trap(x, y),
+            "Wall" => new Wall(x, y),
+            _ => new Empty(x, y)
+        };
+
+        cellPictureBox.Image = GraphicsEngine.GetCellImage(_currentMap[x, y]);
     }
 
     private void RemoveGameElementFromPictureBox(int x, int y, PictureBox cellPictureBox)
@@ -277,17 +265,7 @@ internal partial class LevelEditorForm : FormBase
         {
             for (var x = 0; x < map.Size.Width; x++)
             {
-                var image = map[x, y] switch
-                {
-                    Player => Resources.Player_Right,
-                    Prize => Resources.Prize,
-                    Stop => Resources.Stop,
-                    Trap => Resources.Trap,
-                    Wall => Resources.Wall,
-                    _ => null
-                };
-
-                CreateCellPictureBox(x, y, image);
+                CreateCellPictureBox(map[x, y]);
             }
         }
 
@@ -313,10 +291,13 @@ internal partial class LevelEditorForm : FormBase
             return;
         }
 
-        _currentMap.Name = MapNameTextBox.Text;
+        var currentMapCopy = new Map(_currentMap)
+        {
+            Name = MapNameTextBox.Text
+        };
 
-        _mapList?.Add(_currentMap);
-        MapListView.Items.Add(_currentMap.Name);
+        _mapList?.Add(currentMapCopy);
+        MapListView.Items.Add(currentMapCopy.Name);
     }
 
     private void DeleteMapButton_Click(object sender, EventArgs e)
@@ -329,18 +310,58 @@ internal partial class LevelEditorForm : FormBase
         foreach (ListViewItem item in MapListView.SelectedItems)
         {
             MapListView.Items.Remove(item);
+
+            var mapItem = _mapList?.Find(map => map.Name == item.Text);
+            
+            if (mapItem != null)
+            {
+                _mapList?.Remove(mapItem);
+            }
         }
     }
 
     private void MenuButton_SaveMaps_Click(object sender, EventArgs e)
     {
-        MenuButton_Click(sender, e);
-        SaveMapList();
+        if (IsDiscardingCurrentMap())
+        {
+            SaveMapList();
+            MenuButton_Click(sender, e);
+        }
     }
 
     private void LevelEditorForm_FormClosing(object sender, FormClosingEventArgs e)
     {
-        FormBase_FormClosing(sender, e);
-        SaveMapList();
+        if (IsDiscardingCurrentMap())
+        {
+            SaveMapList();
+            FormBase_FormClosing(sender, e);
+        }
+    }
+
+    private bool IsDiscardingCurrentMap()
+    {
+        if (_mapList is null || _currentMap is null || _mapList.Any(map => map.IsEqual(_currentMap)))
+        {
+            return true;
+        }
+
+        if (MessageBox.Show(
+                Resources.ExitWithoutSavingCurrentMap,
+                Resources.ExitMessageBoxCaption,
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question) == DialogResult.Yes)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    private void SaveMapList()
+    {
+        if (_mapList != null)
+        {
+            _mapRepository.UpdateMapList(_mapList);
+        }
     }
 }

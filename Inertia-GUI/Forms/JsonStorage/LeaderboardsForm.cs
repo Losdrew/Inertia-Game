@@ -1,19 +1,17 @@
 ﻿using GUI.Forms.Base;
 using GUI.Storage.Objects;
-using GUI.Storage.Repositories;
+using GUI.Storage.Services;
 using System.Globalization;
 
 namespace GUI.Forms.JsonStorage;
 
 internal partial class LeaderboardsForm : FormBase
 {
-    private static readonly UserRepository UserRepository = new();
-
     public LeaderboardsForm()
     {
         InitializeComponent();
 
-        var userList = UserRepository.GetAllUsers();
+        var userList = UserService.GetAllUsers();
 
         if (userList is null)
         {
@@ -23,7 +21,7 @@ internal partial class LeaderboardsForm : FormBase
         var bestUsersList = userList
             .OrderByDescending(user => user.PrizeCount)
             .ThenByDescending(user => user.CompletedLevelsCount)
-            .ThenByDescending(user => user.GameOverCount)
+            .ThenBy(user => user.GameOverCount)
             .ToList();
 
         FillListView(BestResultsListView, bestUsersList);
@@ -31,12 +29,6 @@ internal partial class LeaderboardsForm : FormBase
         var allUsersList = userList.OrderByDescending(x => x.SavedDateTime).ToList();
 
         FillListView(LatestResultsListView, allUsersList);
-    }
-
-    public static void SaveUser(User user)
-    {
-        user.SavedDateTime = DateTime.Now;
-        UserRepository.SaveUser(user);
     }
 
     private void FillListView(ListView listView, List<User> userList)

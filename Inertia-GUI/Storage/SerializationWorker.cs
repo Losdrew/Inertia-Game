@@ -4,7 +4,11 @@ namespace GUI.Storage;
 
 internal class SerializationWorker
 {
-    private readonly JsonSerializerSettings _settings = new() { TypeNameHandling = TypeNameHandling.Auto };
+    private readonly JsonSerializerSettings _settings = new() 
+    { 
+        TypeNameHandling = TypeNameHandling.Auto, 
+        Formatting = Formatting.Indented
+    };
 
     public void Serialize<TEntity>(TEntity obj, string jsonFileName)
     {

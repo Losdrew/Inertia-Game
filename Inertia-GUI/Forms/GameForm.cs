@@ -4,10 +4,10 @@ using CommonCodebase.Entities;
 using CommonCodebase.Labels;
 using GUI.Engines;
 using GUI.Forms.Base;
-using GUI.Forms.JsonStorage;
 using GUI.Forms.Screens;
 using GUI.Properties;
 using GUI.Storage.Objects;
+using GUI.Storage.Services;
 
 namespace GUI.Forms;
 
@@ -61,17 +61,26 @@ internal partial class GameForm : FormBase
     {
         if (User.HasResults())
         {
-            LeaderboardsForm.SaveUser(User);
+            UserService.SaveUser(User);
         }
 
         _score.ResetAll();
         User = new User(User.Name);
     }
 
-    public void StartGame(GameMode gameMode, Map? map = null)
+    public void StartGame(Map? map = null)
     {
-        CurrentGameMode = gameMode;
-        Initialize(map);
+        if (map is null)
+        {
+            StartRandomMaps();
+        }
+
+        if (map is not null)
+        {
+            StartPremadeMaps(map);
+        }
+
+        Initialize();
         Play();
     }
 
@@ -84,19 +93,31 @@ internal partial class GameForm : FormBase
     public void Continue()
     {
         SaveScore();
-        StartGame(GameMode.RandomMaps);
+        StartGame();
     }
 
     public void CreateNew()
     {
-        SaveScore();
         SaveUserInfo();
-        StartGame(GameMode.RandomMaps);
+        StartGame();
     }
 
     public void ResetCurrentScore()
     {
         _score.ResetCurrent();
+    }
+
+    private void StartRandomMaps()
+    {
+        var (width, height) = OptionsService.GetOptions().MapSize;
+        _map = new Map(width, height).CreateMap();
+        CurrentGameMode = GameMode.RandomMaps;
+    }
+
+    private void StartPremadeMaps(Map map)
+    {
+        _map = map;
+        CurrentGameMode = GameMode.PremadeMaps;
     }
 
     private void SaveScore()
@@ -131,6 +152,7 @@ internal partial class GameForm : FormBase
 
     private void Win()
     {
+        SaveScore();
         User.CompletedLevelsCount++;
         new WinScreenForm().MakeActive();
     }
@@ -141,23 +163,12 @@ internal partial class GameForm : FormBase
         new GameOverScreenForm().MakeActive();
     }
 
-    private void Initialize(Map? map)
+    private void Initialize()
     {
         // Ensure that form is empty before initialization
         Controls.Clear();
 
         InitializeComponent();
-
-        if (CurrentGameMode == GameMode.RandomMaps)
-        {
-            var (width, height) = OptionsForm.Options.MapSize;
-            _map = new Map(width, height).CreateMap();
-        }
-
-        if (CurrentGameMode == GameMode.PremadeMaps)
-        {
-            _map = map;
-        }
 
         AnimationTimer.Interval = 1;
         AnimationTimer.Tick += AnimationEngine.PlayAnimation;

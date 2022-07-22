@@ -27,6 +27,8 @@ public class Map : VisualObject
 
     public Map(Map map) : this(map.Size.Width, map.Size.Height)
     {
+        Name = map.Name;
+
         for (var y = 0; y < Size.Height; y++)
         {
             for (var x = 0; x < Size.Width; x++)
@@ -56,6 +58,11 @@ public class Map : VisualObject
                 }
 
                 PlayerCount++;
+            }
+
+            else if (value is null)
+            {
+                PlayerCount--;
             }
 
             _player = value;
@@ -158,6 +165,25 @@ public class Map : VisualObject
     public bool IsOnBorders(int x, int y)
     {
         return x == 0 || x == Size.Width - 1 || y == 0 || y == Size.Height - 1;
+    }
+
+    public bool IsEqual(Map map)
+    {
+        if (map.Name != Name || map.Player == Player)
+        {
+            for (var x = 0; x < Size.Width; x++)
+            {
+                for (var y = 0; y < Size.Height; y++)
+                {
+                    if (!map[x, y].Equals(this[x, y]))
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        return true;
     }
 
     private static Direction GetRandomDirection(Random random)

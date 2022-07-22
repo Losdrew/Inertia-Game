@@ -1,5 +1,6 @@
 using CommonCodebase.Engines;
 using GUI.Forms.JsonStorage;
+using GUI.Storage.Services;
 
 namespace GUI;
 
@@ -12,7 +13,7 @@ public static class Program
     {
         ApplicationConfiguration.Initialize();
         AudioEngine.StartMusicPlaylist();
-        OptionsForm.ApplyOptions();
+        OptionsService.ApplyOptions();
         Application.Run(AppContext);
     }
 }

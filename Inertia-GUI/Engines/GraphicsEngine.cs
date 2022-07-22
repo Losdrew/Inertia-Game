@@ -40,17 +40,7 @@ internal static class GraphicsEngine
             return;
         }
 
-        var image = cell switch
-        {
-            Player => Resources.Player_Right,
-            Prize => Resources.Prize,
-            Stop => Resources.Stop,
-            Trap => Resources.Trap,
-            Wall => Resources.Wall,
-            _ => Resources.Error
-        };
-
-        var cellPictureBox = CreateCellPictureBox(cell.X, cell.Y, image, GameForm.MapBox);
+        var cellPictureBox = CreateCellPictureBox(cell, GameForm.MapBox);
 
         if (cell is Player)
         {
@@ -61,24 +51,33 @@ internal static class GraphicsEngine
         GameForm.MapBox.Controls.Add(cellPictureBox);
     }
 
-    public static PictureBox CreateCellPictureBox(int x, int y, Image? image, Control? parent)
+    public static Image? GetCellImage(CellBase? cell)
+    {
+        return cell switch
+        {
+            Player => Resources.Player_Right,
+            Prize => Resources.Prize,
+            Stop => Resources.Stop,
+            Trap => Resources.Trap,
+            Wall => Resources.Wall,
+            _ => null
+        };
+    }
+
+    public static PictureBox CreateCellPictureBox(CellBase cell, Control? parent)
     {
         var (width, height) = GetScaledValues();
-        var (cellX, cellY) = GetScaledValues(x, y);
+        var (cellX, cellY) = GetScaledValues(cell.X, cell.Y);
 
         var cellPictureBox = new PictureBox
         {
+            Image = GetCellImage(cell),
             Enabled = false,
             Location = new Point(cellX, cellY),
             BackColor = Color.Transparent,
             Size = new Size(width, height),
             SizeMode = PictureBoxSizeMode.Zoom
         };
-
-        if (image != null)
-        {
-            cellPictureBox.Image = image;
-        }
 
         if (parent != null)
         {

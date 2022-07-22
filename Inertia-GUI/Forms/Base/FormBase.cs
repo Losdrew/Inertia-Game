@@ -1,7 +1,7 @@
 ﻿using GUI.Engines;
-using GUI.Forms.JsonStorage;
 using GUI.Forms.Screens;
 using GUI.Properties;
+using GUI.Storage.Services;
 
 namespace GUI.Forms.Base;
 
@@ -16,7 +16,7 @@ internal partial class FormBase : Form
         KeyPreview = true;
         KeyDown += InputEngine.ReadKey;
         InputEngine.AllowedInput = InputType.MusicInput;
-        OptionsForm.ApplyLanguageSettings();
+        OptionsService.ApplyLanguageSettings();
     }
 
     public void MakeActive()
@@ -63,9 +63,11 @@ internal partial class FormBase : Form
                 Resources.ExitMessageBoxText,
                 Resources.ExitMessageBoxCaption,
                 MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question) == DialogResult.No)
+                MessageBoxIcon.Question) == DialogResult.Yes)
         {
-            e.Cancel = true;
+            Environment.Exit(0);
         }
+
+        e.Cancel = true;
     }
 }

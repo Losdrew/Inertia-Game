@@ -124,9 +124,9 @@
     <value>Вихід</value>
   </data>
   <data name="PauseMessageBoxText" xml:space="preserve">
-    <value>Гру поставлено на паузу.
+    <value>Гру поставлено на паузу
 
-Натисність OK щоб відновити гру.</value>
+Натисність OK щоб відновити гру</value>
   </data>
   <data name="PauseMessageBoxCaption" xml:space="preserve">
     <value>Пауза</value>
@@ -150,10 +150,10 @@
   <data name="ElementSelectedText" xml:space="preserve">
     <value>Елемент вибрано</value>
   </data>
-  <data name="PlayerNotPlacedCaption" xml:space="preserve">
-    <value>Немає гравця на карті</value>
+  <data name="NoPlayerPlacedCaption" xml:space="preserve">
+    <value>Немає гравця</value>
   </data>
-  <data name="PlayerNotPlacedText" xml:space="preserve">
+  <data name="NoPlayerPlacedText" xml:space="preserve">
     <value>Гравця не розміщено на карті</value>
   </data>
   <data name="ListContainsMapWithSameNameCaption" xml:space="preserve">
@@ -162,5 +162,20 @@
   <data name="ListContainsMapWithSameNameText" xml:space="preserve">
     <value>У списку карт вже наявна карта з такою ж назвою.
 Уведіть іншу назву.</value>
+  </data>
+  <data name="ExitWithoutSavingCurrentMap" xml:space="preserve">
+    <value>Вийти без збереження поточної карти?</value>
+  </data>
+  <data name="NoPrizePlacedText" xml:space="preserve">
+    <value>Ні одного приза не розміщено на карті</value>
+  </data>
+  <data name="NoPrizePlacedCaption" xml:space="preserve">
+    <value>Призи не розміщені</value>
+  </data>
+  <data name="CannotAssignMultipleKeysCaption" xml:space="preserve">
+    <value>Не можна назначити клавіші</value>
+  </data>
+  <data name="CannotAssignMultipleKeysText" xml:space="preserve">
+    <value>Не можна назначати декілька клавіш на одну дію</value>
   </data>
 </root>
