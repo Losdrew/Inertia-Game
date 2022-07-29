@@ -8,19 +8,17 @@
 
 :trophy: The main goal is to collect all prizes on a level. Collecting prizes increases your score count, so you can set your own records!
 
-:game_die: This game features random level generation with totally completable levels.
+:game_die: This game features:
 
-:white_circle: Game objects:
-
-- I is Player
-
-- @ is Prize
-
-- . is Stop
-
-- % is Trap
-
-- \# is Wall 
+* ***Two playable versions: Console Application and GUI (Windows Forms)***
+* ***Random level generation with totally completable levels***
+* ***Smooth movement animation***
+* ***Level editor***
+* Leaderboards
+* Multilingual interface (English and Ukrainian)
+* Sound Effects and 9 Background Music tracks
+* Music playlist: when previous track ends - new one starts
+* Ability to pause and switch music
 
 :page_with_curl: Credits:
 
