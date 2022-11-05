@@ -8,6 +8,14 @@
 
 :trophy: The main goal is to collect all prizes on a level. Collecting prizes increases your score count, so you can set your own records!
 
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/93669607/200141353-a15f242e-8251-4608-aafd-3845a0736ace.gif)
+
+> Gameplay in Console Application version
+
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/93669607/200141467-9ed6fd19-a9bb-4e98-9fb9-2f06b89800a5.gif)
+
+> Gameplay in WinForms GUI version
+
 :game_die: This game features:
 
 * ***Two playable versions: Console Application and GUI (Windows Forms)***
