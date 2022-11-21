@@ -18,10 +18,10 @@
 
 :game_die: This game features:
 
-* ***Two playable versions: Console Application and GUI (Windows Forms)***
-* ***Random level generation with totally completable levels***
-* ***Smooth movement animation***
-* ***Level editor***
+* Two playable versions: Console Application and GUI (Windows Forms)
+* Random level generation with totally completable levels
+* Smooth movement animation
+* Level editor
 * Leaderboards
 * Multilingual interface (English and Ukrainian)
 * Sound Effects and 9 Background Music tracks
@@ -29,6 +29,8 @@
 * Ability to pause and switch music
 
 :page_with_curl: Credits:
+
+- Vitaliy Lyapota for being a kind teacher :heart:
 
 - https://audiosoundclips.com/chiptune-8-bit-volume-2-creative-commons-music-cc-3-0/ Background Music
 
